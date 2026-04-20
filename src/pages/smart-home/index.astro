@@ -2,15 +2,96 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Smart Home Devices" description="Reviews and comparisons of the best smart home devices for homeowners — locks, thermostats, cameras, and more.">
-  <section class="max-w-5xl mx-auto px-4 py-20">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Smart Home Devices</h1>
-    <p class="text-lg text-gray-600 max-w-2xl mb-12">
-      Comparison guides and reviews for smart locks, thermostats, security cameras, lighting, and more.
-      Product guides coming soon.
-    </p>
-    <div class="border border-dashed border-gray-200 rounded-2xl p-12 text-center text-gray-400 text-sm">
-      Product comparison pages will appear here.
+<Layout title="Smart Home Devices" description="Researched buying guides for smart thermostats, locks, cameras, and lighting. Honest comparisons built for homeowners — not tech enthusiasts.">
+
+  <section class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-16">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Category Guide</p>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Smart Home Devices</h1>
+      <p class="text-lg text-gray-600 max-w-2xl leading-relaxed">
+        Buying guides for smart thermostats, locks, cameras, and lighting.
+        We focus on devices that work reliably in real homes — not just in demo conditions.
+      </p>
     </div>
   </section>
+
+  <div class="max-w-5xl mx-auto px-4 py-16">
+
+    <!-- Thermostats -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🌡️</span>
+        <h2 class="text-xl font-bold text-gray-900">Smart Thermostats</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Save 10–15% on heating and cooling — the easiest smart home upgrade with a clear payback period.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-thermostat-no-c-wire" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Thermostats for Homes Without C-Wire →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">For older homes where adding a C-wire would mean calling an electrician. 3 picks that work without it — from $129.</p>
+        </a>
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Smart Thermostats for Multi-Zone Systems</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Smart Locks -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🔐</span>
+        <h2 class="text-xl font-bold text-gray-900">Smart Locks</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Keyless entry, remote access, and guest codes — for homeowners and renters alike.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-lock-for-renters" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Locks for Renters →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Options that don't require landlord permission or permanent modifications. Our top pick installs in 5 minutes and leaves no exterior trace.</p>
+        </a>
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Smart Locks for Homeowners</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cameras & Doorbells -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">📷</span>
+        <h2 class="text-xl font-bold text-gray-900">Security Cameras & Video Doorbells</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">See who's at your door and monitor your property from anywhere.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Video Doorbells for Apartments</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Outdoor Security Cameras Without a Subscription</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Lighting -->
+    <section class="mb-4">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">💡</span>
+        <h2 class="text-xl font-bold text-gray-900">Smart Lighting</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Automate your lights without rewiring — bulbs, switches, and dimmers compared.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Smart Lighting for Apartments</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Smart Light Switches (No Neutral Wire)</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </Layout>

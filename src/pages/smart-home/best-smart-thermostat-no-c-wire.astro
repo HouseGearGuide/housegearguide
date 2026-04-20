@@ -1,0 +1,238 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecobee-smartthermostat-premium', 'google-nest-thermostat-2020', 'emerson-sensi-touch-2'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Thermostats for Homes Without C-Wire (2026)"
+  description="The best smart thermostats that work without a C-wire — no electrician needed. ecobee, Google Nest, and Sensi compared for older homes."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Thermostats Without C-Wire
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Thermostats for Older Homes Without C-Wire (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 products compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Most smart thermostats require a common wire (C-wire) to power themselves continuously.
+      Homes built before the 1990s — and many built as recently as 2010 — often don't have one.
+      Adding a C-wire requires running a new wire through your walls, which typically means hiring an electrician.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The good news: several smart thermostats are specifically designed to work without it.
+      The three picks below cover the full range from $129 to $249 and use three different
+      approaches to solve the C-wire problem.
+    </p>
+
+    <!-- What is a C-wire callout -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">What is a C-wire, and do I have one?</p>
+      <p class="text-sm text-gray-600 leading-relaxed">The C-wire (common wire) provides a continuous 24V power supply to the thermostat so it can run Wi-Fi and a display. To check: remove your current thermostat from the wall and look at the wiring. If you see a wire connected to a terminal labeled "C", you have a C-wire. If not — or if the thermostat only has 2-4 wires total — you likely don't. The thermostats below are engineered specifically for that situation.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Product</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">C-Wire Solution</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Ecosystems</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Display</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['C-Wire Required']}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+              <td class="p-3">{p.specs['Display']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Overall' : i === 1 ? '🥈 Best Budget Pick' : '🥉 Best for Apple & Amazon Homes'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">How to Choose the Right No-C-Wire Thermostat</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Which smart home ecosystem do you use?</h3>
+          <p class="text-sm leading-relaxed">This is the most important question. If your household is deep in Apple HomeKit (iPhone, HomePod, Apple TV), the ecobee or Emerson Sensi are your options — the Google Nest 2020 does not support HomeKit. If you're all-in on Google Home, the Nest is the cleanest choice. If you have a mix or don't care about ecosystem, any of the three will work.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How the three C-wire solutions actually work</h3>
+          <p class="text-sm leading-relaxed">
+            <strong>ecobee (PEK):</strong> The Power Extender Kit installs in your furnace/air handler and uses the G (fan) wire to supply power to the thermostat. Most reliable long-term solution but requires opening the furnace panel. &nbsp;
+            <strong>Google Nest 2020:</strong> Charges an internal battery off the heating and cooling switching wires. Simpler install, but may cause occasional issues with older systems that don't tolerate the small current draw. &nbsp;
+            <strong>Emerson Sensi:</strong> Runs on AA batteries entirely. Zero compatibility issues — if it can communicate with your HVAC system at all, it will work.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Is a smart thermostat worth it without C-wire?</h3>
+          <p class="text-sm leading-relaxed">Yes. The payback period on a smart thermostat is typically 1–2 years through scheduling and geofencing alone. The EPA estimates smart thermostats save homeowners $50–$130 per year. The ecobee at $249 pays for itself in 2–4 years without doing anything except setting a schedule.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How do I know if I have a C-wire?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Remove your current thermostat faceplate and look at the wiring terminals. If you see a wire connected to a terminal labeled "C", you have a C-wire. If your thermostat only has wires on R, G, Y, and W terminals (common in older systems), you don't. You can also check your furnace — the C terminal on the control board should have a wire going to the thermostat if C-wire is present.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Will the ecobee PEK work with my HVAC system?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The PEK works with most conventional systems that have a G wire (fan relay). It does not work with systems that don't have a G wire, or with some heat pump configurations. ecobee's compatibility checker at their website will tell you before you buy. When in doubt, the Emerson Sensi's battery approach is universally compatible.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I install a smart thermostat myself without an electrician?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — all three thermostats in this guide are designed for DIY installation. The process is: turn off the breaker for your HVAC, remove the old thermostat, take a photo of the wiring, connect wires to the new thermostat following the labeled terminals, mount it, and restore power. Most people finish in 15–30 minutes. The ecobee PEK adds 10–15 more minutes to open the furnace panel.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does the Google Nest 2020 work with older heat-only or cool-only systems?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The Google Nest Thermostat (2020) works with most conventional systems — forced air, heat pump, radiant. It does not work with systems requiring more than 6 wires, multi-stage or multi-zone systems, or most millivolt heating systems (older gas fireplaces, gravity furnaces). Check Google's compatibility tool before purchasing.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-lock-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Locks for Renters →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

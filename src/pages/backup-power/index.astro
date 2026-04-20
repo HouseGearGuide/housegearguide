@@ -2,15 +2,96 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Home Backup Power" description="Reviews and comparisons of the best home backup power equipment — portable power stations, generators, solar, and battery backups.">
-  <section class="max-w-5xl mx-auto px-4 py-20">
-    <h1 class="text-4xl font-bold text-gray-900 mb-4">Home Backup Power</h1>
-    <p class="text-lg text-gray-600 max-w-2xl mb-12">
-      Comparison guides and reviews for portable power stations, whole-home generators,
-      solar setups, and battery backups. Product guides coming soon.
-    </p>
-    <div class="border border-dashed border-gray-200 rounded-2xl p-12 text-center text-gray-400 text-sm">
-      Product comparison pages will appear here.
+<Layout title="Home Backup Power" description="Buying guides for portable power stations, whole-home generators, and solar setups. Practical picks for keeping your home running when the grid goes down.">
+
+  <section class="bg-gray-50 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-4 py-16">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Category Guide</p>
+      <h1 class="text-4xl font-bold text-gray-900 mb-4">Home Backup Power</h1>
+      <p class="text-lg text-gray-600 max-w-2xl leading-relaxed">
+        Buying guides for portable power stations, whole-home generators, and solar setups.
+        Practical picks for keeping critical systems running when the grid goes down.
+      </p>
     </div>
   </section>
+
+  <div class="max-w-5xl mx-auto px-4 py-16">
+
+    <!-- Portable Power Stations -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🔋</span>
+        <h2 class="text-xl font-bold text-gray-900">Portable Power Stations</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Battery-powered backup for outages, camping, and remote work — no gasoline, no fumes, safe to use indoors.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Portable Power Stations Under $500 →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">5 models at the sub-$500 sweet spot. EcoFlow DELTA 2 leads for most homeowners — 1024Wh and LFP battery at this price is hard to beat.</p>
+        </a>
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Portable Power Stations Under $1,000</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Whole-Home Generators -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">⚡</span>
+        <h2 class="text-xl font-bold text-gray-900">Whole-Home Standby Generators</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Permanently installed generators that start automatically within seconds of a power outage — no action required.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Whole-Home Generator for 2,000 Sq Ft Homes</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Whole-Home Generator for Well Pumps</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solar Generators -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">☀️</span>
+        <h2 class="text-xl font-bold text-gray-900">Solar Generators & Off-Grid Setups</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Pair solar panels with battery storage for extended backup that recharges itself — no grid required.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Solar Generators for Home Backup</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">EcoFlow vs Jackery: Full Comparison</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Battery Backup -->
+    <section class="mb-4">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🏠</span>
+        <h2 class="text-xl font-bold text-gray-900">Whole-Home Battery Backup</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Permanent battery systems like the Tesla Powerwall — store grid or solar energy for seamless outage backup.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Battery Backup for Home Office</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
+          <p class="text-sm font-medium text-gray-400 mb-1">Best Battery Backup for Sump Pumps</p>
+          <p class="text-xs text-gray-400">Guide coming soon</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
 </Layout>

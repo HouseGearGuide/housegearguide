@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecoflow-delta-2', 'anker-solix-c800', 'jackery-explorer-500', 'goal-zero-yeti-500x', 'bluetti-eb3a'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Portable Power Stations Under $500 (2026)"
+  description="We compared 5 portable power stations under $500 on capacity, battery chemistry, and real-world usefulness. Top pick: EcoFlow DELTA 2 — 1024Wh LFP for $499."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Portable Power Stations Under $500
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Portable Power Stations Under $500 (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 5 products compared</p>
+
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The under-$500 range is the sweet spot for portable power stations. You get enough capacity
+      to run a mini-fridge for several hours, keep your phones and laptops charged through a multi-day outage,
+      and power lights and fans overnight — without the cost or bulk of a whole-home generator.
+      We compared five of the best options at this price point on capacity, output wattage, battery chemistry,
+      and practical usability.
+    </p>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Product</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Capacity</th>
+            <th class="text-left p-3 font-semibold text-gray-700">AC Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Battery</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Capacity']}</td>
+              <td class="p-3">{p.specs['AC Output']}</td>
+              <td class="p-3">{p.specs['Battery Type']}</td>
+              <td class="p-3">{p.specs['Weight']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Overall' : i === 1 ? '🥈 Runner-Up' : i === 2 ? '🥉 Third Pick' : 'Also Consider'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">What to Look for in a Portable Power Station Under $500</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Capacity (Wh) — the most important number</h3>
+          <p class="text-sm leading-relaxed">Watt-hours tell you how much total energy the battery holds. A mini-fridge uses about 150–200Wh over 12 hours; a box fan uses 30–60Wh; phone charging uses 15–30Wh per charge. At this price point, aim for at least 500Wh for meaningful emergency backup use. The EcoFlow DELTA 2's 1024Wh is unusually high at $499 and is the main reason it's our top pick.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Battery chemistry: LFP vs NMC — it matters more than specs suggest</h3>
+          <p class="text-sm leading-relaxed">LiFePO4 (LFP) batteries last 2,500–3,500+ charge cycles before degrading to 80% capacity. Lithium NMC batteries last 500–800 cycles. If you use your power station once a week, an NMC battery degrades in under 10 years; an LFP unit can last 30+ years. EcoFlow and Anker SOLIX now offer LFP at this price point — that's a meaningful long-term advantage.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">AC output (W) — what it can actually run</h3>
+          <p class="text-sm leading-relaxed">Output wattage determines which devices you can power simultaneously. A full-size refrigerator needs 150W continuous but surges to 400–700W on compressor start. A microwave needs 900–1200W. Window AC units start at 700W. Choose a unit with at least 800W output if you want to run anything beyond phones, laptops, and lights.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Recharge speed matters more than most buyers realize</h3>
+          <p class="text-sm leading-relaxed">If you're using this for home backup, you need to recharge it between outages — ideally in a few hours, not overnight. Units with fast AC charging (EcoFlow, Anker SOLIX) are far more useful during repeat outages than ones taking 5–7 hours. Solar input speed also matters if you plan to pair a solar panel.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can a portable power station run my refrigerator?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes, but match specs carefully. A standard refrigerator needs 150W continuous but surges to 400–700W when the compressor starts. You need a unit with at least 1000W surge output — the EcoFlow DELTA 2 handles this easily at 2700W surge. A 1024Wh unit will run a fridge for roughly 6–8 hours depending on ambient temperature and how often it cycles.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What's the difference between a portable power station and a gas generator?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Gas generators burn fuel and can run indefinitely. Portable power stations are battery-based with a fixed capacity — once discharged, you recharge from the wall or solar. Generators produce more power; power stations are silent, produce no fumes, and are safe to use indoors. For most homeowners, a 1000Wh power station handles the things that actually matter during outages.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How long does a 1000Wh power station last?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Depends entirely on what you're running. Phone charging: 60–80 full charges. Laptop: 8–10 charges. Mini-fridge: 5–7 hours. LED lighting at 20W: 40+ hours. CPAP at standard settings: 10–15 nights. Most units are 85–90% efficient, so factor in about a 10–15% efficiency loss from stated capacity.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">EcoFlow or Jackery — which brand is better?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">For the money in 2026, EcoFlow gives you more capacity, faster charging, and LFP battery chemistry. Jackery's advantages are lighter weight, simpler controls, and a longer consumer track record. Between the EcoFlow DELTA 2 and Jackery Explorer 500 at comparable prices, EcoFlow wins on nearly every spec. Jackery makes more sense if weight and simplicity are priorities over raw capacity.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I leave a portable power station plugged in all the time?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">LFP battery units (EcoFlow DELTA 2, Anker SOLIX C800, Bluetti EB3A) are designed for this and handle it well without accelerating degradation. NMC units (Jackery, Goal Zero) are better cycled rather than kept at 100% charge continuously. EcoFlow and Anker both have a "home backup mode" that maintains the battery at 80–90% charge when plugged in permanently, which extends long-term battery life.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-thermostat-no-c-wire" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Thermostats for Homes Without C-Wire →</p>
+        </a>
+        <a href="/smart-home/best-smart-lock-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Locks for Renters →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

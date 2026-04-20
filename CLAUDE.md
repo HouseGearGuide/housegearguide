@@ -167,3 +167,16 @@ Goals:
 - Check Google Search Console weekly once set up — it tells you what's working
 - Update products.ts every 3-4 months to remove discontinued products and add new ones
 - Seasonality is real — backup power spikes around hurricane season and winter. Smart home spikes around Black Friday and holidays
+
+### Session 2 — April 18, 2026 (Partial)
+- Started homepage redesign in separate chat
+- Homepage file exists, needs proper design filled in
+- Category pages exist but are empty shells
+- products.ts exists but has no data yet
+- No comparison pages generated yet
+
+### Session 2 Continued — Goals
+- Properly design homepage in place (edit index.astro, don't recreate)
+- Fill category pages with real content
+- Add first 15 products to products.ts
+- Generate first 3 comparison pages
