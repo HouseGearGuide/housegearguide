@@ -1,0 +1,231 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['wyze-cam-v4', 'eufy-indoor-cam-2k-pan-tilt', 'arlo-essential-indoor-2k'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Security Cameras for Apartments (2026)"
+  description="The best indoor security cameras for apartments — no drilling, no subscription required, works with Alexa and Google Home. Wyze, Eufy, and Arlo compared."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Cameras for Apartments
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Security Cameras for Apartments (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 cameras compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Indoor security cameras for apartments have a specific set of requirements: no permanent wall
+      mounting required, power via a standard outlet or USB cable, and ideally local video storage
+      so you're not paying a monthly subscription just to see what happened yesterday.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      All three picks here are wired (USB or USB-C), sit on a shelf or desk without drilling,
+      and include some form of free local storage. The main decision is budget vs features —
+      the Wyze Cam v4 at $36 does 90% of what the $100 Arlo does.
+    </p>
+
+    <!-- Apartment placement note -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Where to place an indoor camera in an apartment</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Front door (inside) — see who comes and goes</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Living room — covers the main entry and most of the apartment</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Facing windows or sliding doors — catches attempts at secondary entry</li>
+        <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Never in bedrooms or bathrooms — both for privacy and legal reasons in most states</li>
+      </ul>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Camera</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Resolution</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Storage</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Ecosystems</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Resolution']}</td>
+              <td class="p-3">{p.specs['Storage']}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Value' : i === 1 ? '🥈 Best Full-Room Coverage' : '🥉 Best for Apple HomeKit'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buying Guide: Indoor Security Cameras for Renters</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do you need a subscription?</h3>
+          <p class="text-sm leading-relaxed">The Wyze Cam v4 and Eufy Pan & Tilt both store event clips locally on a microSD card with no required subscription. Wyze offers an optional Cam Plus plan at $2/month for AI detections and longer clips; Eufy's local storage is genuinely unlimited. Arlo requires an Arlo Secure subscription ($8/month) for full cloud history after the free trial. For renters who don't want recurring costs, Wyze or Eufy are the cleaner choices.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Pan-and-tilt vs fixed cameras</h3>
+          <p class="text-sm leading-relaxed">A fixed camera covers whatever it's pointed at — typically 120–130° horizontal. A pan-and-tilt camera (Eufy) can rotate to cover an entire room, follow motion, or let you look around manually via the app. For a studio or small apartment where one camera needs to cover the whole space, pan-and-tilt makes sense. For a larger apartment where you're positioning cameras in specific spots, fixed cameras are simpler and more reliable.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What resolution do you actually need?</h3>
+          <p class="text-sm leading-relaxed">2K (2560×1440) provides noticeably sharper footage than 1080p, especially when zooming in post-incident to identify faces or read text. All three cameras on this list are 2K or 2K HDR. For identifying people at a distance of 10–15 feet — typical for an apartment living room — 2K is clearly better than 1080p. The incremental cost for 2K is minimal at this price range, so there's no reason to buy 1080p.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do I need to tell my landlord about an indoor camera?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">For cameras inside your own unit, you generally don't need landlord permission — you have a reasonable expectation of privacy within your apartment. However, you cannot aim cameras at shared areas (hallways, lobbies, other units' doors) without permission. Some leases explicitly address this, so it's worth reviewing yours. Cameras aimed solely inside your apartment are universally considered acceptable.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How much does local microSD storage actually hold?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">A 32GB card (included with some cameras, or ~$8 separately) typically holds 2–7 days of continuous recording or 15–30 days of motion-triggered clips at 2K resolution. A 128GB card extends this to several weeks. Wyze and Eufy both support up to 256GB cards. For most apartment use, 64–128GB is plenty — you're not reviewing footage from two weeks ago, you're looking at what happened today or yesterday.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Which camera is best for Apple HomeKit?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The Arlo Essential Indoor 2K is the only pick here with native Apple HomeKit support, which integrates the camera into your Home app, Siri commands, and HomeKit automations. If you're in the Apple ecosystem and HomeKit integration matters, Arlo is worth the higher price. Wyze and Eufy do not support HomeKit in these models.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can these cameras work with a pet door or dogsitter?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">All three cameras let you share live view access with family members or trusted contacts through their respective apps. The Eufy's pan-and-tilt is particularly useful for checking on pets, as you can rotate the view to follow your dog around the room. Motion alerts with person vs. pet detection help reduce notification fatigue if you have animals at home.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-lock-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Locks for Renters →</p>
+        </a>
+        <a href="/smart-home/best-smart-lighting-for-apartments" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Lighting for Apartments →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

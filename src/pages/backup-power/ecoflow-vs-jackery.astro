@@ -1,0 +1,280 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const ecoflowSlugs = ['ecoflow-delta-2', 'ecoflow-delta-2-max', 'ecoflow-delta-pro'];
+const jackerySlugs = ['jackery-explorer-500', 'jackery-explorer-1000-pro'];
+
+const ecoflowProducts = ecoflowSlugs.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const jackeryProducts = jackerySlugs.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const allProducts = [...ecoflowProducts, ...jackeryProducts];
+---
+
+<Layout
+  title="EcoFlow vs Jackery: Full Comparison (2026)"
+  description="EcoFlow vs Jackery — which brand makes better portable power stations? We compared both across every price tier and every spec that matters."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      EcoFlow vs Jackery
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      EcoFlow vs Jackery: Full Comparison (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 5 products across both brands</p>
+
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      EcoFlow and Jackery are the two most recognized names in portable power stations. If you've done
+      any research on this category, you've likely already narrowed it down to one of these two brands.
+      Here's the honest head-to-head: where each brand wins, where they fall short, and which to choose
+      based on how you plan to use it.
+    </p>
+
+    <!-- Verdict Box -->
+    <div class="grid sm:grid-cols-2 gap-4 mb-10">
+      <div class="bg-green-50 border border-green-200 rounded-2xl p-5">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Choose EcoFlow if...</p>
+        <ul class="space-y-1.5 text-sm text-gray-700">
+          <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Home backup is your primary use case</li>
+          <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>You want the fastest charging speed</li>
+          <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>You're pairing with solar panels (higher solar input)</li>
+          <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>LFP battery longevity matters to you</li>
+          <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>You want more capacity per dollar</li>
+        </ul>
+      </div>
+      <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5">
+        <p class="text-xs font-semibold text-blue-700 uppercase tracking-widest mb-2">Choose Jackery if...</p>
+        <ul class="space-y-1.5 text-sm text-gray-700">
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Weight and portability are your top priority</li>
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>You're primarily using it for camping</li>
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>You prefer simpler controls with less to configure</li>
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>You value longer established brand track record</li>
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>You find EcoFlow units frequently sold out</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Brand Criteria Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Head-to-Head: Brand Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700 w-1/3">Criteria</th>
+            <th class="text-left p-3 font-semibold text-green-700">EcoFlow</th>
+            <th class="text-left p-3 font-semibold text-blue-700">Jackery</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm text-gray-700">
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">Battery Chemistry</td>
+            <td class="p-3">LFP on most models (3,000+ cycles)</td>
+            <td class="p-3">NMC on most models (~500 cycles)</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">AC Charge Speed</td>
+            <td class="p-3">43–50 min to 80% (best in class)</td>
+            <td class="p-3">1.8–7 hours to full (varies by model)</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">Solar Input</td>
+            <td class="p-3">500–1,600W depending on model</td>
+            <td class="p-3">100–200W (significantly lower)</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">Capacity per Dollar</td>
+            <td class="p-3">Better — more Wh per $1 spent</td>
+            <td class="p-3">Lower — you pay a brand premium</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">Weight</td>
+            <td class="p-3">Heavier (27–48 lbs for home models)</td>
+            <td class="p-3">Lighter (13–25 lbs across lineup)</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">App Quality</td>
+            <td class="p-3">Feature-rich, more options to configure</td>
+            <td class="p-3">Simpler, fewer features, easier to use</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">Brand History</td>
+            <td class="p-3">Founded 2017, rapid growth</td>
+            <td class="p-3">Founded 2012, longer consumer track record</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">Expandability</td>
+            <td class="p-3">Yes — Extra Batteries available</td>
+            <td class="p-3">Limited — most models standalone</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">Warranty</td>
+            <td class="p-3">5 years (DELTA Pro), 2 years standard</td>
+            <td class="p-3">2 years standard</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">EPS/UPS Mode</td>
+            <td class="p-3">Yes — sub-30ms switchover on most models</td>
+            <td class="p-3">No automatic switchover feature</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tier by Tier -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Head-to-Head by Price Tier</h2>
+
+    <div class="space-y-6 mb-12">
+      <div class="border border-gray-100 rounded-xl p-5">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Under $400 — Jackery wins</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <p class="font-medium text-gray-900 mb-1">Jackery Explorer 500 — $349</p>
+            <p class="text-sm text-gray-600">518Wh, 13.3 lbs, simple controls. The go-to for camping and light backup. Often on sale at $249.</p>
+            <a href={jackeryProducts[0]?.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs text-green-700 hover:underline">Check on Amazon →</a>
+          </div>
+          <div class="bg-gray-50 rounded-lg p-3 text-sm text-gray-600">
+            <p>EcoFlow doesn't have a strong competitor under $400. The Bluetti EB3A ($199) is the best alternative at this price tier, but it's not an EcoFlow.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-green-200 bg-green-50 rounded-xl p-5">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">$400–$600 — EcoFlow wins clearly</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <p class="font-medium text-gray-900 mb-1">EcoFlow DELTA 2 — $499</p>
+            <p class="text-sm text-gray-600">1024Wh LFP, 1800W output, 50-min charge to 80%. Twice the capacity of Jackery 500 for $150 more.</p>
+            <a href={ecoflowProducts[0]?.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs text-green-700 hover:underline">Check on Amazon →</a>
+          </div>
+          <div>
+            <p class="font-medium text-gray-900 mb-1">No Jackery equivalent</p>
+            <p class="text-sm text-gray-600">The closest Jackery is the 500 at $349, which has half the capacity. EcoFlow dominates this price range.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-green-200 bg-green-50 rounded-xl p-5">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">$700–$1,000 — EcoFlow wins on specs, Jackery competitive on weight</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <p class="font-medium text-gray-900 mb-1">EcoFlow DELTA 2 Max — $999</p>
+            <p class="text-sm text-gray-600">2048Wh LFP, 2400W, expandable to 6144Wh, 1000W solar input. Best in class on every spec.</p>
+            <a href={ecoflowProducts[1]?.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs text-green-700 hover:underline">Check on Amazon →</a>
+          </div>
+          <div>
+            <p class="font-medium text-gray-900 mb-1">Jackery Explorer 1000 Pro — $799</p>
+            <p class="text-sm text-gray-600">1002Wh NMC, 1000W, 1.8-hr charge, 25.4 lbs. Better for camping. Loses on capacity, battery chemistry, and solar input.</p>
+            <a href={jackeryProducts[1]?.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs text-green-700 hover:underline">Check on Amazon →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Individual product cards -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">All Products in This Comparison</h2>
+
+    {allProducts.map((product) => (
+      <section id={product.slug} class="mb-12 scroll-mt-20">
+        <div class="border border-gray-100 rounded-2xl p-6">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+            <div>
+              <p class="text-xs font-semibold uppercase tracking-widest mb-1 {product.brand === 'EcoFlow' ? 'text-green-700' : 'text-blue-600'}">
+                {product.brand}
+              </p>
+              <h3 class="text-xl font-bold text-gray-900 mb-1">{product.name}</h3>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-4 mb-4">
+            <div class="grid sm:grid-cols-2 gap-x-8">
+              {Object.entries(product.specs).map(([key, val]) => (
+                <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                  <span class="text-gray-500 text-sm">{key}</span>
+                  <span class="font-medium text-gray-900 text-sm">{val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <p class="font-semibold text-gray-900 mb-2 text-sm">Pros</p>
+              <ul class="space-y-1.5">
+                {product.pros.map(pro => (
+                  <li class="text-sm text-gray-700 flex gap-2">
+                    <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900 mb-2 text-sm">Cons</p>
+              <ul class="space-y-1.5">
+                {product.cons.map(con => (
+                  <li class="text-sm text-gray-700 flex gap-2">
+                    <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Is EcoFlow or Jackery more reliable long-term?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Jackery has a longer consumer track record (founded 2012 vs EcoFlow's 2017) and fewer reported software-related issues. EcoFlow's hardware quality has improved substantially since 2020 and their LFP batteries will physically outlast Jackery's NMC batteries by 5–6× in cycle count. For home backup where the unit sits plugged in most of the time, EcoFlow's battery chemistry advantage matters more than brand age.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Which brand has better customer support?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Jackery has historically had slightly better customer service reviews in the U.S., with faster response times and less friction on warranty claims. EcoFlow has improved significantly and now offers 24-month warranties with a 5-year option on the DELTA Pro line. Both brands handle the U.S. market with domestic support teams. Either is serviceable; neither is exceptional.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I use EcoFlow or Jackery as a UPS for my home office?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">EcoFlow, yes — most DELTA models have an EPS (Emergency Power Supply) mode with sub-30ms switchover, meaning your devices stay on through an outage without interruption. Jackery does not have this feature; there's a detectable gap when switching to battery. If seamless power continuity for computers or servers matters, EcoFlow is the clear choice.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-under-1000" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $1,000 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

@@ -1,0 +1,244 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecoflow-delta-2', 'anker-solix-c1000', 'jackery-explorer-1000-pro', 'bluetti-eb3a'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+
+// Typical home office draw: laptop 65W + monitor 30W + router 15W + desk lamp 10W = ~120W
+const officeLoad = 120;
+---
+
+<Layout
+  title="Best Backup Power for Home Office (2026)"
+  description="The best portable power stations for home office backup — quiet operation, clean sine wave output, and enough runtime to work through an outage."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Backup Power for Home Office
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Backup Power for Home Office (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 products compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A home office has different power backup requirements than a whole-home emergency setup.
+      You need quiet operation so you can stay on calls, clean sine wave AC output to protect
+      sensitive electronics, enough runtime to finish a work day, and ideally a seamless
+      switchover so your computer doesn't even notice the outage happened.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      A typical home office draws 100–150W continuously: laptop (65W), external monitor (30W),
+      router/modem (15W), desk lamp (10W), phone charging (5W). At 120W average draw,
+      a 1024Wh unit gives you roughly 7–8 hours of runtime — enough for a full workday through
+      most outages.
+    </p>
+
+    <!-- Runtime table -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Estimated runtime at typical home office load (~120W)</p>
+      <div class="grid sm:grid-cols-4 gap-3">
+        {picks.map(p => {
+          const wh = parseInt(p.specs['Capacity'] ?? '0');
+          const hours = wh > 0 ? ((wh * 0.87) / officeLoad).toFixed(1) : '—';
+          return (
+            <div class="bg-white rounded-lg p-3 text-center">
+              <p class="text-xs text-gray-500 mb-1 leading-tight">{p.name.replace('EcoFlow ', '').replace('Jackery ', '').replace('Anker ', '').replace('Bluetti ', '')}</p>
+              <p class="text-2xl font-bold text-green-700">{hours}h</p>
+              <p class="text-xs text-gray-400">{p.specs['Capacity']}</p>
+            </div>
+          );
+        })}
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Estimates assume 87% efficiency and 120W average draw (laptop + monitor + router + lamp).</p>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick for Home Office</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Product</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Capacity</th>
+            <th class="text-left p-3 font-semibold text-gray-700">AC Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Battery</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Capacity']}</td>
+              <td class="p-3">{p.specs['AC Output']}</td>
+              <td class="p-3">{p.specs['Battery Type']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best for Home Office' : i === 1 ? '🥈 Runner-Up' : i === 2 ? '🥉 Most Portable Option' : '💰 Best Budget Pick'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">What to Look for in a Home Office Power Station</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">EPS mode: the feature most buyers overlook</h3>
+          <p class="text-sm leading-relaxed">EcoFlow's EPS (Emergency Power Supply) mode switches to battery in under 30 milliseconds — fast enough that your laptop, monitor, and router stay on without interruption. Most power stations (including Jackery) have a detectable gap of 20ms–2 seconds when switching to battery, which can cause computers to briefly lose power or reset. If uninterrupted uptime matters for your work, choose an EcoFlow unit with EPS mode.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Pure sine wave output is non-negotiable</h3>
+          <p class="text-sm leading-relaxed">All four picks here output pure sine wave AC power, which is required for computers, monitors, and other sensitive electronics. Modified sine wave inverters (found in some cheaper units) can cause hum, overheating, or damage to switching power supplies. Every unit on this list is safe for all home office electronics.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Fan noise: more important for home offices than anywhere else</h3>
+          <p class="text-sm leading-relaxed">Power stations activate their cooling fans under moderate to heavy load. At a typical home office draw of 100–150W, most units operate quietly or with minimal fan activity. Under heavy load (gaming PC, space heater), fans become audible. The EcoFlow DELTA 2 and Anker SOLIX C1000 have fan management modes that prioritize quiet operation — useful if you're on video calls.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How much capacity do you actually need?</h3>
+          <p class="text-sm leading-relaxed">At 120W average home office load: 268Wh (Bluetti EB3A) gives you about 2 hours — enough for a brief outage. 1024Wh (EcoFlow DELTA 2) gives you 7–8 hours — a full workday. 1056Wh (Anker SOLIX C1000) gives you roughly the same. For most remote workers, 1000Wh is the target — it covers any realistic single-day outage with room to spare.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I leave a power station plugged in permanently as a UPS replacement?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes, and EcoFlow specifically supports this with a "Home Backup Mode" that keeps the battery at 80–90% charge to extend LFP battery life during constant charging. The EcoFlow DELTA 2 is the closest thing to a purpose-built UPS alternative in a portable power station form factor, thanks to EPS mode and the dedicated home backup charging profile.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Will a power station handle a desktop PC?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Depends on the PC. A business desktop (65–150W) runs fine on any unit here for 5–10 hours. A gaming PC with a dedicated GPU (400–600W) draws too much for extended runtime — a 1024Wh unit gives you about 1.5–2 hours on a gaming rig. For gaming PC backup, the EcoFlow DELTA 2 Max (2048Wh, 2400W) is a better fit.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does my router/modem stay on during the switchover?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">With EcoFlow's EPS mode (sub-30ms), yes — your router won't reset and active video calls won't drop. With Jackery and most other brands, the 20ms–2 second gap is usually enough to briefly disconnect Wi-Fi dependent devices. If you're on a video call when the outage hits and you're not using EPS mode, expect a brief disconnect followed by automatic reconnect within seconds.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+        <a href="/backup-power/ecoflow-vs-jackery" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">EcoFlow vs Jackery: Full Comparison →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

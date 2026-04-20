@@ -1,0 +1,232 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['philips-hue-starter-kit', 'kasa-smart-bulb-kl135', 'nanoleaf-essentials-a19', 'govee-smart-bulb-rgbww'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Lighting for Apartments (2026)"
+  description="The best smart bulbs for apartments — no rewiring, no landlord permission, takes everything with you when you move. Philips Hue, Kasa, Govee, and Nanoleaf compared."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Lighting for Apartments
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Lighting for Apartments (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 products compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Smart lighting is the easiest smart home upgrade for renters. Every option here is a
+      screw-in bulb replacement — no wiring, no drilling, no landlord permission needed.
+      When you move, the bulbs come with you. The only question is which system fits your
+      budget, ecosystem, and how deep you want to go with automations.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The four picks below cover the full range from $12/bulb (Govee) to $50/bulb (Philips Hue).
+      All support color changing and dimming. All work without any permanent installation.
+    </p>
+
+    <!-- Renter callout -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Why smart lighting is perfect for renters</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Screw into existing light sockets — zero modifications required</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Completely portable — take every bulb with you when you move</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>No new switches needed — control via app or voice</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Existing light switches still work as normal when you turn them on/off</li>
+      </ul>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price} <span class="text-sm font-normal text-gray-400">(4 bulbs + Bridge)</span></p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Product</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Connectivity</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Ecosystems</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Hub Required</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">
+                {i === 0 ? '$199 kit / ~$50/bulb' : `$${p.price}/bulb`}
+              </td>
+              <td class="p-3">{p.specs['Connectivity']}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+              <td class="p-3">{p.specs['Hub Required']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Overall System' : i === 1 ? '🥈 Best Hub-Free Pick' : i === 2 ? '🥉 Best for Apple HomeKit' : '💰 Best Budget Pick'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">
+                {i === 0 ? '$199 starter kit · ~$50 per additional bulb' : `$${product.price} per bulb`}
+                &nbsp;·&nbsp; ⭐ {product.rating}/5
+              </p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buying Guide: Smart Lighting for Renters</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Hub vs hub-free: what's the difference?</h3>
+          <p class="text-sm leading-relaxed">Hub-free bulbs (Kasa, Govee) connect directly to your Wi-Fi router. Setup is simple and there's nothing extra to move when you leave. Hub-based systems (Philips Hue with Bridge, Nanoleaf with Thread Border Router) add an extra device but get benefits in return: faster response, local processing that works without internet, and more reliable large-group control. For most apartment renters, hub-free is the right choice unless you're already in the Philips Hue ecosystem.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">The one gotcha with smart bulbs: wall switches</h3>
+          <p class="text-sm leading-relaxed">Smart bulbs need constant power to maintain their Wi-Fi or Bluetooth connection. If someone turns off the wall switch, the bulb loses power and disconnects from the network — you can't turn it back on with a voice command or app until the switch is flipped back on. Solutions: leave switches always on and use app/voice for control, use smart switch covers that prevent accidental switch-off, or train your household to use the app instead of wall switches.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How many bulbs do you actually need?</h3>
+          <p class="text-sm leading-relaxed">Most one-bedroom apartments need 4–8 bulbs to cover a living room, bedroom, kitchen, and bathroom. At Kasa prices ($15/bulb), that's $60–$120 total. At Philips Hue prices (~$50/bulb after the starter kit), that's $200–$400. The starter kit approach makes Hue the better value to start — 4 bulbs for $199 is ~$50/bulb, and you can expand one room at a time.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do smart bulbs work with ceiling fixtures and lamps?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — they're standard A19 bulbs and fit any fixture that accepts a standard bulb, whether a ceiling can, table lamp, floor lamp, or wall sconce. Check the fixture's maximum wattage — smart bulbs are typically 8–10W (equivalent to 60W incandescent), well within the limit of any standard fixture.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Will Kasa or Govee bulbs work with Apple HomeKit?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Standard Kasa KL135 and Govee RGBWW bulbs do not support Apple HomeKit. For Apple HomeKit compatibility, choose Nanoleaf Essentials (Thread/Matter-based HomeKit support) or Philips Hue (included in the starter kit via the Bridge). If you're an iPhone/HomePod household and HomeKit matters to you, Nanoleaf Essentials is the best no-hub-required option at $20/bulb.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What happens to my smart lights if my Wi-Fi goes down?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Wi-Fi bulbs (Kasa, Govee) lose app and voice control when Wi-Fi is down — but wall switches still work normally, so you can always turn them on and off manually. Philips Hue with Bridge processes locally and continues to work via the Hue app on your local network even without internet. Nanoleaf Essentials via Thread also operates locally. For maximum reliability, Hue or Nanoleaf are better choices.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-lock-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Locks for Renters →</p>
+        </a>
+        <a href="/smart-home/best-smart-camera-for-apartments" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Security Cameras for Apartments →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

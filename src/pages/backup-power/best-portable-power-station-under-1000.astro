@@ -1,0 +1,219 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecoflow-delta-2-max', 'anker-solix-c1000', 'bluetti-ac180', 'jackery-explorer-1000-pro'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Portable Power Stations Under $1,000 (2026)"
+  description="The best portable power stations between $500 and $1,000 — compared on capacity, battery chemistry, and real-world usefulness. Top pick: EcoFlow DELTA 2 Max."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Portable Power Stations Under $1,000
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Portable Power Stations Under $1,000 (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 products compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      The $500–$1,000 range is where portable power stations become genuinely capable of whole-home
+      emergency backup — not just phone charging and fans. Units in this class can run a full-size
+      refrigerator for 8–12 hours, power a window A/C unit, and keep all your critical devices charged
+      through a multi-day outage.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      All four picks below use LiFePO4 (LFP) battery chemistry, which lasts 3,000+ charge cycles
+      versus 500 for older NMC batteries. At this price point, that's now the expectation — any unit
+      in this range without LFP is not worth buying.
+    </p>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Product</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Capacity</th>
+            <th class="text-left p-3 font-semibold text-gray-700">AC Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Charge to 80%</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Capacity']}</td>
+              <td class="p-3">{p.specs['AC Output']}</td>
+              <td class="p-3">{p.specs['Charge to 80%'] ?? p.specs['Charge to Full']}</td>
+              <td class="p-3">{p.specs['Weight']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Overall' : i === 1 ? '🥈 Runner-Up' : i === 2 ? '🥉 Best Mid-Range' : 'Also Consider'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Do You Need a $500–$1,000 Power Station?</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">When to upgrade from the under-$500 tier</h3>
+          <p class="text-sm leading-relaxed">The <a href="/backup-power/best-portable-power-station-under-500" class="text-green-700 hover:underline">under-$500 tier</a> tops out at 1024Wh (EcoFlow DELTA 2). That's enough for phones, laptops, and a mini-fridge for several hours. If you want to run a full-size refrigerator all night (8+ hours), power a window A/C unit, or cover a multi-day outage without re-prioritizing what you're running — you need 1500Wh+, which is what this price tier delivers.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What a 2000Wh unit can actually power</h3>
+          <p class="text-sm leading-relaxed">Full-size refrigerator: 12–16 hours. Chest freezer (important during extended outages): 18–24 hours. Laptop + monitor + router for a home office: 15–20 hours. Window A/C (5,000 BTU): 3–4 hours. LED lighting (6 bulbs): 40+ hours. For most homeowners, a 2000Wh unit covers everything essential through a 12–18 hour outage comfortably.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Why all four picks use LFP batteries</h3>
+          <p class="text-sm leading-relaxed">LFP (LiFePO4) chemistry delivers 3,000+ charge cycles before degrading to 80% capacity. NMC batteries typically hit 500 cycles. At 100 uses per year (roughly twice a week), an NMC battery degrades significantly in 5 years; an LFP unit lasts 30+ years. The convergence of LFP chemistry with the sub-$1,000 price point happened in 2024–2025 and is the reason this is an excellent time to buy in this class.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Is the EcoFlow DELTA 2 Max worth the upgrade over the DELTA 2?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">If you're buying for home backup, yes — 2048Wh versus 1024Wh at roughly double the capacity for roughly double the price. The Max also charges faster (43 min to 80% vs 50 min), accepts more solar input (1000W vs 500W), and is expandable. The DELTA 2 is the right choice if you're prioritizing budget and portability; the Max is right if you want serious backup power that can handle your whole home through a long outage.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can a 2000Wh power station run central air conditioning?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Probably not long enough to matter. Central A/C units typically draw 3,000–5,000W — above the continuous output of any portable power station. Window A/C units (5,000–8,000 BTU) draw 500–900W and work fine for 2–4 hours. For extended A/C coverage during outages, a standby generator is the right solution. Power stations are better suited to refrigeration, lighting, charging, and CPAP.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How does the EcoFlow DELTA 2 Max compare to the Jackery Explorer 1000 Pro?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">On paper, the DELTA 2 Max wins substantially: 2048Wh vs 1002Wh capacity, 2400W vs 1000W output, and 1000W vs 200W solar input — for roughly the same price. The Jackery 1000 Pro's advantage is lighter weight (25.4 lbs vs 48 lbs) and Jackery's longer consumer track record. If portability for camping matters, Jackery. If home backup is the priority, EcoFlow DELTA 2 Max wins on every relevant spec.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+        <a href="/backup-power/best-whole-home-generator-2000-sq-ft" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for 2,000 Sq Ft →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

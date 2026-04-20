@@ -1,0 +1,233 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['generac-22kw-guardian', 'kohler-20rescl-20kw', 'briggs-stratton-10kw-standby'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Whole-Home Generator for 2,000 Sq Ft (2026)"
+  description="The best standby generators for a 2,000 sq ft home — Generac, Kohler, and Briggs & Stratton compared on output, reliability, and total cost."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Whole-Home Generator for 2,000 Sq Ft
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Whole-Home Generator for 2,000 Sq Ft Homes (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 generators compared</p>
+
+    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-8">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Important: Prices shown are generator unit cost only</p>
+      <p class="text-sm text-gray-700 leading-relaxed">Standby generators require professional installation, a natural gas line or LP tank, an automatic transfer switch, and local permits. Total installed cost for a 2,000 sq ft home typically runs <strong>$6,000–$12,000</strong> depending on your location, gas supply, and electrical panel. The unit prices below are just the starting point.</p>
+    </div>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A standby generator permanently installs outside your home, connects to your gas supply, and
+      starts automatically within 10 seconds of a power outage — no manual setup, no gasoline runs,
+      no extension cords. For homeowners in outage-prone areas, it's the most reliable whole-home
+      backup solution available.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      For a 2,000 sq ft home with central air conditioning, the standard recommendation is a
+      <strong>20–22kW</strong> generator. This size handles all circuits simultaneously, including the
+      A/C, without load shedding. A 10kW unit covers essential circuits but cannot run central A/C
+      at the same time as other major appliances.
+    </p>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price.toLocaleString()} <span class="text-sm font-normal text-gray-400">(unit only)</span></p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Generator</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Unit Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Transfer Switch</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Noise</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Warranty</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price.toLocaleString()}</td>
+              <td class="p-3">{p.specs['Output']}</td>
+              <td class="p-3">{p.specs['Transfer Switch']}</td>
+              <td class="p-3">{p.specs['Noise Level']}</td>
+              <td class="p-3">{p.specs['Warranty']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Overall' : i === 1 ? '🥈 Best for Quiet Operation' : '🥉 Best Budget Option'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price.toLocaleString()} unit &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Check {product.brand} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buying Guide: What Size Generator for 2,000 Sq Ft?</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">The 20–22kW rule for central A/C homes</h3>
+          <p class="text-sm leading-relaxed">A central A/C unit for a 2,000 sq ft home typically draws 3,000–5,000W at startup. Add the refrigerator, lights, outlets, well pump, and other circuits, and your peak demand during an outage can reach 15–20kW. A 20–22kW generator handles this without load-shedding. A 10kW generator requires you to choose between A/C and other appliances — fine for some homeowners, but not true whole-home backup.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Natural gas vs LP propane</h3>
+          <p class="text-sm leading-relaxed">Natural gas is the preferred fuel if your home is on a gas line — it's connected directly with no tank to refill and no risk of running out during an extended outage. LP propane requires a 250–500 gallon tank on your property, which costs $600–$1,200 to install plus ongoing fuel. Both fuels work with every generator on this list. If you're not on a gas line, LP is the only option.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What the installation actually involves</h3>
+          <p class="text-sm leading-relaxed">A licensed electrician installs the automatic transfer switch and connects the generator to your electrical panel. A plumber or gas professional runs the gas line from your meter or LP tank to the generator pad. A concrete pad is poured outside (typically 3×5 ft). Local permits are required and included in most professional installations. The entire process takes 1–2 days once permits are approved. Budget $3,000–$6,000 for installation on top of the generator cost.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Annual maintenance is not optional</h3>
+          <p class="text-sm leading-relaxed">Standby generators run an automatic weekly exercise test (about 10–15 minutes at low load). Annual professional maintenance includes oil change, spark plugs, air filter, and battery test — typically $150–$250/year. Skipping maintenance voids the warranty and risks a non-start during an actual outage. Budget this into your total cost of ownership.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How quickly does a standby generator start during an outage?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">All three generators on this list start within 10 seconds of detecting a power outage. The automatic transfer switch disconnects your home from the grid and connects it to the generator — you'll experience a brief flicker of lights, then full power returns. This is much faster than any portable generator you'd need to wheel out and start manually.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How long can a standby generator run continuously?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Natural gas generators can run indefinitely as long as the gas supply is maintained — there's no tank to refill. LP generators are limited by tank size; a 500-gallon LP tank at 50% load typically lasts 5–7 days. For most grid outages (1–3 days), natural gas is effectively unlimited. Generac and Kohler both recommend not running beyond 500 continuous hours without a maintenance inspection.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Generac vs Kohler — which brand is better?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Generac is the most widely installed residential standby generator brand in the U.S., which means more certified installers, more service technicians, and more community troubleshooting knowledge. Kohler's advantage is quieter operation (65 vs 67 dB), slightly more premium build quality, and a preference among contractors who value the Kohler commercial lineage. Both have 5-year warranties. For most homeowners, Generac's larger service network tips the balance.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I install a standby generator myself?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Not legally in most jurisdictions. Electrical transfer switch work requires a licensed electrician, gas line work requires a licensed plumber or gas fitter, and most municipalities require permits and inspections. Attempting DIY installation typically voids the manufacturer warranty and may affect your homeowner's insurance coverage. Budget for professional installation from the start.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-under-1000" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $1,000 →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>
