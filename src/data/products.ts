@@ -23,7 +23,7 @@ export const products: Product[] = [
     brand: 'ecobee',
     category: 'smart-home',
     tagline: 'The best no-C-wire thermostat for most homes',
-    affiliateUrl: 'https://www.amazon.com/dp/B09XXS48P8?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09XXS48P8?tag=housegearguid-20',
     price: 249,
     rating: 4.7,
     specs: {
@@ -53,7 +53,7 @@ export const products: Product[] = [
     brand: 'Google',
     category: 'smart-home',
     tagline: 'The affordable Nest that skips the C-wire requirement entirely',
-    affiliateUrl: 'https://www.amazon.com/dp/B08HR7K6GK?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B08HR7K6GK?tag=housegearguid-20',
     price: 129,
     rating: 4.4,
     specs: {
@@ -84,7 +84,7 @@ export const products: Product[] = [
     brand: 'Emerson',
     category: 'smart-home',
     tagline: 'Battery-powered — works anywhere with zero C-wire workarounds',
-    affiliateUrl: 'https://www.amazon.com/dp/B09YQXM4W3?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09YQXM4W3?tag=housegearguid-20',
     price: 139,
     rating: 4.3,
     specs: {
@@ -117,7 +117,7 @@ export const products: Product[] = [
     brand: 'August',
     category: 'smart-home',
     tagline: 'Best for renters — installs in minutes and leaves no exterior trace',
-    affiliateUrl: 'https://www.amazon.com/dp/B082ZJJRD7?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B082ZJJRD7?tag=housegearguid-20',
     price: 179,
     rating: 4.4,
     specs: {
@@ -149,7 +149,7 @@ export const products: Product[] = [
     brand: 'Level',
     category: 'smart-home',
     tagline: 'The completely invisible smart lock — no one will ever know it\'s there',
-    affiliateUrl: 'https://www.amazon.com/dp/B09G9BXTFQ?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09G9BXTFQ?tag=housegearguid-20',
     price: 329,
     rating: 4.3,
     specs: {
@@ -181,7 +181,7 @@ export const products: Product[] = [
     brand: 'Ultraloq',
     category: 'smart-home',
     tagline: 'Best value full-featured smart lock — fingerprint, PIN, and more',
-    affiliateUrl: 'https://www.amazon.com/dp/B08H2BQHK7?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B08H2BQHK7?tag=housegearguid-20',
     price: 159,
     rating: 4.2,
     specs: {
@@ -213,7 +213,7 @@ export const products: Product[] = [
     brand: 'Yale',
     category: 'smart-home',
     tagline: 'The most refined smart deadbolt with the broadest ecosystem support',
-    affiliateUrl: 'https://www.amazon.com/dp/B0B2QHNM5N?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0B2QHNM5N?tag=housegearguid-20',
     price: 249,
     rating: 4.5,
     specs: {
@@ -247,7 +247,7 @@ export const products: Product[] = [
     brand: 'Ring',
     category: 'smart-home',
     tagline: 'The most affordable wired video doorbell with solid Alexa integration',
-    affiliateUrl: 'https://www.amazon.com/dp/B08CKHPP52?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B08CKHPP52?tag=housegearguid-20',
     price: 59,
     rating: 4.3,
     specs: {
@@ -281,7 +281,7 @@ export const products: Product[] = [
     brand: 'EcoFlow',
     category: 'backup-power',
     tagline: 'The best all-around portable power station under $500',
-    affiliateUrl: 'https://www.amazon.com/dp/B0BNH6G7L6?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0BNH6G7L6?tag=housegearguid-20',
     price: 499,
     rating: 4.7,
     specs: {
@@ -314,7 +314,7 @@ export const products: Product[] = [
     brand: 'Anker',
     category: 'backup-power',
     tagline: 'LFP battery chemistry at the $399 price point — exceptional value',
-    affiliateUrl: 'https://www.amazon.com/dp/B0C5BKWMCL?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0C5BKWMCL?tag=housegearguid-20',
     price: 399,
     rating: 4.5,
     specs: {
@@ -346,7 +346,7 @@ export const products: Product[] = [
     brand: 'Jackery',
     category: 'backup-power',
     tagline: 'Lightweight and proven — the classic entry-level power station',
-    affiliateUrl: 'https://www.amazon.com/dp/B083KQFM5B?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B083KQFM5B?tag=housegearguid-20',
     price: 349,
     rating: 4.6,
     specs: {
@@ -379,7 +379,7 @@ export const products: Product[] = [
     brand: 'Goal Zero',
     category: 'backup-power',
     tagline: 'Premium build quality and the best solar panel ecosystem for outdoor use',
-    affiliateUrl: 'https://www.amazon.com/dp/B07YNM9CQC?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07YNM9CQC?tag=housegearguid-20',
     price: 449,
     rating: 4.4,
     specs: {
@@ -412,7 +412,7 @@ export const products: Product[] = [
     brand: 'Bluetti',
     category: 'backup-power',
     tagline: 'Budget pick with LFP battery — surprisingly powerful for its size and price',
-    affiliateUrl: 'https://www.amazon.com/dp/B09SXHZ3LW?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09SXHZ3LW?tag=housegearguid-20',
     price: 199,
     rating: 4.4,
     specs: {
@@ -445,7 +445,7 @@ export const products: Product[] = [
     brand: 'EcoFlow',
     category: 'backup-power',
     tagline: 'Whole-home backup power in a moveable form factor',
-    affiliateUrl: 'https://www.amazon.com/dp/B09BKTB9S2?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09BKTB9S2?tag=housegearguid-20',
     price: 1799,
     rating: 4.7,
     specs: {
@@ -478,7 +478,7 @@ export const products: Product[] = [
     brand: 'Jackery',
     category: 'backup-power',
     tagline: 'The sweet spot between portability and serious home backup capability',
-    affiliateUrl: 'https://www.amazon.com/dp/B09MSF27XN?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09MSF27XN?tag=housegearguid-20',
     price: 799,
     rating: 4.6,
     specs: {
@@ -512,7 +512,7 @@ export const products: Product[] = [
     brand: 'EcoFlow',
     category: 'backup-power',
     tagline: 'Double the capacity of the DELTA 2 — the top pick for serious home backup under $1,000',
-    affiliateUrl: 'https://www.amazon.com/dp/B0BWNXVC5M?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0BWNXVC5M?tag=housegearguid-20',
     price: 999,
     rating: 4.8,
     specs: {
@@ -544,7 +544,7 @@ export const products: Product[] = [
     brand: 'Anker',
     category: 'backup-power',
     tagline: 'Compact LFP at $799 — strong specs for its footprint',
-    affiliateUrl: 'https://www.amazon.com/dp/B0C5BKL2BN?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0C5BKL2BN?tag=housegearguid-20',
     price: 799,
     rating: 4.6,
     specs: {
@@ -576,7 +576,7 @@ export const products: Product[] = [
     brand: 'Bluetti',
     category: 'backup-power',
     tagline: 'The best mid-range option — 1152Wh LFP at a price that splits the difference',
-    affiliateUrl: 'https://www.amazon.com/dp/B0BWCG7Y5J?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0BWCG7Y5J?tag=housegearguid-20',
     price: 599,
     rating: 4.5,
     specs: {
@@ -610,7 +610,7 @@ export const products: Product[] = [
     brand: 'Generac',
     category: 'backup-power',
     tagline: 'The industry standard — handles a 2,000 sq ft home with central A/C and then some',
-    affiliateUrl: 'https://www.amazon.com/dp/B01BNN5PRM?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B01BNN5PRM?tag=housegearguid-20',
     price: 3699,
     rating: 4.6,
     specs: {
@@ -642,7 +642,7 @@ export const products: Product[] = [
     brand: 'Kohler',
     category: 'backup-power',
     tagline: 'Premium build quality and the quietest residential standby generator available',
-    affiliateUrl: 'https://www.amazon.com/dp/B07ZQJZ5B6?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07ZQJZ5B6?tag=housegearguid-20',
     price: 3199,
     rating: 4.5,
     specs: {
@@ -674,7 +674,7 @@ export const products: Product[] = [
     brand: 'Briggs & Stratton',
     category: 'backup-power',
     tagline: 'The right-sized generator for homes that want essential circuits covered — not whole-home',
-    affiliateUrl: 'https://www.amazon.com/dp/B06W2J4W6J?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B06W2J4W6J?tag=housegearguid-20',
     price: 2099,
     rating: 4.3,
     specs: {
@@ -708,7 +708,7 @@ export const products: Product[] = [
     brand: 'Philips Hue',
     category: 'smart-home',
     tagline: 'The most reliable smart lighting ecosystem — rock-solid since 2012',
-    affiliateUrl: 'https://www.amazon.com/dp/B07GXB3S7Z?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07GXB3S7Z?tag=housegearguid-20',
     price: 199,
     rating: 4.7,
     specs: {
@@ -739,7 +739,7 @@ export const products: Product[] = [
     brand: 'TP-Link Kasa',
     category: 'smart-home',
     tagline: 'No hub, no hassle — the best value smart bulb that just works',
-    affiliateUrl: 'https://www.amazon.com/dp/B08F7NV6YF?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B08F7NV6YF?tag=housegearguid-20',
     price: 15,
     rating: 4.5,
     specs: {
@@ -771,7 +771,7 @@ export const products: Product[] = [
     brand: 'Govee',
     category: 'smart-home',
     tagline: 'The budget pick — vibrant colors and Matter support at under $15 per bulb',
-    affiliateUrl: 'https://www.amazon.com/dp/B09JZTVGD7?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09JZTVGD7?tag=housegearguid-20',
     price: 12,
     rating: 4.3,
     specs: {
@@ -803,7 +803,7 @@ export const products: Product[] = [
     brand: 'Nanoleaf',
     category: 'smart-home',
     tagline: 'Thread-enabled and Matter-native — the fastest-responding smart bulb available',
-    affiliateUrl: 'https://www.amazon.com/dp/B09B8VQBV9?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09B8VQBV9?tag=housegearguid-20',
     price: 20,
     rating: 4.4,
     specs: {
@@ -836,7 +836,7 @@ export const products: Product[] = [
     brand: 'Wyze',
     category: 'smart-home',
     tagline: 'The best indoor security camera under $40 — 2K resolution at an unbeatable price',
-    affiliateUrl: 'https://www.amazon.com/dp/B0CH2QV5LH?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0CH2QV5LH?tag=housegearguid-20',
     price: 36,
     rating: 4.4,
     specs: {
@@ -868,7 +868,7 @@ export const products: Product[] = [
     brand: 'Eufy',
     category: 'smart-home',
     tagline: 'Full-room pan-and-tilt coverage with no mandatory subscription',
-    affiliateUrl: 'https://www.amazon.com/dp/B08BF4BLLT?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B08BF4BLLT?tag=housegearguid-20',
     price: 40,
     rating: 4.5,
     specs: {
@@ -899,7 +899,7 @@ export const products: Product[] = [
     brand: 'Arlo',
     category: 'smart-home',
     tagline: 'Premium features and the broadest smart home platform support — the only HomeKit pick',
-    affiliateUrl: 'https://www.amazon.com/dp/B09W9F9F34?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09W9F9F34?tag=housegearguid-20',
     price: 100,
     rating: 4.4,
     specs: {
@@ -933,7 +933,7 @@ export const products: Product[] = [
     brand: 'EcoFlow',
     category: 'backup-power',
     tagline: 'The lightest LFP power station with serious solar input — best entry point for solar generator setups',
-    affiliateUrl: 'https://www.amazon.com/dp/B0BT1BYNHM?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0BT1BYNHM?tag=housegearguid-20',
     price: 449,
     rating: 4.6,
     specs: {
@@ -967,7 +967,7 @@ export const products: Product[] = [
     brand: 'Wayne',
     category: 'backup-power',
     tagline: 'The most trusted dedicated sump pump backup — installs in the pit and activates automatically',
-    affiliateUrl: 'https://www.amazon.com/dp/B001CCG4K4?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B001CCG4K4?tag=housegearguid-20',
     price: 185,
     rating: 4.5,
     specs: {
@@ -999,7 +999,7 @@ export const products: Product[] = [
     brand: 'Zoeller',
     category: 'backup-power',
     tagline: 'Higher pump rate and longer runtime — the premium choice for high-water-table homes',
-    affiliateUrl: 'https://www.amazon.com/dp/B00GX0BPEM?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B00GX0BPEM?tag=housegearguid-20',
     price: 199,
     rating: 4.4,
     specs: {
@@ -1033,7 +1033,7 @@ export const products: Product[] = [
     brand: 'Honeywell Home',
     category: 'smart-home',
     tagline: 'Room sensors that prioritize wherever you actually are — genuine zone-by-room comfort',
-    affiliateUrl: 'https://www.amazon.com/dp/B07WB5N3HS?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07WB5N3HS?tag=housegearguid-20',
     price: 149,
     rating: 4.4,
     specs: {
@@ -1067,7 +1067,7 @@ export const products: Product[] = [
     brand: 'TP-Link Kasa',
     category: 'smart-home',
     tagline: 'Best value outdoor smart plug — two independent outlets with energy monitoring',
-    affiliateUrl: 'https://www.amazon.com/dp/B08LN3C7WK?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B08LN3C7WK?tag=housegearguid-20',
     price: 17,
     rating: 4.6,
     specs: {
@@ -1098,7 +1098,7 @@ export const products: Product[] = [
     brand: 'Meross',
     category: 'smart-home',
     tagline: 'The only budget outdoor plug with Apple HomeKit — two outlets and the widest ecosystem support',
-    affiliateUrl: 'https://www.amazon.com/dp/B07XTMKQM9?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07XTMKQM9?tag=housegearguid-20',
     price: 19,
     rating: 4.4,
     specs: {
@@ -1130,7 +1130,7 @@ export const products: Product[] = [
     brand: 'Amazon',
     category: 'smart-home',
     tagline: 'The simplest Alexa outdoor plug — zero friction for existing Echo households',
-    affiliateUrl: 'https://www.amazon.com/dp/B082YD9HGZ?tag=housegearguide-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B082YD9HGZ?tag=housegearguid-20',
     price: 25,
     rating: 4.3,
     specs: {
