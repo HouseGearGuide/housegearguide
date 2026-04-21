@@ -1,0 +1,259 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['generac-22kw-guardian', 'kohler-20rescl-20kw', 'briggs-stratton-10kw-standby'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Whole-Home Generator for Well Pumps (2026)"
+  description="Well pumps need high startup surge capacity — most generators are undersized. Our picks handle 1/2 HP to 1 HP well pumps with headroom to spare."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Generator for Well Pumps
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Whole-Home Generator for Well Pumps (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 generators compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      If your home uses a well pump for water, a generator isn't optional — it's essential. During
+      an extended outage, a generator without enough surge capacity simply won't start the pump motor,
+      leaving you without running water until grid power returns.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The problem: most homeowners don't realize that well pumps require 2–3x their rated wattage
+      at startup (the "locked rotor" surge). A 1/2 HP pump rated at 900W running may need 2,000–2,500W
+      to start. A 1 HP pump may need 4,000–5,000W. All three generators on this list have more than
+      enough output to handle this — but sizing matters.
+    </p>
+
+    <!-- Well pump sizing callout -->
+    <div class="bg-amber-50 border border-amber-200 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Well pump wattage guide: what you actually need</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-amber-200">
+              <th class="text-left py-2 pr-4 font-semibold text-gray-700">Pump Size</th>
+              <th class="text-left py-2 pr-4 font-semibold text-gray-700">Running Watts</th>
+              <th class="text-left py-2 pr-4 font-semibold text-gray-700">Starting Surge</th>
+              <th class="text-left py-2 font-semibold text-gray-700">Min Generator Size</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-amber-100">
+              <td class="py-2 pr-4">1/2 HP submersible</td>
+              <td class="py-2 pr-4">900W</td>
+              <td class="py-2 pr-4">2,000–2,500W</td>
+              <td class="py-2 font-medium">10 kW+ recommended</td>
+            </tr>
+            <tr class="border-b border-amber-100">
+              <td class="py-2 pr-4">3/4 HP submersible</td>
+              <td class="py-2 pr-4">1,200W</td>
+              <td class="py-2 pr-4">2,800–3,500W</td>
+              <td class="py-2 font-medium">14 kW+ recommended</td>
+            </tr>
+            <tr>
+              <td class="py-2 pr-4">1 HP submersible</td>
+              <td class="py-2 pr-4">1,500W</td>
+              <td class="py-2 pr-4">4,000–5,000W</td>
+              <td class="py-2 font-medium">20 kW+ recommended</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">These are minimum sizes — add your HVAC, refrigerator, and other critical loads on top. For whole-home coverage with a 1 HP pump, 20–22 kW is the right starting point.</p>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick for Well Pump Homes</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price} <span class="text-sm font-normal text-gray-400">unit only — installed cost $6,000–$12,000</span></p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Generator</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price (Unit)</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Fuel</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Transfer Switch</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Output']}</td>
+              <td class="p-3">{p.specs['Fuel']}</td>
+              <td class="p-3">{p.specs['Transfer Switch']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best for Well Pump Homes' : i === 1 ? '🥈 Best Mid-Range Option' : '🥉 Best Budget Standby'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} unit only &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buying Guide: Generators for Well Pump Homes</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Why well pumps need more generator capacity than you think</h3>
+          <p class="text-sm leading-relaxed">Submersible well pumps use induction motors that draw 3–6x their rated wattage for 1–2 seconds during startup — this is called the locked rotor amperage (LRA). If your generator can't supply the startup surge, the motor won't start, the generator may trip an overload breaker, or the pump may hum and fail to start. Always size your generator based on startup surge, not running watts.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Natural gas vs propane: which fuel is better for well pump homes?</h3>
+          <p class="text-sm leading-relaxed">Natural gas is ideal if it's available — unlimited fuel supply means you can run through a week-long outage without refueling. Propane requires a large tank (500–1,000 gallon) but works in areas without gas lines. Most standby generators are dual-fuel compatible. If you're on a rural lot with a well, propane is common because natural gas lines often don't reach rural areas.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What else draws power on a well pump home?</h3>
+          <p class="text-sm leading-relaxed">Don't just size for the pump. A typical well pump home during an outage also needs: central air or heat (3,500–5,000W), refrigerator (150W running, 600W startup), lights and charging (500W), water heater if electric (4,500W). Total peak demand for a 2,000 sq ft home can reach 15–20 kW when the AC, pump, and other appliances start simultaneously. The 22 kW Generac handles this comfortably; the 10 kW Briggs & Stratton would require careful load management.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Don't forget installation costs</h3>
+          <p class="text-sm leading-relaxed">The prices shown here are generator unit costs only. Total installed cost — including automatic transfer switch, concrete pad, electrical connection, gas line run, and permits — typically adds $3,000–$6,000. Get at least three quotes from licensed electricians. The Generac dealer network is the largest, which makes installation easier to coordinate in most areas.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can a portable power station run my well pump?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Most portable power stations cannot start a well pump. The startup surge of a 1/2 HP submersible pump (2,000–2,500W peak) exceeds the inverter output of most units in the $300–$1,000 range. The EcoFlow DELTA 2 Max (2,400W AC output, 5,000W X-Boost surge) may handle a 1/2 HP pump, but it's not a reliable solution. For well pump backup, a standby generator is the right tool.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How loud are standby generators?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Standby generators run at 66–70 dB at 23 feet — comparable to a window air conditioner. They're noticeably loud if your neighbor is close by, which is why most municipalities require generators to be placed at least 5–10 feet from property lines and away from bedroom windows. The Generac and Kohler units on this list have enclosures that reduce noise compared to open-frame portable generators.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How often do I need to service a standby generator?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Annual service — oil change, spark plug replacement, filter check, and load test — runs $150–$300 through a certified dealer. All three generators on this list exercise automatically once per week at low load to keep seals conditioned and identify problems before an outage. Generac has the most extensive dealer network for service, which matters if you're in a rural area.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-whole-home-generator-2000-sq-ft" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for 2,000 Sq Ft →</p>
+        </a>
+        <a href="/backup-power/best-battery-backup-sump-pump" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Battery Backup for Sump Pumps →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

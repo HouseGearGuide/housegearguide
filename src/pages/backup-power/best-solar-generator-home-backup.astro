@@ -1,0 +1,234 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecoflow-river-2-pro', 'ecoflow-delta-2', 'ecoflow-delta-2-max'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Solar Generators for Home Backup (2026)"
+  description="Solar generators that recharge from the sun — no grid required. EcoFlow River 2 Pro, DELTA 2, and DELTA 2 Max compared for home backup with solar panels."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Solar Generators for Home Backup
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Solar Generators for Home Backup (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 units compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A solar generator combines a battery-powered power station with solar panel input — when the
+      sun is up, the panels recharge the battery. During an extended outage, this means you're not
+      waiting for grid power to return or rationing a fixed battery charge.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      All three picks here are EcoFlow units — the clear leader in solar input speed and LFP battery
+      chemistry. The question is how much capacity you need: the $449 River 2 Pro handles a home office
+      or critical appliances, while the $999 DELTA 2 Max covers whole-room or whole-floor backup for
+      a full day or more with solar topping it up.
+    </p>
+
+    <!-- Solar recharge callout -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Solar recharge time estimates (peak sun, optimal panel angle)</p>
+      <div class="grid sm:grid-cols-3 gap-3">
+        {picks.map(p => (
+          <div class="bg-white rounded-lg p-3 text-center">
+            <p class="text-xs text-gray-500 mb-1 leading-tight">{p.name.replace('EcoFlow ', '')}</p>
+            <p class="text-xl font-bold text-green-700">{p.specs['Solar Recharge']}</p>
+            <p class="text-xs text-gray-400">{p.specs['Solar Input']}</p>
+          </div>
+        ))}
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Recharge times assume max solar input. Add 30–50% for real-world conditions (partial cloud, non-optimal angle, panel wiring losses).</p>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Unit</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Capacity</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Solar Input</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Solar Recharge</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Capacity']}</td>
+              <td class="p-3">{p.specs['Solar Input']}</td>
+              <td class="p-3">{p.specs['Solar Recharge']}</td>
+              <td class="p-3">{p.specs['Weight']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Portable Solar Generator' : i === 1 ? '🥈 Best Mid-Range Home Backup' : '🥉 Best High-Capacity Option'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buying Guide: Solar Generators for Home Backup</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How many solar panels do you actually need?</h3>
+          <p class="text-sm leading-relaxed">For full daily recharge of a 1024Wh unit (DELTA 2), you need roughly 400–500W of solar panel capacity in 4–5 peak sun hours. That's 2–3 panels of 160–220W each. The River 2 Pro's 768Wh capacity can be fully recharged with a single 220W panel in a good sun day. EcoFlow's own panels are well-matched to their units and include the right connectors — third-party panels work but verify MPPT compatibility.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Why LFP battery chemistry matters for solar use</h3>
+          <p class="text-sm leading-relaxed">All three units use LFP (lithium iron phosphate) batteries, which are significantly better suited to solar charging than NMC chemistry. LFP handles partial state-of-charge cycling without degradation — you can charge to 80%, discharge to 20%, and repeat for years. NMC batteries prefer full charge/discharge cycles and degrade faster under the irregular cycling that solar charging creates. For solar generators that will be charged and discharged frequently, LFP is the right chemistry.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Solar generator vs solar + home battery system</h3>
+          <p class="text-sm leading-relaxed">A portable solar generator (this guide) is a self-contained, portable unit that connects to panels via a DC cable. A home solar + battery system (like SunPower + Tesla Powerwall) is permanently installed on your roof and integrates with your electrical panel. Home battery systems cost $20,000–$40,000 installed; solar generators cost $450–$1,000. For most homeowners, a solar generator covers critical loads during outages at a fraction of the cost — but it won't power your whole house.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I leave solar panels connected and the unit plugged in 24/7?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — all three units support simultaneous charging and discharging ("pass-through" mode). When the battery is full, the MPPT charge controller automatically stops pulling current from panels. EcoFlow's app includes a "Home Backup Mode" that keeps the battery at 80% charge to extend battery life when kept plugged in long-term.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How do I connect solar panels to these units?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">All EcoFlow units accept DC input via XT60 connectors. Most EcoFlow solar panels connect directly with a compatible cable. Third-party panels with MC4 connectors require an MC4-to-XT60 adapter ($10–$15). Connect panels in series (voltage adds up) or parallel (amperage adds up) based on the unit's MPPT specifications — stay within the max voltage rating or you'll damage the charge controller.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What's the difference between the DELTA 2 and DELTA 2 Max?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The DELTA 2 Max has double the capacity (2048Wh vs 1024Wh), 500W more AC output (2400W vs 1800W), and faster solar input (1000W vs 500W). It's expandable with an extra battery to 6144Wh. The DELTA 2 is better value if you need moderate backup for a home office or critical appliances. The DELTA 2 Max is the right choice if you want to run larger loads (window AC, portable space heater) or need multi-day backup without recharging.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/ecoflow-vs-jackery" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">EcoFlow vs Jackery: Full Comparison →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

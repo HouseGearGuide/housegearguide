@@ -2,14 +2,14 @@
 import Layout from '../../layouts/Layout.astro';
 ---
 
-<Layout title="Smart Home Devices" description="Researched buying guides for smart thermostats, locks, cameras, and lighting. Honest comparisons built for homeowners — not tech enthusiasts.">
+<Layout title="Smart Home Buying Guides (2026)" description="Researched buying guides for smart thermostats, locks, cameras, lighting, and smart plugs. Honest comparisons built for homeowners and renters.">
 
   <section class="bg-gray-50 border-b border-gray-100">
     <div class="max-w-5xl mx-auto px-4 py-16">
       <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Category Guide</p>
       <h1 class="text-4xl font-bold text-gray-900 mb-4">Smart Home Devices</h1>
       <p class="text-lg text-gray-600 max-w-2xl leading-relaxed">
-        Buying guides for smart thermostats, locks, cameras, and lighting.
+        Buying guides for smart thermostats, locks, cameras, lighting, and smart plugs.
         We focus on devices that work reliably in real homes — not just in demo conditions.
       </p>
     </div>
@@ -26,13 +26,13 @@ import Layout from '../../layouts/Layout.astro';
       <p class="text-sm text-gray-500 mb-6 ml-10">Save 10–15% on heating and cooling — the easiest smart home upgrade with a clear payback period.</p>
       <div class="grid sm:grid-cols-2 gap-4">
         <a href="/smart-home/best-smart-thermostat-no-c-wire" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
-          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Thermostats for Homes Without C-Wire →</h3>
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Thermostats Without C-Wire →</h3>
           <p class="text-xs text-gray-500 leading-relaxed">For older homes where adding a C-wire would mean calling an electrician. 3 picks that work without it — from $129.</p>
         </a>
-        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
-          <p class="text-sm font-medium text-gray-400 mb-1">Best Smart Thermostats for Multi-Zone Systems</p>
-          <p class="text-xs text-gray-400">Guide coming soon</p>
-        </div>
+        <a href="/smart-home/best-smart-thermostat-multiple-zones" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Thermostats for Multiple Zones →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Sensor-based zoning vs true HVAC zoning. The ecobee and Honeywell T9 compared for multi-room temperature control.</p>
+        </a>
       </div>
     </section>
 
@@ -48,48 +48,85 @@ import Layout from '../../layouts/Layout.astro';
           <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Locks for Renters →</h3>
           <p class="text-xs text-gray-500 leading-relaxed">Options that don't require landlord permission or permanent modifications. Our top pick installs in 5 minutes and leaves no exterior trace.</p>
         </a>
-        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
-          <p class="text-sm font-medium text-gray-400 mb-1">Best Smart Locks for Homeowners</p>
-          <p class="text-xs text-gray-400">Guide coming soon</p>
-        </div>
       </div>
     </section>
 
-    <!-- Cameras & Doorbells -->
+    <!-- Cameras -->
     <section class="mb-16">
       <div class="flex items-center gap-3 mb-2">
         <span class="text-2xl">📷</span>
-        <h2 class="text-xl font-bold text-gray-900">Security Cameras & Video Doorbells</h2>
+        <h2 class="text-xl font-bold text-gray-900">Security Cameras</h2>
       </div>
-      <p class="text-sm text-gray-500 mb-6 ml-10">See who's at your door and monitor your property from anywhere.</p>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Monitor your home from anywhere — no drilling, no subscriptions required.</p>
       <div class="grid sm:grid-cols-2 gap-4">
-        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
-          <p class="text-sm font-medium text-gray-400 mb-1">Best Video Doorbells for Apartments</p>
-          <p class="text-xs text-gray-400">Guide coming soon</p>
-        </div>
-        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
-          <p class="text-sm font-medium text-gray-400 mb-1">Best Outdoor Security Cameras Without a Subscription</p>
-          <p class="text-xs text-gray-400">Guide coming soon</p>
-        </div>
+        <a href="/smart-home/best-smart-camera-for-apartments" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Security Cameras for Apartments →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Shelf-mounted, no drilling required, free local storage. Wyze, Eufy, and Arlo compared from $36 to $100.</p>
+        </a>
       </div>
     </section>
 
     <!-- Lighting -->
-    <section class="mb-4">
+    <section class="mb-16">
       <div class="flex items-center gap-3 mb-2">
         <span class="text-2xl">💡</span>
         <h2 class="text-xl font-bold text-gray-900">Smart Lighting</h2>
       </div>
-      <p class="text-sm text-gray-500 mb-6 ml-10">Automate your lights without rewiring — bulbs, switches, and dimmers compared.</p>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Automate your lights without rewiring — screw-in bulbs compared across all ecosystems.</p>
       <div class="grid sm:grid-cols-2 gap-4">
-        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
-          <p class="text-sm font-medium text-gray-400 mb-1">Best Smart Lighting for Apartments</p>
-          <p class="text-xs text-gray-400">Guide coming soon</p>
-        </div>
-        <div class="block border border-dashed border-gray-200 rounded-xl p-5">
-          <p class="text-sm font-medium text-gray-400 mb-1">Best Smart Light Switches (No Neutral Wire)</p>
-          <p class="text-xs text-gray-400">Guide coming soon</p>
-        </div>
+        <a href="/smart-home/best-smart-lighting-for-apartments" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Lighting for Apartments →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">4 bulb systems from $12 to $50 per bulb. All portable, no wiring, no landlord permission. Philips Hue, Kasa, Govee, and Nanoleaf.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Smart Plugs -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🔌</span>
+        <h2 class="text-xl font-bold text-gray-900">Smart Plugs</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Control any outlet from your phone — indoor and outdoor options for automation and energy monitoring.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-outdoor-smart-plugs" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Outdoor Smart Plugs →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Weather-rated plugs for holiday lights, landscape lighting, and patio devices. Kasa, Meross, and Amazon compared.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- Ecosystems -->
+    <section class="mb-16">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🏡</span>
+        <h2 class="text-xl font-bold text-gray-900">Ecosystems & Comparisons</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">Which platform should you build around? Alexa, Google Home, and Apple HomeKit compared for real-world use.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/google-home-vs-alexa" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Google Home vs Alexa: Which Wins? →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Device support, automation quality, voice accuracy, and privacy compared. Our verdict: it depends on your existing device ecosystem.</p>
+        </a>
+      </div>
+    </section>
+
+    <!-- For Renters -->
+    <section class="mb-4">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="text-2xl">🏢</span>
+        <h2 class="text-xl font-bold text-gray-900">For Renters</h2>
+      </div>
+      <p class="text-sm text-gray-500 mb-6 ml-10">No drilling, no permanent modifications, no landlord permission needed. Smart home upgrades that move with you.</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-home-devices-for-renters" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Home Devices for Renters →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">The complete renter-friendly smart home — one top pick per category, everything fully portable. Build it in stages or all at once.</p>
+        </a>
+        <a href="/smart-home/best-smart-home-starter-kit-under-500" class="group block border border-gray-100 rounded-xl p-5 hover:border-green-200 hover:shadow-sm transition-all">
+          <h3 class="font-semibold text-gray-900 mb-1 group-hover:text-green-700 transition-colors text-sm">Best Smart Home Starter Kit Under $500 →</h3>
+          <p class="text-xs text-gray-500 leading-relaxed">Three curated starter kits by budget — $150, $300, and $500. Covers what to buy first and what to add later.</p>
+        </a>
       </div>
     </section>
 

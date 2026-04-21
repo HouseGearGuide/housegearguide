@@ -1,0 +1,289 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['wayne-esp25-battery-backup', 'zoeller-aquanot-508'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+
+const powerStationAlt = products.find(p => p.slug === 'ecoflow-delta-2')!;
+---
+
+<Layout
+  title="Best Battery Backup for Sump Pumps (2026)"
+  description="Dedicated sump pump backup systems vs portable power stations — which actually protects your basement? Wayne, Zoeller, and EcoFlow compared."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Battery Backup for Sump Pumps
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Battery Backup for Sump Pumps (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 2 dedicated systems + 1 power station alternative</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Basement flooding almost always happens during storms — exactly when the power goes out.
+      A battery backup sump pump system is one of the most practical home investments you can make
+      if your home relies on a sump pump. The cost of one flooded basement (easily $5,000–$30,000
+      in damage) dwarfs the cost of a backup system.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      There are two approaches: dedicated battery backup sump systems (Wayne, Zoeller) that include
+      everything in one unit, and portable power stations (EcoFlow) that can run your existing
+      primary pump during an outage. Both work — the right choice depends on your setup.
+    </p>
+
+    <!-- Approach comparison callout -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Two approaches to sump pump backup</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <p class="font-semibold text-sm text-gray-900 mb-2">Dedicated Backup System (Wayne / Zoeller)</p>
+          <ul class="space-y-1 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Self-contained — no setup during an emergency</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Activates automatically when primary pump fails or loses power</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Designed specifically for continuous sump pump cycling</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Only useful for sump pump backup — single purpose</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Requires annual battery maintenance/replacement</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-sm text-gray-900 mb-2">Portable Power Station (EcoFlow)</p>
+          <ul class="space-y-1 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Multi-purpose — powers other devices too</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>LFP battery lasts 3,000+ cycles vs 2–3 years for AGM</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Rechargeable from solar panels</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Must be manually connected to pump during outage</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Higher upfront cost for sump-only use</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick: Dedicated Backup System</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Dedicated Systems Compared</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">System</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Battery</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Pumping Rate</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Runtime</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Battery']}</td>
+              <td class="p-3">{p.specs['Pumping Rate']}</td>
+              <td class="p-3">{p.specs['Runtime']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Dedicated Backup System' : '🥈 Best High-Capacity Option'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Power station alternative section -->
+    <section id={powerStationAlt.slug} class="mb-16 scroll-mt-20">
+      <div class="border-t border-gray-100 pt-10 mb-6">
+        <p class="text-xs font-semibold text-blue-700 uppercase tracking-widest mb-2">Alternative Approach</p>
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">{powerStationAlt.name}</h2>
+            <p class="text-gray-500 text-sm">${powerStationAlt.price} &nbsp;·&nbsp; ⭐ {powerStationAlt.rating}/5</p>
+          </div>
+          <a
+            href={powerStationAlt.affiliateUrl}
+            target="_blank"
+            rel="nofollow noopener"
+            class="inline-block bg-blue-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-blue-800 transition-colors whitespace-nowrap"
+          >
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        If you want a backup solution that does double duty — sump pump backup AND home office,
+        lights, phone charging, and fridge backup — the EcoFlow DELTA 2 is worth considering.
+        At 1024Wh and 1800W AC output, it can run a standard 1/3 HP sump pump (300–500W) for
+        15–20+ hours while also powering other devices. LFP battery means it'll last 10+ years
+        without degradation, unlike the 2–3 year AGM batteries in dedicated backup systems.
+      </p>
+      <p class="text-gray-700 mb-6 leading-relaxed">
+        The tradeoff: you need to manually plug in the sump pump when the power goes out.
+        Dedicated backup systems monitor water level and activate automatically — no human
+        intervention needed during a storm at 2am.
+      </p>
+
+      <a
+        href={powerStationAlt.affiliateUrl}
+        target="_blank"
+        rel="nofollow noopener"
+        class="inline-block border border-blue-700 text-blue-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-blue-700 hover:text-white transition-colors"
+      >
+        View EcoFlow DELTA 2 on Amazon →
+      </a>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buying Guide: Sump Pump Battery Backup</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How long does a typical backup system last during a storm?</h3>
+          <p class="text-sm leading-relaxed">Runtime depends on how frequently the pump cycles. In a light storm where the pump runs every 10 minutes, a 26Ah battery (Wayne ESP25) lasts 12–20 hours. In a heavy storm where the pump runs continuously, the same battery might last 3–5 hours. The Zoeller Aquanot 508's 33Ah battery extends this by about 25%. For extended storms (2+ days), a standby generator is the more reliable solution.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">When to replace the backup battery</h3>
+          <p class="text-sm leading-relaxed">AGM batteries in dedicated backup sump systems typically last 2–5 years. Most units have a battery health indicator. Replace the battery proactively every 3 years rather than waiting for it to fail — a failed battery discovered during a storm is a $5,000 basement flood waiting to happen. Replacement batteries for Wayne and Zoeller units run $50–$80 and swap in without tools.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do I need both a primary pump and a backup?</h3>
+          <p class="text-sm leading-relaxed">The Wayne ESP25 and Zoeller Aquanot 508 are backup-only systems — they work alongside your existing primary AC pump, not instead of it. Your primary pump handles normal water removal; the backup activates only when primary power fails or when water rises above the primary pump's trigger level. If you don't have a primary pump, you need to install one first.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I install a battery backup sump system myself?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — both Wayne and Zoeller systems are designed for DIY installation. You place the backup pump in the existing sump pit alongside the primary pump, connect the discharge pipe (1.5" PVC runs to the same exit point as your primary), connect the battery leads, and plug in the monitor. Most homeowners complete installation in 2–3 hours. No plumbing or electrical license required.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What if my power goes out AND there's a water intrusion?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">This is exactly the scenario backup systems are designed for. Heavy storms cause power outages at the same time they generate heavy ground water. A properly installed backup system monitors both the battery float switch (water level) and AC power, activating automatically when either the primary pump fails or the water level rises above normal. You don't need to do anything — the system handles it.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does a battery backup sump system need maintenance?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Annual check: test the system by unplugging the primary pump and simulating an outage (pour water into the pit). Verify the backup activates within seconds. Check battery terminals for corrosion. Add distilled water to the battery if required (sealed AGM batteries like those in the Wayne and Zoeller units are maintenance-free). Replace the battery every 3–5 years regardless of condition.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-whole-home-generator-for-well-pump" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Generator for Well Pumps →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

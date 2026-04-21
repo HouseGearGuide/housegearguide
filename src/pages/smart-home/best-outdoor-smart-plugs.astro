@@ -1,0 +1,232 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['kasa-outdoor-smart-plug-ep40a', 'meross-outdoor-smart-plug', 'amazon-outdoor-smart-plug'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Outdoor Smart Plugs (2026)"
+  description="Weather-rated outdoor smart plugs for holiday lights, landscape lighting, and patio devices. Kasa, Meross, and Amazon compared for price, outlet count, and ecosystem."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Outdoor Smart Plugs
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Outdoor Smart Plugs (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 plugs compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      An outdoor smart plug turns any weatherproof outlet into an automated one — schedule holiday
+      lights to turn on at sunset, automate a patio fountain, or control a landscape spotlight
+      from your phone. They're the easiest entry point into smart home automation and work without
+      any hub or existing smart home system.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The key specs that matter outdoors: IP rating (how waterproof it is), outlet count (two
+      independently controlled outlets vs one), and whether it works with your smart home ecosystem.
+      The Kasa EP40A at $17 is the best value pick — two independently controlled outlets, energy
+      monitoring, and Alexa/Google support for under $20.
+    </p>
+
+    <!-- Use cases callout -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">What people actually use outdoor smart plugs for</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Holiday lights — schedule sunrise/sunset on/off automatically</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Landscape lighting — automate porch, pathway, or garden lights</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Patio fountain or pond pump — run only during daytime hours</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>EV trickle charger — schedule overnight charging at off-peak rates</li>
+        <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Outdoor heater or fan — turn on before you go outside</li>
+      </ul>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Plug</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Outlets</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Weather Rating</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Ecosystems</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Energy Monitoring</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Outlets']}</td>
+              <td class="p-3">{p.specs['Weather Rating']}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+              <td class="p-3">{p.specs['Energy Monitoring']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Value Pick' : i === 1 ? '🥈 Best for Apple HomeKit' : '🥉 Best for Alexa-Only Homes'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buying Guide: Outdoor Smart Plugs</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What do IP ratings mean?</h3>
+          <p class="text-sm leading-relaxed">IP (Ingress Protection) ratings have two digits: the first is dust protection (0–6), the second is water protection (0–8). IP44 means protected against objects larger than 1mm and against water splashing from any direction — suitable for covered outdoor use. IP64 means fully dust-tight and protected against water splashing — suitable for exposed outdoor use. For most outdoor plug applications (porch, patio, yard), IP64 is the more reliable choice. IP44 is fine under an overhang but shouldn't be exposed to direct rain.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Two independently controlled outlets vs one</h3>
+          <p class="text-sm leading-relaxed">The Kasa EP40A and Meross both have two outlets that can be controlled separately — you can put holiday lights on outlet 1 (schedule sunset to 11pm) and a patio heater on outlet 2 (manual control only). The Amazon Outdoor Plug has one outlet. For most use cases, two independently controlled outlets are more flexible and worth the similar price — the Kasa at $17 is essentially the same cost as the Amazon plug at $25 with less capability.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do outdoor smart plugs work in freezing temperatures?</h3>
+          <p class="text-sm leading-relaxed">All three picks are rated for temperatures from -4°F to 122°F (-20°C to 50°C), covering any North American climate. Cold weather reduces Wi-Fi signal strength slightly, and temperatures below 14°F (-10°C) can affect electronics if sustained. None of these plugs have internal heating — they rely on the electronics tolerating cold. In practice, they work reliably in all but the most extreme cold snaps. If you're in northern Minnesota or Canada, bring them indoors during extended extreme cold.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do outdoor smart plugs need to stay plugged in all year?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">No — you can unplug and store them seasonally. The plug retains its programming and will reconnect to Wi-Fi automatically when replugged. If you leave them installed year-round, any IP64+ rated plug handles rain, snow, and temperature swings without issue. The Kasa EP40A is small enough that you can leave it installed on a covered porch outlet permanently without blocking the adjacent outlet.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I use an outdoor smart plug with a GFCI outlet?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — GFCI (Ground Fault Circuit Interrupter) outlets, which are required by code near water in garages, outdoors, and bathrooms, work normally with smart plugs. Just plug the smart plug into the GFCI outlet as you would any device. If the GFCI trips, the smart plug loses power and goes offline until the GFCI is reset. This is expected behavior, not a compatibility issue.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What's the maximum wattage for outdoor smart plugs?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">All three picks are rated for 15A / 1800W — the same as a standard household outlet. This is plenty for holiday lights (150W), landscape lighting (100W), patio heaters (up to 1500W), and fountain pumps (under 100W). Do not use these plugs with electric lawn equipment, shop tools, or other high-draw devices without checking the device's wattage first. The Kasa EP40A's energy monitoring will tell you exactly how much power each outlet is drawing.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-lighting-for-apartments" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Lighting for Apartments →</p>
+        </a>
+        <a href="/smart-home/google-home-vs-alexa" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Google Home vs Alexa: Which Ecosystem Wins? →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

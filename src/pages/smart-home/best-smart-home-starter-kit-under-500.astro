@@ -1,0 +1,239 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const wyzeCamera = products.find(p => p.slug === 'wyze-cam-v4')!;
+const kasaBulb = products.find(p => p.slug === 'kasa-smart-bulb-kl135')!;
+const augustLock = products.find(p => p.slug === 'august-wifi-smart-lock-4th-gen')!;
+const kasaPlug = products.find(p => p.slug === 'kasa-outdoor-smart-plug-ep40a')!;
+const ecobee = products.find(p => p.slug === 'ecobee-smartthermostat-premium')!;
+const philipsHue = products.find(p => p.slug === 'philips-hue-starter-kit')!;
+const eufyCamera = products.find(p => p.slug === 'eufy-indoor-cam-2k-pan-tilt')!;
+---
+
+<Layout
+  title="Best Smart Home Starter Kit Under $500 (2026)"
+  description="Three curated smart home starter kits by budget — $150, $300, and $500. What to buy first, what to skip, and how to build a smart home that actually works."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Starter Kit Under $500
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Starter Kit Under $500 (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Starting a smart home is easier than it looks — but most people either buy the wrong things
+      first or get paralyzed by the number of options. This guide cuts through that with three
+      curated kits by budget. Each one covers the highest-impact devices first and uses products
+      that work together without requiring a hub or special setup.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The general principle: start with the devices that change your daily routine (thermostat,
+      locks, lighting), then add security and automation. Don't start with entertainment or
+      specialty devices — they're fun but rarely change how you live.
+    </p>
+
+    <!-- What to buy first callout -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">The right order to build a smart home</p>
+      <ol class="space-y-2 text-sm text-gray-700">
+        <li class="flex gap-3"><span class="font-bold text-blue-700 flex-shrink-0 w-5">1.</span><span><strong>Smart thermostat</strong> — highest ROI. Pays for itself in energy savings within 1–2 years. Works independently of everything else.</span></li>
+        <li class="flex gap-3"><span class="font-bold text-blue-700 flex-shrink-0 w-5">2.</span><span><strong>Smart lock</strong> — changes daily habits immediately. No more fumbling for keys. Guest codes for cleaners, dog walkers, family.</span></li>
+        <li class="flex gap-3"><span class="font-bold text-blue-700 flex-shrink-0 w-5">3.</span><span><strong>Smart lighting</strong> — automation that affects every room. Schedule sunrise/sunset, create scenes, and stop walking into dark rooms.</span></li>
+        <li class="flex gap-3"><span class="font-bold text-blue-700 flex-shrink-0 w-5">4.</span><span><strong>Security camera</strong> — see who's at the door and what happened while you were away. Pairs with the smart lock for a complete entry system.</span></li>
+        <li class="flex gap-3"><span class="font-bold text-blue-700 flex-shrink-0 w-5">5.</span><span><strong>Smart plugs</strong> — automate everything else. Outdoor lights, patio devices, appliances you want on a schedule.</span></li>
+      </ol>
+    </div>
+
+    <!-- Kit 1: $150 -->
+    <section class="mb-16">
+      <div class="border-t-4 border-green-200 pt-8 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Kit 1</p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-1">The $150 Starter Kit</h2>
+        <p class="text-gray-500 text-sm mb-4">Best for renters or first-time smart home buyers. No hub required, no permanent installation, everything moves with you.</p>
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">What's in this kit</p>
+          <div class="space-y-4">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{wyzeCamera.name} — Security Camera</p>
+                <p class="text-xs text-gray-500 mt-0.5">{wyzeCamera.tagline}</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="font-bold text-green-700">${wyzeCamera.price}</span>
+                <a href={wyzeCamera.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs bg-green-700 text-white px-3 py-1.5 rounded-lg hover:bg-green-800 transition-colors">Buy →</a>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{kasaBulb.name} × 4 — Smart Lighting</p>
+                <p class="text-xs text-gray-500 mt-0.5">Color + white tunable bulbs, no hub needed, Alexa + Google</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="font-bold text-green-700">${Math.round(kasaBulb.price * 4)}</span>
+                <a href={kasaBulb.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs bg-green-700 text-white px-3 py-1.5 rounded-lg hover:bg-green-800 transition-colors">Buy →</a>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{kasaPlug.name} — Outdoor Smart Plug</p>
+                <p class="text-xs text-gray-500 mt-0.5">{kasaPlug.tagline}</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="font-bold text-green-700">${kasaPlug.price}</span>
+                <a href={kasaPlug.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs bg-green-700 text-white px-3 py-1.5 rounded-lg hover:bg-green-800 transition-colors">Buy →</a>
+              </div>
+            </div>
+            <div class="border-t border-green-200 pt-3 flex justify-between items-center">
+              <span class="font-semibold text-gray-900 text-sm">Estimated Total</span>
+              <span class="text-xl font-bold text-green-700">~${wyzeCamera.price + Math.round(kasaBulb.price * 4) + kasaPlug.price}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed">This kit gives you security (camera), automated lighting in four rooms or fixtures, and outdoor automation in one plug. Everything connects directly to Wi-Fi — no hub, no bridge, no extra devices. The Kasa app handles all three products if you prefer a single app, or connect each to Alexa or Google Home for voice control.</p>
+    </section>
+
+    <!-- Kit 2: $300 -->
+    <section class="mb-16">
+      <div class="border-t-4 border-blue-200 pt-8 mb-6">
+        <p class="text-xs font-semibold text-blue-700 uppercase tracking-widest mb-2">Kit 2</p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-1">The $300 Upgrade Kit</h2>
+        <p class="text-gray-500 text-sm mb-4">Adds a smart lock and a better camera to the basics. Most noticeable daily impact — you'll use the lock dozens of times per day.</p>
+        <div class="bg-blue-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Everything in Kit 1, plus:</p>
+          <div class="space-y-4">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{augustLock.name} — Smart Lock</p>
+                <p class="text-xs text-gray-500 mt-0.5">{augustLock.tagline}</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="font-bold text-blue-700">${augustLock.price}</span>
+                <a href={augustLock.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs bg-blue-700 text-white px-3 py-1.5 rounded-lg hover:bg-blue-800 transition-colors">Buy →</a>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{eufyCamera.name} — Indoor Camera</p>
+                <p class="text-xs text-gray-500 mt-0.5">{eufyCamera.tagline}</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="font-bold text-blue-700">${eufyCamera.price}</span>
+                <a href={eufyCamera.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs bg-blue-700 text-white px-3 py-1.5 rounded-lg hover:bg-blue-800 transition-colors">Buy →</a>
+              </div>
+            </div>
+            <div class="border-t border-blue-200 pt-3 flex justify-between items-center">
+              <span class="font-semibold text-gray-900 text-sm">Estimated Total (with Kit 1)</span>
+              <span class="text-xl font-bold text-blue-700">~${wyzeCamera.price + Math.round(kasaBulb.price * 4) + kasaPlug.price + augustLock.price + eufyCamera.price}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed">The August Wi-Fi Smart Lock is the best renter-friendly smart lock — it attaches to your existing deadbolt's interior thumb turn without replacing the exterior hardware. Your existing keys still work. The Eufy pan-and-tilt camera upgrades your living room coverage to a motorized camera that follows motion and covers the whole room. Together, you now have automated entry, whole-room coverage, and outdoor control.</p>
+    </section>
+
+    <!-- Kit 3: $500 -->
+    <section class="mb-16">
+      <div class="border-t-4 border-purple-200 pt-8 mb-6">
+        <p class="text-xs font-semibold text-purple-700 uppercase tracking-widest mb-2">Kit 3</p>
+        <h2 class="text-2xl font-bold text-gray-900 mb-1">The Full $500 Kit</h2>
+        <p class="text-gray-500 text-sm mb-4">Adds a smart thermostat and premium lighting for the complete smart home experience — including energy savings that offset the cost.</p>
+        <div class="bg-purple-50 rounded-xl p-4">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Everything in Kits 1 & 2, plus:</p>
+          <div class="space-y-4">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{ecobee.name} — Smart Thermostat</p>
+                <p class="text-xs text-gray-500 mt-0.5">{ecobee.tagline}</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="font-bold text-purple-700">${ecobee.price}</span>
+                <a href={ecobee.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs bg-purple-700 text-white px-3 py-1.5 rounded-lg hover:bg-purple-800 transition-colors">Buy →</a>
+              </div>
+            </div>
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="font-semibold text-gray-900 text-sm">{philipsHue.name} — Premium Lighting (4-bulb starter)</p>
+                <p class="text-xs text-gray-500 mt-0.5">{philipsHue.tagline}</p>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="font-bold text-purple-700">${philipsHue.price}</span>
+                <a href={philipsHue.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs bg-purple-700 text-white px-3 py-1.5 rounded-lg hover:bg-purple-800 transition-colors">Buy →</a>
+              </div>
+            </div>
+          </div>
+          <div class="border-t border-purple-200 pt-3 mt-3 flex justify-between items-center">
+            <span class="font-semibold text-gray-900 text-sm">Estimated Total (all three kits)</span>
+            <span class="text-xl font-bold text-purple-700">~$490</span>
+          </div>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed">The ecobee SmartThermostat Premium is the best smart thermostat for homes with a C-wire, and with the included room sensor it handles multi-room temperature averaging out of the box. The Philips Hue starter kit (4 bulbs + Bridge) is the most reliable smart lighting ecosystem available — it works locally even without internet, supports every ecosystem, and the Hue app's scene and routine controls are the best in class. This is the full smart home setup for under $500.</p>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">What to Skip (at First)</h2>
+      <div class="space-y-4 text-gray-700">
+        <div class="flex gap-3">
+          <span class="text-red-500 flex-shrink-0 mt-0.5 font-bold">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Smart speakers as a starting point</p>
+            <p class="text-sm">An Echo Dot or Google Nest Mini is only useful if you have other smart devices to control. Buy the devices first, then add the speaker.</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-red-500 flex-shrink-0 mt-0.5 font-bold">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Video doorbells before a smart lock</p>
+            <p class="text-sm">Seeing who's at the door is only half the value — being able to let them in remotely (with a smart lock) is the other half. Get the lock first.</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-red-500 flex-shrink-0 mt-0.5 font-bold">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Smart switches before smart bulbs</p>
+            <p class="text-sm">Smart bulbs are plug-and-play; smart switches require turning off the breaker, often need a neutral wire, and can take 30–60 minutes per switch. Start with bulbs and upgrade to switches later if you want.</p>
+          </div>
+        </div>
+        <div class="flex gap-3">
+          <span class="text-red-500 flex-shrink-0 mt-0.5 font-bold">✗</span>
+          <div>
+            <p class="font-semibold text-gray-900 text-sm">Whole-home hub systems (SmartThings, Home Assistant)</p>
+            <p class="text-sm">Home automation hubs are powerful but have a steep learning curve. Start with individual devices that work standalone, then consider a hub once you know what you want to automate.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-home-devices-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Renters →</p>
+        </a>
+        <a href="/smart-home/google-home-vs-alexa" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Google Home vs Alexa: Which Ecosystem? →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

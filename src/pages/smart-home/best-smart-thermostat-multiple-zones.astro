@@ -1,0 +1,247 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecobee-smartthermostat-premium', 'honeywell-t9-smart-thermostat'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Thermostats for Multiple Zones (2026)"
+  description="Sensor-based zoning vs true HVAC multi-zone systems. Ecobee and Honeywell T9 compared for homes that need different temperatures in different rooms."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Thermostats for Multiple Zones
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Thermostats for Multiple Zones (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 2 thermostats compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Most homes have one thermostat controlling one HVAC system — which means the bedroom is
+      cold when the living room is comfortable, or one person is always adjusting the temperature
+      for everyone else. Multi-zone smart thermostats solve this problem, but there are two
+      fundamentally different approaches.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The first is <strong>sensor-based zoning</strong> — room sensors report temperatures from
+      multiple areas, and the thermostat uses that data to decide when to run the system. The
+      second is <strong>true HVAC zoning</strong> — your ductwork has motorized dampers that
+      physically control airflow to different areas. Both picks here support sensor-based zoning
+      (no contractor needed); true HVAC zoning requires a professional installation.
+    </p>
+
+    <!-- Zoning types callout -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Sensor zoning vs HVAC zoning: what's the difference?</p>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <p class="font-semibold text-sm text-gray-900 mb-2">Sensor-Based Zoning (ecobee, Honeywell T9)</p>
+          <ul class="space-y-1 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>DIY installation — no contractor needed</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Room sensors placed in any room</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Thermostat prioritizes comfort in occupied rooms</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Still one HVAC system — conditioned air goes everywhere</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Can't set different temperatures in different rooms simultaneously</li>
+          </ul>
+        </div>
+        <div>
+          <p class="font-semibold text-sm text-gray-900 mb-2">True HVAC Multi-Zone Systems</p>
+          <ul class="space-y-1 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Physically directs air to different areas</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Each zone can be at a truly different temperature</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Maximum energy savings by heating/cooling only occupied zones</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Requires professional installation ($2,000–$5,000+)</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span>Needs existing or new ductwork modifications</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Both thermostats on this page do sensor-based zoning. If you need true HVAC zoning, consult an HVAC contractor about a Honeywell TrueZONE or Ecobee EMS Si system — those require professional installation.</p>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Thermostat</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Max Sensors</th>
+            <th class="text-left p-3 font-semibold text-gray-700">C-Wire Required</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Ecosystems</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Room Sensors']}</td>
+              <td class="p-3">{p.specs['C-Wire']}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Multi-Zone Thermostat' : '🥈 Best for Apple HomeKit Homes'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buying Guide: Multi-Zone Thermostats</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How do room sensors actually work?</h3>
+          <p class="text-sm leading-relaxed">Room sensors detect temperature and occupancy in a specific location. When the ecobee determines which rooms are occupied (via motion), it averages the temperature of occupied rooms and uses that as the setpoint — not just the temperature at the thermostat itself. If your bedroom is 4°F warmer than the living room (common in two-story homes), and you're in the bedroom, the ecobee will run the system until the bedroom reaches your target, rather than stopping when the main thermostat hits setpoint.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How many sensors do you need?</h3>
+          <p class="text-sm leading-relaxed">For a typical 3-bedroom home: one sensor in each bedroom, one in the main living area. That's 3–4 sensors plus the built-in thermostat sensor — 4–5 data points total. More sensors improve accuracy but have diminishing returns. The ecobee Premium comes with one SmartSensor; additional sensors are sold separately ($39 each, 2-pack available). The Honeywell T9 comes with one room sensor included.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Both thermostats require a C-wire — what if you don't have one?</h3>
+          <p class="text-sm leading-relaxed">Both the ecobee Premium and Honeywell T9 require a C-wire for reliable operation. The ecobee includes a Power Extender Kit (PEK) that generates a virtual C-wire from existing wiring — works for most systems. The Honeywell T9 does not include a C-wire workaround. If your home doesn't have a C-wire, consider the <a href="/smart-home/best-smart-thermostat-no-c-wire" class="text-green-700 hover:underline">best smart thermostats without C-wire</a> guide first, then add room sensors once you're up and running.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can room sensors control separate floors independently?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Not with a single thermostat — the HVAC system is still one unit heating or cooling your whole home. What the sensors do is tell the thermostat which areas need attention and when, so it optimizes runtime for occupied spaces. For true floor-by-floor independent control, you need a dual-zone HVAC system with separate air handlers, or a ductless mini-split system for supplemental heating/cooling in specific areas.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What's the range of the room sensors?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Ecobee SmartSensors communicate via 900 MHz radio frequency with a range of 45 feet through walls. In most homes, a single sensor can reach from the thermostat in a central hallway to bedrooms on either side. For larger homes (2,500+ sq ft) or homes with many walls, you may need sensors that relay through each other. The Honeywell T9 uses 2.4 GHz Wi-Fi mesh with up to 60-foot range per hop.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does ecobee work with Apple HomeKit?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The ecobee SmartThermostat Premium supports Apple HomeKit, Amazon Alexa (built-in speaker), Google Home, and Samsung SmartThings. It's one of the most broadly compatible thermostats available. You can control it through any of these platforms and create automations across ecosystems. The Honeywell T9 also supports HomeKit, making both strong choices for Apple households.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-thermostat-no-c-wire" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Thermostats Without C-Wire →</p>
+        </a>
+        <a href="/smart-home/google-home-vs-alexa" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Google Home vs Alexa: Which Ecosystem Wins? →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>
