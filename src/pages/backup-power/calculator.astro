@@ -1,0 +1,400 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const backupProducts = products
+  .filter(p => p.category === 'backup-power')
+  .map(p => ({
+    slug: p.slug,
+    name: p.name,
+    brand: p.brand,
+    tagline: p.tagline,
+    affiliateUrl: p.affiliateUrl,
+    price: p.price,
+    rating: p.rating,
+    cap: p.specs['Capacity'] || p.specs['Output'] || '',
+    out: p.specs['AC Output'] || '',
+  }));
+---
+
+<Layout
+  title="Backup Power Calculator — What System Do I Need? | HouseGearGuide"
+  description="Answer 3 quick questions to find the right backup power system for your home. Get personalized recommendations for portable power stations, solar generators, or whole-home standby generators."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <div class="max-w-xl mx-auto px-4 py-10 pb-20">
+
+    <!-- Header -->
+    <div class="text-center mb-8">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Free Calculator</p>
+      <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+        What Backup Power System<br class="hidden sm:block" /> Do I Need?
+      </h1>
+      <p class="text-gray-500 text-sm leading-relaxed">
+        Answer 3 quick questions — get a personalized recommendation in under 2 minutes.
+      </p>
+    </div>
+
+    <!-- Progress bar -->
+    <div class="mb-8">
+      <div class="flex items-center justify-between mb-1.5">
+        <span id="step-label" class="text-xs font-semibold text-green-700 uppercase tracking-widest">Step 1 of 3</span>
+        <span id="pct-label" class="text-xs text-gray-400">33%</span>
+      </div>
+      <div class="h-1.5 bg-gray-100 rounded-full overflow-hidden">
+        <div id="progress-fill" class="h-full bg-green-600 rounded-full transition-all duration-300" style="width:33%"></div>
+      </div>
+      <div class="flex justify-between mt-1.5">
+        <span class="text-xs text-gray-400">Home Size</span>
+        <span class="text-xs text-gray-400">Appliances</span>
+        <span class="text-xs text-gray-400">Hours</span>
+        <span class="text-xs text-gray-400">Results</span>
+      </div>
+    </div>
+
+    <!-- ── Step 1: Home size ─────────────────────────────────────────────────── -->
+    <div id="step-1" class="calc-step">
+      <h2 class="text-xl font-bold text-gray-900 mb-1">What size is your home?</h2>
+      <p class="text-sm text-gray-500 mb-5">This helps us match the right system capacity to your square footage.</p>
+      <div class="space-y-3">
+        <button class="size-btn w-full text-left border-2 border-gray-100 rounded-xl p-4 hover:border-green-500 hover:bg-green-50 transition-all" data-value="small">
+          <span class="font-semibold text-gray-900 block">Apartment / Small Home</span>
+          <span class="text-sm text-gray-400">Under 1,000 sq ft</span>
+        </button>
+        <button class="size-btn w-full text-left border-2 border-gray-100 rounded-xl p-4 hover:border-green-500 hover:bg-green-50 transition-all" data-value="medium">
+          <span class="font-semibold text-gray-900 block">Medium Home</span>
+          <span class="text-sm text-gray-400">1,000 – 2,000 sq ft</span>
+        </button>
+        <button class="size-btn w-full text-left border-2 border-gray-100 rounded-xl p-4 hover:border-green-500 hover:bg-green-50 transition-all" data-value="large">
+          <span class="font-semibold text-gray-900 block">Large Home</span>
+          <span class="text-sm text-gray-400">2,000 – 3,500 sq ft</span>
+        </button>
+        <button class="size-btn w-full text-left border-2 border-gray-100 rounded-xl p-4 hover:border-green-500 hover:bg-green-50 transition-all" data-value="xlarge">
+          <span class="font-semibold text-gray-900 block">Very Large Home</span>
+          <span class="text-sm text-gray-400">3,500+ sq ft</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Step 2: Appliances ────────────────────────────────────────────────── -->
+    <div id="step-2" class="calc-step hidden">
+      <h2 class="text-xl font-bold text-gray-900 mb-1">Which appliances must stay on?</h2>
+      <p class="text-sm text-gray-500 mb-5">Select everything you need running during a power outage.</p>
+
+      <div id="appliance-list" class="space-y-2 mb-4"></div>
+
+      <div class="bg-gray-50 rounded-xl p-3 mb-5 flex items-center justify-between">
+        <span class="text-sm text-gray-500">Estimated peak load</span>
+        <span id="watt-display" class="font-bold text-gray-900 tabular-nums">0 W</span>
+      </div>
+
+      <div class="flex gap-3">
+        <button id="btn-back-to-1" class="px-5 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">
+          ← Back
+        </button>
+        <button id="btn-next-to-3" class="flex-1 bg-green-700 text-white py-3 rounded-lg text-sm font-semibold hover:bg-green-800 transition-colors">
+          Next →
+        </button>
+      </div>
+    </div>
+
+    <!-- ── Step 3: Hours ─────────────────────────────────────────────────────── -->
+    <div id="step-3" class="calc-step hidden">
+      <h2 class="text-xl font-bold text-gray-900 mb-1">How many hours of backup do you need?</h2>
+      <p class="text-sm text-gray-500 mb-5">Think about how long outages typically last in your area.</p>
+      <div class="space-y-3">
+        <button class="hours-btn w-full text-left border-2 border-gray-100 rounded-xl p-4 hover:border-green-500 hover:bg-green-50 transition-all" data-value="5">
+          <span class="font-semibold text-gray-900 block">4–6 hours</span>
+          <span class="text-sm text-gray-400">Short outages — storms, brief grid failures</span>
+        </button>
+        <button class="hours-btn w-full text-left border-2 border-gray-100 rounded-xl p-4 hover:border-green-500 hover:bg-green-50 transition-all" data-value="10">
+          <span class="font-semibold text-gray-900 block">8–12 hours</span>
+          <span class="text-sm text-gray-400">Overnight outages — typical severe weather</span>
+        </button>
+        <button class="hours-btn w-full text-left border-2 border-gray-100 rounded-xl p-4 hover:border-green-500 hover:bg-green-50 transition-all" data-value="24">
+          <span class="font-semibold text-gray-900 block">24 hours</span>
+          <span class="text-sm text-gray-400">Full-day outages — major storm events</span>
+        </button>
+        <button class="hours-btn w-full text-left border-2 border-gray-100 rounded-xl p-4 hover:border-green-500 hover:bg-green-50 transition-all" data-value="72">
+          <span class="font-semibold text-gray-900 block">72 hours or more</span>
+          <span class="text-sm text-gray-400">Extended outages — hurricanes, ice storms, grid failure</span>
+        </button>
+      </div>
+      <button id="btn-back-to-2" class="mt-5 w-full px-5 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">
+        ← Back
+      </button>
+    </div>
+
+    <!-- ── Step 4: Results ───────────────────────────────────────────────────── -->
+    <div id="step-4" class="calc-step hidden">
+      <div id="results-inner"></div>
+      <button id="btn-start-over" class="mt-8 w-full px-5 py-3 border border-gray-200 rounded-lg text-sm font-semibold text-gray-600 hover:bg-gray-50 transition-colors">
+        ← Start Over
+      </button>
+    </div>
+
+  </div>
+</Layout>
+
+<script define:vars={{ backupProducts }}>
+  // ── Product data & maps ───────────────────────────────────────────────────────
+  const PRODUCTS = backupProducts;
+
+  const PAGE_MAP = {
+    'ecoflow-delta-2':              '/backup-power/best-portable-power-station-under-500',
+    'anker-solix-c800':             '/backup-power/best-portable-power-station-under-500',
+    'jackery-explorer-500':         '/backup-power/best-portable-power-station-under-500',
+    'goal-zero-yeti-500x':          '/backup-power/best-portable-power-station-under-500',
+    'bluetti-eb3a':                 '/backup-power/best-portable-power-station-under-500',
+    'ecoflow-delta-2-max':          '/backup-power/best-portable-power-station-under-1000',
+    'anker-solix-c1000':            '/backup-power/best-portable-power-station-under-1000',
+    'bluetti-ac180':                '/backup-power/best-portable-power-station-under-1000',
+    'jackery-explorer-1000-pro':    '/backup-power/best-portable-power-station-under-1000',
+    'ecoflow-delta-pro':            '/backup-power/best-solar-generator-home-backup',
+    'ecoflow-river-2-pro':          '/backup-power/best-solar-generator-home-backup',
+    'generac-22kw-guardian':        '/backup-power/best-whole-home-generator-2000-sq-ft',
+    'kohler-20rescl-20kw':          '/backup-power/best-whole-home-generator-2000-sq-ft',
+    'briggs-stratton-10kw-standby': '/backup-power/best-whole-home-generator-2000-sq-ft',
+    'wayne-esp25-battery-backup':   '/backup-power/best-battery-backup-sump-pump',
+    'zoeller-aquanot-508':          '/backup-power/best-battery-backup-sump-pump',
+  };
+
+  const APPLIANCES = [
+    { id: 'fridge',    label: 'Refrigerator',            watts: 150  },
+    { id: 'lights',    label: 'Lights — basic',          watts: 200  },
+    { id: 'devices',   label: 'Phone & laptop charging', watts: 100  },
+    { id: 'wifi',      label: 'Wi-Fi router',            watts: 20   },
+    { id: 'window-ac', label: 'Window AC unit',          watts: 1200 },
+    { id: 'sump',      label: 'Sump pump',               watts: 800  },
+    { id: 'medical',   label: 'Medical device / CPAP',   watts: 30   },
+    { id: 'stove',     label: 'Electric stove burner',   watts: 1500 },
+    { id: 'microwave', label: 'Microwave',               watts: 1000 },
+    { id: 'tv',        label: 'TV',                      watts: 100  },
+  ];
+
+  // ── State ─────────────────────────────────────────────────────────────────────
+  let state = { homeSize: null, totalWatts: 0, hasSump: false, hasMedical: false, hours: null };
+
+  // ── Build appliance checkboxes ────────────────────────────────────────────────
+  const appList = document.getElementById('appliance-list');
+  APPLIANCES.forEach(a => {
+    const lbl = document.createElement('label');
+    lbl.className = 'flex items-center justify-between border border-gray-100 rounded-xl p-3.5 cursor-pointer hover:bg-green-50 hover:border-green-200 transition-all select-none';
+    lbl.innerHTML = `
+      <div class="flex items-center gap-3">
+        <input type="checkbox" data-id="${a.id}" data-watts="${a.watts}"
+          class="appliance-cb w-4 h-4 accent-green-700 cursor-pointer rounded" />
+        <span class="text-sm font-medium text-gray-900">${a.label}</span>
+      </div>
+      <span class="text-xs text-gray-400 font-mono tabular-nums ml-2 flex-shrink-0">${a.watts.toLocaleString()}W</span>`;
+    appList.appendChild(lbl);
+  });
+
+  // ── Progress ──────────────────────────────────────────────────────────────────
+  function setProgress(step) {
+    const pct = step >= 4 ? 100 : Math.round((step / 3) * 100);
+    document.getElementById('step-label').textContent = step < 4 ? `Step ${step} of 3` : 'Your Results';
+    document.getElementById('pct-label').textContent = pct + '%';
+    document.getElementById('progress-fill').style.width = pct + '%';
+  }
+
+  function goTo(n) {
+    document.querySelectorAll('.calc-step').forEach(s => s.classList.add('hidden'));
+    document.getElementById('step-' + n).classList.remove('hidden');
+    setProgress(n);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ── Step 1 ────────────────────────────────────────────────────────────────────
+  document.querySelectorAll('.size-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.homeSize = btn.dataset.value;
+      document.querySelectorAll('.size-btn').forEach(b => {
+        b.classList.remove('border-green-600', 'bg-green-50');
+        b.classList.add('border-gray-100');
+      });
+      btn.classList.add('border-green-600', 'bg-green-50');
+      btn.classList.remove('border-gray-100');
+      setTimeout(() => goTo(2), 150);
+    });
+  });
+
+  // ── Step 2 ────────────────────────────────────────────────────────────────────
+  appList.addEventListener('change', () => {
+    let w = 0, hasSump = false, hasMed = false;
+    document.querySelectorAll('.appliance-cb:checked').forEach(cb => {
+      w += parseInt(cb.dataset.watts);
+      if (cb.dataset.id === 'sump')    hasSump = true;
+      if (cb.dataset.id === 'medical') hasMed  = true;
+    });
+    state.totalWatts = w;
+    state.hasSump    = hasSump;
+    state.hasMedical = hasMed;
+    const disp = document.getElementById('watt-display');
+    disp.textContent = w > 0 ? w.toLocaleString() + ' W peak' : '0 W';
+    disp.className = w > 0
+      ? 'font-bold text-green-700 text-lg tabular-nums'
+      : 'font-bold text-gray-900 tabular-nums';
+  });
+
+  document.getElementById('btn-back-to-1').addEventListener('click', () => goTo(1));
+  document.getElementById('btn-next-to-3').addEventListener('click', () => goTo(3));
+
+  // ── Step 3 ────────────────────────────────────────────────────────────────────
+  document.querySelectorAll('.hours-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.hours = parseInt(btn.dataset.value);
+      document.querySelectorAll('.hours-btn').forEach(b => {
+        b.classList.remove('border-green-600', 'bg-green-50');
+        b.classList.add('border-gray-100');
+      });
+      btn.classList.add('border-green-600', 'bg-green-50');
+      btn.classList.remove('border-gray-100');
+      setTimeout(() => { buildResults(); goTo(4); }, 150);
+    });
+  });
+
+  document.getElementById('btn-back-to-2').addEventListener('click', () => goTo(2));
+
+  // ── Recommendation logic ──────────────────────────────────────────────────────
+  function recommend() {
+    const { totalWatts, hours, hasSump, hasMedical } = state;
+    const wh = totalWatts * hours;
+
+    let label, desc, slugs, guideUrl, guideName;
+
+    // Tier 4 — Standby generator
+    if (totalWatts > 3000 || (hours >= 72 && totalWatts > 500)) {
+      label    = 'Whole-Home Standby Generator';
+      desc     = `Your selections require ${totalWatts.toLocaleString()}W of continuous power${hours >= 72 ? ' for 72+ hours' : ''}. Portable power stations top out around 3,600W and last hours — not days. A natural gas or propane standby generator connects to your home's existing fuel supply, activates automatically within 10 seconds of an outage, and runs indefinitely.`;
+      slugs    = ['generac-22kw-guardian', 'kohler-20rescl-20kw', 'briggs-stratton-10kw-standby'];
+      guideUrl = '/backup-power/best-whole-home-generator-2000-sq-ft';
+      guideName = 'Full Whole-Home Generator Guide →';
+    }
+    // Tier 3 — Large power station / solar generator
+    else if (totalWatts > 1800 || wh > 3500 || hours >= 24) {
+      label    = 'Large Power Station or Solar Generator';
+      desc     = `Your load needs ${totalWatts.toLocaleString()}W peak and ${wh.toLocaleString()}Wh of stored energy. You need a 2kWh+ station with high AC output. For 24-hour or longer coverage, pairing with a solar panel lets you recharge during daylight without grid power — no fuel required.`;
+      slugs    = ['ecoflow-delta-pro', 'ecoflow-delta-2-max', 'ecoflow-river-2-pro'];
+      guideUrl = '/backup-power/best-solar-generator-home-backup';
+      guideName = 'Full Solar Generator Guide →';
+    }
+    // Tier 2 — Mid-range power station
+    else if (totalWatts > 500 || wh > 1200) {
+      label    = 'Mid-Range Portable Power Station (1–2 kWh)';
+      desc     = `Your selections need ${totalWatts.toLocaleString()}W peak and ${wh.toLocaleString()}Wh total. A 1,000–2,000Wh LFP power station handles this comfortably — covering a full overnight backup for most home essentials without breaking $1,000.`;
+      slugs    = ['ecoflow-delta-2-max', 'bluetti-ac180', 'anker-solix-c1000'];
+      guideUrl = '/backup-power/best-portable-power-station-under-1000';
+      guideName = 'Full Guide: Best Power Stations Under $1,000 →';
+    }
+    // Tier 1 — Compact power station
+    else {
+      label    = 'Compact Portable Power Station (500Wh–1kWh)';
+      desc     = totalWatts > 0
+        ? `Your selections need ${totalWatts.toLocaleString()}W peak and ${wh.toLocaleString()}Wh total. A compact 500–1,000Wh power station covers this easily — there's no need to spend more.`
+        : `For light loads like phone charging, a router, and a few lights, a compact 500–1,000Wh power station is all you need. No need to overspend.`;
+      slugs    = ['ecoflow-delta-2', 'anker-solix-c800', 'bluetti-eb3a'];
+      guideUrl = '/backup-power/best-portable-power-station-under-500';
+      guideName = 'Full Guide: Best Power Stations Under $500 →';
+    }
+
+    // Sump pump note (shown for non-standby tiers)
+    const sumpNote = (hasSump && slugs[0] !== 'generac-22kw-guardian')
+      ? `<p class="text-sm text-gray-600 leading-relaxed mt-3 pt-3 border-t border-green-100"><strong>Sump pump tip:</strong> A power station can run a sump pump — but it needs manual connection first. For automatic flood protection the moment power fails, add a <a href="/backup-power/best-battery-backup-sump-pump" class="text-green-700 underline font-medium">dedicated battery backup sump pump</a> (~$185–$200). It activates instantly without any intervention.</p>`
+      : '';
+
+    // Medical device note
+    const medNote = hasMedical
+      ? `<p class="text-sm text-gray-600 leading-relaxed mt-3 pt-3 border-t border-green-100"><strong>Medical device note:</strong> All picks below use LiFePO4 (LFP) batteries rated for 3,000+ cycles — the most reliable chemistry available for life-critical backup. Any of these will run a CPAP for 8–24+ hours depending on pressure settings.</p>`
+      : '';
+
+    return { label, desc, slugs, guideUrl, guideName, wh, sumpNote, medNote };
+  }
+
+  // ── Product card ──────────────────────────────────────────────────────────────
+  function productCard(slug, isTop) {
+    const p = PRODUCTS.find(x => x.slug === slug);
+    if (!p) return '';
+    const page = PAGE_MAP[slug] || '/backup-power';
+    return `
+      <div class="relative border ${isTop ? 'border-green-300 shadow-sm' : 'border-gray-100'} rounded-2xl p-5 bg-white">
+        ${isTop ? '<span class="absolute -top-3 left-4 bg-green-700 text-white text-xs font-bold px-3 py-1 rounded-full">Best Match</span>' : ''}
+        <div class="flex items-start justify-between mb-2">
+          <div class="pr-3 min-w-0">
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-0.5">${p.brand}</p>
+            <h3 class="font-bold text-gray-900 leading-snug">${p.name}</h3>
+          </div>
+          <span class="text-lg font-bold text-gray-900 flex-shrink-0">$${p.price.toLocaleString()}</span>
+        </div>
+        <p class="text-sm text-gray-500 mb-3 leading-snug">${p.tagline}</p>
+        ${(p.cap || p.out) ? `
+        <div class="flex gap-2 mb-4 flex-wrap">
+          ${p.cap ? `<div class="bg-gray-50 rounded-lg px-3 py-2"><p class="text-xs text-gray-400 mb-0.5">Capacity / Output</p><p class="text-xs font-semibold text-gray-900">${p.cap}</p></div>` : ''}
+          ${p.out ? `<div class="bg-gray-50 rounded-lg px-3 py-2"><p class="text-xs text-gray-400 mb-0.5">AC Output</p><p class="text-xs font-semibold text-gray-900">${p.out}</p></div>` : ''}
+        </div>` : ''}
+        <div class="flex gap-2">
+          <a href="${page}" class="flex-1 text-center border border-green-700 text-green-700 text-xs font-semibold px-3 py-2.5 rounded-lg hover:bg-green-50 transition-colors">
+            See Full Review
+          </a>
+          <a href="${p.affiliateUrl}" target="_blank" rel="nofollow noopener"
+            class="flex-1 text-center bg-green-700 text-white text-xs font-semibold px-3 py-2.5 rounded-lg hover:bg-green-800 transition-colors">
+            Check Price on Amazon →
+          </a>
+        </div>
+      </div>`;
+  }
+
+  // ── Build & render results ────────────────────────────────────────────────────
+  function buildResults() {
+    const rec = recommend();
+    const { totalWatts, hours } = state;
+
+    document.getElementById('results-inner').innerHTML = `
+      <div class="grid grid-cols-3 gap-2 mb-6">
+        <div class="bg-gray-50 rounded-xl p-3 text-center">
+          <p class="text-xs text-gray-400 mb-1">Peak Load</p>
+          <p class="text-lg font-bold text-gray-900 tabular-nums">${totalWatts > 0 ? totalWatts.toLocaleString() + 'W' : '—'}</p>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-3 text-center">
+          <p class="text-xs text-gray-400 mb-1">Energy Needed</p>
+          <p class="text-lg font-bold text-gray-900 tabular-nums">${rec.wh > 0 ? rec.wh.toLocaleString() + 'Wh' : '—'}</p>
+        </div>
+        <div class="bg-gray-50 rounded-xl p-3 text-center">
+          <p class="text-xs text-gray-400 mb-1">Runtime</p>
+          <p class="text-lg font-bold text-gray-900 tabular-nums">${hours >= 72 ? '72h+' : hours + 'h'}</p>
+        </div>
+      </div>
+
+      <div class="bg-green-50 border border-green-200 rounded-2xl p-5 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Your Recommended Solution</p>
+        <h2 class="text-xl font-bold text-gray-900 mb-2">${rec.label}</h2>
+        <p class="text-sm text-gray-600 leading-relaxed">${rec.desc}</p>
+        ${rec.sumpNote}${rec.medNote}
+        <a href="${rec.guideUrl}" class="inline-block mt-4 text-sm font-semibold text-green-700 hover:underline">${rec.guideName}</a>
+      </div>
+
+      <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Top picks for your situation</p>
+      <div class="space-y-5">
+        ${rec.slugs.map((s, i) => productCard(s, i === 0)).join('')}
+      </div>`;
+  }
+
+  // ── Start over ────────────────────────────────────────────────────────────────
+  document.getElementById('btn-start-over').addEventListener('click', () => {
+    state = { homeSize: null, totalWatts: 0, hasSump: false, hasMedical: false, hours: null };
+    document.querySelectorAll('.appliance-cb').forEach(cb => cb.checked = false);
+    const disp = document.getElementById('watt-display');
+    disp.textContent = '0 W';
+    disp.className = 'font-bold text-gray-900 tabular-nums';
+    document.querySelectorAll('.size-btn, .hours-btn').forEach(b => {
+      b.classList.remove('border-green-600', 'bg-green-50');
+      b.classList.add('border-gray-100');
+    });
+    goTo(1);
+  });
+</script>
