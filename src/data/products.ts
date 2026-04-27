@@ -84,7 +84,7 @@ export const products: Product[] = [
     brand: 'Emerson',
     category: 'smart-home',
     tagline: 'Battery-powered — works anywhere with zero C-wire workarounds',
-    affiliateUrl: 'https://www.amazon.com/dp/B09YQXM4W3?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0BKH83KF9?tag=housegearguid-20',
     price: 139,
     rating: 4.3,
     specs: {
@@ -117,7 +117,7 @@ export const products: Product[] = [
     brand: 'August',
     category: 'smart-home',
     tagline: 'Best for renters — installs in minutes and leaves no exterior trace',
-    affiliateUrl: 'https://www.amazon.com/dp/B082ZJJRD7?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B082VXK9CK?tag=housegearguid-20',
     price: 179,
     rating: 4.4,
     specs: {
@@ -149,7 +149,7 @@ export const products: Product[] = [
     brand: 'Level',
     category: 'smart-home',
     tagline: 'The completely invisible smart lock — no one will ever know it\'s there',
-    affiliateUrl: 'https://www.amazon.com/dp/B09G9BXTFQ?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09WRK3CKT?tag=housegearguid-20',
     price: 329,
     rating: 4.3,
     specs: {
@@ -314,7 +314,7 @@ export const products: Product[] = [
     brand: 'Anker',
     category: 'backup-power',
     tagline: 'LFP battery chemistry at the $399 price point — exceptional value',
-    affiliateUrl: 'https://www.amazon.com/dp/B0C5BKWMCL?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0CX56FY7Z?tag=housegearguid-20',
     price: 399,
     rating: 4.5,
     specs: {
@@ -544,7 +544,7 @@ export const products: Product[] = [
     brand: 'Anker',
     category: 'backup-power',
     tagline: 'Compact LFP at $799 — strong specs for its footprint',
-    affiliateUrl: 'https://www.amazon.com/dp/B0C5BKL2BN?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0C5C89QKZ?tag=housegearguid-20',
     price: 799,
     rating: 4.6,
     specs: {
@@ -610,7 +610,7 @@ export const products: Product[] = [
     brand: 'Generac',
     category: 'backup-power',
     tagline: 'The industry standard — handles a 2,000 sq ft home with central A/C and then some',
-    affiliateUrl: 'https://www.amazon.com/dp/B01BNN5PRM?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07DTVKQBC?tag=housegearguid-20',
     price: 3699,
     rating: 4.6,
     specs: {
@@ -642,7 +642,7 @@ export const products: Product[] = [
     brand: 'Kohler',
     category: 'backup-power',
     tagline: 'Premium build quality and the quietest residential standby generator available',
-    affiliateUrl: 'https://www.amazon.com/dp/B07ZQJZ5B6?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0046AS0JS?tag=housegearguid-20',
     price: 3199,
     rating: 4.5,
     specs: {
@@ -674,7 +674,7 @@ export const products: Product[] = [
     brand: 'Briggs & Stratton',
     category: 'backup-power',
     tagline: 'The right-sized generator for homes that want essential circuits covered — not whole-home',
-    affiliateUrl: 'https://www.amazon.com/dp/B06W2J4W6J?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B00BJY1RC6?tag=housegearguid-20',
     price: 2099,
     rating: 4.3,
     specs: {
@@ -708,7 +708,7 @@ export const products: Product[] = [
     brand: 'Philips Hue',
     category: 'smart-home',
     tagline: 'The most reliable smart lighting ecosystem — rock-solid since 2012',
-    affiliateUrl: 'https://www.amazon.com/dp/B07GXB3S7Z?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07351P1JK?tag=housegearguid-20',
     price: 199,
     rating: 4.7,
     specs: {
@@ -1130,7 +1130,7 @@ export const products: Product[] = [
     brand: 'Amazon',
     category: 'smart-home',
     tagline: 'The simplest Alexa outdoor plug — zero friction for existing Echo households',
-    affiliateUrl: 'https://www.amazon.com/dp/B082YD9HGZ?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B094YHJJVG?tag=housegearguid-20',
     price: 25,
     rating: 4.3,
     specs: {
