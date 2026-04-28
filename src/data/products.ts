@@ -53,7 +53,7 @@ export const products: Product[] = [
     brand: 'Google',
     category: 'smart-home',
     tagline: 'The affordable Nest that skips the C-wire requirement entirely',
-    affiliateUrl: 'https://www.amazon.com/dp/B08HR7K6GK?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B08HRPDYTP?tag=housegearguid-20',
     price: 129,
     rating: 4.4,
     specs: {
@@ -181,7 +181,7 @@ export const products: Product[] = [
     brand: 'Ultraloq',
     category: 'smart-home',
     tagline: 'Best value full-featured smart lock — fingerprint, PIN, and more',
-    affiliateUrl: 'https://www.amazon.com/dp/B08H2BQHK7?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0C61DKKL8?tag=housegearguid-20',
     price: 159,
     rating: 4.2,
     specs: {
@@ -213,7 +213,7 @@ export const products: Product[] = [
     brand: 'Yale',
     category: 'smart-home',
     tagline: 'The most refined smart deadbolt with the broadest ecosystem support',
-    affiliateUrl: 'https://www.amazon.com/dp/B0B2QHNM5N?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0B9HY7RBC?tag=housegearguid-20',
     price: 249,
     rating: 4.5,
     specs: {
@@ -281,7 +281,7 @@ export const products: Product[] = [
     brand: 'EcoFlow',
     category: 'backup-power',
     tagline: 'The best all-around portable power station under $500',
-    affiliateUrl: 'https://www.amazon.com/dp/B0BNH6G7L6?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0B9XB57XM?tag=housegearguid-20',
     price: 499,
     rating: 4.7,
     specs: {
@@ -346,7 +346,7 @@ export const products: Product[] = [
     brand: 'Jackery',
     category: 'backup-power',
     tagline: 'Lightweight and proven — the classic entry-level power station',
-    affiliateUrl: 'https://www.amazon.com/dp/B083KQFM5B?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07SM5HBK1?tag=housegearguid-20',
     price: 349,
     rating: 4.6,
     specs: {
@@ -379,7 +379,7 @@ export const products: Product[] = [
     brand: 'Goal Zero',
     category: 'backup-power',
     tagline: 'Premium build quality and the best solar panel ecosystem for outdoor use',
-    affiliateUrl: 'https://www.amazon.com/dp/B07YNM9CQC?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B085KRMCCY?tag=housegearguid-20',
     price: 449,
     rating: 4.4,
     specs: {
@@ -412,7 +412,7 @@ export const products: Product[] = [
     brand: 'Bluetti',
     category: 'backup-power',
     tagline: 'Budget pick with LFP battery — surprisingly powerful for its size and price',
-    affiliateUrl: 'https://www.amazon.com/dp/B09SXHZ3LW?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09WW3CTF4?tag=housegearguid-20',
     price: 199,
     rating: 4.4,
     specs: {
@@ -445,7 +445,7 @@ export const products: Product[] = [
     brand: 'EcoFlow',
     category: 'backup-power',
     tagline: 'Whole-home backup power in a moveable form factor',
-    affiliateUrl: 'https://www.amazon.com/dp/B09BKTB9S2?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0C1Z4GLKS?tag=housegearguid-20',
     price: 1799,
     rating: 4.7,
     specs: {
@@ -478,7 +478,7 @@ export const products: Product[] = [
     brand: 'Jackery',
     category: 'backup-power',
     tagline: 'The sweet spot between portability and serious home backup capability',
-    affiliateUrl: 'https://www.amazon.com/dp/B09MSF27XN?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0BBZVVF39?tag=housegearguid-20',
     price: 799,
     rating: 4.6,
     specs: {
@@ -512,7 +512,7 @@ export const products: Product[] = [
     brand: 'EcoFlow',
     category: 'backup-power',
     tagline: 'Double the capacity of the DELTA 2 — the top pick for serious home backup under $1,000',
-    affiliateUrl: 'https://www.amazon.com/dp/B0BWNXVC5M?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0C4DW17PD?tag=housegearguid-20',
     price: 999,
     rating: 4.8,
     specs: {
@@ -576,7 +576,7 @@ export const products: Product[] = [
     brand: 'Bluetti',
     category: 'backup-power',
     tagline: 'The best mid-range option — 1152Wh LFP at a price that splits the difference',
-    affiliateUrl: 'https://www.amazon.com/dp/B0BWCG7Y5J?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0C1SMJTDT?tag=housegearguid-20',
     price: 599,
     rating: 4.5,
     specs: {
@@ -739,7 +739,7 @@ export const products: Product[] = [
     brand: 'TP-Link Kasa',
     category: 'smart-home',
     tagline: 'No hub, no hassle — the best value smart bulb that just works',
-    affiliateUrl: 'https://www.amazon.com/dp/B08F7NV6YF?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B08YP5MKY4?tag=housegearguid-20',
     price: 15,
     rating: 4.5,
     specs: {
@@ -771,7 +771,7 @@ export const products: Product[] = [
     brand: 'Govee',
     category: 'smart-home',
     tagline: 'The budget pick — vibrant colors and Matter support at under $15 per bulb',
-    affiliateUrl: 'https://www.amazon.com/dp/B09JZTVGD7?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09B7NQT2K?tag=housegearguid-20',
     price: 12,
     rating: 4.3,
     specs: {
@@ -803,7 +803,7 @@ export const products: Product[] = [
     brand: 'Nanoleaf',
     category: 'smart-home',
     tagline: 'Thread-enabled and Matter-native — the fastest-responding smart bulb available',
-    affiliateUrl: 'https://www.amazon.com/dp/B09B8VQBV9?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B09DR6LMZ2?tag=housegearguid-20',
     price: 20,
     rating: 4.4,
     specs: {
@@ -836,7 +836,7 @@ export const products: Product[] = [
     brand: 'Wyze',
     category: 'smart-home',
     tagline: 'The best indoor security camera under $40 — 2K resolution at an unbeatable price',
-    affiliateUrl: 'https://www.amazon.com/dp/B0CH2QV5LH?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0CJ9Z22L5?tag=housegearguid-20',
     price: 36,
     rating: 4.4,
     specs: {
@@ -899,7 +899,7 @@ export const products: Product[] = [
     brand: 'Arlo',
     category: 'smart-home',
     tagline: 'Premium features and the broadest smart home platform support — the only HomeKit pick',
-    affiliateUrl: 'https://www.amazon.com/dp/B09W9F9F34?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0C67QCTFV?tag=housegearguid-20',
     price: 100,
     rating: 4.4,
     specs: {
@@ -967,7 +967,7 @@ export const products: Product[] = [
     brand: 'Wayne',
     category: 'backup-power',
     tagline: 'The most trusted dedicated sump pump backup — installs in the pit and activates automatically',
-    affiliateUrl: 'https://www.amazon.com/dp/B001CCG4K4?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B000HOQZDU?tag=housegearguid-20',
     price: 185,
     rating: 4.5,
     specs: {
@@ -999,7 +999,7 @@ export const products: Product[] = [
     brand: 'Zoeller',
     category: 'backup-power',
     tagline: 'Higher pump rate and longer runtime — the premium choice for high-water-table homes',
-    affiliateUrl: 'https://www.amazon.com/dp/B00GX0BPEM?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B00M3B5YSC?tag=housegearguid-20',
     price: 199,
     rating: 4.4,
     specs: {
@@ -1063,11 +1063,11 @@ export const products: Product[] = [
   // ─── Smart Home: Outdoor Plugs ────────────────────────────────────────────
   {
     slug: 'kasa-outdoor-smart-plug-ep40a',
-    name: 'Kasa Smart Outdoor Plug EP40A',
+    name: 'Kasa Smart Outdoor Plug EP40',
     brand: 'TP-Link Kasa',
     category: 'smart-home',
-    tagline: 'Best value outdoor smart plug — two independent outlets with energy monitoring',
-    affiliateUrl: 'https://www.amazon.com/dp/B08LN3C7WK?tag=housegearguid-20',
+    tagline: 'Best value outdoor smart plug — two independently controlled outlets, IP64 rated',
+    affiliateUrl: 'https://www.amazon.com/dp/B091FXH2FR?tag=housegearguid-20',
     price: 17,
     rating: 4.6,
     specs: {
@@ -1075,18 +1075,19 @@ export const products: Product[] = [
       'Weather Rating': 'IP64 (handles direct rain)',
       'Connectivity': 'Wi-Fi 2.4GHz (no hub required)',
       'Smart Platforms': 'Alexa, Google Home',
-      'Energy Monitoring': 'Yes — tracks kWh per outlet',
+      'Energy Monitoring': 'No',
       'Max Load': '15A / 1875W total',
     },
     pros: [
       'Best outdoor smart plug value at $17 — two independently controlled outlets',
       'IP64 rated — handles direct rain, not just splash resistance',
-      'Energy monitoring tracks exactly what your holiday lights or outdoor A/C cost to run',
       'No hub required — connects directly to your Wi-Fi',
       'Kasa connection reliability is among the best in the Wi-Fi plug category',
+      'ETL certified for safety',
     ],
     cons: [
       'No Apple HomeKit support',
+      'No energy monitoring',
       'Only works on 2.4GHz Wi-Fi — check your router broadcasts a 2.4GHz network',
       'Body width can block the second outlet on a standard duplex exterior receptacle',
     ],
@@ -1098,7 +1099,7 @@ export const products: Product[] = [
     brand: 'Meross',
     category: 'smart-home',
     tagline: 'The only budget outdoor plug with Apple HomeKit — two outlets and the widest ecosystem support',
-    affiliateUrl: 'https://www.amazon.com/dp/B07XTMKQM9?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B07VCDFM53?tag=housegearguid-20',
     price: 19,
     rating: 4.4,
     specs: {
