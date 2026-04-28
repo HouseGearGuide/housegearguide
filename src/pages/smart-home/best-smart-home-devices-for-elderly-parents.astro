@@ -1,0 +1,198 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const picks = [
+  products.find(p => p.slug === 'amazon-echo-dot-5th-gen')!,
+  products.find(p => p.slug === 'google-nest-thermostat-2020')!,
+  products.find(p => p.slug === 'ring-video-doorbell-wired')!,
+  products.find(p => p.slug === 'wyze-cam-v4')!,
+  products.find(p => p.slug === 'google-nest-protect-battery')!,
+].filter(Boolean) as Product[];
+---
+
+<Layout
+  title="Best Smart Home Devices for Elderly Parents (2026)"
+  description="Smart home devices for aging parents that emphasize simplicity, voice control, and remote family monitoring. Honest picks with no complicated setups."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Elderly Parents
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Elderly Parents (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 5 recommended devices</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Smart home technology solves real problems for aging parents: difficulty with small thermostat controls, not knowing who's at the door before opening it, family members wanting to check in remotely without being intrusive, and safety concerns around fire and carbon monoxide.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      This guide prioritizes devices that are genuinely easy to use — things a non-tech-savvy person can operate by voice or by pressing one button, not things that require an app. The five picks below are chosen for simplicity, reliability, and the peace of mind they provide to both the parent and their family.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">How to approach this setup: install it for them</p>
+      <p class="text-sm text-gray-600 leading-relaxed">The most important success factor isn't the devices — it's who sets them up. Smart home technology works best for elderly users when a family member installs and configures everything, sets up the Alexa account, programs the routines, and leaves only a voice interface for the parent to interact with. The goal: your parent says "Alexa, it's too warm in here" and the thermostat adjusts. No app, no login, no settings. Set it up well once and it runs itself.</p>
+    </div>
+
+    <!-- Device Recommendations -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">5 Recommended Devices</h2>
+
+    {picks.map((product, i) => {
+      const labels = [
+        '1. Voice Control Hub — The Foundation',
+        '2. Smart Thermostat — No More Confusing Dials',
+        '3. Video Doorbell — See Who\'s at the Door Safely',
+        '4. Indoor Camera — Family Check-In (with Privacy Controls)',
+        '5. Smart Smoke + CO Detector — Safety Alert System',
+      ];
+      const reasons = [
+        'A voice assistant lets your parent control the thermostat, lights, and TV by talking — no apps, no touchscreens. "Alexa, turn the heat up" is simpler than any dial or digital display. The Echo Dot is always-on and responds instantly.',
+        'The Google Nest Thermostat\'s mirror display is large and easy to read. Its app-based control means you can adjust the temperature remotely if your parent calls you saying they\'re cold — without needing them to touch anything. It also learns patterns over time and programs itself.',
+        'A video doorbell means your parent can see who\'s at the door before opening it — via the Echo Dot\'s speaker ("Alexa, show me the front door" with a compatible Echo Show) or simply by answering the Ring app on their phone. This alone significantly reduces the risk of opening the door to strangers.',
+        'A discreet indoor camera lets family members check in — whether parents are moving around normally, whether they\'ve gotten up in the morning, whether the stove is on when it shouldn\'t be. Wyze Cam\'s motion alerts via the Wyze app give family members visibility without requiring any interaction from the parent.',
+        'Smart smoke detectors send phone alerts to family members when triggered — so you know immediately if an alarm goes off in your parent\'s home while you\'re not there. Nest Protect also speaks aloud to identify which room the danger is in, giving clearer direction during a stressful situation.',
+      ];
+      return (
+        <section id={product.slug} class="mb-14 scroll-mt-20">
+          <div class="border-t border-gray-100 pt-8 mb-4">
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">{labels[i]}</p>
+            <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+              <div>
+                <h3 class="text-xl font-bold text-gray-900 mb-1">{product.name}</h3>
+                <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+              </div>
+              <a
+                href={product.affiliateUrl}
+                target="_blank"
+                rel="nofollow noopener"
+                class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+              >
+                Check on Amazon →
+              </a>
+            </div>
+          </div>
+
+          <p class="text-sm text-gray-700 mb-5 leading-relaxed">{reasons[i]}</p>
+
+          <div class="bg-gray-50 rounded-xl p-4 mb-4">
+            <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+            <div class="grid sm:grid-cols-2 gap-x-8">
+              {Object.entries(product.specs).map(([key, val]) => (
+                <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                  <span class="text-gray-500 text-sm">{key}</span>
+                  <span class="font-medium text-gray-900 text-sm">{val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-green-50 rounded-xl p-4">
+              <p class="font-semibold text-gray-900 mb-2 text-sm">Why it works for elderly households</p>
+              <ul class="space-y-1">
+                {product.pros.slice(0, 3).map(pro => (
+                  <li class="text-sm text-gray-700 flex gap-2">
+                    <span class="text-green-600 flex-shrink-0">✓</span>{pro}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div class="bg-red-50 rounded-xl p-4">
+              <p class="font-semibold text-gray-900 mb-2 text-sm">Limitations to know</p>
+              <ul class="space-y-1">
+                {product.cons.slice(0, 3).map(con => (
+                  <li class="text-sm text-gray-700 flex gap-2">
+                    <span class="text-red-500 flex-shrink-0">✗</span>{con}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+      );
+    })}
+
+    <!-- Budget Summary -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-12">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-4">Total Investment</p>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between"><span class="text-gray-700">Amazon Echo Dot 5th Gen</span><span class="font-medium">$50</span></div>
+        <div class="flex justify-between"><span class="text-gray-700">Google Nest Thermostat</span><span class="font-medium">$129</span></div>
+        <div class="flex justify-between"><span class="text-gray-700">Ring Video Doorbell Wired</span><span class="font-medium">$59</span></div>
+        <div class="flex justify-between"><span class="text-gray-700">Wyze Cam v4</span><span class="font-medium">$36</span></div>
+        <div class="flex justify-between"><span class="text-gray-700">Google Nest Protect (×2, bedroom + living room)</span><span class="font-medium">$238</span></div>
+        <div class="border-t border-green-200 pt-2 flex justify-between font-bold text-gray-900"><span>Total</span><span class="text-green-700">$512</span></div>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Costs can be reduced by starting with just the Echo Dot + thermostat ($179), then adding the doorbell, camera, and smoke detectors over time.</p>
+    </div>
+
+    <!-- Setup Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Setup Tips for Success</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Use one family member's account for everything</h3>
+          <p class="text-sm leading-relaxed">Set up all devices under one Amazon account (or Google account) that a family member controls. This gives the family member full access to device settings, camera feeds, and alerts without requiring your parent to manage any logins. Your parent only needs to speak to Alexa — all app management happens on the family member's phone.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Camera privacy: have the conversation first</h3>
+          <p class="text-sm leading-relaxed">Indoor cameras should be discussed openly with your parent before installation — not deployed secretly. Explain what you'll use them for (wellness check-ins, not surveillance) and establish clear boundaries: which rooms are covered, who has access, and when alerts are sent. Respecting privacy maintains trust. The Wyze Cam's privacy mode (press the button to physically disable the camera) gives your parent direct control when they want it.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Create voice commands for the most common needs</h3>
+          <p class="text-sm leading-relaxed">In the Alexa app, create simple routines your parent can trigger by voice: "Alexa, good morning" turns on lights and sets the thermostat to daytime temperature. "Alexa, I'm going to bed" dims lights and adjusts temperature for sleep. "Alexa, call [family member name]" uses Alexa Calling to reach family without any dialing. Write out a 3×5 card with the most useful Alexa commands and keep it near the Echo Dot.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What if my parent is confused by technology?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The entire goal of this setup is to make technology invisible. Your parent should interact with exactly two things: the Alexa voice assistant (by speaking naturally) and their existing habits (coming and going through the front door, sleeping in their bedroom). Everything else happens automatically or is managed remotely by family. If Alexa feels confusing, write out a laminated card with 5–10 common commands and tape it near the Echo Dot.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I monitor activity without being intrusive?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The Wyze Cam's motion detection alerts provide passive awareness — if your parent hasn't triggered motion by 10am and they're usually up by 8am, that's a signal to call or check in. This is far less intrusive than regular check-in calls. The Ring doorbell's activity log shows when your parent comes and goes. These tools enable a light-touch monitoring approach that respects independence while reducing worry.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What about fall detection or emergency alert devices?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The devices on this page don't include fall detection. For parents with fall risk, a dedicated medical alert system (Life Alert, Medical Guardian, or Amazon Halo Rise) provides fall detection and emergency response. Smart home devices complement — but don't replace — a medical alert system for high-risk elderly individuals. Consider both in combination.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-smoke-detector" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Smoke Detectors →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-starter-kit-under-200" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Starter Kit Under $200 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

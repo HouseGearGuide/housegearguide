@@ -1,0 +1,270 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const solarPick = products.find(p => p.slug === 'ecoflow-delta-2')!;
+const gasPick = products.find(p => p.slug === 'honda-eu2200i')!;
+const budgetSolar = products.find(p => p.slug === 'ecoflow-river-2-pro')!;
+---
+
+<Layout
+  title="Solar Generator vs Portable Generator: Which Should You Buy? (2026)"
+  description="Solar generator vs gas portable generator compared for home backup, camping, and emergency use. Honest trade-offs on cost, fuel, noise, and runtime."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Solar Generator vs Portable Generator
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Solar Generator vs Portable Generator: Which Should You Buy?
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · In-depth comparison</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      "Solar generator" and "portable generator" have become interchangeable in casual use, but they're fundamentally different technologies with different strengths. Choosing the wrong one for your situation means overpaying, under-preparing, or both.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      This guide compares the two head-to-head across every dimension that matters for homeowners: upfront cost, fuel cost, output, noise, safety, and real-world use cases. The honest answer: both have a place — and for many homes, the right answer is one of each.
+    </p>
+
+    <!-- Quick Summary -->
+    <div class="bg-gray-50 rounded-2xl p-6 mb-12">
+      <h2 class="text-lg font-bold text-gray-900 mb-4">Quick Answer: Which Type Is Right for You?</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-green-50 border border-green-200 rounded-xl p-4">
+          <p class="font-bold text-green-800 mb-2">Choose a Solar Generator if you:</p>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Want silent operation — indoors or in a tent</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Don't want to store gasoline</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Need backup for electronics, CPAP, fridge</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Camp or use it in enclosed spaces</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span>Want lower operating cost long-term</li>
+          </ul>
+        </div>
+        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4">
+          <p class="font-bold text-amber-800 mb-2">Choose a Gas Generator if you:</p>
+          <ul class="space-y-2 text-sm text-gray-700">
+            <li class="flex gap-2"><span class="text-amber-600 flex-shrink-0">✓</span>Need 3,000W+ continuous output</li>
+            <li class="flex gap-2"><span class="text-amber-600 flex-shrink-0">✓</span>Want to run central A/C or a well pump</li>
+            <li class="flex gap-2"><span class="text-amber-600 flex-shrink-0">✓</span>Need unlimited runtime (refuel and keep going)</li>
+            <li class="flex gap-2"><span class="text-amber-600 flex-shrink-0">✓</span>Have a lower upfront budget for similar output</li>
+            <li class="flex gap-2"><span class="text-amber-600 flex-shrink-0">✓</span>Already store gasoline for other equipment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Head-to-Head -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Head-to-Head Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Factor</th>
+            <th class="text-left p-3 font-semibold text-green-700">Solar Generator</th>
+            <th class="text-left p-3 font-semibold text-amber-700">Gas Generator</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm">
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-700">Noise Level</td>
+            <td class="p-3 text-gray-600">Silent</td>
+            <td class="p-3 text-gray-600">48–80 dB (lawnmower-level)</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-700">Indoor Safe?</td>
+            <td class="p-3 text-green-700 font-medium">Yes — no exhaust</td>
+            <td class="p-3 text-red-600 font-medium">No — carbon monoxide risk</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-700">Fuel Cost</td>
+            <td class="p-3 text-gray-600">Free (solar) or ~$0.15/kWh (grid)</td>
+            <td class="p-3 text-gray-600">$1–3/hour depending on load</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-700">Continuous Runtime</td>
+            <td class="p-3 text-gray-600">Limited by battery (2–24+ hrs)</td>
+            <td class="p-3 text-gray-600">Unlimited — refuel and continue</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-700">Max Output (typical)</td>
+            <td class="p-3 text-gray-600">800W–3,600W</td>
+            <td class="p-3 text-gray-600">1,000W–10,000W+</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-700">Maintenance</td>
+            <td class="p-3 text-gray-600">None</td>
+            <td class="p-3 text-gray-600">Oil changes, spark plugs, stabilizer</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-700">Upfront Cost (comparable output)</td>
+            <td class="p-3 text-gray-600">$500–$1,800</td>
+            <td class="p-3 text-gray-600">$700–$1,100</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="p-3 font-medium text-gray-700">Lifespan</td>
+            <td class="p-3 text-gray-600">3,000–3,500+ cycles (10+ years)</td>
+            <td class="p-3 text-gray-600">500–3,000 engine hours</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Featured Products -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Our Recommended Picks</h2>
+
+    <!-- Solar pick -->
+    <div class="border border-gray-100 rounded-2xl p-6 mb-6">
+      <div class="flex items-start justify-between gap-4 flex-wrap mb-4">
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Best Solar Generator</p>
+          <h3 class="text-xl font-bold text-gray-900">{solarPick.name}</h3>
+          <p class="text-gray-500 text-sm mt-1">${solarPick.price} · ⭐ {solarPick.rating}/5</p>
+        </div>
+        <a href={solarPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+          Check on Amazon →
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mb-4 leading-relaxed">{solarPick.tagline}</p>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm">
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">Capacity</p>
+          <p class="font-medium">{solarPick.specs['Capacity']}</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">AC Output</p>
+          <p class="font-medium">{solarPick.specs['AC Output']}</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">Solar Input</p>
+          <p class="font-medium">{solarPick.specs['Solar Input']}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Budget solar pick -->
+    <div class="border border-gray-100 rounded-2xl p-6 mb-6">
+      <div class="flex items-start justify-between gap-4 flex-wrap mb-4">
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Best Budget Solar Generator</p>
+          <h3 class="text-xl font-bold text-gray-900">{budgetSolar.name}</h3>
+          <p class="text-gray-500 text-sm mt-1">${budgetSolar.price} · ⭐ {budgetSolar.rating}/5</p>
+        </div>
+        <a href={budgetSolar.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+          Check on Amazon →
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mb-4 leading-relaxed">{budgetSolar.tagline}</p>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm">
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">Capacity</p>
+          <p class="font-medium">{budgetSolar.specs['Capacity']}</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">AC Output</p>
+          <p class="font-medium">{budgetSolar.specs['AC Output']}</p>
+        </div>
+        <div class="bg-gray-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">Weight</p>
+          <p class="font-medium">{budgetSolar.specs['Weight']}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gas pick -->
+    <div class="border border-amber-100 rounded-2xl p-6 mb-12">
+      <div class="flex items-start justify-between gap-4 flex-wrap mb-4">
+        <div>
+          <p class="text-xs font-semibold text-amber-700 uppercase tracking-widest mb-1">Best Gas Generator</p>
+          <h3 class="text-xl font-bold text-gray-900">{gasPick.name}</h3>
+          <p class="text-gray-500 text-sm mt-1">${gasPick.price} · ⭐ {gasPick.rating}/5</p>
+        </div>
+        <a href={gasPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-amber-600 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-amber-700 transition-colors whitespace-nowrap">
+          Check on Amazon →
+        </a>
+      </div>
+      <p class="text-sm text-gray-700 mb-4 leading-relaxed">{gasPick.tagline}</p>
+      <div class="grid sm:grid-cols-3 gap-3 text-sm">
+        <div class="bg-amber-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">Output</p>
+          <p class="font-medium">{gasPick.specs['Output']}</p>
+        </div>
+        <div class="bg-amber-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">Noise Level</p>
+          <p class="font-medium">{gasPick.specs['Noise Level']}</p>
+        </div>
+        <div class="bg-amber-50 rounded-lg p-3">
+          <p class="text-gray-500 text-xs mb-1">Runtime</p>
+          <p class="font-medium">{gasPick.specs['Runtime']}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Deep Dive -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">What the Numbers Don't Tell You</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">The real cost of gas generators</h3>
+          <p class="text-sm leading-relaxed">A Honda EU2200i at $1,099 looks competitive with a $999 EcoFlow DELTA 2 Max. But the total cost of ownership diverges quickly. Gas generators need oil changes every 50–100 hours, fresh gasoline with stabilizer, spark plug replacement, and air filter cleaning. A 3-day power outage running 8 hours/day consumes ~5–7 gallons of gas at $4–5/gallon = $20–35 in fuel. Over 10 years of regular use, fuel and maintenance costs typically exceed the original purchase price again.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Where gas generators still win</h3>
+          <p class="text-sm leading-relaxed">For truly extended outages (a week or more), gas generators offer something battery power stations can't: refuel and restart. If you have a natural gas hookup, a standby generator can run indefinitely. A 2,200W inverter generator can also run a central A/C (which draws 1,000–1,500W) or a well pump (which can require 2,000W+ on startup surge) — tasks that exceed most battery power stations' capabilities. If running critical high-draw appliances through extended outages is your priority, gas has a real edge.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Many serious preppers buy both</h3>
+          <p class="text-sm leading-relaxed">A common and effective strategy: a 1,000–2,000Wh solar generator handles daily electronics, lights, CPAP, and phone charging (silently, indoors, indefinitely with solar). A gas generator handles the high-draw equipment during the critical hours when solar isn't enough: A/C during the hottest part of the day, the well pump in the morning, the sump pump during a storm. They complement each other rather than replace one another.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What's the difference between a solar generator and a portable power station?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">These terms are used interchangeably. A solar generator is a portable power station (battery + inverter + charge controller) with a solar panel attached or included. The battery power station is the base unit; solar capability comes from the charging input port that accepts DC from panels. Every power station on this site is solar-capable — the solar panels are sold separately in most cases.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can a solar generator run all day without sun?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">No. Without sunlight or grid charging, a solar generator is limited to its battery capacity. A 1,000Wh unit running a 100W refrigerator would last about 8 hours. For extended overcast periods, the battery must be recharged via grid (AC) or a gas generator via the AC passthrough — or you need enough battery capacity to outlast the cloudy stretch.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How far away does a gas generator need to be from the house?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The CDC and CPSC recommend at least 20 feet from any door, window, or vent. Carbon monoxide travels fast — dozens of deaths occur annually from gas generators operated too close to living spaces. Never run a gas generator inside a garage, even with the door open. Battery power stations have zero exhaust and no such restriction.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+        <a href="/backup-power/best-whole-home-battery-backup-system" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Battery Backup System →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

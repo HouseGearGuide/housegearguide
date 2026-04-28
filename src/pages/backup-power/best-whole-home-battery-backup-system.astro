@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecoflow-delta-pro', 'bluetti-ep500pro'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Whole-Home Battery Backup System (2026)"
+  description="Whole-home battery backup systems compared: EcoFlow DELTA Pro and Bluetti EP500Pro. Which can power critical circuits through an extended outage?"
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Whole-Home Battery Backup System
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Whole-Home Battery Backup System (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 2 systems compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Whole-home battery backup sits between a portable power station and a permanently installed Tesla Powerwall. These systems are large enough to power critical home circuits for hours — sometimes days — and smart enough to switch over automatically when the grid goes down.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The two picks below represent the leading approaches: the EcoFlow DELTA Pro, which is wheeled and movable but expandable to 25kWh, and the Bluetti EP500Pro, a stationary system with 5,120Wh base capacity and true UPS-grade switching. Neither requires a permit or utility approval — unlike the Powerwall.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Do you need a whole-home battery or a portable power station?</p>
+      <p class="text-sm text-gray-600 leading-relaxed">Portable power stations (500–2,000Wh) work great for phones, laptops, lights, CPAP, and small appliances. Whole-home battery systems (3,500–10,000Wh+) are designed to power refrigerators continuously, run well pumps, power medical equipment, and keep critical circuits active through 12–48 hour outages. If you've experienced multi-day outages and want to protect your sump pump, refrigerator, and home office simultaneously, a whole-home system is the right level. Use our <a href="/backup-power/calculator" class="text-green-700 hover:underline">backup power calculator</a> to estimate your watt-hour needs.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price.toLocaleString()}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">System</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Capacity</th>
+            <th class="text-left p-3 font-semibold text-gray-700">AC Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Solar Input</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price.toLocaleString()}</td>
+              <td class="p-3">{p.specs['Capacity']}</td>
+              <td class="p-3">{p.specs['AC Output']}</td>
+              <td class="p-3">{p.specs['Solar Input']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Expandable Whole-Home Battery' : '🥈 Best High-Capacity Stationary System'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price.toLocaleString()} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Whole-Home Battery Buying Guide</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How much capacity do you actually need?</h3>
+          <p class="text-sm leading-relaxed">A typical home in an outage consumes 500–800Wh per hour for essential loads (fridge at 150W, lights at 100W, router at 20W, phone charging, one TV). At 600W average draw, a 3,600Wh EcoFlow DELTA Pro lasts 6 hours; a 5,120Wh Bluetti EP500Pro lasts ~8.5 hours. If you add a 400W sump pump cycling every hour, or a window A/C at 800W, runtime drops significantly. The backup power calculator at the top of this site can help you calculate your specific load.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">EcoFlow Smart Home Panel vs. standard transfer switch</h3>
+          <p class="text-sm leading-relaxed">The EcoFlow DELTA Pro is most powerful when paired with EcoFlow's Smart Home Panel, which connects directly to your home's circuit breaker and enables automatic switchover on power failure. This requires a licensed electrician for installation ($500–$1,500 typically) but delivers a seamless, automatic whole-home backup experience. Without the Smart Home Panel, you connect individual appliances via extension cords. The Bluetti EP500Pro has its own UPS passthrough that works without panel installation but limits you to what's plugged directly into the unit's outlets.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Why these beat the Powerwall for most homeowners</h3>
+          <p class="text-sm leading-relaxed">A Tesla Powerwall 3 costs $9,200+ including installation, requires a Tesla Certified Installer, must be permitted with your utility, and takes weeks to install. The EcoFlow DELTA Pro and Bluetti EP500Pro arrive in 3–5 days, plug in immediately, require no permits or utility notification, and can be taken with you if you move. The trade-off: they don't integrate into your home circuits without additional hardware, and they aren't designed for daily cycling from solar panels the way a Powerwall is.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can these systems power a central air conditioner?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Central A/C units typically draw 3,000–5,000W at startup and 1,500–3,500W continuously — beyond what any portable battery system can sustain. The EcoFlow DELTA Pro's 3,600W inverter can theoretically start a small central unit, but the battery would drain in 1–2 hours. These systems are best suited for critical circuits: refrigerators, medical equipment, lights, communications, and sump pumps — not whole-home cooling.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How long do LFP batteries last in these systems?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Both units use LiFePO4 (LFP) batteries rated for 3,500+ cycles to 80% capacity. At one full charge-discharge cycle per week (during weekly outages or testing), that's 67+ years. Even at a cycle per day, it's nearly 10 years before degradation becomes noticeable. LFP is the right chemistry for long-term whole-home backup use — it won't catch fire and degrades predictably.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do I need a permit to install these?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The battery systems themselves don't require permits. However, if you hire an electrician to connect the EcoFlow Smart Home Panel to your main panel, that work typically requires an electrical permit. Check with your local jurisdiction. Stand-alone use (plugging directly into wall outlets or using extension cords to appliances) requires no permit at all.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-under-1000" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $1,000 →</p>
+        </a>
+        <a href="/backup-power/solar-generator-vs-portable-generator" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Solar Generator vs Gas Generator →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

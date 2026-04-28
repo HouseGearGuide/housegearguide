@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ring-video-doorbell-4', 'google-nest-doorbell-battery', 'ring-video-doorbell-wired'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Doorbell Camera (2026): Ring vs Nest vs Wired"
+  description="The best smart video doorbells compared: Ring Video Doorbell 4, Google Nest Doorbell, and Ring Wired. Battery vs wired, with honest subscription cost breakdown."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Doorbell Camera
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Doorbell Camera (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 doorbells compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A video doorbell lets you see, hear, and speak to anyone at your front door — from your phone, anywhere. The right choice comes down to three questions: Do you want battery or wired power? Which smart home ecosystem do you use? And how much are you willing to pay for cloud video storage?
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The three picks below cover every budget and use case: a premium battery doorbell with color pre-roll, a Google-ecosystem option with unique portrait video, and a budget wired pick that skips batteries entirely.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Battery vs wired: which is right for you?</p>
+      <p class="text-sm text-gray-600 leading-relaxed"><strong>Battery doorbells</strong> install in 15 minutes with no existing doorbell wiring — perfect for renters or homes without wired doorbells. Trade-off: batteries need charging every 2–6 months depending on traffic. <strong>Wired doorbells</strong> run off your existing low-voltage doorbell wiring for always-on power, but require existing hardwiring. If you already have a doorbell button, wired is usually the cleaner long-term choice. No existing wiring? Battery is your only DIY option.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Doorbell</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Power</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Resolution</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Ecosystem</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Power']}</td>
+              <td class="p-3">{p.specs['Resolution']}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Battery Doorbell' : i === 1 ? '🥈 Best for Google Home' : '🥉 Best Budget / Wired Pick'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">What to Know Before Buying a Smart Doorbell</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Subscriptions: the real cost of video doorbells</h3>
+          <p class="text-sm leading-relaxed">The hardware price is just the start. Ring Protect Basic is $4/month per device (or $10/month for unlimited devices). Nest Aware starts at $8/month for 30 days of history. Without a subscription, both cameras show live view but save no event clips. The exception: the Ring Wired does store the last 60 days of motion alerts with a subscription, but without one, you only get live view and motion alerts. Factor subscription cost into your budget — a $59 Ring Wired with a $10/month plan costs $179 the first year.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Pre-roll footage: why it matters</h3>
+          <p class="text-sm leading-relaxed">By the time you open your phone to check a motion alert, the person who triggered it has been at your door for 10–15 seconds. Pre-roll footage captures a short clip of what happened before the motion alert triggered. The Ring 4's color pre-roll is 4 seconds of full-color video — enough to see if someone walked up to the door, a car pulled away, or a package was delivered. The Ring Wired uses a black-and-white buffer instead. Nest Doorbell on battery doesn't support pre-roll (snapshots only).</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Installation: what you actually need</h3>
+          <p class="text-sm leading-relaxed">All three doorbells install with a standard screwdriver. Battery models just need a mounting bracket and Wi-Fi — no existing wiring required. Wired models connect to the two low-voltage wires from your existing doorbell button (typically 16–24V AC). If you have an existing doorbell that rings inside, you almost certainly have the right wiring. If you rent and your landlord won't allow exterior modifications, check whether your lease permits mounting a doorbell camera — most do since no drilling is needed for battery models.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do video doorbells work with existing indoor chimes?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Wired Ring doorbells work with most existing mechanical or digital chimes. The Ring Doorbell Wired works with existing chimes when wired. Battery Ring doorbells don't always drive existing chimes consistently — Ring sells a separate Chime Pro device (~$35) that connects over Wi-Fi and rings indoors. The Nest Doorbell Battery does not ring existing chimes; it uses the Nest app and Google Home speakers instead.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I see my doorbell camera while away from home?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — all three connect over Wi-Fi and let you view live video from anywhere via their respective apps (Ring or Google Home). Two-way audio works remotely as well, so you can speak to delivery drivers or visitors while you're at work or traveling. Internet connection at home is required for remote access.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Are video doorbells safe from being stolen?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Ring doorbells use a security screw that requires a special bit (included) to remove. They also ship with a theft guarantee — Ring will replace a stolen device once. The Ring 4 and Nest Doorbell are harder to remove than the wired model since battery models use a security mounting bracket. The Nest Doorbell has a magnetic mount that is slightly easier to remove, though Google Home app alerts would show tampering attempts.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-outdoor-security-camera-system" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Outdoor Security Camera System →</p>
+        </a>
+        <a href="/smart-home/best-smart-lock-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Locks for Renters →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

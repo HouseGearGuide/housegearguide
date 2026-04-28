@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['amazon-echo-hub', 'samsung-smartthings-hub-v3', 'apple-homepod-mini'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Home Hub (2026): Echo Hub vs SmartThings vs HomePod mini"
+  description="The best smart home hubs compared: Amazon Echo Hub, Samsung SmartThings Hub v3, and Apple HomePod mini. The right hub depends on your ecosystem."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Hub
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Hub (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 hubs compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A smart home hub is the central coordinator for your connected devices — it lets you control lights, locks, thermostats, and cameras from one app, set up automations, and often extends device range through local communication protocols like Zigbee or Z-Wave.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The right hub depends almost entirely on your existing ecosystem. Alexa households get the most out of the Echo Hub. SmartThings is the most protocol-versatile option for mixing devices from different brands. Apple HomePod mini is the required foundation for any serious HomeKit setup.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Do you even need a dedicated hub?</p>
+      <p class="text-sm text-gray-600 leading-relaxed">If all your devices connect over Wi-Fi, you may not need a hub at all — they work directly with your router. You need a hub when you want to use Zigbee or Z-Wave devices (which have better battery life and don't crowd your Wi-Fi network), when you need local processing for automations that run without the internet, or when you want to unify many devices across different brands under one controller.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Hub</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Protocols</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Ecosystems</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Display</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Protocols']}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+              <td class="p-3">{p.specs['Display']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best for Alexa Households' : i === 1 ? '🥈 Best for Mixed-Device Homes' : '🏠 Best for Apple HomeKit'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">How to Choose the Right Smart Home Hub</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Start with your ecosystem</h3>
+          <p class="text-sm leading-relaxed">The single most important factor is which voice assistant and phone platform you already use. If you use Alexa and Amazon devices, the Echo Hub is the natural command center. If you're an iPhone household already using HomeKit, the HomePod mini is practically required — it enables remote access, automations, and Thread device connectivity. If you have a mix of devices from different brands, SmartThings is the most flexible bridge.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Zigbee vs Z-Wave vs Matter: what matters</h3>
+          <p class="text-sm leading-relaxed">Zigbee and Z-Wave are short-range mesh protocols — devices relay signals through each other to extend range. Zigbee is more common and has more compatible devices; Z-Wave has better range and less interference. Matter is the newer universal standard that works across all ecosystems. The SmartThings Hub v3 handles all three; the Echo Hub handles Zigbee and Matter; HomePod mini handles Thread (the Matter-adjacent protocol) and Wi-Fi.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Local processing matters more than you think</h3>
+          <p class="text-sm leading-relaxed">Cloud-dependent automations break when your internet goes down. The SmartThings Hub runs most automations locally — your lights still turn on at sunset during an outage. The Echo Hub requires internet for most functions. HomePod mini runs HomeKit automations locally. For critical automations like security system responses, local processing is a meaningful reliability advantage.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I use more than one hub?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — many smart home setups use multiple hubs. A common combination is HomePod mini as the HomeKit hub plus SmartThings for Zigbee and Z-Wave devices, with Alexa providing voice control across all of them. Matter is designed specifically to eliminate the need for this kind of multi-hub juggling, but the transition is still ongoing in 2026.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does the Echo Hub require an Amazon Prime subscription?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">No. The Echo Hub works without Prime or any subscription. Amazon Prime is only required for media services (Prime Video, Prime Music). The smart home control functions, Zigbee connectivity, and Matter hub capabilities all work without any subscription.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Will Matter eventually make hubs obsolete?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Matter aims to allow devices to work across ecosystems without a hub, but it still requires a Thread Border Router (like the HomePod mini or eero Pro) for Thread-based Matter devices. Wi-Fi-based Matter devices don't need a hub. Zigbee and Z-Wave devices won't speak Matter natively — those will always need a bridge. Hubs aren't going away, but their role is evolving toward bridging legacy protocols to Matter.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/google-home-vs-alexa" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Google Home vs Alexa: Which Ecosystem Wins? →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-starter-kit-under-200" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Starter Kit Under $200 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>
