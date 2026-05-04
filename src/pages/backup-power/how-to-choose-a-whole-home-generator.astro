@@ -1,0 +1,252 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const generac = products.find(p => p.slug === 'generac-22kw-guardian')!;
+const kohler = products.find(p => p.slug === 'kohler-20rescl-20kw')!;
+const briggs = products.find(p => p.slug === 'briggs-stratton-10kw-standby')!;
+---
+
+<Layout
+  title="How to Choose a Whole-Home Generator (2026): Complete Buyer's Guide"
+  description="How to choose the right whole-home standby generator: calculate your wattage needs, pick the right fuel type, understand transfer switches, and budget for full installation cost."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      How to Choose a Whole-Home Generator
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      How to Choose a Whole-Home Generator
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: May 2026 · 10 min read</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A whole-home standby generator is one of the largest home investments you'll make — and one of the easiest to get wrong. Most buyers focus on the unit price and overlook the installed cost, the fuel requirements, or the wattage math that determines whether their generator will actually cover their home. This guide walks through every decision you need to make, in the right order.
+    </p>
+    <p class="text-lg text-gray-700 mb-10 leading-relaxed">
+      By the end, you'll know exactly what size generator your home needs, which fuel type fits your situation, what to expect from installation, and what the full project will actually cost.
+    </p>
+
+    <!-- Step 1 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 1: Calculate Your Wattage Needs</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        Before you look at any generator specs, you need to know how much power your home actually draws during normal operation. This is the number that determines whether a 10kW, 14kW, 20kW, or 22kW generator is appropriate — and getting it wrong in either direction is expensive.
+      </p>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        Start by listing everything you want to run during an outage. Be realistic — most homeowners don't need to run every circuit simultaneously. Then look up the wattage for each item (usually on the label or in the manual) and note both the <strong>running watts</strong> and the <strong>starting watts</strong>. Motors — refrigerators, A/C units, well pumps — draw 2–3× their running wattage for a fraction of a second on startup. Your generator needs to handle the starting surge.
+      </p>
+
+      <div class="bg-gray-50 rounded-xl p-5 mb-6">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Common Household Wattage Reference</p>
+        <div class="grid sm:grid-cols-2 gap-x-8 text-sm">
+          <div class="space-y-2">
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Central A/C (3-ton)</span><span class="font-medium text-gray-900">3,500W running / 5,000W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Central A/C (5-ton)</span><span class="font-medium text-gray-900">5,500W running / 8,000W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Well pump (1 HP)</span><span class="font-medium text-gray-900">1,000W running / 2,000W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Refrigerator</span><span class="font-medium text-gray-900">700W running / 1,400W start</span></div>
+          </div>
+          <div class="space-y-2">
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Gas furnace (blower)</span><span class="font-medium text-gray-900">800W running / 1,200W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Electric water heater</span><span class="font-medium text-gray-900">4,500W running</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Sump pump (1/2 HP)</span><span class="font-medium text-gray-900">800W running / 1,300W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Lights and outlets</span><span class="font-medium text-gray-900">1,500–3,000W</span></div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        Add up the running wattage for everything you want to run simultaneously, then add the highest single starting surge on top. For a typical 2,000 sq ft home with central A/C, a refrigerator, gas furnace, and lights: roughly 7,000–9,000W running with an A/C startup surge of 5,000W. That's a peak demand of 12,000–14,000W — which is why 10kW generators fall short for most full-home setups.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        A general rule: if you want to run everything in your home including central A/C, you need at least 20kW. If you're willing to cycle the A/C manually or shed some loads, 14–16kW may work. If you only want essential circuits (lights, fridge, furnace blower, one window A/C), 10kW is sufficient.
+      </p>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 2: Choose Your Fuel Type</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        Standby generators run on either natural gas or liquid propane (LP). This is one of the first questions your installer will ask, and it largely depends on what's available at your property.
+      </p>
+
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="border border-gray-200 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-2">Natural Gas</p>
+          <ul class="text-sm text-gray-700 space-y-1.5">
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span> Unlimited runtime — pipes don't run dry</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span> No tank to fill, maintain, or monitor</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span> Lower fuel cost per BTU vs propane</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span> Only available if you have gas service to the property</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span> Gas mains can fail during earthquakes or major disasters</li>
+          </ul>
+        </div>
+        <div class="border border-gray-200 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-2">Liquid Propane (LP)</p>
+          <ul class="text-sm text-gray-700 space-y-1.5">
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span> Works anywhere — no gas line required</li>
+            <li class="flex gap-2"><span class="text-green-600 flex-shrink-0">✓</span> Stored on-site — not dependent on utility infrastructure</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span> Tank must be sized and filled — 500-gallon minimum for a 22kW generator</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span> Higher fuel cost and delivery scheduling</li>
+            <li class="flex gap-2"><span class="text-red-500 flex-shrink-0">✗</span> Tank rental or purchase cost adds to project budget</li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed">
+        If you have natural gas service, use it — unlimited runtime and no fuel logistics is a meaningful advantage. If you're rural without gas, LP is your only option. A 500-gallon LP tank running a 22kW generator at 50% load provides approximately 4–5 days of continuous runtime, which covers the vast majority of storm-related outages.
+      </p>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 3: Understand Transfer Switches</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        A transfer switch is the component that safely connects your generator to your home's electrical panel — and disconnects it from the grid so power doesn't backfeed into utility lines (which can kill linemen). It is not optional. Running a generator without a transfer switch into your home's wiring is illegal in most jurisdictions and extremely dangerous.
+      </p>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        <strong>Automatic Transfer Switch (ATS):</strong> Detects a power outage within seconds and starts the generator automatically. Your home is back on generator power within 10–30 seconds — often before you've noticed the outage. This is the standard for whole-home standby generators. Generac's 22kW Guardian includes a 200A ATS at no additional cost. Kohler's 20kW does not include the ATS — budget an additional $400–800.
+      </p>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        <strong>200A vs 100A transfer switch:</strong> The amperage of your transfer switch must match or exceed your main panel amperage. Most homes built after 1990 have 200A main panels. A 100A transfer switch on a 200A panel cannot protect all circuits — it covers a sub-panel of essential loads only. For true whole-home backup, a 200A ATS is required.
+      </p>
+
+      <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5">
+        <p class="font-semibold text-gray-900 mb-2 text-sm">Manual transfer switches: the budget alternative</p>
+        <p class="text-sm text-gray-600 leading-relaxed">Manual transfer switches (sometimes called interlock kits) require you to physically flip a breaker when an outage occurs. They cost $200–500 installed vs $800–1,500 for an ATS. The trade-off: you must be home, awake, and willing to go to the panel when the power goes out. For vacation properties, renters-of-record, or anyone with a medical reason to need automatic switchover, a manual switch is the wrong choice. For a budget-conscious homeowner who is almost always home, it's a valid way to save $600–1,000 on the installation.</p>
+      </div>
+    </section>
+
+    <!-- Step 4 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 4: Pick the Right Output Size</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        With your wattage calculation from Step 1 in hand, matching to a generator size is straightforward. Add 20–25% headroom above your calculated peak demand — generators run most efficiently and last longest at 50–75% load, not at 100%.
+      </p>
+
+      <div class="space-y-4 mb-6">
+        <div class="border-l-4 border-gray-200 pl-4">
+          <p class="font-semibold text-gray-900 mb-1">10kW — Essential circuits only</p>
+          <p class="text-sm text-gray-700">Covers lights, outlets, refrigerator, gas furnace, and one window A/C unit. Cannot run central A/C and large appliances simultaneously. Best for smaller homes, or homeowners comfortable managing loads manually. The <a href="/backup-power/best-whole-home-generator-brands-compared" class="text-green-700 hover:underline">Briggs & Stratton 10kW</a> is the most affordable entry point at $2,099.</p>
+        </div>
+        <div class="border-l-4 border-gray-200 pl-4">
+          <p class="font-semibold text-gray-900 mb-1">14–18kW — Most homes with gas HVAC</p>
+          <p class="text-sm text-gray-700">Covers whole-home load for gas-heated homes — A/C, furnace blower, all appliances. Appropriate for 1,500–2,500 sq ft homes with gas heating. Most commonly installed residential size.</p>
+        </div>
+        <div class="border-l-4 border-green-300 pl-4">
+          <p class="font-semibold text-gray-900 mb-1">20–22kW — Full whole-home coverage including electric systems</p>
+          <p class="text-sm text-gray-700">Covers everything: central A/C, electric water heater (if gas isn't available), well pump, EV charger (Level 1 only), and full home load. Required for all-electric homes or homes over 2,500 sq ft with electric HVAC. The <a href={generac.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline">Generac 22kW Guardian</a> is the standard choice at this tier — includes the 200A ATS and carries a 5-year warranty.</p>
+        </div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed">
+        When in doubt, size up. A 22kW generator running at 60% load runs more quietly, lasts longer, and provides capacity for future additions (EV charger, hot tub, addition) than an 18kW unit at 90% load.
+      </p>
+    </section>
+
+    <!-- Step 5 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 5: Budget for Full Installed Cost</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        The generator unit price is only part of the investment. Most buyers are surprised by the full installed cost — here's what to expect for each component.
+      </p>
+
+      <div class="bg-gray-50 rounded-xl p-5 mb-6">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Typical Whole-Home Generator Project Cost Breakdown</p>
+        <div class="text-sm space-y-2">
+          <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Generator unit (10kW)</span><span class="font-medium text-gray-900">$2,000–2,500</span></div>
+          <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Generator unit (20–22kW)</span><span class="font-medium text-gray-900">$3,200–4,000</span></div>
+          <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">200A automatic transfer switch</span><span class="font-medium text-gray-900">$400–800 (if not included)</span></div>
+          <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Concrete pad installation</span><span class="font-medium text-gray-900">$300–800</span></div>
+          <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Gas line extension (if needed)</span><span class="font-medium text-gray-900">$500–2,000</span></div>
+          <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Electrical labor and wiring</span><span class="font-medium text-gray-900">$1,000–2,500</span></div>
+          <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Permits and inspections</span><span class="font-medium text-gray-900">$200–600</span></div>
+          <div class="flex justify-between py-1.5 border-b border-gray-100 font-semibold"><span class="text-gray-900">Total installed (10kW)</span><span class="text-gray-900">$5,000–8,000</span></div>
+          <div class="flex justify-between py-1.5 font-semibold"><span class="text-gray-900">Total installed (20–22kW)</span><span class="text-gray-900">$7,000–12,000</span></div>
+        </div>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed">
+        Get three quotes from licensed generator installers, not just general electricians. Generator-specialist installers know the local permit requirements, have established relationships with the gas utility for line work, and are faster — which translates to lower labor costs. Many Generac and Kohler dealers offer installation as part of a package deal with the unit purchase.
+      </p>
+    </section>
+
+    <!-- Installation -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What to Expect During Installation</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        A standard whole-home generator installation takes 1–3 days. Here's the typical sequence:
+      </p>
+      <ol class="list-none space-y-4 mb-6">
+        <li class="flex gap-3 text-gray-700 text-sm">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold mt-0.5">1</span>
+          <div><strong class="text-gray-900">Site survey</strong> — installer assesses panel location, gas meter, setback requirements (generators must be at least 5 feet from windows, doors, and vents per NFPA 37), and determines the concrete pad location.</div>
+        </li>
+        <li class="flex gap-3 text-gray-700 text-sm">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold mt-0.5">2</span>
+          <div><strong class="text-gray-900">Permit pulled</strong> — electrical and mechanical permits are required in virtually every jurisdiction. Do not allow work to begin without permits — unpermitted generator installations create significant home insurance and resale complications.</div>
+        </li>
+        <li class="flex gap-3 text-gray-700 text-sm">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold mt-0.5">3</span>
+          <div><strong class="text-gray-900">Concrete pad poured</strong> — the generator sits on a raised concrete pad that elevates it above ground level and provides a stable, permanent base. Allow 24–72 hours to cure before placing the generator.</div>
+        </li>
+        <li class="flex gap-3 text-gray-700 text-sm">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold mt-0.5">4</span>
+          <div><strong class="text-gray-900">Generator placed and connected</strong> — mechanical installation, transfer switch wiring, and gas line connection. The transfer switch connects to your main panel and the generator simultaneously.</div>
+        </li>
+        <li class="flex gap-3 text-gray-700 text-sm">
+          <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold mt-0.5">5</span>
+          <div><strong class="text-gray-900">Inspection and startup</strong> — the local building department inspects the installation, then the installer performs a load test and configures the weekly exercise cycle and app monitoring.</div>
+        </li>
+      </ol>
+
+      <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-5">
+        <p class="font-semibold text-gray-900 mb-2 text-sm">After installation: annual maintenance is mandatory</p>
+        <p class="text-sm text-gray-600 leading-relaxed">Standby generators require annual service to maintain the warranty — oil change, spark plug inspection, air filter, and battery check. Most manufacturers require this at 200 operating hours or annually, whichever comes first. Budget $150–300/year for a maintenance contract from a certified dealer. The generator also runs a brief weekly self-test (10–20 minutes, configurable via app) to keep seals lubricated and verify startup reliability.</p>
+      </div>
+    </section>
+
+    <!-- Recommendation -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Our Recommendation for Most Homes</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        For a 2,000–3,000 sq ft home with central A/C, a well pump, and natural gas service, the <a href={generac.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline font-medium">Generac 22kW Guardian</a> is the best-value whole-home generator for most buyers. It includes the 200A automatic transfer switch (a $600 value), carries the longest warranty in residential standby (5 years), and is supported by the largest dealer network in the U.S. — which matters when you need a service call at 11pm during a hurricane.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        If noise is your top concern (close neighbors, small lot), the <a href={kohler.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline font-medium">Kohler 20kW</a> operates 2 dB quieter and delivers equivalent home coverage. If you only need essential circuits covered and want to minimize cost, the <a href={briggs.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline font-medium">Briggs & Stratton 10kW</a> is the most affordable entry into whole-home standby at $2,099 — but verify it covers your specific critical load list before purchasing.
+      </p>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <a href="/backup-power/best-whole-home-generator-2000-sq-ft" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for 2,000 Sq Ft →</p>
+        </a>
+        <a href="/backup-power/best-whole-home-generator-for-well-pump" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for Well Pumps →</p>
+        </a>
+        <a href="/backup-power/best-whole-home-battery-backup-system" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Battery Backup Systems →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

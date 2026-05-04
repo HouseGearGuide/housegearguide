@@ -1,0 +1,205 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const echoDot = products.find(p => p.slug === 'amazon-echo-dot-5th-gen')!;
+const kasaBulb = products.find(p => p.slug === 'kasa-smart-bulb-kl135')!;
+const kasaPlug = products.find(p => p.slug === 'kasa-outdoor-smart-plug-ep40a')!;
+const wyzeCam = products.find(p => p.slug === 'wyze-cam-v4')!;
+---
+
+<Layout
+  title="How to Set Up a Smart Home on a Budget (2026): Step-by-Step Guide"
+  description="How to set up a smart home without overspending: choose the right ecosystem, buy in the right order, avoid the most common beginner mistakes, and build real automation for under $200."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      How to Set Up a Smart Home on a Budget
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      How to Set Up a Smart Home on a Budget
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: May 2026 · 8 min read</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Most smart home content shows you a $5,000 dream setup with motorized shades, a whole-home audio system, and a custom control panel. This guide is not that. This is for people who want a genuinely useful smart home — voice control, automated lighting, a security camera, and outdoor scheduling — without spending more than $150–200 to get started.
+    </p>
+    <p class="text-lg text-gray-700 mb-10 leading-relaxed">
+      The secret to a budget smart home is buying in the right order and choosing compatible devices from the start. Two hours of planning before your first purchase will save you from the most common — and most expensive — beginner mistake: buying devices that don't work together.
+    </p>
+
+    <!-- Step 1 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 1: Choose One Ecosystem — Before You Buy Anything</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        The single most important smart home decision is which voice assistant ecosystem you'll use: Amazon Alexa or Google Home. This decision shapes every purchase that follows. Devices designed for one ecosystem often work poorly with the other, and building a mixed setup leads to the most common complaint: "half my devices work and half don't."
+      </p>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        <strong>Choose Alexa if:</strong> you already use Amazon Prime, shop frequently on Amazon, or want the widest possible device compatibility. Alexa works with over 100,000 smart home devices — more than any other platform. It's also the most mature ecosystem for automations and routines.
+      </p>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        <strong>Choose Google Home if:</strong> your household is deep in the Google ecosystem — Android phones, Google accounts, Google Calendar, YouTube. Google's natural language understanding is genuinely better for open-ended queries and it integrates cleanly with Android features like Routines triggered by phone events.
+      </p>
+      <p class="text-gray-700 mb-6 leading-relaxed">
+        For most budget buyers, <strong>Alexa is the right default</strong>. The Echo Dot is cheaper than the Google Nest Mini, Alexa has more compatible budget devices, and the automation options are more powerful at the free tier. See our full <a href="/smart-home/google-home-vs-alexa" class="text-green-700 hover:underline font-medium">Google Home vs Alexa comparison</a> if you want a detailed breakdown before deciding.
+      </p>
+
+      <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-5">
+        <p class="font-semibold text-gray-900 mb-2 text-sm">What about Apple HomeKit?</p>
+        <p class="text-sm text-gray-600 leading-relaxed">HomeKit is the most private and locally-processed smart home platform — but it has the smallest device ecosystem and the highest device prices. If you own an iPhone, Apple Watch, Apple TV, and HomePod, HomeKit can make sense. For a budget setup starting from scratch, HomeKit adds cost and friction without proportional benefit. Start with Alexa or Google, and if you migrate to Apple devices later, Matter-compatible devices (increasingly common) will bridge the gap.</p>
+      </div>
+    </section>
+
+    <!-- Step 2 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 2: Start With a Smart Speaker ($25–50)</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        Your first purchase should always be a smart speaker. Without one, you're controlling every device from your phone — which is barely more convenient than flipping a physical switch. With a smart speaker, you unlock voice control for every compatible device you add afterward, plus the ability to create routines ("Alexa, good morning" → lights on, thermostat adjusted, news briefing started) that run with a single command.
+      </p>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        The <a href={echoDot.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline font-medium">Amazon Echo Dot (5th Gen)</a> is the right choice for most budget setups. At $50 (frequently on sale for $25–35 during Amazon events), it's the best-selling smart speaker in the U.S. and controls over 100,000 Alexa-compatible devices. The 5th Gen added a built-in temperature sensor — useful for automations like "if the room is above 75°F, turn on the fan" — and a built-in eero Wi-Fi extender that improves signal in larger homes.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        Place it in the room where you spend the most time — usually the kitchen or living room. You can add more Echo Dots to other rooms later ($25–50 each) to extend voice control throughout your home without adding complexity.
+      </p>
+    </section>
+
+    <!-- Step 3 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 3: Add Smart Lighting — One Room at a Time</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        Smart lighting is the highest-impact visible upgrade in a smart home. The ability to say "Alexa, dim the living room to 40%" or have your bedroom lights gradually brighten at 7am instead of a jarring alarm changes how your home feels day to day.
+      </p>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        For budget setups, start with smart bulbs rather than smart switches. Smart bulbs install in seconds (screw in like any bulb) and can be taken with you if you move — important for renters. The <a href={kasaBulb.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline font-medium">Kasa Smart Multicolor Bulb (KL135)</a> is the best-value smart color bulb at about $15 each. No hub required — it connects directly to your Wi-Fi. Works with both Alexa and Google Home.
+      </p>
+      <p class="text-gray-700 mb-6 leading-relaxed">
+        Buy a 4-pack for your main living space first (~$50). Set up a "movie mode" scene (dim warm amber), a "reading mode" (bright cool white), and a "sunset" routine (automatically dims to warm tones as evening approaches). These three automations alone are what make visitors ask "wait, is your whole home smart?"
+      </p>
+
+      <div class="bg-gray-50 rounded-xl p-5">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Smart Bulb vs Smart Switch: When to Use Which</p>
+        <div class="grid sm:grid-cols-2 gap-4 text-sm text-gray-700">
+          <div>
+            <p class="font-semibold text-gray-900 mb-2">Use smart bulbs when:</p>
+            <ul class="space-y-1">
+              <li>· You're renting</li>
+              <li>· The room has 1–3 light sockets</li>
+              <li>· You want color and tunable white</li>
+              <li>· You want no-tool installation</li>
+            </ul>
+          </div>
+          <div>
+            <p class="font-semibold text-gray-900 mb-2">Use a smart switch when:</p>
+            <ul class="space-y-1">
+              <li>· You own the home</li>
+              <li>· The room has 5+ fixtures on one switch</li>
+              <li>· Family members keep turning the wall switch off (which kills smart bulbs)</li>
+              <li>· You want the standard look of a wall switch</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Step 4 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 4: Add an Outdoor Smart Plug for Easy Wins</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        An outdoor smart plug is one of the highest-ROI smart home purchases because it automates things that are genuinely annoying to do manually: porch lights that you forget to turn off, holiday string lights, a patio fan, or a fountain. You plug it into any outdoor outlet, connect it to the app, and set a schedule — done.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        The <a href={kasaPlug.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline font-medium">Kasa Smart Outdoor Plug EP40</a> is the best value at $17. It has two independently controlled outlets (so you can put porch lights on one and a holiday decoration on another with different schedules), IP64 weather rating that handles direct rain, and Kasa's reliably stable Wi-Fi connection. Set a "turn on at sunset, off at 11pm" schedule in the Kasa app in under 3 minutes — it adjusts automatically as sunset shifts through the seasons.
+      </p>
+    </section>
+
+    <!-- Step 5 -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Step 5: Add a Security Camera (Optional, But Recommended)</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        A security camera becomes useful fast once you have one — package monitoring, checking if you left the garage open, and seeing who's at the door from anywhere in the world. At under $40, it's the most affordable meaningful security upgrade available.
+      </p>
+      <p class="text-gray-700 leading-relaxed">
+        The <a href={wyzeCam.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline font-medium">Wyze Cam v4</a> at $36 delivers 2K resolution — sharper than cameras that cost three times more. It stores motion clips locally on a microSD card (included in some bundles) with no subscription required. Works with Alexa and Google Home. Place it facing your front door or driveway as your first camera. If you later add more, Wyze Cam Outdoor v2 ($60) covers the backyard without requiring a cable to the house.
+      </p>
+    </section>
+
+    <!-- Mistakes -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Common Mistakes to Avoid</h2>
+      <div class="space-y-4">
+        <div class="border-l-4 border-red-200 pl-4">
+          <p class="font-semibold text-gray-900 mb-1">Buying devices before choosing an ecosystem</p>
+          <p class="text-sm text-gray-700">This is how people end up with a Nest thermostat, Ring doorbell, Kasa lights, and Wemo plugs — four different apps, inconsistent voice control, and automations that can't talk to each other. Pick Alexa or Google first, then buy devices that work with it.</p>
+        </div>
+        <div class="border-l-4 border-red-200 pl-4">
+          <p class="font-semibold text-gray-900 mb-1">Treating "works with Alexa" as good enough</p>
+          <p class="text-sm text-gray-700">"Works with Alexa" means basic on/off voice control. It doesn't mean the device will reliably participate in routines, respond quickly, or work locally without internet. Read reviews specifically about reliability — not just feature lists.</p>
+        </div>
+        <div class="border-l-4 border-red-200 pl-4">
+          <p class="font-semibold text-gray-900 mb-1">Skipping the Wi-Fi quality check</p>
+          <p class="text-sm text-gray-700">Smart home devices only work as reliably as your Wi-Fi signal. If your router drops connections in certain rooms or is more than 5 years old, fix that first. A $120 mesh Wi-Fi upgrade makes every smart device in your home work better.</p>
+        </div>
+        <div class="border-l-4 border-red-200 pl-4">
+          <p class="font-semibold text-gray-900 mb-1">Buying too much at once</p>
+          <p class="text-sm text-gray-700">Start with 3–5 devices, live with them for two weeks, and then expand. People who buy 20 devices in their first week regularly return half of them. The value of smart home devices becomes clear only after using them daily for a few weeks.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Budget Blueprint -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Budget Blueprint: What to Buy at Each Level</h2>
+      <div class="space-y-4">
+        <div class="border border-gray-100 rounded-xl p-5">
+          <p class="font-semibold text-gray-900 mb-3">$50 Budget — Voice Control Starter</p>
+          <p class="text-sm text-gray-700">Amazon Echo Dot ($50) — voice control hub for everything you add later. This is the one purchase that makes every future device more useful.</p>
+        </div>
+        <div class="border border-gray-100 rounded-xl p-5">
+          <p class="font-semibold text-gray-900 mb-3">$120 Budget — Smart Home Foundation</p>
+          <p class="text-sm text-gray-700">Echo Dot ($50) + Kasa 4-pack smart color bulbs ($50) + Kasa outdoor plug ($17) = $117. Voice control, smart lighting in your main living space, and automated outdoor lighting. This is a complete, useful smart home at $120.</p>
+        </div>
+        <div class="border border-green-200 rounded-xl p-5 bg-green-50">
+          <p class="font-semibold text-gray-900 mb-3">$160 Budget — Most People's Ideal Starting Point</p>
+          <p class="text-sm text-gray-700">Everything in the $120 bundle + Wyze Cam v4 ($36) = $153. Adds a 2K security camera with free local storage. Voice control, automated lighting, outdoor scheduling, and security monitoring — the four most useful smart home categories — for under $160.</p>
+        </div>
+        <div class="border border-gray-100 rounded-xl p-5">
+          <p class="font-semibold text-gray-900 mb-3">$200 Budget — Add a Second Room</p>
+          <p class="text-sm text-gray-700">$160 bundle + second Echo Dot for the bedroom ($50) = $210. Voice control in the bedroom enables "Alexa, good night" routines that turn off all lights, set the thermostat, and lock the door automatically. Two-room voice coverage changes how much the whole system gets used.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <a href="/smart-home/google-home-vs-alexa" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Google Home vs Alexa: Full Comparison →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-starter-kit-under-200" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Starter Kit Under $200 →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-starter-kit-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Starter Kit Under $500 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

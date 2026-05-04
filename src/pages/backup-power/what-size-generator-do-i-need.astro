@@ -1,0 +1,275 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const generac = products.find(p => p.slug === 'generac-22kw-guardian')!;
+const ecoflowDelta2 = products.find(p => p.slug === 'ecoflow-delta-2')!;
+const ecoflowDeltaMax = products.find(p => p.slug === 'ecoflow-delta-2-max')!;
+const honda = products.find(p => p.slug === 'honda-eu2200i')!;
+---
+
+<Layout
+  title="What Size Generator Do I Need for My House? (2026 Sizing Guide)"
+  description="How to calculate what size generator you need: wattage calculation walkthrough, size guide by home type, portable vs standby comparison, and our free backup power calculator."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      What Size Generator Do I Need
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      What Size Generator Do I Need for My House?
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: May 2026 · 10 min read</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Generator sizing is not complicated — but it is specific. The right generator size for your home depends on two things: what you need to power during an outage, and how long you need to power it. Get either one wrong and you've either bought more generator than you need, or you've bought one that can't start your A/C unit without tripping a circuit breaker.
+    </p>
+    <p class="text-lg text-gray-700 mb-10 leading-relaxed">
+      This guide walks through the exact calculation, then gives you a size reference chart by home type and outage scenario. There's also a <a href="/backup-power/calculator" class="text-green-700 hover:underline font-medium">free interactive calculator</a> at the bottom if you'd rather get a recommendation without doing the math yourself.
+    </p>
+
+    <!-- The two questions -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Answer These Two Questions First</h2>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5">
+          <p class="font-semibold text-gray-900 mb-2">Question 1: What do you need to run?</p>
+          <p class="text-sm text-gray-600">List everything you want to operate during an outage. Be realistic — "everything" leads to oversizing. Most households' real critical list is: refrigerator, lights, phone charging, HVAC (or a window A/C), and any medical equipment. Start there.</p>
+        </div>
+        <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5">
+          <p class="font-semibold text-gray-900 mb-2">Question 2: How long do outages last in your area?</p>
+          <p class="text-sm text-gray-600">A 2-hour summer storm outage needs a very different solution than a 5-day post-hurricane blackout. Short outages favor battery power stations. Long or indefinite outages require gas generators or standby units with an unlimited fuel supply.</p>
+        </div>
+      </div>
+      <p class="text-gray-700 leading-relaxed">
+        Once you've answered both, you can skip to the appropriate section below. If you're not sure, work through the wattage calculation — it takes about 10 minutes and removes all the guesswork.
+      </p>
+    </section>
+
+    <!-- How to calculate -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Calculate Your Generator Size</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        Every electrical device has two wattage numbers that matter: <strong>running watts</strong> (what it draws continuously) and <strong>starting watts</strong> (the surge it needs to start its motor). Your generator must handle both — the continuous load from everything running simultaneously, plus the startup surge from any motorized appliance when it kicks on.
+      </p>
+      <p class="text-gray-700 mb-6 leading-relaxed">
+        Find these numbers on the device label (usually on the back or bottom) or in the owner's manual. For appliances without a startup surge (lights, phone chargers, laptops), running watts and starting watts are the same number.
+      </p>
+
+      <div class="bg-gray-50 rounded-xl p-5 mb-6">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-4">Step-by-Step Wattage Calculation</p>
+        <ol class="space-y-3 text-sm text-gray-700">
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold">1</span>
+            <div><strong class="text-gray-900">List your critical appliances</strong> — refrigerator, A/C, furnace blower, lights, devices you can't live without for 24+ hours.</div>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold">2</span>
+            <div><strong class="text-gray-900">Find the running watts for each</strong> — add these up. This is your continuous load.</div>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold">3</span>
+            <div><strong class="text-gray-900">Find the starting watts for your largest motorized appliance</strong> — usually the A/C unit or well pump. This is your peak demand.</div>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold">4</span>
+            <div><strong class="text-gray-900">Add step 2 + step 3</strong> — this is the wattage your generator must be rated to handle.</div>
+          </li>
+          <li class="flex gap-3">
+            <span class="flex-shrink-0 w-6 h-6 rounded-full bg-green-700 text-white text-xs flex items-center justify-center font-bold">5</span>
+            <div><strong class="text-gray-900">Add 20% headroom</strong> — generators run most efficiently at 50–80% load. A generator at 100% load runs hotter, burns more fuel, and wears faster.</div>
+          </li>
+        </ol>
+      </div>
+
+      <div class="bg-gray-50 rounded-xl p-5 mb-6">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Common Appliance Wattage Reference</p>
+        <div class="grid sm:grid-cols-2 gap-x-8 text-sm">
+          <div class="space-y-1">
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Refrigerator</span><span class="font-medium text-gray-900">700W / 1,400W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Central A/C (3-ton)</span><span class="font-medium text-gray-900">3,500W / 5,000W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Window A/C (10,000 BTU)</span><span class="font-medium text-gray-900">900W / 1,800W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Gas furnace blower</span><span class="font-medium text-gray-900">800W / 1,200W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Well pump (1 HP)</span><span class="font-medium text-gray-900">1,000W / 2,000W start</span></div>
+          </div>
+          <div class="space-y-1">
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Sump pump (1/2 HP)</span><span class="font-medium text-gray-900">800W / 1,300W start</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Electric water heater</span><span class="font-medium text-gray-900">4,500W (no surge)</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">CPAP (no humidifier)</span><span class="font-medium text-gray-900">30–60W (no surge)</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Laptop</span><span class="font-medium text-gray-900">30–90W (no surge)</span></div>
+            <div class="flex justify-between py-1.5 border-b border-gray-100"><span class="text-gray-600">Lights (10 × LED)</span><span class="font-medium text-gray-900">100–150W (no surge)</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-green-50 border border-green-200 rounded-2xl p-5">
+        <p class="font-semibold text-gray-900 mb-2 text-sm">Worked Example: 2,000 sq ft home, central A/C</p>
+        <p class="text-sm text-gray-600 leading-relaxed">Refrigerator (700W) + Central A/C running (3,500W) + Gas furnace blower (800W) + Lights and outlets (1,500W) = <strong>6,500W continuous</strong>. Add the A/C startup surge (5,000W) = <strong>11,500W peak</strong>. Add 20% headroom = <strong>13,800W minimum</strong>. This home needs a 14kW or larger generator for full coverage — a 10kW unit will fail to start the A/C.</p>
+      </div>
+    </section>
+
+    <!-- Size guide by home type -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Generator Size Guide by Home Type</h2>
+      <p class="text-gray-700 mb-6 leading-relaxed">
+        Use this as a starting point, then verify against your specific appliance wattages. Homes with electric heat, electric water heaters, or EV chargers need significantly more capacity than same-size gas homes.
+      </p>
+
+      <div class="space-y-4">
+        <div class="border border-gray-100 rounded-xl p-5">
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <p class="font-semibold text-gray-900">Apartment or small home (under 1,200 sq ft) — Essential circuits only</p>
+            <span class="flex-shrink-0 text-sm font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded">1–3kW</span>
+          </div>
+          <p class="text-sm text-gray-700">A battery power station handles this well. The <a href={ecoflowDelta2.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline">EcoFlow DELTA 2 (1024Wh, 1800W)</a> runs a refrigerator for 14–20 hours, charges phones and laptops, and powers a CPAP through the night. No gas, no exhaust, safe indoors. For outages under 24 hours, a battery station beats a generator on every metric except raw runtime.</p>
+        </div>
+
+        <div class="border border-gray-100 rounded-xl p-5">
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <p class="font-semibold text-gray-900">Small to mid-size home (1,200–2,000 sq ft) — Essential circuits + window A/C</p>
+            <span class="flex-shrink-0 text-sm font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded">3–7kW</span>
+          </div>
+          <p class="text-sm text-gray-700">A portable gas inverter generator covers this range. The <a href={honda.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline">Honda EU2200i (2,200W, 48 dB)</a> is the quietest gas generator in its class — runs 8+ hours on 0.95 gallons and handles a window A/C, refrigerator, and lights simultaneously. For longer outages, a 3,500–5,000W portable generator gives more headroom.</p>
+        </div>
+
+        <div class="border border-gray-100 rounded-xl p-5">
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <p class="font-semibold text-gray-900">Mid-size home (2,000–3,000 sq ft) with gas HVAC — Full coverage</p>
+            <span class="flex-shrink-0 text-sm font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded">14–18kW</span>
+          </div>
+          <p class="text-sm text-gray-700">A whole-home standby generator in the 14–18kW range covers central A/C, gas furnace, refrigerator, well pump, and all critical circuits. Most commonly installed residential size. Automatic startup — you don't need to be home when the outage hits.</p>
+        </div>
+
+        <div class="border border-green-200 rounded-xl p-5 bg-green-50">
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <p class="font-semibold text-gray-900">Large home (2,000+ sq ft) or home with electric HVAC — Whole-home</p>
+            <span class="flex-shrink-0 text-sm font-bold text-green-700 bg-green-100 px-2 py-0.5 rounded">20–22kW</span>
+          </div>
+          <p class="text-sm text-gray-700">The <a href={generac.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline">Generac 22kW Guardian</a> is the standard recommendation for full whole-home coverage. Handles everything including central A/C, electric water heater, well pump, and all household circuits simultaneously. Includes 200A automatic transfer switch. Activates within 10 seconds of an outage without any action on your part.</p>
+        </div>
+
+        <div class="border border-gray-100 rounded-xl p-5">
+          <div class="flex items-start justify-between gap-4 mb-2">
+            <p class="font-semibold text-gray-900">Home with solar + battery — Battery backup</p>
+            <span class="flex-shrink-0 text-sm font-bold text-green-700 bg-green-50 px-2 py-0.5 rounded">10–22kWh</span>
+          </div>
+          <p class="text-sm text-gray-700">If you have or are adding solar, a battery backup system (Tesla Powerwall, Generac PWRcell, Enphase IQ Battery) stores solar energy for overnight and outage use. Size in kilowatt-hours, not kilowatts. The <a href={ecoflowDeltaMax.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline">EcoFlow DELTA 2 Max (2048Wh)</a> is the most accessible entry point for solar-paired battery backup without a permanent installation — expandable to 6kWh with extra batteries.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portable vs standby -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Portable vs Standby: Which Is Right for You?</h2>
+      <p class="text-gray-700 mb-4 leading-relaxed">
+        Generator type and generator size are separate decisions. You can have a large portable generator or a small standby — the type determines how the generator is fueled, stored, and activated, not just how much power it produces.
+      </p>
+
+      <div class="overflow-x-auto rounded-xl border border-gray-100 mb-6">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="bg-gray-50 border-b border-gray-200">
+              <th class="text-left p-3 font-semibold text-gray-700">Factor</th>
+              <th class="text-left p-3 font-semibold text-gray-700">Portable Gas</th>
+              <th class="text-left p-3 font-semibold text-gray-700">Whole-Home Standby</th>
+              <th class="text-left p-3 font-semibold text-gray-700">Battery Power Station</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-100">
+              <td class="p-3 font-medium text-gray-900">Startup</td>
+              <td class="p-3">Manual — you pull-start or push-button outside</td>
+              <td class="p-3">Automatic — on within 10 seconds</td>
+              <td class="p-3">Instant — already running</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <td class="p-3 font-medium text-gray-900">Runtime</td>
+              <td class="p-3">8–12 hours per tank (refuel indefinitely)</td>
+              <td class="p-3">Indefinite (on natural gas)</td>
+              <td class="p-3">2–20 hours depending on load and capacity</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="p-3 font-medium text-gray-900">Indoor use</td>
+              <td class="p-3">Never — CO risk</td>
+              <td class="p-3">Never — CO risk (installed outside)</td>
+              <td class="p-3">Yes — zero exhaust</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <td class="p-3 font-medium text-gray-900">Install cost</td>
+              <td class="p-3">$0 (plug-in or manual transfer)</td>
+              <td class="p-3">$3,000–6,000</td>
+              <td class="p-3">$0</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="p-3 font-medium text-gray-900">Noise</td>
+              <td class="p-3">65–80 dB (loud)</td>
+              <td class="p-3">65–67 dB (noticeable)</td>
+              <td class="p-3">10–30 dB (fan only)</td>
+            </tr>
+            <tr class="border-b border-gray-100 bg-gray-50">
+              <td class="p-3 font-medium text-gray-900">Maintenance</td>
+              <td class="p-3">Annual oil change, fuel treatment</td>
+              <td class="p-3">Annual service contract required</td>
+              <td class="p-3">None</td>
+            </tr>
+            <tr class="border-b border-gray-100">
+              <td class="p-3 font-medium text-gray-900">Max output</td>
+              <td class="p-3">2,200–12,000W</td>
+              <td class="p-3">10,000–22,000W+</td>
+              <td class="p-3">800–3,600W</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="text-gray-700 leading-relaxed">
+        Standby generators win on convenience and unlimited runtime. Portable gas generators win on upfront cost. Battery power stations win on simplicity, indoor safety, and zero-maintenance operation. For most renters or urban homeowners without a dedicated outdoor space, a battery power station is the most practical option. For suburban homeowners with frequent multi-day outages, a standby generator's automatic activation and unlimited runtime justify the installation cost.
+      </p>
+    </section>
+
+    <!-- Calculator CTA -->
+    <section class="mb-12">
+      <div class="bg-green-50 border border-green-200 rounded-2xl p-6">
+        <h2 class="text-xl font-bold text-gray-900 mb-3">Use Our Free Backup Power Calculator</h2>
+        <p class="text-gray-700 text-sm mb-4 leading-relaxed">
+          Rather do this interactively? Our backup power calculator lets you select your home size, choose which appliances you need to run, and specify how many hours of backup you need — then outputs your required wattage and capacity with product recommendations.
+        </p>
+        <a href="/backup-power/calculator" class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors">
+          Open the Backup Power Calculator →
+        </a>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-3 gap-4">
+        <a href="/backup-power/calculator" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Tool</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Backup Power Calculator →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+        <a href="/backup-power/best-whole-home-generator-2000-sq-ft" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for 2,000 Sq Ft →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>
