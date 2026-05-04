@@ -1,0 +1,229 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['generac-22kw-guardian', 'honda-eu2200i', 'ecoflow-delta-2-max'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Generator for Power Outages (2026): Whole-Home Standby vs Gas Portable vs Battery"
+  description="The best generators for home power outages compared: Generac 22kW standby, Honda EU2200i portable gas, and EcoFlow DELTA 2 Max battery. Which type is right for your situation?"
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Generator for Power Outages
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Generator for Power Outages (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 generator types compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      "Best generator for power outages" covers three very different products for three very different situations. A whole-home standby generator that kicks in automatically within 10 seconds is not the right answer for a renter in an apartment. A battery power station that produces zero exhaust is not the right answer for someone who needs to run a well pump through a 4-day winter storm.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The three picks below are each the best in their category: automatic standby (Generac 22kW), portable gas (Honda EU2200i), and battery power station (EcoFlow DELTA 2 Max). Matching the right type to your situation is more important than comparing brands — read the buyer's guide below before deciding.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Which generator type is right for your situation?</p>
+      <div class="text-sm text-gray-600 leading-relaxed space-y-2">
+        <p><strong>Choose a whole-home standby</strong> if: you own your home, have natural gas or propane service, lose power more than twice per year, or have medical equipment that requires uninterrupted power. Set it and forget it — activates automatically.</p>
+        <p><strong>Choose a portable gas generator</strong> if: you need portable power at job sites or while camping, you want 2,200W+ for tools or A/C window units, and you have a safe outdoor space to operate it.</p>
+        <p><strong>Choose a battery power station</strong> if: you live in an apartment, want zero-maintenance backup, need something safe to use indoors, or primarily need to power lights, phones, laptops, CPAP machines, and small appliances during short outages.</p>
+      </div>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Best Whole-Home Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Generator</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Type</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Fuel / Power</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{i === 0 ? 'Whole-home standby' : i === 1 ? 'Portable gas inverter' : 'Battery power station'}</td>
+              <td class="p-3">{p.specs[i === 0 ? 'Output' : i === 1 ? 'Output' : 'AC Output']}</td>
+              <td class="p-3">{p.specs[i === 0 ? 'Fuel' : i === 1 ? 'Fuel' : 'Battery Type']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Whole-Home Automatic Standby Generator' : i === 1 ? '⛽ Best Portable Gas Generator' : '🔋 Best Battery Power Station for Outages'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Choosing the Right Generator for Power Outages</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How long do power outages typically last?</h3>
+          <p class="text-sm leading-relaxed">The U.S. EIA reports the average residential outage lasts 3–4 hours. But averages don't protect you from the outliers: hurricanes (days to weeks), ice storms (3–7 days), and grid failures in heat or cold waves (1–5 days). If you live in a region with frequent short outages from summer thunderstorms, a battery power station handles the typical 2–6 hour duration comfortably. If you're in hurricane country, tornado alley, or a rural area prone to multi-day winter storm outages, a gas or standby generator's ability to run indefinitely (as long as fuel is available) becomes the decisive advantage over any battery system.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What will you actually need to power?</h3>
+          <p class="text-sm leading-relaxed">The difference between comfort and crisis during a power outage is almost always the refrigerator, the heating/cooling system, and the well pump. A battery power station (EcoFlow DELTA 2 Max at 2048Wh) can run a full-size refrigerator for 14–20 hours, but not indefinitely. A Honda EU2200i gas generator can run a refrigerator continuously as long as it has fuel. A Generac standby runs everything in the house indefinitely. Calculate what you cannot live without for 48 hours — if that list includes central A/C (3,000–5,000W) or a well pump (750–1,500W), only a gas or standby generator provides sufficient output.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Gas generator safety: the most important thing to know</h3>
+          <p class="text-sm leading-relaxed">Carbon monoxide poisoning kills approximately 400–500 people every year in the United States — a significant portion from portable gas generators operated indoors or in attached garages during power outages. Never operate a gas generator indoors, in a garage, carport, or within 20 feet of any door, window, or vent. CO builds to lethal concentrations within minutes in enclosed spaces. If you use a portable gas generator, install a battery-powered CO detector in your home (Kidde or First Alert, under $40) and test it monthly. This is non-negotiable — no convenience justifies the CO risk of indoor generator use.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How long can a Generac standby generator run continuously?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Indefinitely, as long as natural gas or propane is supplied. Unlike portable generators that run on finite fuel tanks, standby generators connect to your home's natural gas main or a dedicated propane tank — the same supply that runs your furnace and stove. Generac recommends a maintenance interval of 200 hours for oil changes, but the generator itself can run continuously through a week-long outage without issue. Standby generators are designed and tested for 72–120 hour continuous run cycles. Annual maintenance (once per year) is the only regular service requirement.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I run a window air conditioner on a battery power station?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes, for most window A/C units under 1,000W. A small 5,000 BTU window unit draws 450–550W continuously. The EcoFlow DELTA 2 Max (2400W continuous, 2048Wh) handles this for approximately 3–4 hours before needing recharge. A 10,000 BTU window unit draws 900–1,100W — borderline for the DELTA 2 Max. Central air conditioning (3,000–5,000W) is not compatible with any battery power station on the consumer market. For extended heat emergencies requiring A/C, a portable gas generator is the only viable battery-free option.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How do I safely store gasoline for a portable generator?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Use ANSI-approved red plastic fuel containers specifically designed for gasoline. Store in a detached garage or outdoor shed — never inside your home, basement, or attached garage where vapors can accumulate. Add fuel stabilizer (Sta-Bil, $10) to any gasoline stored more than 30 days — untreated gasoline degrades within 30–60 days and clogs carburetors. For extended storage, drain the generator's fuel tank and run the carb dry before storing. Rotate stored fuel every 90 days. Keep a maximum of 5 gallons per storage container and secure containers away from heat sources and open flames.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-whole-home-generator-2000-sq-ft" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for 2,000 Sq Ft →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-under-1000" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $1,000 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecoflow-220w-solar-panel', 'jackery-solarsaga-100', 'renogy-200w-solar-panel', 'goal-zero-nomad-100'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Solar Panels for Home Backup (2026): EcoFlow vs Jackery vs Renogy vs Goal Zero"
+  description="The best portable and rigid solar panels for charging home backup power stations: EcoFlow 220W Bifacial, Jackery SolarSaga 100W, Renogy 200W, and Goal Zero Nomad 100W compared."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Solar Panels for Home Backup
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Solar Panels for Home Backup (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 solar panels compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A portable power station without solar panels is a large battery. With solar panels, it becomes a renewable power system that can sustain indefinitely in sunny conditions — no fuel, no trips to a gas station, no runtime limit. The right solar panel depends on whether you want portability or maximum output, and whether you're pairing with a specific brand's ecosystem or need universal compatibility.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The four picks below cover every use case: the highest-output portable panel (EcoFlow 220W Bifacial), the most popular camping and travel panel (Jackery SolarSaga 100W), the best value for fixed installations (Renogy 200W Rigid), and the most durable outdoor option for serious off-grid use (Goal Zero Nomad 100W). All are compatible with portable power stations via appropriate adapters.
+    </p>
+
+    <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Realistic solar expectations for home backup</p>
+      <p class="text-sm text-gray-600 leading-relaxed">A 100W solar panel in ideal conditions (full direct sun, optimal angle, cool temperatures) generates approximately 80W of actual power after losses. Most U.S. locations receive 4–6 peak sun hours per day. That means a 100W panel realistically generates 320–480Wh per day — enough to sustain a CPAP machine through the night and charge phones and laptops, but not enough to continuously run a refrigerator (600–900Wh/day). A 220W panel generates 700–1,100Wh per day — adequate for a refrigerator plus critical devices in extended outages. Overcast days reduce output by 60–80%; shade reduces it even more. Plan for worst-case sun conditions in your region, not best-case.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Panel</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Wattage</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Efficiency</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Type</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Wattage']}</td>
+              <td class="p-3">{p.specs['Efficiency']}</td>
+              <td class="p-3">{p.specs['Type']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best High-Output Portable Solar Panel' : i === 1 ? '🥈 Most Popular Portable Solar Panel' : i === 2 ? '💰 Best Value Rigid Solar Panel' : '🏕️ Best Premium Outdoor Solar Panel'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Solar Panel Buying Guide for Home Backup</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How to calculate how many panels you need</h3>
+          <p class="text-sm leading-relaxed">Step 1: determine your daily power consumption in Wh. A refrigerator uses ~600Wh/day. A CPAP uses ~240Wh/night. Phones and laptops use ~100–200Wh/day combined. Step 2: divide by peak sun hours in your area (use NREL's PVWatts calculator for your ZIP code — typically 4–5 hours in the continental U.S.). Step 3: divide by your panel's realistic output (multiply rated wattage by 0.8 for efficiency losses). Example: 1,200Wh daily need ÷ 4.5 peak sun hours ÷ 0.8 = 333W of panel required. Round up — one EcoFlow 220W + one Jackery SolarSaga 100W = 320W, close enough and both connect to an EcoFlow power station via adapters.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Connector compatibility: avoiding the wrong cable</h3>
+          <p class="text-sm leading-relaxed">Portable power stations use proprietary connectors: EcoFlow uses XT60, Jackery uses DC5525, Goal Zero uses 8mm. Rigid panels use the universal MC4 connector. Cross-brand pairing requires an adapter — often $10–20 and available on Amazon. Always verify the adapter is rated for the wattage of your panel (at minimum the adapter's amperage rating should exceed panel short-circuit current × 1.25). Using an undersized adapter can cause voltage drop, heat buildup, or fire risk. When pairing the Renogy 200W rigid panel (MC4) with an EcoFlow station, purchase the MC4-to-XT60 adapter specifically rated for 15A or more.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Portable vs rigid: choosing based on your use case</h3>
+          <p class="text-sm leading-relaxed">Portable folding panels (EcoFlow 220W, Jackery SolarSaga, Goal Zero Nomad) are designed for camping, van life, and temporary deployment — they fold flat for storage, have integrated carry handles, and mount on adjustable kickstands. They are not designed for permanent roof mounting. Rigid panels (Renogy) are designed for semi-permanent or permanent installation: roof, RV roof, ground mount frame, or garage. For emergency home backup stored in the garage, a rigid panel on a simple ground-mount frame delivers the highest sustained output per dollar. For bug-out, camping, or frequently moved setups, folding panels are worth the price premium.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do solar panels work on cloudy days?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes, but at significantly reduced output. Monocrystalline panels (all four on this page) produce 10–25% of their rated wattage on overcast days, and 25–50% on partly cloudy days. A 220W panel might produce 22–55W on an overcast day. This is enough to slowly charge a power station but not enough to sustain energy-intensive devices. For home backup in regions with frequent overcast weather (Pacific Northwest, Great Lakes), plan on roughly 20% of the panel's rated output as your overcast baseline. Bifacial panels like the EcoFlow 220W perform marginally better in diffuse light conditions than single-sided panels.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I put solar panels on my apartment balcony?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Folding solar panels can be placed on a balcony railing or leaned against a south-facing wall without any permanent installation. Check your lease — most apartment leases don't specifically prohibit temporary solar panels, but some do restrict modifications visible from outside. A standard folding panel is lightweight enough to move between indoor storage and balcony deployment. South-facing balconies between 10am–3pm receive the most productive sun. East or west-facing balconies reduce output by 20–40% versus south-facing. If your balcony faces north, solar panels will produce minimal power and may not be worth the effort.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How long do portable solar panels last?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Quality monocrystalline panels degrade at approximately 0.5% per year. After 20 years, a 100W panel produces approximately 90W. The limiting factor for portable panels is not the solar cell but the cable, connectors, and laminate material. ETFE (ethylene tetrafluoroethylene) surface panels — like the Jackery SolarSaga — are more durable and UV-resistant than cheaper PET-laminated panels. Renogy's rigid aluminum-framed panels carry 10-year product warranties and 25-year power output guarantees — the same warranty structure as residential rooftop panels. Keep folding panels out of prolonged direct UV exposure when stored and avoid sharp folds in the cable to maximize lifespan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-solar-generator-home-backup" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Solar Generators for Home Backup →</p>
+        </a>
+        <a href="/backup-power/solar-generator-vs-portable-generator" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Solar Generator vs Gas Generator →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

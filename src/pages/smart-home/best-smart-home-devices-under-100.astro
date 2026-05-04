@@ -1,0 +1,223 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['amazon-echo-dot-5th-gen', 'wyze-cam-v4', 'kasa-smart-bulb-kl135', 'kasa-outdoor-smart-plug-ep40a', 'govee-smart-bulb-rgbww'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Home Devices Under $100 (2026): Echo Dot, Wyze Cam, Kasa & More"
+  description="The best smart home devices under $100 in 2026: Amazon Echo Dot 5th Gen, Wyze Cam v4, Kasa smart bulbs, Kasa outdoor plug, and Govee smart bulbs. Start your smart home for less."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices Under $100
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices Under $100 (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 5 devices compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Smart home doesn't have to mean expensive. The five devices below collectively transform a home — voice control, security camera, smart lighting, outdoor automation, and color ambiance — for under $200 total when purchased together. Each is available for under $100 individually, and most are under $50.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      These aren't compromised budget products. The Wyze Cam v4 has better image quality than cameras three times its price. The Kasa bulbs and plugs have better Wi-Fi reliability than many mid-range alternatives. The Echo Dot is the best-selling smart speaker in U.S. history. The picks below are genuinely the best in their categories — they happen to cost under $100.
+    </p>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">The ideal starter smart home bundle — under $150 total</p>
+      <p class="text-sm text-gray-600 leading-relaxed">If you're building your first smart home setup, start here: Echo Dot ($50) + Kasa Smart Bulb 4-pack ($50) + Kasa Outdoor Plug ($17) = $117. This gives you voice control for your whole home, smart lighting in your main living space, and an outdoor device (porch light, holiday lights) you can control by schedule or voice. Add the Wyze Cam v4 ($36) for a security camera and you have a foundational smart home for $153.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Device</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Category</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Smart Platforms</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{i === 0 ? 'Voice assistant' : i === 1 ? 'Security camera' : i === 2 ? 'Smart bulb' : i === 3 ? 'Outdoor plug' : 'Color smart bulb'}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Smart Speaker Under $100' : i === 1 ? '📷 Best Security Camera Under $50' : i === 2 ? '💡 Best Smart Bulb Under $20' : i === 3 ? '🔌 Best Outdoor Smart Plug Under $20' : '🌈 Best Color Smart Bulb Under $15'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Smart Home on a Budget: What to Buy First</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Why a voice assistant is the right first purchase</h3>
+          <p class="text-sm leading-relaxed">The Echo Dot unlocks voice control for everything you buy after it. Purchasing smart bulbs or plugs without a voice assistant means controlling them only from your phone — which is barely more convenient than a traditional switch. With the Echo Dot, you add voice control for every future device automatically. "Alexa, turn off all the lights" becomes possible the moment you add any Alexa-compatible bulb. The Echo Dot is also the central hub for creating routines — "good morning" scenes, "goodnight" sequences, and time-triggered automations that run without any phone interaction. Buy this first.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Smart bulbs vs smart switches: which is better value?</h3>
+          <p class="text-sm leading-relaxed">Smart bulbs (like Kasa KL135 at $15 each) install in seconds — just screw them in. Smart switches ($25–60 each) replace your wall switch and control standard bulbs. Smart bulbs are better for rentals (you take them with you), easier to install, and cheaper for 1–3 bulbs per room. Smart switches are better for rooms with many light fixtures controlled by one switch (kitchens, living rooms with overhead lights plus multiple lamps). If a room has 5 light sockets, one $35 smart switch controls them all — much cheaper than 5 smart bulbs. The right choice depends on how many fixtures are in each room and whether you own the home.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">The Wi-Fi load reality: how many devices is too many?</h3>
+          <p class="text-sm leading-relaxed">Each Wi-Fi smart device uses a small amount of router bandwidth and adds to your connected device count. A modern 2.4GHz Wi-Fi router comfortably handles 25–30 devices before performance degrades. Most smart home starter setups involve 5–15 devices — well within limits. Problems start when you approach 30+ devices on a single-router setup (a 3-bedroom smart home with 12 bulbs, 4 cameras, 6 plugs, 3 voice assistants, and 2 thermostats can hit 30 easily). The solution: upgrade to a mesh Wi-Fi system (eero, Google Nest) rated for 75–100+ devices before you hit the ceiling. Or use Zigbee/Z-Wave devices via a hub to keep Wi-Fi load manageable.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do smart home devices work if the internet goes out?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">It depends on the device. Wi-Fi-only devices (Kasa, Wyze, Govee) require an active internet connection to respond to app or voice commands — if your internet goes out, they become uncontrollable remotely. However, if you use Alexa with an Echo Dot, and Alexa's cloud service is also down with your internet, voice control fails too. Local control is available on some devices: Kasa plugs can be manually operated via their physical button. Philips Hue devices run locally via the Bridge — routines continue to execute even without internet. For purely local operation, Zigbee or Z-Wave devices connected to a hub with local processing (SmartThings) are the most internet-outage-resilient option.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Are cheap smart home devices a security risk?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The security risk varies by brand. Major brands (Kasa/TP-Link, Amazon, Wyze) have established security practices, regular firmware updates, and bug bounty programs. The real risk is with no-name brands from Chinese manufacturers with no disclosed security practices, no update history, and no privacy policy — avoid those. All products on this page are from established brands with known track records. Wyze had a specific privacy incident in 2024 (camera feeds briefly accessible to other users) and has since implemented fixes; review their current security practices before purchasing if privacy is a priority. For maximum security, put smart home devices on a separate Wi-Fi VLAN isolated from computers and phones — many modern routers support this as an "IoT network" setting.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I use Alexa devices with Google Home and vice versa?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Not directly. Alexa devices (Echo Dot) and Google Home devices (Google Nest Mini, Nest Hub) each control their own ecosystems. Kasa devices work with both — they appear in both the Alexa app and Google Home app. So if you have both an Echo Dot and a Google Nest Mini, you can control Kasa bulbs with either voice assistant. But you cannot use one Echo Dot to talk to Google Assistant, or a Nest Mini to talk to Alexa. Choose one voice assistant as your primary — Alexa for maximum device compatibility, Google Assistant for deeper Google account integration and natural language — and buy that ecosystem's smart speaker.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-home-starter-kit-under-200" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Starter Kit Under $200 →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Renters →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

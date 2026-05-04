@@ -1,0 +1,223 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecobee-smartthermostat-premium', 'amazon-echo-hub', 'arlo-pro-4-spotlight', 'philips-hue-starter-kit'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Home Devices for Large Homes (2026): Thermostat, Hub, Security & Lighting"
+  description="Smart home devices built for large homes: ecobee SmartThermostat with room sensors, Amazon Echo Hub control panel, Arlo Pro 4 outdoor cameras, and Philips Hue whole-home lighting."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Large Homes
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Large Homes (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 essential categories covered</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Large homes — generally 2,500 square feet and up — have distinct smart home challenges. A single thermostat can't sense the temperature difference between a sun-baked south-facing living room and a cool north-facing bedroom. A standard indoor camera covers one room, not a perimeter with multiple access points. A single smart speaker can't hear a voice command from the opposite wing of the house.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The four picks below address the four categories where large homes require a smarter approach: multi-room climate control, centralized device management, outdoor perimeter security, and whole-home lighting. Each is the best option in its category for homes where scale and reliability matter more than cost-cutting.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">The large home smart upgrade priority order</p>
+      <p class="text-sm text-gray-600 leading-relaxed">Start with the thermostat — it's the single upgrade with the clearest monthly ROI through energy savings. Add room sensors to any rooms that heat or cool unevenly. Then add centralized control (Echo Hub or similar) to manage all devices from one interface. Outdoor cameras next — perimeter coverage reduces false alarms from motion zones and gives you footage of the whole property, not just the front door. Finally, lighting — most impactful in multi-story homes where you're managing lights in rooms you're not currently using.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Device</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Smart Platforms</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Category</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Smart Platforms']}</td>
+              <td class="p-3">{i === 0 ? 'Thermostat' : i === 1 ? 'Control Panel' : i === 2 ? 'Outdoor Camera' : 'Smart Lighting'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🌡️ Best Thermostat for Large Homes' : i === 1 ? '🏠 Best Central Control Panel' : i === 2 ? '📷 Best Outdoor Security Camera' : '💡 Best Whole-Home Lighting System'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Smart Home Planning for Large Homes</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Wi-Fi mesh networks: the foundation everything else depends on</h3>
+          <p class="text-sm leading-relaxed">Smart home devices only work as reliably as the Wi-Fi signal they connect to. In large homes, standard single-router setups create dead zones that cause devices to disconnect. A mesh Wi-Fi system — such as eero Pro 6E, Google Nest Wi-Fi Pro, or Netgear Orbi — covers 3,000–6,000 square feet with consistent signal strength. Every smart home category benefits: cameras stay connected, thermostats communicate reliably, smart plugs don't drop offline. If you're investing in smart home devices for a large home, budget for mesh Wi-Fi first. Expect $200–400 for a quality 3-node mesh setup.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Room-by-room zoning: HVAC vs smart thermostats</h3>
+          <p class="text-sm leading-relaxed">True HVAC zoning uses physical dampers in your ductwork to control airflow room by room — this requires an HVAC contractor and costs $2,000–5,000. Smart thermostat room sensors (like ecobee's SmartSensors) are a software approximation: they detect occupancy and temperature in individual rooms and bias the thermostat schedule accordingly, but they cannot physically redirect airflow. For single-zone HVAC systems — one thermostat controlling all vents — sensors improve comfort significantly. For large homes where temperature variance between floors is extreme (8°F+), actual HVAC zoning is worth exploring alongside the smart thermostat.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Outdoor camera coverage: how many cameras does a large home need?</h3>
+          <p class="text-sm leading-relaxed">A standard large home has 4–6 meaningful coverage zones: front door, back door, driveway, backyard, and 1–2 side yards. Minimum adequate coverage is front and back (2 cameras). Comprehensive coverage is 4 cameras at entry points. The Arlo Pro 4's 160° field of view means one camera can cover a wide driveway entrance or full back yard with appropriate placement. Pair with a doorbell camera at the front (see our doorbell guide) and two Arlo Pro 4 units at the back and garage for effective whole-perimeter coverage at reasonable cost.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How many smart speakers do I need for a large home?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">For voice control to feel effortless, place a smart speaker or Echo device in every room where you regularly spend time — kitchen, living room, primary bedroom, and home office at minimum. In a 3,000+ sq ft home that's typically 4–6 devices. Amazon Echo Dot units at $50 each are the cost-effective way to achieve this. The Echo Hub wall mount replaces the Echo Dot in the room where you want visual control — usually the kitchen or living room.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Is Zigbee or Z-Wave better for a large home?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Both Zigbee and Z-Wave are mesh protocols — each device also acts as a repeater, extending the network. In larger homes, this mesh behavior means more devices equal stronger coverage. Z-Wave operates at 908MHz, which penetrates walls better than Zigbee's 2.4GHz. Z-Wave is preferred for larger homes with thick walls or long distances between devices. The Samsung SmartThings Hub v3 supports both, so you're not locked in — start with whichever devices meet your needs, and the hub handles both protocols simultaneously.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do I need a smart home hub for a large home?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Wi-Fi-only smart homes (Kasa, Wyze, Ring) work without a hub — each device connects directly to your router. The limitation in large homes is that 20+ Wi-Fi devices on a single router can cause congestion. A hub-based approach (using Zigbee or Z-Wave via SmartThings or Hue Bridge) offloads device traffic from your main Wi-Fi network and adds local processing — automations run even without internet. For smart homes with more than 15 devices, a hub becomes worthwhile not just for protocol support but for network efficiency.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-home-starter-kit-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Starter Kit Under $500 →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-hub" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Hub →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['simplisafe-8-piece', 'ring-alarm-5-piece', 'eufy-security-alarm-kit'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Home Security System Under $500 (2026): SimpliSafe vs Ring vs Eufy"
+  description="DIY home security systems compared under $500: SimpliSafe 8-piece, Ring Alarm 5-piece, and Eufy Security Kit. No-contract professional monitoring, Alexa integration, and self-monitored options."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Security System Under $500
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Security System Under $500 (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 3 DIY security systems compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Traditional home security systems locked you into multi-year contracts at $40–80/month and required professional installation. DIY security systems have changed the math completely: self-install in under an hour, no annual contract, and monitoring costs that range from $0 (self-monitored) to $10–25/month for 24/7 professional dispatch.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The three systems below cover every type of buyer: the highest-quality professional monitoring with no contract (SimpliSafe), the deepest Alexa integration with the lowest monitoring cost (Ring Alarm), and the only completely subscription-free option with local storage (Eufy). All are under $250 for the hardware starter kit and install without any tools beyond a screwdriver.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Self-monitored vs professionally monitored: what actually happens when the alarm goes off</p>
+      <p class="text-sm text-gray-600 leading-relaxed">Self-monitored means you receive a phone alert — it's your responsibility to call 911 if something is wrong. This requires you to notice the alert, verify it's real, and make the call — all before the intruder leaves. Professional monitoring means a dispatcher receives the alert and calls police automatically if you don't respond (or even if you do but confirm the alarm is real). Studies show professionally monitored homes are 4.4× less likely to be burglarized than unmonitored homes. For $10–25/month and no annual contract, professional monitoring is the most underrated home security value available.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">System</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Monitoring</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Contract</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Pieces</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Monitoring']}</td>
+              <td class="p-3">{p.specs['Contract Required']}</td>
+              <td class="p-3">{i === 0 ? '8 pieces' : i === 1 ? '5 pieces' : '5 pieces'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Professional Monitoring, No Contract' : i === 1 ? '🥈 Best for Alexa Integration + Lowest Monitoring Cost' : '🥉 Best No-Subscription Self-Monitored System'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Home Security System Buying Guide</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How many sensors does a typical home need?</h3>
+          <p class="text-sm leading-relaxed">Start with every exterior door (front, back, garage door) plus at least one motion sensor covering main traffic areas. A typical 3-bedroom home needs 3–5 door/window sensors and 1–2 motion sensors for effective coverage. Add window sensors to ground-floor windows accessible from outside. First-floor windows are the second most common break-in entry point after the front door. The SimpliSafe 8-piece kit is sized for a 2–3 bedroom home at purchase; the Ring 5-piece and Eufy 5-piece cover a 1–2 bedroom apartment or are best used as a starting point before expanding.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Cellular backup: why it matters more than most buyers realize</h3>
+          <p class="text-sm leading-relaxed">Most break-ins begin with cutting the internet or power. A security system that relies entirely on Wi-Fi goes offline the moment the router is cut. Cellular backup (a built-in SIM card that dials out independently of your home network) keeps the system functional when Wi-Fi is killed. Ring Alarm and SimpliSafe both include cellular backup on their monitoring plans. The Eufy system has no cellular backup — an internet outage means no phone alerts. If cellular backup is non-negotiable, Ring or SimpliSafe are the choices; Eufy is best for households where self-monitoring is acceptable and the local siren is the primary deterrent.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Renters vs. homeowners: installation considerations</h3>
+          <p class="text-sm leading-relaxed">All three systems use peel-and-stick adhesive mounts — no drilling required for the sensors, motion detectors, and keypads. The base station requires an outlet. This makes all three renter-friendly and damage-free. When you move, peel off the sensors (they leave minimal residue, like a packing tape) and reinstall in your new space in under an hour. The Ring Alarm range extender and SimpliSafe base station are simply unplugged and moved. Professional monitoring plans transfer to your new address without service interruption — update your address in the app and contact monitoring to update your dispatch location.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I use these security systems without a monthly subscription?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes, all three work without any monthly subscription. Without a subscription, you receive app alerts on your phone when the alarm triggers and the local siren sounds. You will not receive 24/7 professional dispatch — you're responsible for calling 911 yourself. The Eufy system is designed specifically for this use case and has no subscription option at all. Ring and SimpliSafe both work subscription-free but some features (cellular backup, video storage, professional monitoring) require a paid plan.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Will my home insurance discount offset the monitoring cost?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Most homeowners insurance providers offer a 5–20% discount for monitored security systems. On a $1,500 annual premium, a 10% discount = $150/year — which covers SimpliSafe's monitoring plan at $19.99/month ($240/year) about halfway. The discount alone may not pay for monitoring, but combined with the actual security benefit (crime deterrence, faster police response), monitored systems are considered worthwhile by most insurance actuaries. Call your insurance provider before purchasing — ask specifically what discount they offer for UL-listed professionally monitored systems, and request a certificate of installation after setup.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Which system is best for apartments?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The Ring Alarm 5-piece or Eufy 5-piece are better sized for apartments than the SimpliSafe 8-piece (which covers a larger home). For an apartment, the typical configuration is: 1 base station, 1 motion sensor covering the main living area, and 1–2 door sensors for the entry door and any sliding doors. Both Ring and Eufy expand easily with individual sensor purchases. Ring integrates well with Ring video doorbells, which many apartment dwellers already have. Eufy's no-subscription model avoids recurring costs — relevant if your landlord doesn't reimburse security expenses.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-doorbell-camera" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Doorbell Camera →</p>
+        </a>
+        <a href="/smart-home/best-outdoor-security-camera-system" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Outdoor Security Camera System →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

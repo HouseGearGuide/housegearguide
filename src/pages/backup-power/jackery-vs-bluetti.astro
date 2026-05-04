@@ -1,0 +1,288 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const jackerySlugs = ['jackery-explorer-1000-pro', 'jackery-explorer-500'];
+const bluettiSlugs = ['bluetti-ac180', 'bluetti-eb3a'];
+
+const jackeryProducts = jackerySlugs.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const bluettiProducts = bluettiSlugs.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const allProducts = [...jackeryProducts, ...bluettiProducts];
+---
+
+<Layout
+  title="Jackery vs Bluetti: Full Comparison (2026)"
+  description="Jackery vs Bluetti portable power stations — which brand is better? We compared both brands head-to-head across every spec: battery chemistry, capacity, price, charging speed, and reliability."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Jackery vs Bluetti
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Jackery vs Bluetti: Full Comparison (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 products across both brands</p>
+
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      Jackery and Bluetti are two of the most recognizable names in portable power stations after EcoFlow. Both have loyal followings. Both make solid products. But they prioritize different things — Jackery emphasizes weight and simplicity, Bluetti prioritizes battery chemistry and value. Here's the honest head-to-head comparison across every spec that matters.
+    </p>
+
+    <!-- Verdict Box -->
+    <div class="grid sm:grid-cols-2 gap-4 mb-10">
+      <div class="bg-orange-50 border border-orange-200 rounded-2xl p-5">
+        <p class="text-xs font-semibold text-orange-700 uppercase tracking-widest mb-2">Choose Jackery if...</p>
+        <ul class="space-y-1.5 text-sm text-gray-700">
+          <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">✓</span>Weight and portability are your top priority</li>
+          <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">✓</span>You primarily use it for camping and travel</li>
+          <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">✓</span>You prefer the simplest possible controls</li>
+          <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">✓</span>You value brand recognition and the largest community</li>
+          <li class="flex gap-2"><span class="text-orange-500 flex-shrink-0">✓</span>You're buying at the $349–799 price tier</li>
+        </ul>
+      </div>
+      <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5">
+        <p class="text-xs font-semibold text-blue-700 uppercase tracking-widest mb-2">Choose Bluetti if...</p>
+        <ul class="space-y-1.5 text-sm text-gray-700">
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>LFP battery longevity and safety matter to you</li>
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>Home backup is the primary use case</li>
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>You want faster charging for the capacity</li>
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>You want more AC outlets for simultaneous loads</li>
+          <li class="flex gap-2"><span class="text-blue-500 flex-shrink-0">✓</span>You're buying at the $199–599 price tier</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Brand Criteria Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Head-to-Head: Brand Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700 w-1/3">Criteria</th>
+            <th class="text-left p-3 font-semibold text-orange-700">Jackery</th>
+            <th class="text-left p-3 font-semibold text-blue-700">Bluetti</th>
+          </tr>
+        </thead>
+        <tbody class="text-sm text-gray-700">
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">Battery Chemistry</td>
+            <td class="p-3">NMC on most models (~500 cycles)</td>
+            <td class="p-3">LFP on all current models (2,500–3,500 cycles)</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">AC Charge Speed</td>
+            <td class="p-3">1.8–7 hours (varies by model)</td>
+            <td class="p-3">45–90 min to 80% on current models</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">Weight</td>
+            <td class="p-3">Lighter — 10–25 lbs across lineup</td>
+            <td class="p-3">Heavier — 10–35 lbs at similar capacity</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">Capacity per Dollar</td>
+            <td class="p-3">Lower — brand premium built in</td>
+            <td class="p-3">Better — more Wh per $1 spent</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">Solar Input</td>
+            <td class="p-3">100–200W (moderate)</td>
+            <td class="p-3">200–500W on current models</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">AC Outlets</td>
+            <td class="p-3">2–3 outlets on most models</td>
+            <td class="p-3">4 outlets on AC180, more on larger models</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">App Quality</td>
+            <td class="p-3">Clean, simple, fewer features</td>
+            <td class="p-3">Feature-rich but more complex</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">Brand History</td>
+            <td class="p-3">Founded 2012 — longest consumer track record</td>
+            <td class="p-3">Founded 2019 — newer, rapid growth</td>
+          </tr>
+          <tr class="border-b border-gray-100">
+            <td class="p-3 font-medium text-gray-900">EPS/UPS Mode</td>
+            <td class="p-3">Not available — noticeable switch gap</td>
+            <td class="p-3">20–30ms UPS mode on AC180 and larger</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-gray-50">
+            <td class="p-3 font-medium text-gray-900">Warranty</td>
+            <td class="p-3">2 years standard</td>
+            <td class="p-3">2 years standard, 4 years with registration</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Tier by Tier -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Head-to-Head by Price Tier</h2>
+
+    <div class="space-y-6 mb-12">
+      <div class="border border-blue-200 bg-blue-50 rounded-xl p-5">
+        <p class="text-xs font-semibold text-blue-700 uppercase tracking-widest mb-3">Under $250 — Bluetti wins on specs</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <p class="font-medium text-gray-900 mb-1">Bluetti EB3A — $199</p>
+            <p class="text-sm text-gray-600">268Wh LFP, 600W continuous, 1.5-hour charge. Best entry-level LFP power station available. Lightweight at 10.1 lbs.</p>
+            <a href={bluettiProducts[1]?.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs text-green-700 hover:underline">Check on Amazon →</a>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm text-gray-600">
+            <p>Jackery's entry-level starts at $349 (Explorer 500, 518Wh). Bluetti wins at the sub-$250 tier on both price and battery chemistry. Jackery is the lighter option (13.3 lbs vs 10.1 lbs for EB3A) but doesn't compete on LFP chemistry at this price.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-orange-200 bg-orange-50 rounded-xl p-5">
+        <p class="text-xs font-semibold text-orange-700 uppercase tracking-widest mb-3">$300–$400 — Jackery wins on portability</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <p class="font-medium text-gray-900 mb-1">Jackery Explorer 500 — $349</p>
+            <p class="text-sm text-gray-600">518Wh, 13.3 lbs, simple operation. The go-to lightweight option for camping. NMC battery but proven reliability over many years.</p>
+            <a href={jackeryProducts[1]?.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs text-green-700 hover:underline">Check on Amazon →</a>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm text-gray-600">
+            <p>At this tier, Jackery's 13.3 lbs and simple controls win for campers and travelers. Bluetti doesn't have a direct competitor at $349 — the EB3A is $150 cheaper with less capacity, and the AC180 is $250 more. Jackery owns this price range.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-blue-200 bg-blue-50 rounded-xl p-5">
+        <p class="text-xs font-semibold text-blue-700 uppercase tracking-widest mb-3">$500–$700 — Bluetti wins clearly on value</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <p class="font-medium text-gray-900 mb-1">Bluetti AC180 — $599</p>
+            <p class="text-sm text-gray-600">1152Wh LFP, 1800W continuous, 45-min charge to 80%, 4 outlets. Best capacity-per-dollar LFP option in this price range.</p>
+            <a href={bluettiProducts[0]?.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs text-green-700 hover:underline">Check on Amazon →</a>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm text-gray-600">
+            <p>Jackery's closest option is the Explorer 1000 Pro at $799 — 1002Wh NMC, 1000W. At $200 more, Jackery delivers less capacity (1002Wh vs 1152Wh), lower output (1000W vs 1800W), and NMC vs LFP. Bluetti wins this tier decisively.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="border border-orange-200 bg-orange-50 rounded-xl p-5">
+        <p class="text-xs font-semibold text-orange-700 uppercase tracking-widest mb-3">$700–$900 — Jackery wins on portability</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div>
+            <p class="font-medium text-gray-900 mb-1">Jackery Explorer 1000 Pro — $799</p>
+            <p class="text-sm text-gray-600">1002Wh, 1000W, 1.8-hr AC charge, 25.4 lbs. Jackery's most refined hardware. Best for camping use where portability at 1kWh capacity matters.</p>
+            <a href={jackeryProducts[0]?.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-xs text-green-700 hover:underline">Check on Amazon →</a>
+          </div>
+          <div class="bg-white rounded-lg p-3 text-sm text-gray-600">
+            <p>Bluetti's $599 AC180 already outperforms the $799 Explorer 1000 Pro on specs. If you want to spend $800, the AC180 at $599 wins and saves you $200. The Explorer 1000 Pro only wins if weight and Jackery's ecosystem specifically matter to you.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Individual product cards -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-8">All Products in This Comparison</h2>
+
+    {allProducts.map((product) => (
+      <section id={product.slug} class="mb-12 scroll-mt-20">
+        <div class="border border-gray-100 rounded-2xl p-6">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+            <div>
+              <p class={`text-xs font-semibold uppercase tracking-widest mb-1 ${product.brand === 'Jackery' ? 'text-orange-600' : 'text-blue-600'}`}>
+                {product.brand}
+              </p>
+              <h3 class="text-xl font-bold text-gray-900 mb-1">{product.name}</h3>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+
+          <div class="bg-gray-50 rounded-xl p-4 mb-4">
+            <div class="grid sm:grid-cols-2 gap-x-8">
+              {Object.entries(product.specs).map(([key, val]) => (
+                <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                  <span class="text-gray-500 text-sm">{key}</span>
+                  <span class="font-medium text-gray-900 text-sm">{val}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <p class="font-semibold text-gray-900 mb-2 text-sm">Pros</p>
+              <ul class="space-y-1.5">
+                {product.pros.map(pro => (
+                  <li class="text-sm text-gray-700 flex gap-2">
+                    <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <p class="font-semibold text-gray-900 mb-2 text-sm">Cons</p>
+              <ul class="space-y-1.5">
+                {product.cons.map(con => (
+                  <li class="text-sm text-gray-700 flex gap-2">
+                    <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Is Bluetti better than Jackery?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">For home backup and value, Bluetti is better — LFP battery chemistry with 2,500–3,500 cycle life versus Jackery's NMC at ~500 cycles means a Bluetti unit will last 5–7× longer with heavy daily use. Bluetti also delivers more capacity per dollar and faster charging on current models. For camping and portability, Jackery is better — the Explorer 500 at 13.3 lbs and the Explorer 1000 Pro's refined portability win when weight is the primary constraint. The honest answer is: for most home users, buy Bluetti. For frequent camping and travel, Jackery's weight advantage may justify the trade-offs.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Which brand has better customer service?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Jackery has the longer-established U.S. customer service operation and consistently receives higher satisfaction reviews on warranty claims and replacements. Bluetti has improved substantially since 2021 but still receives more mixed reviews on international warranty situations. Both offer 2-year warranties. Bluetti offers a 4-year warranty with product registration. For U.S. buyers purchasing from Amazon, both brands have handled Amazon-facilitated returns effectively. Jackery's longer history means more third-party repair resources and community troubleshooting guides exist for older models.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I use a Jackery solar panel with a Bluetti power station?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes, with an adapter. Jackery solar panels use a DC5525 connector. Bluetti power stations use an aviation plug (XT60 on some models). You need a DC5525-to-aviation-plug adapter, available on Amazon for $10–15. Verify the adapter is rated for the wattage of your panel. Note that mixing brands may affect the maximum solar input — Bluetti's built-in MPPT controller will accept the panel's power but may not reach the theoretical maximum input rate listed for brand-matched panels. In practice, cross-brand solar panel use works well, just not with perfect efficiency.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/ecoflow-vs-jackery" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">EcoFlow vs Jackery: Full Comparison →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

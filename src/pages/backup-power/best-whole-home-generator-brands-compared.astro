@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['generac-22kw-guardian', 'kohler-20rescl-20kw', 'briggs-stratton-10kw-standby'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Whole-Home Generator Brands Compared (2026): Generac vs Kohler vs Briggs & Stratton"
+  description="Whole-home standby generator brands compared head-to-head: Generac 22kW, Kohler 20kW, and Briggs & Stratton 10kW. Which brand is most reliable, best supported, and right for your home?"
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Whole-Home Generator Brands Compared
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Whole-Home Generator Brands Compared (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · Generac vs Kohler vs Briggs & Stratton</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Whole-home standby generators are one of the largest home purchases you'll make — $6,000–12,000 fully installed. Unlike a smart speaker or a power station, you can't return a standby generator if it doesn't meet expectations. Choosing the right brand before installation matters more than for almost any other product category in this site.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The three brands below represent the realistic options for residential standby generators in the U.S.: Generac (the largest market share by far), Kohler (the premium alternative with the quietest operation), and Briggs & Stratton (the entry-level option for partial-home backup). The right choice depends on your output needs, budget, and whether dealer network coverage is strong in your area.
+    </p>
+
+    <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Total installed cost: what to expect</p>
+      <p class="text-sm text-gray-600 leading-relaxed">The generator unit price is only part of the total cost. Professional installation — which is required and cannot be DIY'd legally — adds $3,000–6,000 depending on your area, panel distance from the installation pad, and whether a new gas line is required. Add $400–800 for a transfer switch if not included (Generac includes a 200A ATS; Kohler does not). Add $500–1,500 for the concrete pad, electrical permits, and inspections. A realistic total budget: Briggs & Stratton 10kW = $5,500–8,000 installed. Generac 22kW = $7,000–12,000 installed. Kohler 20kW = $7,500–13,000 installed. Get three quotes from licensed generator installers in your area before committing.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Brand Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Generator</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Transfer Switch</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Warranty</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Output']}</td>
+              <td class="p-3">{p.specs['Transfer Switch']}</td>
+              <td class="p-3">{p.specs['Warranty']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Overall Standby Generator Brand' : i === 1 ? '🥈 Best Premium Standby Generator' : '🥉 Best Entry-Level Standby Generator'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Whole-Home Generator Brand Comparison Guide</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Why Generac has 70% U.S. market share</h3>
+          <p class="text-sm leading-relaxed">Generac does not make the quietest generator or the most premium unit. They dominate because: (1) the largest dealer network in the U.S. — more certified Generac installers per ZIP code than any other brand; (2) comprehensive parts availability, meaning a repair during or after a warranty period is faster; (3) the Mobile Link app is the most polished generator remote monitoring platform available; and (4) the included 200A automatic transfer switch eliminates the largest surprise cost in standby generator installation. For most homeowners, Generac is the right choice because the support infrastructure is simply better established than competitors.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">When to choose Kohler over Generac</h3>
+          <p class="text-sm leading-relaxed">Kohler wins in three specific situations. First, if noise is a priority — the 20RESCL operates at 65 dB vs Generac's 67 dB (a meaningful 2 dB reduction when adjacent to a neighbor's property line). Second, if you have an existing relationship with a Kohler dealer or HVAC contractor who services Kohler equipment. Third, if you have a rental property or commercial application where Kohler's commercial-grade engine tolerance is valued. For most residential buyers without these specific priorities, Generac's included transfer switch and larger dealer network make it the easier installation and better-supported choice at a similar total installed cost.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How many kW does your home need?</h3>
+          <p class="text-sm leading-relaxed">Calculate your critical loads: central A/C (3–5 tons) draws 3,500–5,000W starting, 2,000–3,000W running. Electric range draws 6,000–10,000W. Electric water heater draws 4,500W. Well pump draws 750–1,500W. Refrigerator draws 700–1,200W. Lights and outlets draw 2,000–3,000W across a typical home. Add up everything you want to run simultaneously and size accordingly. A 10kW unit handles essential circuits without A/C or major appliances. A 20–22kW unit handles whole-home load including central A/C. Most 2,000–3,500 sq ft homes with gas HVAC need 14–18kW for full coverage; with electric HVAC need 20–22kW. When in doubt, size up — a generator running at 50% capacity lasts longer than one running at 90%.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How long does a standby generator installation take?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Most residential standby generator installations complete in 1–3 days. Day 1 is typically concrete pad installation (needs 24–72 hours to cure). Day 2 is mechanical installation — mounting the generator, running gas line, connecting transfer switch. Day 3 is electrical inspection and startup. Simple installations near the electrical panel with an existing gas stub can complete in a single day for the mechanical and electrical work. Complex installs — long gas line runs, panel upgrades, remote gas tank connections — can extend to a week. Most utilities require a permit and final inspection before the generator is energized, which can add 1–3 weeks depending on local building department backlog.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does a standby generator increase home value?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — NAR studies suggest standby generators add 3–5% to home value in regions with frequent outages (coastal storm zones, rural areas, extreme heat/cold zones). In urban areas with reliable grid power, the premium is lower — 1–2%. Buyers in hurricane-prone markets increasingly expect standby generators in higher-priced homes. The return on investment at resale is typically 50–80% of installation cost — a $10,000 installation may add $5,000–8,000 to sale price. The clearest financial case is in markets like Florida, Texas Gulf Coast, and the Carolinas where buyers specifically filter for generator-equipped homes and pay premiums accordingly.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">What maintenance does a standby generator need?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Annual maintenance is required to maintain the warranty and keep the generator reliable. Service includes: oil and filter change (most Generac models at 200 hours or annually, whichever comes first), spark plug inspection, air filter replacement, battery voltage check, coolant level check, and transfer switch exercising. Most generator dealers offer annual maintenance contracts for $150–300. The generator runs a weekly self-test automatically (typically 10–20 minutes, configurable via app) that keeps seals lubricated and verifies startup function — this is not a substitute for annual service. If the weekly self-test fails or the generator won't start during an actual outage, most Generac dealers offer 24-hour emergency service for active maintenance contract holders.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-whole-home-generator-2000-sq-ft" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for 2,000 Sq Ft →</p>
+        </a>
+        <a href="/backup-power/best-whole-home-generator-for-well-pump" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for Well Pumps →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

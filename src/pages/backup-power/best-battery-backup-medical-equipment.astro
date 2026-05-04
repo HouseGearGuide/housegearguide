@@ -1,0 +1,226 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['ecoflow-delta-2', 'ecoflow-river-2-pro', 'bluetti-eb3a', 'jackery-explorer-500'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Battery Backup for Medical Equipment (2026): CPAP, Oxygen Concentrators & More"
+  description="The best portable power stations for medical equipment: CPAP machines, oxygen concentrators, nebulizers, and home health devices. EcoFlow, Bluetti, and Jackery compared."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Battery Backup for Medical Equipment
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Battery Backup for Medical Equipment (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 power stations compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      For most households, a power outage is an inconvenience. For households with CPAP machines, oxygen concentrators, nebulizers, home infusion equipment, or powered wheelchairs, it can be a medical emergency. Battery-powered portable power stations provide clean, reliable backup power without the carbon monoxide risk of gas generators — making them the only safe indoor power source for medical equipment during outages.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The four picks below are selected specifically for medical reliability: LFP battery chemistry (safer than NMC, longer cycle life), pure sine wave AC output (required by most medical devices), and sufficient capacity to run overnight without interruption. All produce no exhaust and are completely safe to operate in a bedroom.
+    </p>
+
+    <div class="bg-red-50 border border-red-200 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Important: verify your medical device requirements before purchasing</p>
+      <p class="text-sm text-gray-600 leading-relaxed">All power stations on this page produce pure sine wave AC output, which is required by most medical devices. However, some equipment — particularly older oxygen concentrators and infusion pumps — have specific voltage or wattage requirements that must be matched exactly. Check your device's power label (usually on the bottom or back) for rated wattage. CPAP machines typically draw 30–60W; oxygen concentrators draw 150–600W depending on flow rate; nebulizers draw 100–200W. Calculate your overnight runtime requirement and compare to each unit's capacity before purchasing.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Power Station</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Capacity</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Battery Type</th>
+            <th class="text-left p-3 font-semibold text-gray-700">CPAP Runtime*</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Capacity']}</td>
+              <td class="p-3">{p.specs['Battery Type']}</td>
+              <td class="p-3">{i === 0 ? '17–30 hrs' : i === 1 ? '13–23 hrs' : i === 2 ? '4–8 hrs' : '9–16 hrs'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-400 -mt-8 mb-12">*CPAP runtime estimated at 30–60W draw without humidifier. Actual runtime varies by device settings.</p>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Overall Medical Backup Power Station' : i === 1 ? '🥈 Best Lightweight Medical Backup' : i === 2 ? '🥉 Best Budget CPAP Backup' : '⚡ Best Entry-Level Medical Backup'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Medical Equipment Backup Power Guide</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Why LFP batteries matter for medical use</h3>
+          <p class="text-sm leading-relaxed">All four units on this page use LiFePO4 (LFP) batteries. LFP is thermally stable — it does not produce heat runaway or catch fire when overcharged, overheated, or physically damaged, unlike older NMC lithium batteries. For medical devices that operate continuously in a bedroom, this is the key reason to prioritize LFP over cheaper NMC options. LFP also charges and discharges more consistently across its lifespan — where an NMC battery at 80% capacity might deliver 85% of rated runtime, LFP maintains runtime consistency for 2,000–3,500 cycles. For a device that may need to run reliably every night for years, LFP cycle life is essential.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">CPAP-specific considerations</h3>
+          <p class="text-sm leading-relaxed">CPAP machines draw 30–60W without a humidifier and 60–120W with the humidifier active. Turning off the humidifier during outages roughly doubles your runtime. Most modern CPAP machines (ResMed AirSense, Philips DreamStation) work on the 100–240V range and accept both AC and DC input. Some models include a 12V DC cable — these allow you to power the CPAP directly from the power station's 12V DC output port, bypassing the inverter entirely and improving efficiency by 10–15%. Check your CPAP's manual for DC compatibility before assuming you need the AC outlet.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Oxygen concentrators: high-wattage planning</h3>
+          <p class="text-sm leading-relaxed">Portable oxygen concentrators (POCs) draw 150–300W. Stationary home oxygen concentrators draw 300–600W continuously. At 600W, the EcoFlow DELTA 2 (1024Wh) provides approximately 1.5–2 hours of runtime — not enough for overnight use without recharging. For stationary concentrator users who need 8+ hours of backup, the EcoFlow DELTA Pro (3600Wh) or Bluetti EP500Pro (5120Wh) are the appropriate units — though they cost $1,799–3,099. For portable POC users at 150–200W, the EcoFlow DELTA 2 provides 4–6 hours of continuous runtime, sufficient for most power outages. Know your device's exact wattage before sizing your power station.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Are portable power stations safe to use in a bedroom?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — battery power stations produce no carbon monoxide and require no ventilation. They are 100% safe to use in enclosed spaces including bedrooms. This is the critical safety advantage over gas generators, which must never be used indoors due to CO risk. The fan noise of the power station may be noticeable at light loads (10–30 dB); place the unit on the opposite side of the room from the bed if noise sensitivity is a concern. EcoFlow's DELTA 2 can be set to silent mode via app, which reduces fan activity at low loads.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Should I keep the power station constantly plugged in (passthrough charging)?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — for medical use, keeping the power station plugged into the wall and running your medical device through it is the recommended configuration. This is called "passthrough" mode. When grid power fails, the power station switches to battery within milliseconds (EcoFlow DELTA 2 switches in under 30ms in UPS mode). This means your CPAP or other equipment never experiences a power interruption. Charge the power station to 100% and charge-to-100% is not harmful on LFP batteries — they are designed for this use pattern, unlike NMC batteries that degrade faster at 100% state of charge.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does Medicare or insurance cover a backup power station for medical equipment?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">In rare cases, yes. Medicare Part B covers backup power supplies for certain home oxygen and ventilator equipment when medically necessary and prescribed by a physician. Coverage is not automatic and requires prior authorization. Most standard CPAP users do not qualify for Medicare backup power coverage, but users of oxygen concentrators or home ventilators may. Check with your durable medical equipment supplier and request a prescription for "backup power supply for home medical equipment" — your supplier will handle the Medicare billing if eligible. Private insurance coverage varies significantly by plan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Stations Under $500 →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-elderly-parents" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Elderly Parents →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

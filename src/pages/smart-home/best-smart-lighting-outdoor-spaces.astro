@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['philips-hue-lily-outdoor', 'govee-outdoor-string-lights', 'kasa-outdoor-string-lights', 'ring-smart-floodlight-battery'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Outdoor Lighting (2026): Hue, Govee, Kasa & Ring Compared"
+  description="Smart outdoor lighting compared: Philips Hue Lily spotlight, Govee RGBIC string lights, Kasa warm white string lights, and Ring Battery Floodlight. Deck, patio, and landscape picks."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Lighting for Outdoor Spaces
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Outdoor Lighting (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 outdoor lighting types compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Smart outdoor lighting does three things standard outdoor lighting doesn't: it reacts to motion or time automatically, it lets you control ambiance from your phone or voice, and it can integrate with your security system to turn on when a camera detects motion. The challenge is matching the right type of smart light to your outdoor space.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The four picks below cover every outdoor use case: landscape spotlights for illuminating trees, walkways, and architectural features (Philips Hue Lily); color string lights for decks and patios (Govee); classic warm white string lights for permanent outdoor ambiance (Kasa); and motion-activated security floodlights (Ring). All are IP65 or better rated — built for rain, sprinklers, and year-round outdoor installation.
+    </p>
+
+    <div class="bg-yellow-50 border border-yellow-200 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Sunset/sunrise automations: the outdoor lighting feature that actually gets used</p>
+      <p class="text-sm text-gray-600 leading-relaxed">All four picks support sunrise/sunset-triggered scheduling — the outdoor lighting automation that makes the biggest practical difference. Your patio lights turn on at dusk, turn off at midnight, and never need manual control. This works with Alexa, Google Home, and each brand's own app. Govee and Kasa string lights set up sunset automations in under 5 minutes from the app. Philips Hue requires the Hue Bridge but then offers the most reliable and consistent timing across seasons. Ring integrates sunset triggers with its motion zones for combined security + ambiance behavior.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Light</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Type</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Colors</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Weather Rating</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Type']}</td>
+              <td class="p-3">{p.specs['Colors']}</td>
+              <td class="p-3">{p.specs['Weather Rating']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Smart Landscape Spotlight' : i === 1 ? '🌈 Best Color Smart String Lights' : i === 2 ? '✨ Best Warm White Smart String Lights' : '🔦 Best Smart Security Floodlight'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Smart Outdoor Lighting Buying Guide</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">IP ratings explained: what you actually need outdoors</h3>
+          <p class="text-sm leading-relaxed">IP ratings measure dust and liquid ingress resistance. The two digits indicate: the first is dust protection (6 = dust-tight), the second is water protection (4 = splash from any direction, 5 = direct water jets, 6 = heavy rain and water ingress). IP44 is the minimum for covered porch or deck use where the light won't see direct rain. IP65 is the standard for exposed outdoor locations — flower beds, pathways, areas with direct sprinkler exposure. All four picks in this guide are rated IP44 or IP65. For any installation in direct rain or sprinkler zones, choose IP65 or better.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Color temperature for outdoor spaces: warm vs cool white</h3>
+          <p class="text-sm leading-relaxed">Warm white (2700–3000K) is the standard for outdoor ambiance — patios, decks, string lights. It creates the familiar golden-hour look that photographs well and feels inviting. Cool white (4000–5000K) is better for task and security lighting — driveways, parking areas, and security floodlights where visibility is the goal. The Ring floodlight's cool-white output makes it excellent for security but jarring for ambiance. The Kasa string lights' warm 2700K is perfect for a covered porch but too warm to light a dark pathway effectively. Match color temperature to the purpose of the space, not personal preference alone.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Low-voltage landscape lighting: wiring made simple</h3>
+          <p class="text-sm leading-relaxed">The Philips Hue Lily and similar landscape spotlights use low-voltage DC power (typically 12–24V) from a central transformer, not 120V AC from an outlet. This means the low-voltage cable running through your garden is safe to cut, bury, or handle without an electrician. Most landscape transformers are plug-in units that connect to a standard outdoor outlet. The Hue Lily connects to Philips Hue's low-voltage transformer ($70 additional), which controls power on/off and integrates with the Hue Bridge. Plan the cable run before purchasing — each Lily requires an 8-foot run to the transformer or an extension cable.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can smart outdoor string lights stay outside year-round?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes, for IP44 and IP65 rated lights. Both the Govee and Kasa string lights on this page are rated for all-weather outdoor installation. The bulbs and sockets are sealed against moisture. The one component that is not weatherproof is the plug end — the smart outlet or plug it connects to should be protected by a covered outdoor outlet box (sold at any hardware store for $8–15). In climates with extreme winter temperatures below -20°F, bring string lights indoors during deep cold snaps as sustained freezing accelerates cable cracking over time.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Do smart outdoor lights work with Apple HomeKit?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Of the four picks on this page, only Philips Hue Lily supports Apple HomeKit natively. For HomeKit compatibility with string lights, Govee offers some HomeKit-compatible string light models under their newer lineup — check the specific SKU before purchasing. Kasa does not support HomeKit. Ring does not support HomeKit. If HomeKit is a requirement for your outdoor lighting, Philips Hue is the most complete ecosystem with the widest range of outdoor fixtures, pathway lights, and motion sensors all HomeKit compatible.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How do I automate outdoor lights to turn off at a specific time?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">All four options support scheduled on/off through their respective apps. For the most flexible scheduling: set "turn on at sunset" and "turn off at 11:00 PM" — this means lights adjust automatically as days shorten or lengthen through the year without needing to update the schedule seasonally. In Alexa, this is set up under Routines → Schedule. In Google Home, under Automations. In the Kasa and Govee apps, both support sunset/sunrise-relative scheduling plus fixed time as options within the scheduling interface.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-lighting-for-apartments" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Lighting for Apartments →</p>
+        </a>
+        <a href="/smart-home/best-outdoor-smart-plugs" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Outdoor Smart Plugs →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

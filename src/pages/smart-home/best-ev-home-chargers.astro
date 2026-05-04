@@ -1,0 +1,225 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['chargepoint-home-flex', 'emporia-ev-charger', 'grizzle-e-classic', 'wallbox-pulsar-plus'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best EV Home Chargers (2026): ChargePoint vs Emporia vs Grizzl-E vs Wallbox"
+  description="Level 2 EV home chargers compared: ChargePoint Home Flex, Emporia 48A, Grizzl-E Classic, and Wallbox Pulsar Plus. Which is right for your garage?"
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best EV Home Chargers
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best EV Home Charger (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: April 2026 · 4 Level 2 chargers compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Level 1 charging — plugging your EV into a standard 120V household outlet — adds only 3–5 miles of range per hour. For most EV owners, that means plugging in every night and still waking up to a depleted battery after a heavy driving day. A Level 2 home charger (240V) changes everything: 15–37 miles of range per hour, full overnight charge regardless of your battery size.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The four picks below cover every buyer type: the premium trusted name (ChargePoint), the best value smart charger (Emporia), the no-frills budget pick (Grizzl-E), and the most compact smart option (Wallbox). All use the SAE J1772 connector — the universal Level 2 standard compatible with every non-Tesla EV, and compatible with Teslas using the included J1772 adapter.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">The federal EV charger tax credit: what you need to know</p>
+      <p class="text-sm text-gray-600 leading-relaxed">The Inflation Reduction Act provides a 30% federal tax credit (up to $1,000) for EV charger installation at your primary residence. This applies to both the hardware cost and the electrician installation cost. Energy Star certified chargers — including ChargePoint Home Flex and Emporia Level 2 — qualify automatically. Keep your electrician's invoice. A $699 charger + $400 installation = $1,099 total, with a potential $330 tax credit. Consult your tax advisor for eligibility specifics.</p>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Our Top Pick</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Charger</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Smart Features</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Installation</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium">${p.price}</td>
+              <td class="p-3">{p.specs['Output']}</td>
+              <td class="p-3">{p.specs['Smart Features']}</td>
+              <td class="p-3">{p.specs['Installation']}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Overall EV Home Charger' : i === 1 ? '🥈 Best Value Smart EV Charger' : i === 2 ? '🥉 Best Budget No-Frills Charger' : '📐 Best Compact Smart Charger'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">EV Home Charger Buying Guide</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How many amps do you actually need?</h3>
+          <p class="text-sm leading-relaxed">Most EVs accept between 32A and 48A on Level 2. A 32A charger adds roughly 18–22 miles of range per hour. A 48A charger adds 25–30 miles per hour. For a 300-mile-range EV driven 50 miles per day, even a 32A charger replenishes that in under 2.5 hours — nightly charging is more than sufficient at any amperage in this guide. The only case for choosing the highest amperage (48–50A) is if you regularly drive 200+ miles per day or charge a large truck like a Ford F-150 Lightning (131kWh battery). For most households, 32A–40A is more than enough.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Hardwired vs NEMA 14-50 plug-in: which installation is right for you?</h3>
+          <p class="text-sm leading-relaxed">A hardwired charger is permanently connected to your electrical panel — cleaner installation, no visible outlet, more secure. A NEMA 14-50 plug-in charger uses the same 240V outlet as a large appliance — it can be unplugged and moved if you relocate or sell. Renters strongly prefer plug-in. Homeowners with a garage near the panel often prefer hardwired for a cleaner look. The ChargePoint Home Flex supports both. The Emporia is hardwired-only.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do you need smart features?</h3>
+          <p class="text-sm leading-relaxed">Smart features — Wi-Fi, scheduling, energy tracking — have a real financial case. Most utilities offer Time-of-Use rates where off-peak electricity (typically 9pm–6am) costs 30–50% less than peak hours. A smart charger schedules automatically and saves $150–300/year on electricity in Time-of-Use markets. If you're on a flat-rate plan where electricity costs the same all day, smart features are convenience-only. Check your utility's rate structure before deciding whether to pay the premium for Wi-Fi connectivity.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Will a Level 2 charger work with my Tesla?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes. All four chargers on this page use the SAE J1772 connector, which every Tesla ships with a J1772-to-NACS adapter to accommodate. Simply plug the J1772 connector into your Tesla's included adapter and charge normally. You will get full Level 2 charging speed. The only exception is if you purchase a Tesla-brand Wall Connector ($595), which uses Tesla's proprietary NACS connector directly — but third-party J1772 chargers work fine with the adapter.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does my electrical panel need to be upgraded for a Level 2 charger?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">A 40A–50A Level 2 charger requires a dedicated 50A–60A circuit. If your panel has capacity for a new 60A breaker — meaning it has open slots and is not near its main breaker limit — no upgrade is needed. Many homes built after 1990 have 200A panels with room for one more circuit. Older homes with 100A panels or no open slots may need a panel upgrade ($1,500–4,000). Ask your electrician to evaluate panel capacity before purchasing. A load management charger like the Emporia can operate at reduced amperage to avoid trips on a constrained panel.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I install a Level 2 charger myself?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">The physical mounting and wiring of a Level 2 charger requires working with 240V circuits, which is regulated work in most U.S. states. A licensed electrician is required for both code compliance and permit purposes. Without a permit, a DIY installation can void your homeowner's insurance and create problems when selling. The federal EV charger tax credit also covers installation labor — so hiring an electrician reduces your net cost by up to 30%. Budget $200–600 for professional installation depending on your panel location and garage distance.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-home-devices-for-large-homes" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Large Homes →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-starter-kit-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Starter Kit Under $500 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>
