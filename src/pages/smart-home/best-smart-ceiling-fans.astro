@@ -1,0 +1,197 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'hunter-aerodyne-52-fan',
+  'westinghouse-alta-vista-52-fan',
+  'minka-aire-sleek-60-fan',
+  'fanimation-kute-52-fan',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const motorType: Record<string, string> = {
+  'hunter-aerodyne-52-fan': 'AC Motor',
+  'westinghouse-alta-vista-52-fan': 'AC Motor',
+  'minka-aire-sleek-60-fan': 'DC Motor',
+  'fanimation-kute-52-fan': 'DC Motor',
+};
+
+const wifiBuiltIn: Record<string, string> = {
+  'hunter-aerodyne-52-fan': 'Yes',
+  'westinghouse-alta-vista-52-fan': 'Yes',
+  'minka-aire-sleek-60-fan': 'Yes (Bond)',
+  'fanimation-kute-52-fan': 'Add-On ($50)',
+};
+
+const roomSize: Record<string, string> = {
+  'hunter-aerodyne-52-fan': 'Up to 400 sq ft',
+  'westinghouse-alta-vista-52-fan': 'Up to 400 sq ft',
+  'minka-aire-sleek-60-fan': '400–600 sq ft',
+  'fanimation-kute-52-fan': 'Up to 400 sq ft',
+};
+---
+
+<Layout
+  title="Best Smart Ceiling Fans (2025) — WiFi, Alexa & Google Home Compatible"
+  description="The best smart ceiling fans that work with Alexa, Google Home, and Apple HomeKit. Honest comparisons of motor type, airflow, WiFi setup, and value for every room size."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/smart-home/" class="hover:underline">Smart Home</a> &rsaquo;
+      <span class="text-gray-700">Best Smart Ceiling Fans</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Smart Ceiling Fans (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      A smart ceiling fan does what a regular fan can't: turns on automatically when the temperature rises, syncs with your thermostat routine, and responds to "Alexa, turn on the bedroom fan" without touching a switch. This guide covers the best smart fans with built-in WiFi — plus one premium option for those who want the smoothest motor on the market.
+    </p>
+
+    <!-- Info Box -->
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6 text-sm text-blue-900">
+      <strong>AC Motor vs. DC Motor — the most important spec:</strong>
+      <ul class="mt-2 space-y-1 list-disc list-inside">
+        <li><strong>AC Motor</strong> (Hunter, Westinghouse) — Less expensive, 3–4 speeds, typically 60–90W. Fine for most rooms.</li>
+        <li><strong>DC Motor</strong> (Minka-Aire, Fanimation) — More efficient (25–50W), 6 variable speeds, whisper quiet. Worth the premium for bedrooms.</li>
+      </ul>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Best Value Smart Ceiling Fan</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Fan</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Motor</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Airflow (CFM)</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Room Size</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">WiFi Built-In</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2">{motorType[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Airflow'] || p.specs['Airflow (CFM)'] || '—'}</td>
+              <td class="border border-gray-200 px-3 py-2">{roomSize[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">{wifiBuiltIn[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">#{i + 1} — {motorType[p.slug]}</div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Smart Ceiling Fan Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Right Blade Span for Room Size</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        52" fans (Hunter, Westinghouse, Fanimation) are right for rooms up to 400 sq ft — most standard bedrooms and living rooms. The Minka-Aire Sleek at 60" is best for open-plan spaces or rooms over 400 sq ft. Sizing up moves more air efficiently; sizing down means the motor works harder for less result.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Built-In WiFi vs. Add-On Receivers</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Hunter, Westinghouse, and Minka-Aire (via Bond) all have WiFi baked in — install, download the app, done. Fanimation requires buying their fanSync receiver separately (~$50). If you're buying Fanimation, budget for the receiver upfront and factor it into the true cost comparison.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Do You Need a Light Kit?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Hunter and Westinghouse include integrated LED light kits. Minka-Aire includes its light kit. Fanimation's LED kit is sold separately — another ~$40–80. If you want an all-in-one installation, Hunter or Westinghouse are the cleanest choices.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Which Smart Platform?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        All four fans here work with Alexa and Google Home. The Hunter Aerodyne is the only fan in this guide with native Apple HomeKit support — if you run a HomeKit household, it's the obvious choice.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/google-home-vs-alexa/" class="text-blue-600 hover:underline">Google Home vs. Alexa — Which Ecosystem to Choose</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-hub/" class="text-blue-600 hover:underline">Best Smart Home Hubs</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-starter-kit-under-500/" class="text-blue-600 hover:underline">Best Smart Home Starter Kits Under $500</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>
