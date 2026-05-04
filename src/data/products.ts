@@ -933,7 +933,7 @@ export const products: Product[] = [
     brand: 'EcoFlow',
     category: 'backup-power',
     tagline: 'The lightest LFP power station with serious solar input — best entry point for solar generator setups',
-    affiliateUrl: 'https://www.amazon.com/dp/B0BT1BYNHM?tag=housegearguid-20',
+    affiliateUrl: 'https://www.amazon.com/dp/B0BVLPGS79?tag=housegearguid-20',
     price: 449,
     rating: 4.6,
     specs: {
