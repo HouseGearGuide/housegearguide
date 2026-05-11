@@ -1,0 +1,15 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.housegearguide.com"
+        }
+      ],
+      "destination": "https://housegearguide.com/:path*",
+      "permanent": true
+    }
+  ]
+}

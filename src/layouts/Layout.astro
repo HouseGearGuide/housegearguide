@@ -7,6 +7,8 @@ interface Props {
 }
 
 const { title, description = 'Expert reviews and comparisons for smart home devices and home backup power equipment.' } = Astro.props;
+
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -15,6 +17,7 @@ const { title, description = 'Expert reviews and comparisons for smart home devi
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalUrl.href} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title} | HouseGearGuide</title>
   </head>
@@ -25,8 +28,8 @@ const { title, description = 'Expert reviews and comparisons for smart home devi
           HouseGearGuide
         </a>
         <nav class="flex gap-6 text-sm font-medium text-gray-600">
-          <a href="/smart-home" class="hover:text-green-700 transition-colors">Smart Home</a>
-          <a href="/backup-power" class="hover:text-green-700 transition-colors">Backup Power</a>
+          <a href="/smart-home/" class="hover:text-green-700 transition-colors">Smart Home</a>
+          <a href="/backup-power/" class="hover:text-green-700 transition-colors">Backup Power</a>
         </nav>
       </div>
     </header>
