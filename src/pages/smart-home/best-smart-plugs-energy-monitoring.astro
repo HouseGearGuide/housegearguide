@@ -1,0 +1,180 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'kasa-ep25-smart-plug',
+  'tp-link-tapo-p110',
+  'emporia-smart-plug',
+  'eve-energy-smart-plug',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'kasa-ep25-smart-plug': 'Best Overall — Value + Matter',
+  'tp-link-tapo-p110': 'Best Dashboard — Clearest App Charts',
+  'emporia-smart-plug': 'Best Budget — Deepest Analytics',
+  'eve-energy-smart-plug': 'Best for Apple HomeKit',
+};
+---
+
+<Layout
+  title="Best Smart Plugs with Energy Monitoring (2025) — Track Watts, kWh, and Cost Per Device"
+  description="The best smart plugs with energy monitoring for 2025 — real-time wattage, monthly kWh, and cost tracking per device. Top picks from Kasa, TP-Link Tapo, Emporia, and Eve for Alexa, Google Home, and HomeKit."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/smart-home/" class="hover:underline">Smart Home</a> &rsaquo;
+      <span class="text-gray-700">Best Smart Plugs with Energy Monitoring</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Smart Plugs with Energy Monitoring (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      Smart plugs with energy monitoring do more than turn devices on and off — they show you exactly how much power each device draws and how much it costs you per month. Plug one into your always-on TV, a gaming console in standby, or an old refrigerator and you'll often find phantom loads costing $5–30/month that you had no idea about. These four are the best at the job, from $17 to $40.
+    </p>
+
+    <!-- Use Case Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-8 text-sm text-green-900">
+      <strong>Best devices to monitor:</strong> Desktop PC in standby · old refrigerator or freezer · gaming console · always-on TV · space heater · window A/C unit · home office equipment · aquarium pump · pool pump timer. Anything that runs continuously or sits in standby is a good energy monitoring candidate.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Top Pick — Best Value Energy Monitoring Smart Plug</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Plug</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Energy Monitoring</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Platforms</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{p.specs['Energy Monitoring']}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{p.specs['Smart Platforms']}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Energy Monitoring Smart Plug Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">What "Energy Monitoring" Actually Shows You</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        A basic smart plug just turns things on and off. An energy monitoring smart plug also reads the current wattage draw in real time, records how many kWh the device consumed over the day/week/month, and — if you enter your electricity rate in the app — shows you the dollar cost. The Kasa, Tapo, and Emporia apps all let you enter your local electricity rate (typically $0.10–$0.25/kWh) to get accurate cost projections.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Phantom Load: What It Is and What It Costs</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Phantom load (also called vampire draw or standby power) is electricity consumed by devices that are "off" but still plugged in. Common culprits: gaming consoles in rest mode (10–50W), older desktop PCs in sleep mode (10–30W), cable boxes (15–25W always), older TVs (5–20W standby). At $0.15/kWh, a 25W phantom load left on 24/7 costs ~$33/year. An energy monitoring plug identifies it; an automation in the app eliminates it by cutting power overnight.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Energy Monitoring vs Regular Smart Plug — When to Upgrade</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Use a regular smart plug for simple on/off control of lamps and holiday lights. Use an energy monitoring plug for anything that runs continuously, has a high draw, or where you're curious about actual cost: older appliances, office equipment, entertainment setups, and anything you run overnight. The price difference between a basic smart plug and an energy monitoring one is $5–10 — almost always worth it.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">HomeKit Users: Eve Energy Is the Only Option</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        There are no Alexa or Google Home energy monitoring plugs that also work with Apple HomeKit — except the Eve Energy. If your household runs on Apple Home and you want energy data visible in the Home app, the Eve Energy at $40 is the only plug that delivers. The Thread protocol also makes it more reliable and responsive than any Wi-Fi plug. It's expensive relative to the Kasa or Tapo options, but it's the right call for serious Apple Home users.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/best-outdoor-smart-plugs/" class="text-blue-600 hover:underline">Best Outdoor Smart Plugs</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-beginners/" class="text-blue-600 hover:underline">Best Smart Home Devices for Beginners</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-starter-kit-under-200/" class="text-blue-600 hover:underline">Best Smart Home Starter Kits Under $200</a></li>
+        <li>→ <a href="/smart-home/google-home-vs-alexa/" class="text-blue-600 hover:underline">Google Home vs. Alexa — Which Ecosystem to Choose</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

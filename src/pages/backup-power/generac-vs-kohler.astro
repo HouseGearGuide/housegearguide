@@ -1,0 +1,217 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const generac = products.find(p => p.slug === 'generac-22kw-guardian')!;
+const kohler = products.find(p => p.slug === 'kohler-20rescl-20kw')!;
+---
+
+<Layout
+  title="Generac vs Kohler Whole Home Generator (2025) — Which Standby Generator Is Better?"
+  description="Generac vs Kohler standby generator comparison — output, noise, warranty, transfer switch, installation cost, and dealer support. Honest breakdown of which brand is right for your home."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/backup-power/" class="hover:underline">Backup Power</a> &rsaquo;
+      <span class="text-gray-700">Generac vs Kohler</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Generac vs Kohler Whole Home Generator (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      Generac and Kohler are the two most trusted names in residential standby generators. Both automatically start within 10 seconds of a power outage, run on natural gas or propane, and will power your whole home for as long as fuel is available. The differences come down to output, noise, transfer switch cost, and which brand has better dealer coverage in your area.
+    </p>
+
+    <!-- Quick Verdict -->
+    <div class="grid md:grid-cols-2 gap-4 mb-8">
+      <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        <div class="text-sm font-semibold text-blue-700 uppercase tracking-wide mb-2">Choose Generac If...</div>
+        <ul class="text-sm space-y-1 text-blue-900">
+          <li>✓ You want the highest output (22kW vs 20kW)</li>
+          <li>✓ The transfer switch is included in your budget</li>
+          <li>✓ You want the most widely available dealer network</li>
+          <li>✓ Mobile Link remote monitoring matters to you</li>
+        </ul>
+      </div>
+      <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+        <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-2">Choose Kohler If...</div>
+        <ul class="text-sm space-y-1 text-green-900">
+          <li>✓ Quiet operation is a priority (65 dB vs 67 dB)</li>
+          <li>✓ You value commercial-grade engine build quality</li>
+          <li>✓ You have a Kohler-certified dealer nearby</li>
+          <li>✓ Unit price matters (Kohler runs ~$500 less)</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Side-by-Side Specs -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Side-by-Side Specs</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-4 py-3 text-left w-1/3">Specification</th>
+            <th class="border border-gray-200 px-4 py-3 text-left w-1/3">
+              <div class="font-bold text-gray-900">{generac.name}</div>
+              <div class="text-xs text-gray-500 font-normal mt-0.5">Generac</div>
+            </th>
+            <th class="border border-gray-200 px-4 py-3 text-left w-1/3">
+              <div class="font-bold text-gray-900">{kohler.name}</div>
+              <div class="text-xs text-gray-500 font-normal mt-0.5">Kohler</div>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-4 py-2 font-medium text-gray-700">Output</td>
+            <td class="border border-gray-200 px-4 py-2 font-semibold text-blue-700">{generac.specs['Output']}</td>
+            <td class="border border-gray-200 px-4 py-2">{kohler.specs['Output']}</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-4 py-2 font-medium text-gray-700">Fuel</td>
+            <td class="border border-gray-200 px-4 py-2">{generac.specs['Fuel']}</td>
+            <td class="border border-gray-200 px-4 py-2">{kohler.specs['Fuel']}</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-4 py-2 font-medium text-gray-700">Transfer Switch</td>
+            <td class="border border-gray-200 px-4 py-2 font-semibold text-green-700">{generac.specs['Transfer Switch']}</td>
+            <td class="border border-gray-200 px-4 py-2 text-red-600 font-semibold">{kohler.specs['Transfer Switch']}</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-4 py-2 font-medium text-gray-700">Noise Level</td>
+            <td class="border border-gray-200 px-4 py-2">{generac.specs['Noise Level']}</td>
+            <td class="border border-gray-200 px-4 py-2 font-semibold text-green-700">{kohler.specs['Noise Level']} ✓ Quieter</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-4 py-2 font-medium text-gray-700">Transfer Time</td>
+            <td class="border border-gray-200 px-4 py-2">{generac.specs['Starts Within']}</td>
+            <td class="border border-gray-200 px-4 py-2">{kohler.specs['Starts Within']}</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-4 py-2 font-medium text-gray-700">Warranty</td>
+            <td class="border border-gray-200 px-4 py-2">{generac.specs['Warranty']}</td>
+            <td class="border border-gray-200 px-4 py-2">{kohler.specs['Warranty']}</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-4 py-2 font-medium text-gray-700">Unit Price</td>
+            <td class="border border-gray-200 px-4 py-2 font-bold">${generac.price.toLocaleString()}</td>
+            <td class="border border-gray-200 px-4 py-2 font-bold text-green-700">${kohler.price.toLocaleString()} ✓ Lower</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Generac Section -->
+    <div class="border border-blue-200 rounded-lg p-6 mb-6">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <div class="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-1">Best for Most Homeowners</div>
+          <h2 class="text-2xl font-bold text-gray-900">{generac.name}</h2>
+          <p class="text-gray-600 text-sm mt-1">{generac.tagline}</p>
+        </div>
+        <div class="text-right flex-shrink-0">
+          <div class="text-2xl font-bold text-green-700">${generac.price.toLocaleString()}</div>
+          <div class="text-xs text-gray-500 mt-0.5">Transfer switch included</div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+          <ul class="text-sm space-y-1">
+            {generac.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+          <ul class="text-sm space-y-1">
+            {generac.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+          </ul>
+        </div>
+      </div>
+
+      <a href={generac.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+        Check Generac Price on Amazon →
+      </a>
+    </div>
+
+    <!-- Kohler Section -->
+    <div class="border border-green-200 rounded-lg p-6 mb-8">
+      <div class="flex items-start justify-between gap-4 mb-4">
+        <div>
+          <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">Best for Quiet Operation and Premium Build</div>
+          <h2 class="text-2xl font-bold text-gray-900">{kohler.name}</h2>
+          <p class="text-gray-600 text-sm mt-1">{kohler.tagline}</p>
+        </div>
+        <div class="text-right flex-shrink-0">
+          <div class="text-2xl font-bold text-green-700">${kohler.price.toLocaleString()}</div>
+          <div class="text-xs text-red-500 mt-0.5">Transfer switch separate (+$400–800)</div>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-4 mb-4">
+        <div>
+          <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+          <ul class="text-sm space-y-1">
+            {kohler.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+          </ul>
+        </div>
+        <div>
+          <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+          <ul class="text-sm space-y-1">
+            {kohler.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+          </ul>
+        </div>
+      </div>
+
+      <a href={kohler.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+        Check Kohler Price on Amazon →
+      </a>
+    </div>
+
+    <!-- Deep Dive -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">The Details That Actually Matter</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Transfer Switch Cost Changes Everything</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Generac's 22kW Guardian includes a 200A automatic transfer switch in the $3,699 price. Kohler's 20RESCL does not — you'll pay $400–800 for a compatible transfer switch separately. Factor that into your comparison: the Kohler effectively costs $3,600–4,000 when you add the transfer switch, which is comparable to or more than the Generac's all-in price. For true apples-to-apples, Generac wins on total purchase cost for most buyers.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Noise: 2 dB Is Meaningful at Close Range</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        The Kohler runs at 65 dB vs Generac's 67 dB. That's a 2 dB difference — roughly equivalent to a noticeable but not dramatic change in perceived loudness. At 23 feet, both are comparable to a normal conversation. At 10 feet (closer to property lines), that 2 dB difference becomes more noticeable. If neighbors are close or HOA noise rules are strict, the Kohler's quieter operation has real value.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Dealer Network: Generac Has More Coverage</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Generac has the largest residential standby generator dealer network in North America. Finding a certified installer, getting maintenance service, and sourcing parts is generally easier with Generac. Kohler has a strong dealer network in most metro areas, but in rural regions you may have fewer options. Call both brands to find dealers in your ZIP code before making a final decision.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Installation Cost — Neither Brand Controls This</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Expect $3,000–6,000 for professional installation regardless of which brand you choose. The variables are: distance from the gas meter, panel upgrades needed, concrete pad, and local labor rates. Get three quotes from certified installers and compare total installed cost — not just the unit price.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/how-to-choose-a-whole-home-generator/" class="text-blue-600 hover:underline">How to Choose a Whole Home Generator</a></li>
+        <li>→ <a href="/backup-power/best-whole-home-generator-brands-compared/" class="text-blue-600 hover:underline">Best Whole Home Generator Brands Compared</a></li>
+        <li>→ <a href="/backup-power/best-whole-home-generator-2000-sq-ft/" class="text-blue-600 hover:underline">Best Whole Home Generator for a 2,000 sq ft Home</a></li>
+        <li>→ <a href="/backup-power/what-size-generator-do-i-need/" class="text-blue-600 hover:underline">What Size Generator Do I Need?</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

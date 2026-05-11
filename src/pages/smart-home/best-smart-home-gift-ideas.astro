@@ -1,0 +1,183 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'amazon-echo-dot-5th-gen',
+  'philips-hue-starter-kit',
+  'google-nest-protect-battery',
+  'wyze-cam-v4',
+  'ring-video-doorbell-4',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const giftType: Record<string, string> = {
+  'amazon-echo-dot-5th-gen': 'Best Crowd-Pleaser Gift',
+  'philips-hue-starter-kit': 'Best Premium Gift',
+  'google-nest-protect-battery': 'Best Practical / Safety Gift',
+  'wyze-cam-v4': 'Best Budget Gift',
+  'ring-video-doorbell-4': 'Best Home Security Gift',
+};
+
+const bestFor: Record<string, string> = {
+  'amazon-echo-dot-5th-gen': 'Anyone with a smart home or just getting started',
+  'philips-hue-starter-kit': 'Design-focused households and Apple users',
+  'google-nest-protect-battery': 'Parents, homeowners, any safety-conscious household',
+  'wyze-cam-v4': 'Budget gift that punches above its price',
+  'ring-video-doorbell-4': 'Homeowners who want better front door security',
+};
+---
+
+<Layout
+  title="Best Smart Home Gift Ideas (2025) — Top Tech Gifts for Every Budget"
+  description="The best smart home gift ideas for 2025 — from $36 budget picks to $220 premium gifts. Includes voice assistants, smart lighting, security cameras, doorbells, and smoke detectors that anyone will use."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/smart-home/" class="hover:underline">Smart Home</a> &rsaquo;
+      <span class="text-gray-700">Best Smart Home Gift Ideas</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Smart Home Gift Ideas (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      Smart home gadgets make excellent gifts because they're genuinely useful and something most people wouldn't splurge on for themselves. The best smart home gifts are easy to set up, don't require any existing smart home ecosystem to get started, and deliver real daily value — not a "wow" moment followed by life in a drawer.
+    </p>
+
+    <!-- Gift Guide Box -->
+    <div class="bg-purple-50 border border-purple-200 rounded-lg p-4 mb-8 text-sm text-purple-900">
+      <strong>Gift tip:</strong> The safest smart home gifts work out of the box without any additional hardware. All five picks below either need nothing extra to get started, or include everything required in the box. Avoid gifting devices that require a specific hub, subscription, or existing ecosystem — unless you know exactly what the recipient already has.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Best Overall Gift — Works for Almost Anyone</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">All Gift Picks at a Glance</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Gift</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Type</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-purple-700 text-xs font-semibold">{giftType[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 font-semibold">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Each Gift Pick Explained</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-purple-700 uppercase tracking-wide mb-1">
+              {giftType[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Choose the Right Smart Home Gift</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Match the Ecosystem They Already Have</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        If they're an Apple household, the Philips Hue starter kit is the right call — it's the only smart bulb that works natively with Apple HomeKit and looks premium. If they're Amazon/Alexa users, the Echo Dot is a no-brainer gift that immediately becomes part of their daily life. Google-only households will get the most out of the Nest Protect (Google Home native) or a Google Nest Doorbell.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Safety Gifts Are Always Appreciated</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        The Google Nest Protect is one of the best smart home safety gifts because it's genuinely useful — it speaks aloud to tell you which room has smoke or CO, sends phone alerts, and works even if the internet is down. People with aging parents, young kids, or homes with gas appliances will use this every day without thinking about it. It's the rare "gift you wouldn't buy yourself" that actually gets used.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Under $50? Go With the Echo Dot</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        The Amazon Echo Dot 5th Gen is the best budget smart home gift you can give. It works out of the box, sounds better than its $50 price suggests, and works as both a smart speaker and the hub for controlling other smart devices with voice commands. It's also on sale for $25–$35 during Amazon events. It's reliably appreciated even by people who say "I don't need a smart speaker."
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-beginners/" class="text-blue-600 hover:underline">Best Smart Home Devices for Beginners</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-starter-kit-under-200/" class="text-blue-600 hover:underline">Best Smart Home Starter Kits Under $200</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-starter-kit-under-500/" class="text-blue-600 hover:underline">Best Smart Home Starter Kits Under $500</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-devices-under-100/" class="text-blue-600 hover:underline">Best Smart Home Devices Under $100</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

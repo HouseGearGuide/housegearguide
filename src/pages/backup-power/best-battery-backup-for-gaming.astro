@@ -1,0 +1,195 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'cyberpower-cp1500pfclcd',
+  'apc-br1500ms2',
+  'ecoflow-delta-2',
+  'anker-solix-c800',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'cyberpower-cp1500pfclcd': 'Best for Desktop Gaming PCs',
+  'apc-br1500ms2': 'Best Premium UPS — Desktop + Monitor',
+  'ecoflow-delta-2': 'Best for Console + Living Room Gaming',
+  'anker-solix-c800': 'Best for Portable / Outdoor Gaming',
+};
+
+const powerType: Record<string, string> = {
+  'cyberpower-cp1500pfclcd': 'UPS (Pure Sine Wave)',
+  'apc-br1500ms2': 'UPS (Pure Sine Wave)',
+  'ecoflow-delta-2': 'Portable Power Station',
+  'anker-solix-c800': 'Portable Power Station',
+};
+---
+
+<Layout
+  title="Best Battery Backup for Gaming Setup (2025) — UPS for Gaming PC, Console, and Streaming"
+  description="The best battery backup options for gaming setups in 2025 — pure sine wave UPS for gaming PCs, portable power stations for consoles and living room rigs. Honest picks from CyberPower, APC, EcoFlow, and Anker."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/backup-power/" class="hover:underline">Backup Power</a> &rsaquo;
+      <span class="text-gray-700">Best Battery Backup for Gaming Setup</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Battery Backup for Gaming Setup (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      A power outage mid-game isn't just inconvenient — on a desktop PC it can corrupt save files, damage an active SSD write, or blow a PSU if the grid restores with a voltage spike. The right backup depends on your setup: desktop gaming PCs need a pure sine wave UPS, while console and living room setups can use a portable power station for longer runtime.
+    </p>
+
+    <!-- Critical Warning -->
+    <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-8 text-sm text-red-900">
+      <strong>Critical for desktop gaming PC owners:</strong> Modern gaming PCs use active PFC (aPFC) power supplies. A simulated sine wave UPS will cause your PC to immediately shut down or, worse, damage the PSU during a power event. You must use a <strong>pure sine wave UPS</strong>. Both UPS picks on this page output pure sine wave. Don't buy a simulated sine UPS for a gaming PC under any circumstances.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Top UPS Pick — Best for Desktop Gaming PCs</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Device</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Output</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Type</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['AC Output'] || p.specs['Capacity']}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{powerType[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+            <div class="text-xs text-gray-500 mt-0.5">{powerType[p.slug]}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Gaming Battery Backup Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">UPS vs Portable Power Station — What's the Difference?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        A UPS (Uninterruptible Power Supply) is designed to switch to battery power in milliseconds — your PC never even knows power dropped. Runtime is 10–30 minutes — just enough to save your progress and shut down cleanly. A portable power station like the EcoFlow DELTA 2 gives you hours of runtime but takes a few seconds to switch over (not truly uninterruptible). For desktop PCs, the UPS millisecond switchover is non-negotiable. For consoles, a power station's longer runtime makes more sense.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">How Much VA Do You Need for a Gaming PC?</h3>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-xs border-collapse border border-gray-200">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Gaming Setup</th>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Typical Peak Draw</th>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Minimum UPS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">Budget PC (RTX 3060 or lower) + 1 monitor</td><td class="border border-gray-200 px-2 py-1.5">250–400W</td><td class="border border-gray-200 px-2 py-1.5 font-medium">CyberPower CP1500PFCLCD</td></tr>
+            <tr class="bg-gray-50"><td class="border border-gray-200 px-2 py-1.5">Mid-range PC (RTX 4070) + 2 monitors</td><td class="border border-gray-200 px-2 py-1.5">400–600W</td><td class="border border-gray-200 px-2 py-1.5 font-medium">APC BR1500MS2 (pure sine)</td></tr>
+            <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">High-end PC (RTX 4080/4090) + 3 monitors</td><td class="border border-gray-200 px-2 py-1.5">600–900W</td><td class="border border-gray-200 px-2 py-1.5 font-medium">2000VA+ pure sine — consider 2× APC units</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Console Gaming — Use a Power Station Instead</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        PS5 draws 75–200W depending on load. Xbox Series X draws 100–200W. The EcoFlow DELTA 2's 1024Wh can run a PS5 for 5–8 hours — long enough to outlast most outages. Unlike a UPS, a power station also charges your phone, keeps the router on, and powers your TV. For console gamers, a portable power station gives far more practical value than a UPS.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/best-ups-battery-backup-home-office/" class="text-blue-600 hover:underline">Best UPS Battery Backup for Home Office</a></li>
+        <li>→ <a href="/backup-power/best-backup-power-home-office/" class="text-blue-600 hover:underline">Best Backup Power for Home Office (Portable Stations)</a></li>
+        <li>→ <a href="/backup-power/best-portable-power-station-under-500/" class="text-blue-600 hover:underline">Best Portable Power Stations Under $500</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

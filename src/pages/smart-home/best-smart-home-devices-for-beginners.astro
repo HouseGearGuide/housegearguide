@@ -1,0 +1,193 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'amazon-echo-dot-5th-gen',
+  'kasa-smart-bulb-kl135',
+  'wyze-cam-v4',
+  'kasa-outdoor-smart-plug-ep40a',
+  'google-nest-thermostat-2020',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const setupTime: Record<string, string> = {
+  'amazon-echo-dot-5th-gen': '< 5 min',
+  'kasa-smart-bulb-kl135': '< 5 min',
+  'wyze-cam-v4': '< 10 min',
+  'kasa-outdoor-smart-plug-ep40a': '< 5 min',
+  'google-nest-thermostat-2020': '15–30 min',
+};
+
+const hubNeeded: Record<string, string> = {
+  'amazon-echo-dot-5th-gen': 'No',
+  'kasa-smart-bulb-kl135': 'No',
+  'wyze-cam-v4': 'No',
+  'kasa-outdoor-smart-plug-ep40a': 'No',
+  'google-nest-thermostat-2020': 'No',
+};
+
+const category: Record<string, string> = {
+  'amazon-echo-dot-5th-gen': 'Voice Assistant',
+  'kasa-smart-bulb-kl135': 'Smart Lighting',
+  'wyze-cam-v4': 'Security Camera',
+  'kasa-outdoor-smart-plug-ep40a': 'Smart Plug',
+  'google-nest-thermostat-2020': 'Smart Thermostat',
+};
+---
+
+<Layout
+  title="Best Smart Home Devices for Beginners (2025) — Easy Setup, No Hub Required"
+  description="The best smart home devices for beginners in 2025 — all easy to set up, no hub required, and genuinely useful from day one. Start with these five and build from there."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/smart-home/" class="hover:underline">Smart Home</a> &rsaquo;
+      <span class="text-gray-700">Best Smart Home Devices for Beginners</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Smart Home Devices for Beginners (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      The best smart home starting point is a device that delivers obvious daily value on day one — not something that requires a hub, an automation workflow, or a weekend of setup. Every pick on this list connects directly to your Wi-Fi, sets up in under 30 minutes, and works with Alexa and Google Home so you're not locked into a specific ecosystem before you know what you want.
+    </p>
+
+    <!-- Beginners Rule Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-8 text-sm text-green-900">
+      <strong>Where to start:</strong> The single best first device is a voice assistant (Echo Dot or Google Nest Mini). Once you have that, add a smart bulb and a smart plug — these are the cheapest ways to automate lights and small appliances. That trio covers 80% of what people use smart home tech for daily, and costs under $100 total.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Start Here — Best First Smart Home Device</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Device</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Category</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Setup Time</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Hub Needed</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2">{category[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-green-700 font-medium">{setupTime[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-green-700 font-medium">{hubNeeded[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+              #{i + 1} — {category[p.slug]} · Setup: {setupTime[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Beginner's Smart Home Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Pick One Ecosystem and Stick With It</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Alexa, Google Home, and Apple HomeKit don't talk to each other natively. The Echo Dot puts you in the Alexa world, which has the most compatible devices overall. Google Home integrates tightly with Android phones and Nest products. Apple HomeKit is the most private and reliable — but only if most of your household devices are Apple. Pick based on your phone, not the device.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">What "Hub-Free" Actually Means</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        A hub-free device connects directly to your Wi-Fi router — no additional box or bridge required. Every device on this list is hub-free. As you expand, some premium ecosystems (like Philips Hue or Lutron Caseta) require a hub, which adds cost and setup complexity. For beginners, stay hub-free until you know exactly why a hub would benefit you.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">The Right Order to Add Devices</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        1. Voice assistant first (Echo Dot or Google Nest Mini — $30–$50) · 2. Smart bulbs in high-use rooms ($15/bulb) · 3. Smart plugs for lamps and small appliances ($15–$20) · 4. Security camera if you want eyes on things remotely ($36 for Wyze) · 5. Smart thermostat once you're comfortable with the ecosystem. Each step builds naturally on the previous one.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/how-to-set-up-a-smart-home-on-a-budget/" class="text-blue-600 hover:underline">How to Set Up a Smart Home on a Budget</a></li>
+        <li>→ <a href="/smart-home/google-home-vs-alexa/" class="text-blue-600 hover:underline">Google Home vs. Alexa — Which Ecosystem to Choose</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-starter-kit-under-200/" class="text-blue-600 hover:underline">Best Smart Home Starter Kits Under $200</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-gift-ideas/" class="text-blue-600 hover:underline">Best Smart Home Gift Ideas</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>
