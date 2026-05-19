@@ -1,0 +1,182 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'amazon-echo-dot-5th-gen',
+  'kasa-smart-bulb-kl135',
+  'wyze-cam-v4',
+  'kasa-outdoor-smart-plug-ep40a',
+  'google-nest-thermostat-2020',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'amazon-echo-dot-5th-gen': 'Start Here — Voice Control Hub',
+  'kasa-smart-bulb-kl135': 'Best First Smart Light Bulb',
+  'wyze-cam-v4': 'Best Budget Security Camera',
+  'kasa-outdoor-smart-plug-ep40a': 'Best Outdoor Smart Plug',
+  'google-nest-thermostat-2020': 'Best Thermostat for Beginners',
+};
+
+const difficulty: Record<string, string> = {
+  'amazon-echo-dot-5th-gen': 'Very Easy — plug in and go',
+  'kasa-smart-bulb-kl135': 'Very Easy — screw in and pair',
+  'wyze-cam-v4': 'Easy — plug in and connect to app',
+  'kasa-outdoor-smart-plug-ep40a': 'Very Easy — plug in outside',
+  'google-nest-thermostat-2020': 'Moderate — 30 min thermostat swap',
+};
+---
+
+<Layout
+  title="Best Smart Home Devices for Beginners Under $200 (2025) — Start Here"
+  description="The best smart home devices for beginners under $200 total in 2025 — easy setup, no hub required, and immediate value. A complete beginner smart home kit from Echo Dot, Kasa, Wyze, and Google Nest."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/smart-home/" class="hover:underline">Smart Home</a> &rsaquo;
+      <span class="text-gray-700">Best Smart Home Devices for Beginners Under $200</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Smart Home Devices for Beginners Under $200 (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      The best first smart home purchase is whichever one takes less than 5 minutes to set up and immediately changes how you interact with your home. The five devices below are chosen for ease of setup, immediate usefulness, and budget friendliness — all five together cost under $200. Start with the Echo Dot; everything else pairs to it by voice.
+    </p>
+
+    <!-- Beginner Tips Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-4 mb-8 text-sm text-green-900">
+      <strong>Beginner smart home setup order:</strong> (1) Echo Dot — your voice control hub for everything. (2) Kasa smart bulb — immediate "Alexa, turn off the lights" gratification. (3) Wyze Cam — see your home remotely in 15 minutes. (4) Kasa outdoor plug — smart porch light or holiday lights. (5) Nest Thermostat — the biggest quality-of-life upgrade, slightly harder to install but worth it. You don't need all five — start with #1 and #2 for under $70.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Start Here — Best First Smart Home Device</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Budget Breakdown -->
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Device</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Setup Difficulty</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Setup Time</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700">{difficulty[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{i < 4 ? '5–10 min' : '30 min'}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              Step {i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Beginner Smart Home Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Do You Need a Hub?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        No. Every device in this list connects directly to your Wi-Fi router without a hub. Kasa devices use the Kasa app over Wi-Fi. Wyze Cam connects to Wi-Fi. The Echo Dot connects to Wi-Fi and becomes the voice control hub for everything else. The Google Nest Thermostat connects to Wi-Fi. The one partial exception is Philips Hue — it requires a Hue Bridge, which is included in the starter kit. For this beginner setup, no extra hubs needed.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Alexa vs Google Home: Which to Start With?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Start with Alexa (Echo Dot) if you shop on Amazon regularly, have Fire TV devices, or want the widest device compatibility. All Kasa devices, Wyze Cam, and most smart home products work with Alexa natively. The Nest Thermostat works with both Alexa and Google Home. For a beginner just starting out, Alexa is the simpler choice — the Echo Dot at $50 is a reliable hub for the whole setup at a great price.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">The 5-Minute Setup Test</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        All four non-thermostat devices here should take under 5 minutes to set up: download the app, plug in the device, and follow the in-app pairing instructions. Wyze Cam v4 is the only one that sometimes takes 10 minutes if your Wi-Fi has a long connection delay. The Nest Thermostat is the exception — plan for 30 minutes and watch a YouTube installation video for your specific wiring configuration first.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-beginners/" class="text-blue-600 hover:underline">Best Smart Home Devices for Beginners (All Budgets)</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-starter-kit-under-200/" class="text-blue-600 hover:underline">Best Smart Home Starter Kits Under $200</a></li>
+        <li>→ <a href="/smart-home/google-home-vs-alexa/" class="text-blue-600 hover:underline">Google Home vs Alexa — Which Ecosystem to Choose</a></li>
+        <li>→ <a href="/smart-home/how-to-set-up-a-smart-home-on-a-budget/" class="text-blue-600 hover:underline">How to Set Up a Smart Home on a Budget</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

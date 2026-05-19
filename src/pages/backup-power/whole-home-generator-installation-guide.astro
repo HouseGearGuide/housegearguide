@@ -1,0 +1,198 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'generac-22kw-guardian',
+  'kohler-20rescl-20kw',
+  'briggs-stratton-10kw-standby',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+---
+
+<Layout
+  title="Whole Home Generator Installation Guide (2025) — Costs, Permits, and What to Expect"
+  description="A complete guide to whole home generator installation in 2025 — what it costs, what permits you need, how long it takes, and what to expect from the process. Covers Generac, Kohler, and Briggs & Stratton."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/backup-power/" class="hover:underline">Backup Power</a> &rsaquo;
+      <span class="text-gray-700">Whole Home Generator Installation Guide</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Whole Home Generator Installation Guide (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      Installing a whole home standby generator is a 1–3 day project that requires a licensed electrician, a gas plumber (for natural gas or propane connections), and permits from your local municipality. The generator itself costs $3,000–$15,000; installation typically adds $3,000–$8,000 in labor and materials. This guide walks through every phase of the process — from site selection to final permit inspection.
+    </p>
+
+    <!-- Cost Summary Box -->
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 text-sm text-amber-900">
+      <strong>Total installed cost by generator size:</strong><br/>
+      10kW (small home, essential circuits): $6,000–$10,000 installed<br/>
+      20–22kW (whole home for 2,000 sq ft): $10,000–$16,000 installed<br/>
+      26–27kW (large home, 3,000+ sq ft): $14,000–$22,000 installed<br/>
+      Costs vary significantly by region. Natural gas connections are cheaper than new propane tank installations.
+    </div>
+
+    <!-- Generators Featured -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Generators Covered in This Guide</h2>
+    <div class="grid md:grid-cols-3 gap-4 mb-8">
+      {picks.map((p) => (
+        <div class="border border-gray-200 rounded-lg p-4">
+          <div class="text-xs font-semibold text-gray-500 uppercase mb-1">{p.brand}</div>
+          <div class="font-bold text-gray-900 mb-1">{p.name}</div>
+          <div class="text-green-700 font-bold text-lg mb-2">${p.price}</div>
+          <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="block text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold px-3 py-1.5 rounded-md text-sm transition-colors">
+            View on Amazon →
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <!-- Step-by-Step Installation Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Installation: Step by Step</h2>
+
+      <div class="space-y-6">
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Step 1: Determine Your Load Requirements</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            Before buying anything, calculate your load. Add up the wattage of everything you want to run during an outage. Common essential loads:
+          </p>
+          <div class="overflow-x-auto mb-3">
+            <table class="w-full text-xs border-collapse border border-gray-200">
+              <thead class="bg-gray-100">
+                <tr>
+                  <th class="border border-gray-200 px-2 py-1.5 text-left">Appliance</th>
+                  <th class="border border-gray-200 px-2 py-1.5 text-left">Running Watts</th>
+                  <th class="border border-gray-200 px-2 py-1.5 text-left">Starting Watts</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">Central AC (3 ton)</td><td class="border border-gray-200 px-2 py-1.5">3,500W</td><td class="border border-gray-200 px-2 py-1.5 font-medium">9,000W+</td></tr>
+                <tr class="bg-gray-50"><td class="border border-gray-200 px-2 py-1.5">Well pump (1 HP)</td><td class="border border-gray-200 px-2 py-1.5">1,000W</td><td class="border border-gray-200 px-2 py-1.5 font-medium">3,000W+</td></tr>
+                <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">Refrigerator</td><td class="border border-gray-200 px-2 py-1.5">200W</td><td class="border border-gray-200 px-2 py-1.5 font-medium">600W</td></tr>
+                <tr class="bg-gray-50"><td class="border border-gray-200 px-2 py-1.5">Furnace fan</td><td class="border border-gray-200 px-2 py-1.5">500W</td><td class="border border-gray-200 px-2 py-1.5 font-medium">1,000W</td></tr>
+                <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">Lights (10 LED)</td><td class="border border-gray-200 px-2 py-1.5">100W</td><td class="border border-gray-200 px-2 py-1.5 font-medium">100W</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="text-gray-700 text-sm">
+            A 20–22kW generator handles the above combination with headroom. A 10kW unit handles essential circuits without the AC. Use the <a href="/backup-power/what-size-generator-do-i-need/" class="text-blue-600 hover:underline">What Size Generator Do I Need</a> guide for a full sizing calculation.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Step 2: Choose Your Fuel Type</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            Whole home generators run on natural gas, liquid propane (LP), or both (bi-fuel models). Natural gas is cheaper per BTU and never runs out as long as the gas line is live — it's the preferred option for most homes with existing gas service. LP requires a propane tank (typically 250–500 gallons) buried in your yard or mounted on a pad — plan for a $1,000–$3,000 tank installation cost on top of the generator. Natural gas lines may require a dedicated gas plumber to run a new supply line to the generator pad.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Step 3: Select a Location</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            Local codes vary, but most require the generator to be:
+          </p>
+          <ul class="text-sm space-y-1 text-gray-700 mb-3 ml-4">
+            <li>• At least 5 feet from any window, door, or vent opening (18–24 inches per some codes — check locally)</li>
+            <li>• At least 1.5 feet from any combustible material (siding, fences)</li>
+            <li>• Not blocking egress paths</li>
+            <li>• On a level concrete or composite pad (3" concrete recommended)</li>
+            <li>• Accessible for annual service by a technician</li>
+          </ul>
+          <p class="text-gray-700 text-sm">
+            Most installers pour a concrete pad at the same time as the generator install. The pad costs $150–$400 for a standard size. Don't place the generator below a window — exhaust rises and can enter upper-floor windows even at code-minimum distances.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Step 4: Pull Permits</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            A generator installation requires electrical and gas permits in most jurisdictions. A licensed electrical contractor and gas contractor must pull these permits — homeowners can often pull their own permits in some states, but most jurisdictions require licensed contractors for generator work. Permit fees run $100–$500. An inspection is required after installation — typically a 1-hour appointment. Inspectors check wiring, transfer switch installation, gas connections, and clearances.
+          </p>
+          <p class="text-gray-700 text-sm">
+            Never skip the permit. An unpermitted generator installation affects your homeowner's insurance coverage and can create issues when you sell the home. Legitimate installers always pull permits.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Step 5: Transfer Switch Installation</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            The automatic transfer switch (ATS) is the heart of the installation. It connects to your main electrical panel, monitors utility power, and automatically switches to generator power within 10–30 seconds of an outage. Two options:
+          </p>
+          <ul class="text-sm space-y-2 text-gray-700 mb-3 ml-4">
+            <li>• <strong>Whole-home transfer switch:</strong> Replaces the main panel breaker — all circuits transfer to generator. Requires a generator sized to your entire home load. Most expensive option ($500–$1,500 for the switch itself).</li>
+            <li>• <strong>Load center / critical circuits panel:</strong> A sub-panel that breaks out your most important circuits. The generator only powers the selected circuits, allowing a smaller generator. Less expensive ($300–$700 for the sub-panel).</li>
+          </ul>
+          <p class="text-gray-700 text-sm">
+            Generac's Guardian series ships with an ATS designed for their units. Kohler's RESCL series also includes an ATS. Allow 4–8 hours of electrical labor for the transfer switch installation.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Step 6: Gas Line and Meter Upgrade</h3>
+          <p class="text-gray-700 text-sm mb-3">
+            A 22kW generator requires roughly 3.6 MMBTU/hour of gas — more than most residential gas meters are sized to deliver along with the home's existing gas appliances. In many cases, your local utility needs to upgrade your gas meter to a larger capacity model. This is typically free or low-cost from the utility, but requires scheduling and can delay the installation 2–4 weeks. Plan for this early.
+          </p>
+          <p class="text-gray-700 text-sm">
+            The gas line running from the meter to the generator pad needs to be sized correctly for the BTU demand — typically 1.25" to 2" black iron pipe. A licensed gas plumber handles this portion of the installation.
+          </p>
+        </div>
+
+        <div>
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">Step 7: Installation Day and Commissioning</h3>
+          <p class="text-gray-700 text-sm">
+            Expect the installation team to arrive in the morning and complete the job in one day for a standard installation. The process: pour or place the concrete pad (if not pre-poured), set the generator, run electrical conduit to the transfer switch, make gas connections, connect control wiring, and commission the unit. Commissioning includes a load test — the installer will turn off your main breaker to verify the transfer switch activates the generator within spec. Once commissioned, register your warranty with the manufacturer (Generac, Kohler, or Briggs) and schedule the first annual service in 12 months.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Installation Cost Breakdown -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">What Does Installation Cost?</h2>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-sm border-collapse border border-gray-200">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="border border-gray-200 px-3 py-2 text-left">Line Item</th>
+              <th class="border border-gray-200 px-3 py-2 text-left">Typical Cost</th>
+              <th class="border border-gray-200 px-3 py-2 text-left">Notes</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white"><td class="border border-gray-200 px-3 py-2">Generator unit (20–22kW)</td><td class="border border-gray-200 px-3 py-2 font-medium">$4,000–$6,500</td><td class="border border-gray-200 px-3 py-2 text-xs">Generac, Kohler, or B&S</td></tr>
+            <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2">Electrical labor</td><td class="border border-gray-200 px-3 py-2 font-medium">$1,500–$3,500</td><td class="border border-gray-200 px-3 py-2 text-xs">Transfer switch + wiring</td></tr>
+            <tr class="bg-white"><td class="border border-gray-200 px-3 py-2">Gas plumber labor</td><td class="border border-gray-200 px-3 py-2 font-medium">$500–$1,500</td><td class="border border-gray-200 px-3 py-2 text-xs">Higher if new line required</td></tr>
+            <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2">Concrete pad</td><td class="border border-gray-200 px-3 py-2 font-medium">$200–$500</td><td class="border border-gray-200 px-3 py-2 text-xs">Or composite pad: $100</td></tr>
+            <tr class="bg-white"><td class="border border-gray-200 px-3 py-2">Permits and inspection</td><td class="border border-gray-200 px-3 py-2 font-medium">$200–$600</td><td class="border border-gray-200 px-3 py-2 text-xs">Varies by jurisdiction</td></tr>
+            <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2 font-bold">Total (typical)</td><td class="border border-gray-200 px-3 py-2 font-bold text-green-700">$6,400–$12,600</td><td class="border border-gray-200 px-3 py-2 text-xs">For 20–22kW, natural gas</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/what-size-generator-do-i-need/" class="text-blue-600 hover:underline">What Size Generator Do I Need?</a></li>
+        <li>→ <a href="/backup-power/how-to-choose-a-whole-home-generator/" class="text-blue-600 hover:underline">How to Choose a Whole Home Generator</a></li>
+        <li>→ <a href="/backup-power/best-whole-home-generator-2000-sq-ft/" class="text-blue-600 hover:underline">Best Whole Home Generator for 2,000 Sq Ft</a></li>
+        <li>→ <a href="/backup-power/generac-vs-kohler/" class="text-blue-600 hover:underline">Generac vs Kohler — Which Brand to Buy</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

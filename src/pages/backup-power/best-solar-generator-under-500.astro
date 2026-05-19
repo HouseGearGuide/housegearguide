@@ -1,0 +1,192 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'ecoflow-river-2-pro',
+  'anker-solix-c800',
+  'jackery-explorer-500',
+  'bluetti-eb3a',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'ecoflow-river-2-pro': 'Best Overall — Fastest Solar Recharge Under $500',
+  'anker-solix-c800': 'Best Value — Most Capacity for the Price',
+  'jackery-explorer-500': 'Best for Portability and Brand Reliability',
+  'bluetti-eb3a': 'Best Budget LFP — Long Cycle Life Under $200',
+};
+---
+
+<Layout
+  title="Best Solar Generator Under $500 (2025) — Portable Power Stations with Solar Input"
+  description="The best solar generators under $500 in 2025 — portable power stations with solar panel compatibility for camping, off-grid use, and home backup. Top picks from EcoFlow, Anker, Jackery, and Bluetti."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/backup-power/" class="hover:underline">Backup Power</a> &rsaquo;
+      <span class="text-gray-700">Best Solar Generator Under $500</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Solar Generator Under $500 (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      A solar generator is a portable power station that accepts solar panel input to recharge off-grid. Under $500, you can get 500–800Wh of capacity with solar input ranging from 100W to 500W. The EcoFlow River 2 Pro leads this price range with its 500W solar input — it can fully recharge in 4–5 hours of peak sun from a single 110W panel, faster than anything else under $500.
+    </p>
+
+    <!-- Solar Clarification Box -->
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8 text-sm text-blue-900">
+      <strong>Solar panels are sold separately.</strong> A "solar generator" is the battery unit — the solar panels are an additional purchase. Panels typically run $100–250 for 100W and pair with any compatible power station. All four units here accept 3rd-party panels via standard MC4 or XT60 connectors, so you're not locked into brand-specific panels.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Top Pick — Best Solar Generator Under $500</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Unit</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Capacity</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Max Solar Input</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Battery</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Weight</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Capacity']}</td>
+              <td class="border border-gray-200 px-3 py-2 font-semibold text-green-700">{p.specs['Solar Input']}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Battery Type']}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Weight']}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Solar Generator Under $500 Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Why Solar Input Wattage Is the Key Spec</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        The solar input limit determines how fast the sun can recharge your unit. The Bluetti EB3A caps at 200W — fine for a 268Wh unit, recharging in ~1.5 hours of peak sun. The Jackery 500 caps at 100W — takes 5–7 hours with a single 100W panel. The EcoFlow River 2 Pro accepts 500W — one 110W panel recharges it in 4–5 hours, two panels would do it in 2–3. For daily camping recharges, more solar input means more flexibility.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">LFP vs NMC Under $500</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        The EcoFlow River 2 Pro, Bluetti EB3A, and Anker Solix C800 all use LFP (LiFePO4) batteries — 3,000+ cycles vs 500–800 cycles for NMC. The Jackery Explorer 500 uses NMC. For a unit you'll use regularly for camping, LFP pays for itself over 3–5 years of use. For occasional emergency backup that sits in a closet, the Jackery's NMC battery is fine — you'll never come close to the cycle limit.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">What Solar Panel to Pair With Each Unit</h3>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-xs border-collapse border border-gray-200">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Unit</th>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Max Solar Input</th>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Recommended Panel</th>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Est. Recharge Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">EcoFlow River 2 Pro</td><td class="border border-gray-200 px-2 py-1.5">500W</td><td class="border border-gray-200 px-2 py-1.5">1× 110W panel</td><td class="border border-gray-200 px-2 py-1.5 font-medium">~4–5 hours</td></tr>
+            <tr class="bg-gray-50"><td class="border border-gray-200 px-2 py-1.5">Anker Solix C800</td><td class="border border-gray-200 px-2 py-1.5">200W</td><td class="border border-gray-200 px-2 py-1.5">1× 200W panel</td><td class="border border-gray-200 px-2 py-1.5 font-medium">~4–6 hours</td></tr>
+            <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">Jackery Explorer 500</td><td class="border border-gray-200 px-2 py-1.5">100W</td><td class="border border-gray-200 px-2 py-1.5">1× 100W panel</td><td class="border border-gray-200 px-2 py-1.5 font-medium">~5–7 hours</td></tr>
+            <tr class="bg-gray-50"><td class="border border-gray-200 px-2 py-1.5">Bluetti EB3A</td><td class="border border-gray-200 px-2 py-1.5">200W</td><td class="border border-gray-200 px-2 py-1.5">1× 120W panel</td><td class="border border-gray-200 px-2 py-1.5 font-medium">~1.5–2.5 hours</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/best-portable-power-station-under-500/" class="text-blue-600 hover:underline">Best Portable Power Stations Under $500</a></li>
+        <li>→ <a href="/backup-power/best-solar-generator-for-camping/" class="text-blue-600 hover:underline">Best Solar Generator for Camping</a></li>
+        <li>→ <a href="/backup-power/best-solar-generator-home-backup/" class="text-blue-600 hover:underline">Best Solar Generator for Home Backup</a></li>
+        <li>→ <a href="/backup-power/solar-generator-vs-portable-generator/" class="text-blue-600 hover:underline">Solar Generator vs Gas Generator — Which to Choose</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

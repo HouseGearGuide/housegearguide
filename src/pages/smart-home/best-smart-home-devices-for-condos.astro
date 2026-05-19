@@ -1,0 +1,175 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'august-wifi-smart-lock-4th-gen',
+  'google-nest-thermostat-2020',
+  'philips-hue-starter-kit',
+  'ring-video-doorbell-4',
+  'amazon-echo-hub',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'august-wifi-smart-lock-4th-gen': 'Best Overall — Installs on Existing Deadbolt',
+  'google-nest-thermostat-2020': 'Best for Energy Savings',
+  'philips-hue-starter-kit': 'Best Lighting — Works in Any Socket',
+  'ring-video-doorbell-4': 'Best Video Doorbell for HOA Buildings',
+  'amazon-echo-hub': 'Best Smart Home Control Panel',
+};
+---
+
+<Layout
+  title="Best Smart Home Devices for Condos (2025) — HOA-Friendly, No Drilling Required"
+  description="The best smart home devices for condos in 2025 — HOA-friendly picks that don't require drilling, exterior modifications, or building approval. Top picks for condo-specific smart home setups."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/smart-home/" class="hover:underline">Smart Home</a> &rsaquo;
+      <span class="text-gray-700">Best Smart Home Devices for Condos</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Smart Home Devices for Condos (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      Condos come with HOA rules, shared walls, shared entryways, and restrictions on exterior modifications — but that doesn't mean you can't build a solid smart home. The devices here are specifically chosen for condo compatibility: they install on existing hardware, require no exterior changes, and work within shared-building constraints. From keyless entry to smart lighting and voice control, here's what works best in a condo setting.
+    </p>
+
+    <!-- Condo Considerations Box -->
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-8 text-sm text-blue-900">
+      <strong>Condo-specific considerations:</strong> Many HOAs restrict exterior camera placement — check your CC&Rs before mounting any outdoor cameras. Video doorbells are often allowed on individual unit doors but not building entry doors. Smart locks on individual unit doors are typically fine. Shared-wall noise from smart speakers is a non-issue at normal volume. Smart thermostats require your unit to have its own HVAC (not central building air) — check with building management first.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Top Pick — Best Smart Home Device for Condos</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Device</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">HOA Safe?</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-green-700">Yes</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Condo Smart Home Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Before You Buy: Check Your Unit's HVAC Setup</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Many condo buildings use a central air system controlled by the building — in this case, you can't install a smart thermostat. However, units with individual HVAC systems (a furnace and AC unit just for your unit) can use any smart thermostat. Check your thermostat wiring: if you see a W (heat), Y (cool), G (fan), and R (power) wire, you have individual HVAC. If your thermostat only has two wires, it's likely a fan coil unit on central air — not compatible with standard smart thermostats.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Video Doorbell Rules in Condo Buildings</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Ring Video Doorbell 4 is battery-powered, so no wiring changes are required. Most HOAs allow video doorbells on individual unit front doors since it's your door, your property. Issues arise with shared building entryways — many HOAs prohibit placing cameras on common area doors without board approval. If you have a private unit entrance (a front door that opens directly outside, not through a lobby), the Ring 4 is a clean, HOA-safe install.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Smart Lighting in Condos: Bulbs Are Better Than Switches</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Smart light switches require a neutral wire and some installation comfort. Philips Hue bulbs screw into any socket — no wiring, no electrician, completely reversible. For condo renters or owners who don't want to modify electrical boxes, Hue bulbs are the right call. The starter kit's Hue Bridge connects via Ethernet to your router, enabling remote control and automation without depending on any cloud subscription.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-renters/" class="text-blue-600 hover:underline">Best Smart Home Devices for Renters</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-apartments/" class="text-blue-600 hover:underline">Best Smart Home Devices for Apartments</a></li>
+        <li>→ <a href="/smart-home/best-smart-lock-for-renters/" class="text-blue-600 hover:underline">Best Smart Locks for Renters</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-starter-kit-under-200/" class="text-blue-600 hover:underline">Best Smart Home Starter Kits Under $200</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

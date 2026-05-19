@@ -1,0 +1,190 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'gentent-running-cover',
+  'generac-6657-protector',
+  'wen-generator-cover',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'gentent-running-cover': 'Best for Running Use — Only Cover Rated for Operation',
+  'generac-6657-protector': 'Best for Generac Owners — OEM Fit',
+  'wen-generator-cover': 'Best Budget Storage Cover — Under $35',
+};
+
+const coverType: Record<string, string> = {
+  'gentent-running-cover': 'Running tent (use while on)',
+  'generac-6657-protector': 'Storage cover (off only)',
+  'wen-generator-cover': 'Storage cover (off only)',
+};
+---
+
+<Layout
+  title="Best Outdoor Generator Storage Solutions (2025) — Covers, Sheds, and Weatherproofing"
+  description="The best outdoor generator storage covers and solutions in 2025 — protect your portable or standby generator from rain, UV, and weather damage. Running covers and storage covers compared."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/backup-power/" class="hover:underline">Backup Power</a> &rsaquo;
+      <span class="text-gray-700">Best Outdoor Generator Storage</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Outdoor Generator Storage Solutions (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      A portable generator left outside unprotected will deteriorate in 1–2 seasons — UV degrades plastic components, rain causes corrosion, and dust clogs carburetors. The right cover extends generator life dramatically and reduces maintenance costs. There are two types: storage covers (for when the generator is off and not in use) and running covers (tent-style enclosures that protect the unit while operating in rain or snow). This guide covers both.
+    </p>
+
+    <!-- Cover Type Warning -->
+    <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-8 text-sm text-red-900">
+      <strong>Critical safety distinction:</strong> NEVER run a generator under a standard storage cover — the cover will melt or catch fire from the exhaust heat, and exhaust gases cannot escape, creating a carbon monoxide hazard. Only use covers specifically rated for running use (like the GenTent) during operation. Storage covers are for cold, stored generators only.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Top Pick — Best for Running in Rain</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Cover</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Type</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Material</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-blue-700">{coverType[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{p.specs['Material']}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+            <div class="text-xs text-blue-700 font-medium mt-0.5">{coverType[p.slug]}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Storage Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Generator Storage Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Where to Store Your Generator: Indoor vs Outdoor</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        If possible, store your portable generator indoors — in a garage, shed, or basement. Indoor storage eliminates weather exposure entirely and eliminates the need for any cover. The main caveat: never run a generator indoors. If you're moving it in and out for use, indoor storage is still ideal. If the generator lives permanently outdoors (like a semi-permanent setup on a patio or beside the house), a quality cover is essential.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Long-Term Storage Checklist</h3>
+      <ul class="text-sm space-y-2 text-gray-700 mb-4">
+        <li class="flex gap-2"><span class="text-blue-500">→</span><span>Run the carburetor dry (or add fuel stabilizer) before storing for more than 30 days</span></li>
+        <li class="flex gap-2"><span class="text-blue-500">→</span><span>Change the oil before long-term storage (dirty oil causes more corrosion than clean oil)</span></li>
+        <li class="flex gap-2"><span class="text-blue-500">→</span><span>Spray fogging oil into the cylinder through the spark plug hole if storing more than 6 months</span></li>
+        <li class="flex gap-2"><span class="text-blue-500">→</span><span>Remove the battery (if applicable) for winter storage in cold climates</span></li>
+        <li class="flex gap-2"><span class="text-blue-500">→</span><span>Cover the unit with a storage cover once cooled — never while warm</span></li>
+        <li class="flex gap-2"><span class="text-blue-500">→</span><span>Run the generator under load for 30 minutes every 3 months during storage to keep seals lubricated</span></li>
+      </ul>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Generator Sheds: The Best Long-Term Solution</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        For a generator that will live outside permanently, a purpose-built generator enclosure shed provides better protection than any cover. Metal generator sheds cost $300–$800 and include ventilation openings, weather-sealed access doors, and steel construction. They protect from rain, snow, UV, and even moderate impact. If you have a standby generator on a permanent concrete pad, a shed is a worthwhile investment that eliminates all weather-related maintenance concerns.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Running in Rain: When You Need the GenTent</h3>
+      <p class="text-gray-700 text-sm">
+        Most power outages happen during storms — which means you may need to run your generator in rain. A standard cover cannot be used while running. The GenTent 20K is the only widely available solution rated for running use — it's an open-bottom tent that clips onto the generator frame, protecting the electrical panel and fuel cap from rain while allowing exhaust gases and cooling air to circulate freely. OSHA cites the GenTent as an example of acceptable generator rain protection for worksites. At $79, it's essential equipment for any generator owner who expects to use it during storms.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/best-generator-for-power-outages/" class="text-blue-600 hover:underline">Best Generator for Power Outages</a></li>
+        <li>→ <a href="/backup-power/best-portable-generator-for-camping/" class="text-blue-600 hover:underline">Best Portable Generator for Camping</a></li>
+        <li>→ <a href="/backup-power/how-to-choose-a-whole-home-generator/" class="text-blue-600 hover:underline">How to Choose a Whole Home Generator</a></li>
+        <li>→ <a href="/backup-power/what-size-generator-do-i-need/" class="text-blue-600 hover:underline">What Size Generator Do I Need?</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

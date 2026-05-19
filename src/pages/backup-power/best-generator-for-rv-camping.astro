@@ -1,0 +1,204 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const slugOrder = [
+  'jackery-explorer-1000-pro',
+  'ecoflow-delta-2-max',
+  'anker-solix-c1000',
+  'honda-eu2200i',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!);
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'jackery-explorer-1000-pro': 'Best Overall — Lightweight + LFP',
+  'ecoflow-delta-2-max': 'Best Capacity — Expandable for Long Trips',
+  'anker-solix-c1000': 'Best Value — Most Power for the Price',
+  'honda-eu2200i': 'Best Gas Option — Unlimited Runtime',
+};
+
+const fuelType: Record<string, string> = {
+  'jackery-explorer-1000-pro': 'Battery',
+  'ecoflow-delta-2-max': 'Battery',
+  'anker-solix-c1000': 'Battery',
+  'honda-eu2200i': 'Gasoline',
+};
+---
+
+<Layout
+  title="Best Generator for RV Camping (2025) — Battery Power Stations and Quiet Inverter Generators"
+  description="The best generators for RV camping in 2025 — quiet battery power stations and inverter generators for running AC, fridge, CPAP, and appliances in your RV. Compared by capacity, weight, and runtime."
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/backup-power/" class="hover:underline">Backup Power</a> &rsaquo;
+      <span class="text-gray-700">Best Generator for RV Camping</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Best Generator for RV Camping (2025)</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      RV camping power needs break into two camps: boondocking (off-grid, no hookups) and campground camping with hookup backup. For boondocking, a 1,000–2,000Wh battery power station paired with solar panels is the cleanest solution — no noise, no fumes, solar recharges you every day. For full hookup campgrounds, a battery station handles overnight loads while a quiet gas inverter generator like the Honda EU2200i covers heavy appliances. Here's what works for each scenario.
+    </p>
+
+    <!-- RV Power Box -->
+    <div class="bg-amber-50 border border-amber-200 rounded-lg p-4 mb-8 text-sm text-amber-900">
+      <strong>RV power reality check:</strong> A rooftop RV AC unit draws 1,200–1,500W starting and ~700W running — beyond what most portable power stations handle. These picks focus on powering everything except the AC: CPAP (40–80W), 12V fridge (~40–60W avg), LED lights (~20W), phone/laptop charging (~100W). For AC, the Honda EU2200i or a larger battery station (EcoFlow Delta 2 Max) are your options.
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-lg p-5 mb-8">
+      <div class="text-sm font-semibold text-green-700 uppercase tracking-wide mb-1">Top Pick — Best Battery Power Station for RV Camping</div>
+      <div class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</div>
+      <p class="text-gray-700 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Unit</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Capacity</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Fuel</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Weight</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Capacity'] || p.specs['Output']}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{fuelType[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Weight']}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Product Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-lg p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+            <div class="text-xs text-gray-500 mt-0.5">{fuelType[p.slug]}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">RV Generator Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Boondocking vs Campground Camping — Different Power Needs</h3>
+      <div class="overflow-x-auto mb-4">
+        <table class="w-full text-xs border-collapse border border-gray-200">
+          <thead class="bg-gray-100">
+            <tr>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Camping Style</th>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Power Source</th>
+              <th class="border border-gray-200 px-2 py-1.5 text-left">Recommended Unit</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">Boondocking 1–3 nights</td><td class="border border-gray-200 px-2 py-1.5">Battery + solar</td><td class="border border-gray-200 px-2 py-1.5 font-medium">Jackery 1000 Pro</td></tr>
+            <tr class="bg-gray-50"><td class="border border-gray-200 px-2 py-1.5">Boondocking 3–7 nights</td><td class="border border-gray-200 px-2 py-1.5">Battery + solar expansion</td><td class="border border-gray-200 px-2 py-1.5 font-medium">EcoFlow Delta 2 Max</td></tr>
+            <tr class="bg-white"><td class="border border-gray-200 px-2 py-1.5">Campground + AC needed</td><td class="border border-gray-200 px-2 py-1.5">Gas inverter generator</td><td class="border border-gray-200 px-2 py-1.5 font-medium">Honda EU2200i</td></tr>
+            <tr class="bg-gray-50"><td class="border border-gray-200 px-2 py-1.5">Mixed use, best value</td><td class="border border-gray-200 px-2 py-1.5">Battery only</td><td class="border border-gray-200 px-2 py-1.5 font-medium">Anker Solix C1000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">CPAP Runtime: The Most Common RV Power Question</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        A standard CPAP machine draws 30–80W depending on pressure settings and humidifier use. A 1,000Wh power station with humidifier off will run a CPAP for 12–20 hours — two full nights. With humidifier on (adds ~30W), expect 8–12 hours per charge. The Jackery 1000 Pro and Anker C1000 both handle two nights between charges with a CPAP as the primary load. Add a 100–200W solar panel for indefinite boondocking.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Can a Battery Station Run RV AC?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Most RV air conditioners require 1,200–1,500W to start and 700–900W to run. Only the EcoFlow Delta 2 Max (2,400W inverter, X-Boost technology) can soft-start most 13,500 BTU RV ACs. The Jackery 1000 Pro and Anker C1000 cannot run RV ACs — stick with the Honda EU2200i for any AC-required camping. For the Delta 2 Max, expect 1–2 hours of AC runtime per full charge. Solar panels can extend that significantly in full sun.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Campground Noise Rules and the Honda Advantage</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Most national parks and state campgrounds enforce quiet hours from 10pm to 6am and limit generator use to designated times (often 8am–8pm). The Honda EU2200i at 48–57 dB is one of the quietest gas generators available — under most campground noise limits. Battery power stations make no noise at all and have no restrictions. For campgrounds that ban generators entirely, a battery station is the only option.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/best-portable-power-station-under-1000/" class="text-blue-600 hover:underline">Best Portable Power Stations Under $1,000</a></li>
+        <li>→ <a href="/backup-power/best-solar-generator-for-camping/" class="text-blue-600 hover:underline">Best Solar Generator for Camping</a></li>
+        <li>→ <a href="/backup-power/best-portable-generator-for-camping/" class="text-blue-600 hover:underline">Best Portable Generator for Camping (Gas)</a></li>
+        <li>→ <a href="/backup-power/solar-generator-vs-portable-generator/" class="text-blue-600 hover:underline">Solar Generator vs Gas Generator — Which to Choose</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>

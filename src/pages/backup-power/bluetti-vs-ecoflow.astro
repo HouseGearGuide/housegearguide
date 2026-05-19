@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const bluetti = [
+  products.find(p => p.slug === 'bluetti-eb3a')!,
+  products.find(p => p.slug === 'bluetti-ac180')!,
+  products.find(p => p.slug === 'bluetti-ep500pro')!,
+];
+
+const ecoflow = [
+  products.find(p => p.slug === 'ecoflow-river-2-pro')!,
+  products.find(p => p.slug === 'ecoflow-delta-2')!,
+  products.find(p => p.slug === 'ecoflow-delta-pro')!,
+];
+---
+
+<Layout
+  title="Bluetti vs EcoFlow (2025) — Which Brand Makes Better Portable Power Stations?"
+  description="Bluetti vs EcoFlow compared in 2025 — side-by-side comparison of battery chemistry, solar input, recharge speed, app quality, warranty, and value across three price tiers. Which brand wins?"
+>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- FTC Disclosure -->
+    <div class="bg-yellow-50 border border-yellow-200 rounded-md p-3 mb-6 text-sm text-yellow-800">
+      <strong>Disclosure:</strong> HouseGearGuide earns a commission if you buy through our links — at no cost to you. We only recommend products we've researched thoroughly.
+    </div>
+
+    <!-- Breadcrumb -->
+    <nav class="text-sm text-gray-500 mb-4">
+      <a href="/" class="hover:underline">Home</a> &rsaquo;
+      <a href="/backup-power/" class="hover:underline">Backup Power</a> &rsaquo;
+      <span class="text-gray-700">Bluetti vs EcoFlow</span>
+    </nav>
+
+    <h1 class="text-3xl font-bold text-gray-900 mb-4">Bluetti vs EcoFlow (2025): Which Brand Should You Buy?</h1>
+
+    <p class="text-lg text-gray-700 mb-6">
+      Bluetti and EcoFlow are the two most popular portable power station brands — both use LFP batteries, both have strong warranty programs, and both make units from $200 to $5,000+. The differences are real though: EcoFlow charges faster (its X-Stream AC charging is unmatched under $1,000), while Bluetti prioritizes capacity and long-term durability. This head-to-head covers both brands across three price tiers — budget, mid-range, and whole-home — so you can pick the right unit for your needs.
+    </p>
+
+    <!-- Quick Verdict Box -->
+    <div class="bg-blue-50 border border-blue-200 rounded-lg p-5 mb-8">
+      <h2 class="text-lg font-bold text-blue-900 mb-3">Quick Verdict</h2>
+      <div class="grid md:grid-cols-2 gap-4 text-sm">
+        <div class="bg-white rounded p-3">
+          <div class="font-bold text-orange-600 mb-2">Choose EcoFlow if you want:</div>
+          <ul class="space-y-1 text-gray-700">
+            <li>✓ Fastest AC charging (0–80% in 50 minutes on Delta 2)</li>
+            <li>✓ Best solar input range — up to 500W on River 2 Pro</li>
+            <li>✓ X-Boost technology to run higher-wattage appliances</li>
+            <li>✓ Better app and more frequent firmware updates</li>
+            <li>✓ Lighter weight at each capacity tier</li>
+          </ul>
+        </div>
+        <div class="bg-white rounded p-3">
+          <div class="font-bold text-blue-700 mb-2">Choose Bluetti if you want:</div>
+          <ul class="space-y-1 text-gray-700">
+            <li>✓ Better capacity-per-dollar at mid and high tiers</li>
+            <li>✓ More outlet options (especially AC outlets per unit)</li>
+            <li>✓ AC200P/EP500Pro for long-term stationary home backup</li>
+            <li>✓ Slightly lower noise from cooling fans at load</li>
+            <li>✓ Longer cycle life claims (3,500+ on EB3A and AC180)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Head-to-Head: Budget Tier -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Budget Tier: Under $300</h2>
+    <div class="grid md:grid-cols-2 gap-4 mb-8">
+      {[bluetti[0], ecoflow[0]].map((p) => (
+        <div class="border border-gray-200 rounded-lg p-5">
+          <div class="text-xs font-semibold uppercase tracking-wide mb-1 text-gray-500">{p.brand}</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-1">{p.name}</h3>
+          <p class="text-gray-600 text-sm mb-3">{p.tagline}</p>
+          <div class="text-2xl font-bold text-green-700 mb-3">${p.price}</div>
+          <div class="space-y-1 text-xs mb-3">
+            {Object.entries(p.specs).slice(0, 4).map(([key, val]) => (
+              <div class="flex justify-between bg-gray-50 px-2 py-1 rounded">
+                <span class="font-medium text-gray-600">{key}</span>
+                <span class="text-gray-800">{val}</span>
+              </div>
+            ))}
+          </div>
+          <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="block text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md text-sm transition-colors">
+            Check Price on Amazon →
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-8 text-sm text-gray-700">
+      <strong>Budget tier verdict:</strong> The Bluetti EB3A has 268Wh vs the EcoFlow River 2 Pro's 768Wh — almost 3× the capacity at a similar price point. But the River 2 Pro is the winner here due to its 500W solar input and 800W AC inverter vs the EB3A's 300W inverter. For camping or emergency use where capacity matters, the River 2 Pro wins. The EB3A makes sense for ultra-portable use, desk backup, or pairing with a small solar panel for daily recharges.
+    </div>
+
+    <!-- Head-to-Head: Mid Tier -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Mid Tier: $500–$1,000</h2>
+    <div class="grid md:grid-cols-2 gap-4 mb-8">
+      {[bluetti[1], ecoflow[1]].map((p) => (
+        <div class="border border-gray-200 rounded-lg p-5">
+          <div class="text-xs font-semibold uppercase tracking-wide mb-1 text-gray-500">{p.brand}</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-1">{p.name}</h3>
+          <p class="text-gray-600 text-sm mb-3">{p.tagline}</p>
+          <div class="text-2xl font-bold text-green-700 mb-3">${p.price}</div>
+          <div class="space-y-1 text-xs mb-3">
+            {Object.entries(p.specs).slice(0, 4).map(([key, val]) => (
+              <div class="flex justify-between bg-gray-50 px-2 py-1 rounded">
+                <span class="font-medium text-gray-600">{key}</span>
+                <span class="text-gray-800">{val}</span>
+              </div>
+            ))}
+          </div>
+          <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="block text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md text-sm transition-colors">
+            Check Price on Amazon →
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-8 text-sm text-gray-700">
+      <strong>Mid tier verdict:</strong> Close race. The Bluetti AC180 has 1,152Wh capacity vs EcoFlow Delta 2's 1,024Wh. The Delta 2 charges faster (AC charging at 1,200W vs AC180's 1,400W — similar), but EcoFlow's X-Boost technology lets the Delta 2 power appliances up to 2,400W using its 1,500W inverter — the AC180 doesn't have this. For most users the Delta 2 is the better all-around pick; the AC180 is worth it if you want extra capacity and don't need X-Boost.
+    </div>
+
+    <!-- Head-to-Head: High-Capacity Tier -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">High-Capacity Tier: $1,500+</h2>
+    <div class="grid md:grid-cols-2 gap-4 mb-8">
+      {[bluetti[2], ecoflow[2]].map((p) => (
+        <div class="border border-gray-200 rounded-lg p-5">
+          <div class="text-xs font-semibold uppercase tracking-wide mb-1 text-gray-500">{p.brand}</div>
+          <h3 class="text-lg font-bold text-gray-900 mb-1">{p.name}</h3>
+          <p class="text-gray-600 text-sm mb-3">{p.tagline}</p>
+          <div class="text-2xl font-bold text-green-700 mb-3">${p.price}</div>
+          <div class="space-y-1 text-xs mb-3">
+            {Object.entries(p.specs).slice(0, 4).map(([key, val]) => (
+              <div class="flex justify-between bg-gray-50 px-2 py-1 rounded">
+                <span class="font-medium text-gray-600">{key}</span>
+                <span class="text-gray-800">{val}</span>
+              </div>
+            ))}
+          </div>
+          <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener" class="block text-center bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-2 rounded-md text-sm transition-colors">
+            Check Price on Amazon →
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <div class="bg-gray-50 rounded-lg p-4 mb-8 text-sm text-gray-700">
+      <strong>High-capacity tier verdict:</strong> The Bluetti EP500Pro at 5,100Wh dwarfs the EcoFlow Delta Pro's 3,600Wh — 42% more capacity for a similar price. The Delta Pro wins on portability (wheeled cart design), faster AC charging, and the EcoFlow ecosystem's better expandability via smart home integration. The EP500Pro is the right call for pure backup capacity; the Delta Pro is better for users who need to move the unit, want fastest recharging, and value ecosystem integration.
+    </div>
+
+    <!-- Full Brand Comparison -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Full Brand Comparison</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Category</th>
+            <th class="border border-gray-200 px-3 py-2 text-center text-blue-700">Bluetti</th>
+            <th class="border border-gray-200 px-3 py-2 text-center text-orange-600">EcoFlow</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Recharge Speed</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">1,000–1,400W AC charging</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">1,200–3,000W X-Stream</td>
+            <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-orange-600">EcoFlow</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Capacity per Dollar</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">Slightly better mid/high</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">Better at budget tier</td>
+            <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-blue-700">Bluetti (mid/high)</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Solar Input</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">200–1,200W</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">500–3,400W</td>
+            <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-orange-600">EcoFlow</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">App Quality</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">Good — steady updates</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">Excellent — frequent updates</td>
+            <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-orange-600">EcoFlow</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Portability</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">Heavier at each tier</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">Lighter at each tier</td>
+            <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-orange-600">EcoFlow</td>
+          </tr>
+          <tr class="bg-gray-50">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Warranty</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">2–4 years</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">2–5 years</td>
+            <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-gray-600">Tie</td>
+          </tr>
+          <tr class="bg-white">
+            <td class="border border-gray-200 px-3 py-2 font-medium">Noise Level</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">Slightly quieter fans</td>
+            <td class="border border-gray-200 px-3 py-2 text-center text-xs">Louder fans under load</td>
+            <td class="border border-gray-200 px-3 py-2 text-xs font-semibold text-blue-700">Bluetti</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Bottom Line</h2>
+      <p class="text-gray-700 text-sm mb-4">
+        EcoFlow wins in most head-to-head categories — faster charging, better solar input, lighter weight, and better app. If you're buying one unit for camping, travel, or general use, EcoFlow is the more versatile brand. The EcoFlow River 2 Pro and Delta 2 are the standout units in their price tiers.
+      </p>
+      <p class="text-gray-700 text-sm">
+        Bluetti wins on raw capacity per dollar at the $700–$1,500 range. If you need the most backup power for the money and don't need to move the unit frequently, the Bluetti AC180 and EP500Pro deliver more Wh per dollar. Bluetti is also quieter under sustained load — a real consideration for bedroom or office use during long outages.
+      </p>
+    </div>
+
+    <!-- Related Guides -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/ecoflow-vs-jackery/" class="text-blue-600 hover:underline">EcoFlow vs Jackery — Full Comparison</a></li>
+        <li>→ <a href="/backup-power/jackery-vs-bluetti/" class="text-blue-600 hover:underline">Jackery vs Bluetti — Full Comparison</a></li>
+        <li>→ <a href="/backup-power/best-portable-power-station-under-1000/" class="text-blue-600 hover:underline">Best Portable Power Stations Under $1,000</a></li>
+        <li>→ <a href="/backup-power/best-solar-generator-home-backup/" class="text-blue-600 hover:underline">Best Solar Generator for Home Backup</a></li>
+      </ul>
+    </div>
+
+  </div>
+</Layout>
