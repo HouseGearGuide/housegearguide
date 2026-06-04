@@ -1,0 +1,223 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = [
+  'august-wifi-smart-lock-4th-gen',
+  'ring-alarm-5-piece',
+  'wyze-cam-v4',
+  'amazon-echo-dot-5th-gen',
+  'kasa-smart-bulb-kl135',
+  'kasa-ep25-smart-plug',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'august-wifi-smart-lock-4th-gen': 'Best Smart Lock — No Landlord Permission Needed',
+  'ring-alarm-5-piece':             'Best Security System — Optional $10/month Monitoring',
+  'wyze-cam-v4':                    'Best Indoor Camera — 2K for $36',
+  'amazon-echo-dot-5th-gen':        'Best Smart Speaker — Voice Control Hub',
+  'kasa-smart-bulb-kl135':          'Best Smart Lighting — No Wiring Required',
+  'kasa-ep25-smart-plug':           'Best Smart Plug — Energy Monitoring Included',
+};
+
+const renterFriendly: Record<string, string> = {
+  'august-wifi-smart-lock-4th-gen': 'Yes — attaches to existing deadbolt, no exterior changes',
+  'ring-alarm-5-piece':             'Yes — peel-and-stick sensors, no drilling',
+  'wyze-cam-v4':                    'Yes — places on any surface, no mounting required',
+  'amazon-echo-dot-5th-gen':        'Yes — plugs into outlet, no installation',
+  'kasa-smart-bulb-kl135':          'Yes — screws into existing light socket',
+  'kasa-ep25-smart-plug':           'Yes — plugs into existing outlet',
+};
+
+// Sample budget breakdown
+const budget = [
+  { item: 'August Wi-Fi Smart Lock', cost: 179 },
+  { item: 'Ring Alarm 5-Piece Kit', cost: 200 },
+  { item: 'Wyze Cam v4 (2 cameras)', cost: 72 },
+  { item: 'Amazon Echo Dot', cost: 50 },
+];
+const total = budget.reduce((sum, b) => sum + b.cost, 0);
+---
+
+<Layout
+  title="Best Smart Home Devices for Renters Under $500 (2025) — No Drilling, No Lease Issues"
+  description="The best smart home devices for renters under $500 in 2025. Smart lock, security system, cameras, voice control, and lighting — all renter-friendly with zero permanent installation."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Renters Under $500
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Renters Under $500 (2025)
+    </h1>
+    <p class="text-sm text-gray-400 mb-6">Last updated: June 2025 · All renter-friendly, zero drilling required</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Renting doesn't mean you can't have a smart home. The best smart home setup for renters under $500 covers security, voice control, lighting, and energy monitoring — with zero permanent installation and everything portable when you move.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      Every pick here is renter-tested: it either attaches to existing hardware, sits on a surface, plugs into an outlet, or screws into a light socket. Nothing requires drilling, hardwiring, or landlord approval.
+    </p>
+
+    <!-- Budget Breakdown Box -->
+    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 mb-8">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Sample $500 Renter Smart Home Build:</p>
+      <div class="space-y-2 text-sm">
+        {budget.map(b => (
+          <div class="flex justify-between items-center">
+            <span class="text-gray-700">{b.item}</span>
+            <span class="font-medium">${b.cost}</span>
+          </div>
+        ))}
+        <div class="flex justify-between items-center border-t border-blue-200 pt-2 font-semibold text-blue-900">
+          <span>Total</span>
+          <span>${total}</span>
+        </div>
+      </div>
+      <p class="text-xs text-blue-800 mt-3">This combination covers security, access control, surveillance, and voice control. Add energy monitoring plugs and smart bulbs to fill out the remaining budget.</p>
+    </div>
+
+    <!-- Top Pick -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Best First Renter Smart Home Purchase</p>
+      <p class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</p>
+      <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+      <p class="text-xs text-green-700 font-semibold mb-3">Renter-friendly: {renterFriendly[topPick.slug]}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Device</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Renter-Friendly</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{renterFriendly[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+                   class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-2xl p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+            <div class="text-xs text-green-600 font-medium mt-0.5">Renter-safe ✓</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).slice(0, 4).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Renter Buying Guide -->
+    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Renter Smart Home Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Start Here: Smart Lock + Security System</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        For most renters, the August Wi-Fi Smart Lock and Ring Alarm 5-piece are the highest-impact combination. The smart lock adds keypad entry, auto-lock, and guest access without any exterior changes. The Ring Alarm covers windows, doors, and motion — with optional professional monitoring for $10/month, less than most renters' streaming subscriptions.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">What to Add After Security</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        After security, the next highest-impact additions are: a smart speaker for voice control (Amazon Echo Dot at $50 is the starting point), 2–4 smart bulbs for lighting schedules (Kasa KL135 at $15 each), and 2–3 energy monitoring plugs to track vampire loads. This full setup runs well under $500.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Moving With Your Smart Home</h3>
+      <p class="text-gray-700 text-sm">
+        Everything in this guide is designed to move. The August lock's interior attachment mechanism unscrews in under 5 minutes. Ring Alarm sensors peel off with a hairdryer. Smart bulbs come out of sockets. Echo Dots and smart plugs unplug. Your entire $500 smart home setup packs into a box and installs in a new apartment in an afternoon.
+      </p>
+    </div>
+
+    <!-- Internal Links -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-renters/" class="text-blue-600 hover:underline">Best Smart Home Devices for Renters</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-renters-under-200/" class="text-blue-600 hover:underline">Best Smart Home Devices for Renters Under $200</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-security-system-for-renters/" class="text-blue-600 hover:underline">Best Smart Home Security System for Renters</a></li>
+        <li>→ <a href="/smart-home/best-smart-lock-for-renters/" class="text-blue-600 hover:underline">Best Smart Lock for Renters</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-devices-black-friday/" class="text-blue-600 hover:underline">Best Smart Home Devices Black Friday Guide</a></li>
+      </ul>
+    </div>
+
+  </article>
+</Layout>

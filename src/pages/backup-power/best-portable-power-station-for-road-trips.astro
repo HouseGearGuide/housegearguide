@@ -1,0 +1,236 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = [
+  'ecoflow-delta-2',
+  'anker-solix-c1000',
+  'jackery-explorer-1000-pro',
+  'bluetti-ac180',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'ecoflow-delta-2':          'Best Overall — Fastest Charge, Best Capacity at $499',
+  'anker-solix-c1000':        'Best Value — LFP at $799 With High Solar Input',
+  'jackery-explorer-1000-pro':'Best for Jackery Ecosystem — Well-Rounded Road Trip Unit',
+  'bluetti-ac180':            'Best Balance — 1152Wh LFP for $599',
+};
+
+const roadTripRating: Record<string, string> = {
+  'ecoflow-delta-2':          'Excellent — 6 AC outlets, fast solar, charges in 50 min',
+  'anker-solix-c1000':        'Excellent — 600W solar in, compact for its capacity',
+  'jackery-explorer-1000-pro':'Very Good — reliable, 3 AC outlets, broad panel ecosystem',
+  'bluetti-ac180':            'Very Good — best capacity-per-dollar with LFP chemistry',
+};
+---
+
+<Layout
+  title="Best Portable Power Station for Road Trips (2025) — Charge Devices, Run Appliances on the Road"
+  description="The best portable power stations for road trips in 2025 — 1000Wh+ units that charge from your car, solar panels, or wall outlets to keep devices powered on multi-day drives."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power/" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Portable Power Station for Road Trips
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Portable Power Station for Road Trips (2025)
+    </h1>
+    <p class="text-sm text-gray-400 mb-6">Last updated: June 2025</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A good road trip power station solves real problems: keeping laptops charged through a 10-hour drive, powering a portable fridge full of food, running a CPAP machine at a hotel without hunting for an outlet, or charging camera batteries and drones between stops. The right unit depends on how many devices you're running and how you'll recharge between stops.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      For road trips, capacity matters more than it does for camping. You're often in a hotel without easy access to a wall outlet, or you need to run something overnight on battery alone. The 1000–1200Wh units in this guide are the sweet spot — portable enough to move in and out of a car trunk, but with enough capacity for a full day of use.
+    </p>
+
+    <!-- Recharging Options Box -->
+    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 mb-8">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">How you can recharge on a road trip:</p>
+      <div class="grid md:grid-cols-3 gap-3 text-sm">
+        <div class="bg-white rounded-lg p-3 border border-blue-100">
+          <p class="font-semibold text-blue-800 mb-1">Wall outlet (hotel/Airbnb)</p>
+          <p class="text-gray-600 text-xs">Fastest method. EcoFlow DELTA 2 charges to 80% in 50 minutes. Plan your charging stop around a hotel check-in.</p>
+        </div>
+        <div class="bg-white rounded-lg p-3 border border-blue-100">
+          <p class="font-semibold text-blue-800 mb-1">Car outlet (12V/cigarette lighter)</p>
+          <p class="text-gray-600 text-xs">Charges while you drive. At 8–12A, adds 100–150Wh per hour — passively refills the unit during a 5-hour drive.</p>
+        </div>
+        <div class="bg-white rounded-lg p-3 border border-blue-100">
+          <p class="font-semibold text-blue-800 mb-1">Solar panels</p>
+          <p class="text-gray-600 text-xs">Great for stops. A 220W panel on a sunny car hood or picnic table adds 180–200Wh per hour in good conditions.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top Pick -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Top Pick — Best Road Trip Power Station</p>
+      <p class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</p>
+      <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+      <p class="text-xs text-green-700 font-semibold mb-3">{roadTripRating[topPick.slug]}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Unit</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Capacity</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Solar Input</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Weight</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Capacity']}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Solar Input']}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Weight']}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+                   class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Runtime Guide -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-10 text-sm text-amber-900">
+      <p class="font-semibold mb-2">How long will 1,024Wh last on a road trip?</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-xs border-collapse">
+          <thead class="bg-amber-100">
+            <tr>
+              <th class="px-2 py-1.5 text-left border border-amber-200">Device / Load</th>
+              <th class="px-2 py-1.5 text-left border border-amber-200">Draw</th>
+              <th class="px-2 py-1.5 text-left border border-amber-200">Runtime (1024Wh)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white"><td class="px-2 py-1 border border-amber-200">Laptop (15")</td><td class="px-2 py-1 border border-amber-200">45–65W</td><td class="px-2 py-1 border border-amber-200 font-medium">15–22 hours</td></tr>
+            <tr class="bg-amber-50"><td class="px-2 py-1 border border-amber-200">CPAP (no humidifier)</td><td class="px-2 py-1 border border-amber-200">30–60W</td><td class="px-2 py-1 border border-amber-200 font-medium">1–2 nights</td></tr>
+            <tr class="bg-white"><td class="px-2 py-1 border border-amber-200">Mini portable fridge (12V)</td><td class="px-2 py-1 border border-amber-200">40–60W avg</td><td class="px-2 py-1 border border-amber-200 font-medium">~17 hours</td></tr>
+            <tr class="bg-amber-50"><td class="px-2 py-1 border border-amber-200">Camera battery chargers × 4</td><td class="px-2 py-1 border border-amber-200">80W</td><td class="px-2 py-1 border border-amber-200 font-medium">~12 hours</td></tr>
+            <tr class="bg-white"><td class="px-2 py-1 border border-amber-200 font-medium">Laptop + CPAP + phone charging</td><td class="px-2 py-1 border border-amber-200 font-medium">~130W</td><td class="px-2 py-1 border border-amber-200 font-medium">~7 hours</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-2xl p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+            <div class="text-xs text-gray-500 mt-0.5">{p.specs['Battery Type']}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Road Trip Power Station Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">How Much Capacity Do You Need?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        For a typical road trip with 2 people (2 laptops, phone charging, a portable speaker), 1000Wh is enough for one full day without recharging. If you're running a CPAP machine overnight or keeping a 12V fridge running, step up to 1152Wh (Bluetti AC180) or higher. For multi-night trips without reliable wall access, the EcoFlow DELTA 2 Max at 2048Wh is a better fit.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Recharging From Your Car</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Every power station here can recharge from your car's 12V cigarette lighter outlet or, on many vehicles, a higher-output 120V inverter outlet. A standard 12V charge adds roughly 60–80W — that's 300–400Wh over a 5-hour drive. It won't fully recharge a 1000Wh unit, but it meaningfully extends your daily range. If your vehicle has a built-in inverter (common on pickups and SUVs), you can charge at full AC speed while driving.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">LFP vs. NMC for Multi-Day Trips</h3>
+      <p class="text-gray-700 text-sm">
+        All four picks use LFP (lithium iron phosphate) chemistry. LFP handles the deep discharge-then-recharge cycles of daily road trip use much better than NMC units. After a year of regular trips, an LFP battery retains 95%+ of its original capacity; an NMC battery doing the same cycles might be down to 85–90%. For a unit you're using regularly, LFP is worth paying for — and all four picks here deliver it.
+      </p>
+    </div>
+
+    <!-- Internal Links -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/best-portable-power-station-under-1000/" class="text-blue-600 hover:underline">Best Portable Power Stations Under $1,000</a></li>
+        <li>→ <a href="/backup-power/best-portable-power-station-for-van-life/" class="text-blue-600 hover:underline">Best Portable Power Station for Van Life</a></li>
+        <li>→ <a href="/backup-power/ecoflow-vs-jackery/" class="text-blue-600 hover:underline">EcoFlow vs Jackery — Head-to-Head Comparison</a></li>
+        <li>→ <a href="/backup-power/best-solar-generator-for-tailgating/" class="text-blue-600 hover:underline">Best Solar Generator for Tailgating</a></li>
+        <li>→ <a href="/backup-power/best-portable-power-station-under-500/" class="text-blue-600 hover:underline">Best Portable Power Stations Under $500</a></li>
+      </ul>
+    </div>
+
+  </article>
+</Layout>

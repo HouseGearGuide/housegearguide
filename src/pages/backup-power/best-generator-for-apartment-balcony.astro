@@ -1,0 +1,194 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = [
+  'bluetti-eb3a',
+  'ecoflow-river-2-pro',
+  'jackery-explorer-500',
+  'anker-solix-c800',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'bluetti-eb3a':       'Best Overall — Lightest, Apartment-Sized',
+  'ecoflow-river-2-pro':'Best for Solar Charging on the Balcony',
+  'jackery-explorer-500':'Best Budget Pick',
+  'anker-solix-c800':   'Best Value — More Power for More Devices',
+};
+---
+
+<Layout
+  title="Best Generator for Apartment Balcony (2025) — Battery Power Stations That Won't Violate Your Lease"
+  description="The best power sources for apartment balconies in 2025. Gas generators are banned in most apartments — these battery power stations are quiet, fume-free, and lease-compliant."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power/" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Generator for Apartment Balcony
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Generator for Apartment Balcony (2025)
+    </h1>
+    <p class="text-sm text-gray-400 mb-6">Last updated: June 2025</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Apartment balconies and gas generators do not mix. Nearly every apartment lease and fire code prohibits gas-powered generators on balconies — the carbon monoxide risk alone makes them a non-starter. The practical alternative is a battery power station: no fuel, no fumes, no noise complaints, and no lease violations.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      These units run quietly, charge from a standard wall outlet or solar panel, and deliver enough power for outdoor speakers, string lights, a fan, a small cooler, and phone charging — everything you'd actually want powered on a balcony.
+    </p>
+
+    <div class="bg-red-50 border border-red-200 rounded-2xl p-5 mb-8 text-sm text-red-900">
+      <strong>Gas generators on apartment balconies are banned:</strong> The International Fire Code (IFC), adopted by most U.S. cities, prohibits gas generators within 20 ft of any opening into a building. Apartment balconies are inside that radius. Carbon monoxide from a gas generator on a balcony can enter the building through sliding doors and windows within seconds. Battery power stations have zero emissions — they're the only safe, legal, and lease-compliant option.
+    </div>
+
+    <!-- Top Pick -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Top Pick — Best Apartment Balcony Power Station</p>
+      <p class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</p>
+      <p class="text-gray-600 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Unit</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Capacity</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Weight</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">AC Output</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Capacity']}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['Weight']}</td>
+              <td class="border border-gray-200 px-3 py-2">{p.specs['AC Output']}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+                   class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Runtime Guide -->
+    <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-10 text-sm text-amber-900">
+      <strong>Typical balcony power draw:</strong> Outdoor speaker (~20–30W) + string lights (~15W) + phone charging (~20W) + small fan (~40W) = ~95–105W total. A 268Wh unit like the Bluetti EB3A runs that load for about 2–2.5 hours. A 518Wh unit (Jackery 500) runs it for about 4–5 hours. Pair any of these units with a small solar panel on your balcony railing to extend runtime indefinitely in sunny climates.
+    </div>
+
+    <!-- Individual Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-2xl p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+            <div class="text-xs text-gray-500 mt-0.5">{p.specs['Battery Type']}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Apartment Balcony Power Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">How Much Capacity Do You Need?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Most apartment balcony use cases are light: speakers, string lights, phone charging, and a small fan. A 268–518Wh unit covers a 3–5 hour balcony session without recharging. If you want to run a small cooler or a portable projector for outdoor movie nights, step up to a 512–768Wh unit like the Anker SOLIX C800 or EcoFlow River 2 Pro.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Solar Charging on a Balcony</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        All four picks in this guide accept solar input. A 100–200W foldable solar panel propped against your balcony railing or laid flat on the floor can recharge these units while you use them, effectively extending runtime indefinitely on sunny days. The EcoFlow River 2 Pro accepts up to 500W solar input — it can recharge to full in under 2 hours with a single 220W panel in good sun.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Using Power Stations Indoors vs. Outdoors</h3>
+      <p class="text-gray-700 text-sm">
+        Battery power stations are safe for both indoor and outdoor use — no fumes, no carbon monoxide, no fire risk. You can charge the unit inside overnight and carry it to the balcony in the morning. Most weigh 10–21 lbs — all of these picks are manageable to move through a sliding door without help.
+      </p>
+    </div>
+
+    <!-- Internal Links -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/best-portable-power-station-under-500/" class="text-blue-600 hover:underline">Best Portable Power Stations Under $500</a></li>
+        <li>→ <a href="/backup-power/best-solar-generator-for-tailgating/" class="text-blue-600 hover:underline">Best Solar Generator for Tailgating</a></li>
+        <li>→ <a href="/backup-power/best-generator-for-tailgating/" class="text-blue-600 hover:underline">Best Generator for Tailgating</a></li>
+        <li>→ <a href="/backup-power/solar-generator-vs-portable-generator/" class="text-blue-600 hover:underline">Solar Generator vs Gas Generator — Which to Choose</a></li>
+      </ul>
+    </div>
+
+  </article>
+</Layout>

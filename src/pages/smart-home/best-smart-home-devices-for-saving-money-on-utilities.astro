@@ -1,0 +1,218 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = [
+  'ecobee-smartthermostat-premium',
+  'kasa-ep25-smart-plug',
+  'emporia-smart-plug',
+  'kasa-smart-dimmer-hs220',
+  'tp-link-tapo-p110',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'ecobee-smartthermostat-premium':'Biggest ROI — Saves $100–200/year on HVAC',
+  'kasa-ep25-smart-plug':          'Best for Finding Phantom Loads',
+  'emporia-smart-plug':            'Best for Detailed Cost Projections',
+  'kasa-smart-dimmer-hs220':       'Best for Reducing Lighting Costs',
+  'tp-link-tapo-p110':             'Best Budget Energy Monitor',
+};
+
+const annualSavings: Record<string, string> = {
+  'ecobee-smartthermostat-premium':'$100–250/year (heating/cooling)',
+  'kasa-ep25-smart-plug':          '$20–80/year (per device monitored)',
+  'emporia-smart-plug':            '$20–80/year (per device monitored)',
+  'kasa-smart-dimmer-hs220':       '$15–40/year (per room)',
+  'tp-link-tapo-p110':             '$20–80/year (per device monitored)',
+};
+
+const payback: Record<string, string> = {
+  'ecobee-smartthermostat-premium': '12–30 months',
+  'kasa-ep25-smart-plug':           '2–10 months',
+  'emporia-smart-plug':             '2–10 months',
+  'kasa-smart-dimmer-hs220':        '8–22 months',
+  'tp-link-tapo-p110':              '2–12 months',
+};
+---
+
+<Layout
+  title="Best Smart Home Devices for Saving Money on Utilities (2025) — Real ROI Breakdown"
+  description="The best smart home devices for cutting utility bills in 2025 — smart thermostats, energy monitoring plugs, and smart dimmers with real annual savings estimates."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Saving Money on Utilities
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Saving Money on Utilities (2025)
+    </h1>
+    <p class="text-sm text-gray-400 mb-6">Last updated: June 2025 · With real savings estimates</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Most smart home devices are convenience purchases. These ones are actually cost-positive — they pay for themselves in reduced utility bills, typically within 6–24 months of installation. This guide covers only the devices with documented, measurable ROI: smart thermostats, energy monitoring plugs, and smart dimmers.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The savings estimates below are based on published utility data, ecobee's own energy reports, and typical phantom load figures from the U.S. Department of Energy. Your actual savings depend on your utility rates, home size, and current usage patterns.
+    </p>
+
+    <!-- ROI Summary -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-5 mb-8">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Which smart home devices save the most money:</p>
+      <ol class="text-sm text-gray-700 space-y-2">
+        <li class="flex gap-2"><span class="font-bold text-green-700">1.</span><div><strong>Smart thermostat</strong> — $100–250/year. The single highest ROI smart home device. Pays back in 6–18 months depending on your HVAC system and heating costs.</div></li>
+        <li class="flex gap-2"><span class="font-bold text-green-700">2.</span><div><strong>Energy monitoring smart plugs</strong> — $20–80/year per device monitored. The U.S. DOE estimates phantom loads account for 10% of home electricity use. Finding and eliminating them pays real dividends.</div></li>
+        <li class="flex gap-2"><span class="font-bold text-green-700">3.</span><div><strong>Smart dimmers on incandescent/LED fixtures</strong> — $15–40/year per room. Dimming a bulb to 75% cuts energy use by about 20% and extends bulb life 2–4x.</div></li>
+      </ol>
+    </div>
+
+    <!-- Top Pick -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Best Device for Saving on Utilities</p>
+      <p class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</p>
+      <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+      <p class="text-sm text-green-700 font-semibold mb-3">Estimated savings: {annualSavings[topPick.slug]}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison — Utility Saving Devices</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Device</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Est. Annual Savings</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Payback Period</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+              <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+                <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+                <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+                <td class="border border-gray-200 px-3 py-2 font-semibold text-green-700">{annualSavings[p.slug]}</td>
+                <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+                <td class="border border-gray-200 px-3 py-2 text-xs">{payback[p.slug]}</td>
+                <td class="border border-gray-200 px-3 py-2">
+                  <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+                     class="text-blue-600 hover:underline font-medium">Amazon →</a>
+                </td>
+              </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-2xl p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+            <div class="text-xs text-green-600 font-medium mt-0.5">{annualSavings[p.slug]}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).slice(0, 4).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Savings Guide -->
+    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">How to Maximize Your Utility Savings</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Start With the Thermostat</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Heating and cooling accounts for 40–50% of the average home's energy bill. A smart thermostat that learns your schedule and avoids heating/cooling an empty house is the highest-impact energy device you can buy. ecobee's own data shows average savings of 26% on HVAC costs. On a $2,000/year heating and cooling bill, that's $520 back annually — a $249 thermostat pays back in under 6 months.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Hunt Phantom Loads With Energy Monitoring Plugs</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Phantom loads — the electricity drawn by devices in standby mode — account for up to 10% of home electricity use according to the U.S. Department of Energy. The culprits are usually cable boxes (~15W always), gaming consoles in standby (~70–150W), old desktop computers left on, and large TVs in standby. A $17 energy monitoring plug can identify these invisible power drains. Turn off a 15W cable box at night with a smart plug schedule, and you save roughly $15–20/year per device.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Smart Dimmers: Modest but Real</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Smart dimmers let you set automated dim levels and schedules. Running lights at 75% brightness instead of 100% saves about 20% of lighting energy. At 10 cents/kWh and 4 hours/day of use, a 60W equivalent bulb at 75% saves about $1.75/year. For a living room with 6 bulbs, that's $10.50/year — modest but real, and the convenience of scheduled sunrise/sunset automation is a bonus.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">The Honest Caveat on Savings</h3>
+      <p class="text-gray-700 text-sm">
+        Smart home energy savings require behavior change and proper setup. A smart thermostat that's never programmed saves nothing. Energy monitoring plugs that nobody checks save nothing. The ROI is real but it requires spending 30–60 minutes on initial configuration and occasionally reviewing your usage data. The good news: the configuration is genuinely straightforward, and most people recoup their investment within 1–2 years if they set things up correctly.
+      </p>
+    </div>
+
+    <!-- Internal Links -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/best-smart-plugs-energy-monitoring/" class="text-blue-600 hover:underline">Best Smart Plugs with Energy Monitoring</a></li>
+        <li>→ <a href="/smart-home/best-smart-thermostat-no-c-wire/" class="text-blue-600 hover:underline">Best Smart Thermostat (No C-Wire Required)</a></li>
+        <li>→ <a href="/smart-home/best-smart-light-switches/" class="text-blue-600 hover:underline">Best Smart Light Switches</a></li>
+        <li>→ <a href="/smart-home/how-to-set-up-a-smart-home-on-a-budget/" class="text-blue-600 hover:underline">How to Set Up a Smart Home on a Budget</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-renters-under-500/" class="text-blue-600 hover:underline">Best Smart Home Devices for Renters Under $500</a></li>
+      </ul>
+    </div>
+
+  </article>
+</Layout>

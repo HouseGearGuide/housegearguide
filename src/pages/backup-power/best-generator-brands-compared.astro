@@ -1,0 +1,270 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+// One flagship product per brand as an anchor
+const brandProducts: Record<string, string> = {
+  'Generac':  'generac-22kw-guardian',
+  'Honda':    'honda-eu2200i',
+  'Kohler':   'kohler-20rescl-20kw',
+  'Briggs & Stratton': 'briggs-stratton-10kw-standby',
+};
+
+const brandSlugs = Object.values(brandProducts);
+const brandPicks = brandSlugs.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+
+const brandData = [
+  {
+    name: 'Generac',
+    slug: brandProducts['Generac'],
+    tagline: 'Largest U.S. market share for residential standby generators',
+    bestFor: 'Whole-home standby — most dealer coverage, longest warranty with ATS included',
+    strengths: [
+      'Largest dealer and service network in the U.S. — 6,000+ dealers nationwide',
+      '5-year limited warranty with automatic transfer switch included',
+      'Mobile Link remote monitoring via app — check status from anywhere',
+      'Widest product range from 7kW to 150kW — one brand covers all home sizes',
+      'Industry-standard reliability track record spanning 60+ years',
+    ],
+    weaknesses: [
+      'Loudest of the standby brands at 67 dB — noticeable to neighbors',
+      'Some early 2020 models had carburetor issues — verify current production date',
+      'Premium pricing: 22kW unit at $3,699 before installation',
+    ],
+    recommendedFor: 'Most homeowners shopping for a standby generator — the default choice for good reason.',
+  },
+  {
+    name: 'Honda',
+    slug: brandProducts['Honda'],
+    tagline: 'The quietest and most reliable gas-powered portable inverter generators',
+    bestFor: 'Portable inverter generators — camping, tailgating, RV, and sensitive electronics',
+    strengths: [
+      'Industry-leading engine reliability — Honda commercial engines last 10–15 years',
+      'Quietest portable generators: 48–57 dB at quarter load (EU2200i)',
+      'Clean sine wave power safe for laptops, medical devices, and sensitive electronics',
+      'Parallel-capable: link two EU2200i units for 4,400W combined output',
+      'Excellent fuel efficiency — 8+ hours on under 1 gallon at 25% load',
+    ],
+    weaknesses: [
+      'Portable only — Honda does not make residential standby generators',
+      'Most expensive portable generators: $1,099 for the EU2200i',
+      'Requires gasoline — fuel storage and freshness are ongoing requirements',
+    ],
+    recommendedFor: 'Camping, tailgating, RV use, or homeowners who need a portable backup for short outages.',
+  },
+  {
+    name: 'Kohler',
+    slug: brandProducts['Kohler'],
+    tagline: 'The premium standby generator brand — quietest residential operation',
+    bestFor: 'Premium standby — best noise performance, commercial-grade engine quality',
+    strengths: [
+      'Quietest residential standby operation at 65 dB — 2 dB less than Generac',
+      'OnCue Plus remote monitoring included standard',
+      'Kohler\'s commercial and industrial engine heritage translates to residential',
+      '5-year warranty matches Generac',
+      'Strong dealer network with deep commercial expertise',
+    ],
+    weaknesses: [
+      'Transfer switch sold separately — adds $400–800 vs. Generac where it\'s included',
+      'Slightly lower output at 20kW vs. Generac 22kW for a comparable price',
+      'Fewer residential-specific dealers in some rural regions',
+    ],
+    recommendedFor: 'Homeowners who prioritize quiet operation and are willing to pay for Kohler\'s premium positioning.',
+  },
+  {
+    name: 'Briggs & Stratton',
+    slug: brandProducts['Briggs & Stratton'],
+    tagline: 'The most affordable entry point into residential standby generators',
+    bestFor: 'Budget standby — essential circuits in any size home, smaller homes fully',
+    strengths: [
+      'Most affordable residential standby generator at $2,099',
+      '10kW covers essential circuits: fridge, lights, key outlets, window A/C',
+      '100A automatic transfer switch included',
+      'Lower installation cost than 20–22kW units due to smaller physical size',
+      'B&S engines used in millions of lawn mowers — simple maintenance ecosystem',
+    ],
+    weaknesses: [
+      'Cannot run central A/C in homes larger than about 1,500 sq ft',
+      '3-year warranty is shorter than Generac or Kohler',
+      'B&S emerged from bankruptcy in 2020 — verify current dealer support in your area',
+      'Significant output gap between 10kW and the 20–22kW tier above it',
+    ],
+    recommendedFor: 'Smaller homes (under 1,800 sq ft) or large homes that only need essential circuit backup without A/C.',
+  },
+  {
+    name: 'Champion',
+    slug: '',
+    tagline: 'The best-value portable generator brand — dual fuel options and nationwide service',
+    bestFor: 'Portable generators — best value in the $400–700 portable range with dual fuel',
+    strengths: [
+      'Best value portable generators in the $400–700 class — competitive specs at lower prices',
+      'Dual fuel models run on gasoline OR propane — flexible fuel choice',
+      'Champion has 6,000+ authorized service centers across the U.S.',
+      'Good range from 2,000W inverters to 12,000W conventional portables',
+      '3-year warranty and lifetime technical support from Champion',
+    ],
+    weaknesses: [
+      'Not as quiet as Honda inverter generators — conventional Champion units run 65–75 dB',
+      'Champion does not make residential standby generators',
+      'Mixed reviews on long-term reliability vs. Honda or Generac',
+      'App and remote monitoring not available on most models',
+    ],
+    recommendedFor: 'Budget-conscious buyers who need portable power for emergencies, construction, or recreation without Honda\'s premium pricing.',
+  },
+];
+---
+
+<Layout
+  title="Best Generator Brands Compared (2025) — Generac vs Honda vs Kohler vs Champion"
+  description="Generator brands compared head to head in 2025. Generac, Honda, Kohler, Champion, and Briggs &amp; Stratton — which brand to choose for standby, portable, or inverter generators."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power/" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Generator Brands Compared
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Generator Brands Compared (2025)
+    </h1>
+    <p class="text-sm text-gray-400 mb-6">Last updated: June 2025 · Generac vs Honda vs Kohler vs Champion vs Briggs &amp; Stratton</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Choosing a generator brand is as important as choosing the right size — because you're buying a relationship with a service network, not just a machine. When your generator fails during a hurricane, you want a brand with dealers nearby who stock your parts. When you need technical support at midnight, you want a company that answers.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      This guide covers the five major residential generator brands across two categories: whole-home standby generators (Generac, Kohler, Briggs & Stratton) and portable/inverter generators (Honda, Champion). Each brand dominates different use cases — the right choice depends on what you're powering and how you're using it.
+    </p>
+
+    <!-- Brand Overview Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Brand Comparison at a Glance</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Brand</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Generator Type</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price Range</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">U.S. Dealers</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="bg-white"><td class="border border-gray-200 px-3 py-2 font-semibold">Generac</td><td class="border border-gray-200 px-3 py-2">Standby (whole-home)</td><td class="border border-gray-200 px-3 py-2 text-xs">Most homes, most reliable service network</td><td class="border border-gray-200 px-3 py-2">$2,000–$5,000+</td><td class="border border-gray-200 px-3 py-2">6,000+</td></tr>
+          <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2 font-semibold">Honda</td><td class="border border-gray-200 px-3 py-2">Portable inverter</td><td class="border border-gray-200 px-3 py-2 text-xs">Camping, RV, sensitive electronics</td><td class="border border-gray-200 px-3 py-2">$1,000–$2,500</td><td class="border border-gray-200 px-3 py-2">2,800+</td></tr>
+          <tr class="bg-white"><td class="border border-gray-200 px-3 py-2 font-semibold">Kohler</td><td class="border border-gray-200 px-3 py-2">Standby (whole-home)</td><td class="border border-gray-200 px-3 py-2 text-xs">Premium, quietest standby operation</td><td class="border border-gray-200 px-3 py-2">$3,000–$6,000+</td><td class="border border-gray-200 px-3 py-2">1,700+</td></tr>
+          <tr class="bg-gray-50"><td class="border border-gray-200 px-3 py-2 font-semibold">Champion</td><td class="border border-gray-200 px-3 py-2">Portable (conventional + inverter)</td><td class="border border-gray-200 px-3 py-2 text-xs">Budget portable, dual fuel</td><td class="border border-gray-200 px-3 py-2">$400–$1,500</td><td class="border border-gray-200 px-3 py-2">6,000+</td></tr>
+          <tr class="bg-white"><td class="border border-gray-200 px-3 py-2 font-semibold">Briggs &amp; Stratton</td><td class="border border-gray-200 px-3 py-2">Standby + portable</td><td class="border border-gray-200 px-3 py-2 text-xs">Budget standby, entry-level whole-home</td><td class="border border-gray-200 px-3 py-2">$2,000–$5,000</td><td class="border border-gray-200 px-3 py-2">2,000+</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Brand Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Brand Deep Dives</h2>
+
+    {brandData.map((brand, i) => {
+      const product = brandPicks.find(p => p.slug === brand.slug);
+      return (
+        <div class="border border-gray-200 rounded-2xl p-6 mb-6">
+          <div class="flex items-start justify-between gap-4 mb-3">
+            <div>
+              <h3 class="text-2xl font-bold text-gray-900">{brand.name}</h3>
+              <p class="text-gray-600 text-sm mt-1">{brand.tagline}</p>
+              <div class="text-xs font-semibold text-green-700 mt-2 uppercase tracking-wide">{brand.bestFor}</div>
+            </div>
+            {product && (
+              <div class="text-right flex-shrink-0">
+                <div class="text-xs text-gray-500">Flagship unit</div>
+                <div class="text-lg font-bold text-green-700">${product.price}</div>
+              </div>
+            )}
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4 mb-4">
+            <div>
+              <div class="font-semibold text-green-700 mb-2 text-sm">Strengths</div>
+              <ul class="text-sm space-y-1">
+                {brand.strengths.map(s => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{s}</span></li>)}
+              </ul>
+            </div>
+            <div>
+              <div class="font-semibold text-red-600 mb-2 text-sm">Weaknesses</div>
+              <ul class="text-sm space-y-1">
+                {brand.weaknesses.map(w => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{w}</span></li>)}
+              </ul>
+            </div>
+          </div>
+
+          <div class="bg-blue-50 border border-blue-100 rounded-lg p-3 mb-4 text-sm text-blue-900">
+            <strong>Recommended for:</strong> {brand.recommendedFor}
+          </div>
+
+          {product && (
+            <div class="flex items-center gap-4 mt-2">
+              <div class="text-sm">
+                <span class="font-medium text-gray-700">Flagship product:</span>{' '}
+                <span class="text-gray-600">{product.name}</span>
+              </div>
+              <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+                 class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-4 py-1.5 rounded-md text-sm transition-colors">
+                View on Amazon →
+              </a>
+            </div>
+          )}
+        </div>
+      );
+    })}
+
+    <!-- Head-to-Head Scenarios -->
+    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Which Brand Should You Buy? Scenario Guide</h2>
+
+      <div class="space-y-4">
+        <div class="border-l-4 border-green-500 pl-4">
+          <p class="font-semibold text-gray-900 text-sm">I want a whole-home generator and reliability is the top priority</p>
+          <p class="text-gray-700 text-sm mt-1">→ <strong>Generac.</strong> Largest service network, 5-year warranty with ATS included, and the most dealer coverage for ongoing maintenance.</p>
+        </div>
+        <div class="border-l-4 border-blue-500 pl-4">
+          <p class="font-semibold text-gray-900 text-sm">I want a whole-home generator and quiet operation is critical</p>
+          <p class="text-gray-700 text-sm mt-1">→ <strong>Kohler.</strong> 2 dB quieter than Generac — meaningful when a neighbor can hear your generator. Budget for the separate transfer switch purchase.</p>
+        </div>
+        <div class="border-l-4 border-yellow-500 pl-4">
+          <p class="font-semibold text-gray-900 text-sm">I need a portable generator for camping, tailgating, or RV use</p>
+          <p class="text-gray-700 text-sm mt-1">→ <strong>Honda EU2200i.</strong> Nothing else in the portable gas category matches Honda's combination of quiet operation, fuel efficiency, and long-term reliability.</p>
+        </div>
+        <div class="border-l-4 border-orange-500 pl-4">
+          <p class="font-semibold text-gray-900 text-sm">I need a portable generator and budget is my main constraint</p>
+          <p class="text-gray-700 text-sm mt-1">→ <strong>Champion.</strong> Half the price of Honda with dual-fuel flexibility. Noisier and not as refined, but the value is real for infrequent use.</p>
+        </div>
+        <div class="border-l-4 border-purple-500 pl-4">
+          <p class="font-semibold text-gray-900 text-sm">I want whole-home standby on a tight budget</p>
+          <p class="text-gray-700 text-sm mt-1">→ <strong>Briggs & Stratton 10kW.</strong> The lowest-cost entry point to standby. It won't run central A/C, but it keeps the lights on and the fridge cold — which is what most people actually need.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Internal Links -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/backup-power/best-whole-home-generator-brands-compared/" class="text-blue-600 hover:underline">Best Whole Home Generator Brands Compared (Standby Only)</a></li>
+        <li>→ <a href="/backup-power/generac-vs-kohler/" class="text-blue-600 hover:underline">Generac vs Kohler — Head-to-Head Comparison</a></li>
+        <li>→ <a href="/backup-power/best-whole-home-generator-for-large-homes/" class="text-blue-600 hover:underline">Best Whole Home Generator for Large Homes</a></li>
+        <li>→ <a href="/backup-power/what-size-generator-do-i-need/" class="text-blue-600 hover:underline">What Size Generator Do I Need?</a></li>
+        <li>→ <a href="/backup-power/best-generator-for-power-outages/" class="text-blue-600 hover:underline">Best Generator for Power Outages</a></li>
+      </ul>
+    </div>
+
+  </article>
+</Layout>

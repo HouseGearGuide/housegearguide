@@ -48,141 +48,109 @@ Always use ASIN-based URLs. Never construct full Amazon product URLs.
 ✅ Correct: `https://www.amazon.com/dp/B08L5TNJHG?tag=housegearguid-20`
 ❌ Wrong: `https://www.amazon.com/product-name/dp/B08L5TNJHG/ref=...`
 
-### Direct Brand Programs — Add Later (Month 3-6)
-Via ShareASale, Impact, or CJ Affiliate:
-- EcoFlow — 3-5% on high ticket items
-- Jackery
-- Generac (whole-home generators)
-- Lutron (smart lighting)
-- Ring / Arlo (smart security)
-- Eero / Google Nest
-
-### Future Display Ads (Month 10+)
-Once site hits ~10,000 monthly sessions apply to **Mediavine** — adds $300-800/month on top of affiliate income with no extra work.
+### Direct Brand Programs — Add Later
+- EcoFlow — apply month 4+ (automated, dedicated page exists)
+- Jackery — apply month 4+ (same as EcoFlow)
+- Generac — wait until month 6+ (manual review, needs traffic)
+- Lutron — wait until month 6+
+- Ring / Arlo — month 4-5
+- Mediavine display ads — month 10+ (needs 10,000 monthly sessions)
 
 ---
 
 ## Current Site Stats
-- **Total pages:** 40 live (39 comparison/category pages + 1 calculator tool)
-- **Products in data file:** 57 products with ASIN-based affiliate links
+- **Total pages:** 80 live
+- **Products in data file:** 66+ products with ASIN-based affiliate links
 - **Build status:** Clean — zero errors
-- **Sitemap:** Updated and submitted to Google Search Console
+- **Sitemap:** Updated to 80 URLs
 
 ---
 
-## Site Structure
-```
-src/
-  layouts/Layout.astro
-  pages/
-    index.astro                                              ← homepage
-    smart-home/index.astro                                   ← category page
-    backup-power/index.astro                                 ← category page
-    backup-power/calculator/index.astro                      ← CALCULATOR TOOL ✅
-    smart-home/best-smart-thermostat-no-c-wire.astro
-    smart-home/best-smart-thermostat-multiple-zones.astro
-    smart-home/best-smart-lock-for-renters.astro
-    smart-home/google-home-vs-alexa.astro
-    smart-home/best-smart-lighting-for-apartments.astro
-    smart-home/best-smart-camera-for-apartments.astro
-    smart-home/best-outdoor-smart-plugs.astro
-    smart-home/best-smart-home-devices-for-renters.astro
-    smart-home/best-smart-home-starter-kit-under-500.astro
-    smart-home/best-smart-home-hub.astro
-    smart-home/best-smart-doorbell-camera.astro
-    smart-home/best-smart-home-starter-kit-under-200.astro
-    smart-home/best-outdoor-security-camera-system.astro
-    smart-home/best-smart-smoke-detector.astro
-    smart-home/best-smart-home-devices-for-elderly-parents.astro
-    smart-home/best-ev-home-chargers.astro                   ← NEW Session 6
-    smart-home/best-smart-home-devices-for-large-homes.astro ← NEW Session 6
-    smart-home/best-smart-lighting-outdoor-spaces.astro      ← NEW Session 6
-    smart-home/best-smart-home-security-system-under-500.astro ← NEW Session 6
-    smart-home/best-smart-home-devices-under-100.astro       ← NEW Session 6
-    backup-power/best-portable-power-station-under-500.astro
-    backup-power/best-portable-power-station-under-1000.astro
-    backup-power/best-whole-home-generator-2000-sq-ft.astro
-    backup-power/ecoflow-vs-jackery.astro
-    backup-power/best-backup-power-home-office.astro
-    backup-power/best-solar-generator-home-backup.astro
-    backup-power/best-whole-home-generator-for-well-pump.astro
-    backup-power/best-battery-backup-sump-pump.astro
-    backup-power/best-portable-generator-for-camping.astro
-    backup-power/solar-generator-vs-portable-generator.astro
-    backup-power/best-whole-home-battery-backup-system.astro
-    backup-power/best-battery-backup-medical-equipment.astro ← NEW Session 6
-    backup-power/best-generator-for-power-outages.astro      ← NEW Session 6
-    backup-power/best-solar-panels-home-backup.astro         ← NEW Session 6
-    backup-power/jackery-vs-bluetti.astro                    ← NEW Session 6
-    backup-power/best-whole-home-generator-brands-compared.astro ← NEW Session 6
-  data/products.ts                  ← 57 products with real ASIN-based links
-  public/sitemap.xml                ← updated with all 40 pages
-  styles/global.css
-```
+## Domain & SSL Configuration ✅ FULLY RESOLVED
+- `housegearguide.com` → Connected to Production (primary domain)
+- `www.housegearguide.com` → 301 Permanent Redirect to housegearguide.com
+- `housegearguide.vercel.app` → Production
+- Namecheap A Record: @ → 216.198.79.1
+- Namecheap CNAME: www → a615f190a9930fcf.vercel-dns-017.com
+- URL Redirect Record removed from Namecheap (was causing redirect loop)
+- www redirect handled by Vercel dashboard only (not vercel.json)
 
 ---
 
-## Content Strategy
+## Technical SEO ✅ ALL FIXED
+- Canonical tags on every page via Layout.astro
+- trailingSlash: 'always' in astro.config.mjs
+- www → non-www 301 in Vercel dashboard
+- Google Search Console issues resolved:
+  - "Duplicate without user-selected canonical" ✅
+  - "Page with redirect" ✅
+  - "Discovered — currently not indexed" — 48 pages resolving over time (normal)
 
-### Pages Built (40 total) ✅
+---
 
-**Smart Home (22 pages)**
-- Homepage
-- Smart home category page
-- Best smart thermostat for older homes without C-wire
-- Best smart thermostat for multiple zones
+## Pages Built (70 total) ✅
+
+### Smart Home
+- Homepage, category page
+- Best smart thermostat (no C-wire, multiple zones)
 - Best smart lock for renters
 - Google Home vs Alexa
 - Best smart lighting for apartments
 - Best smart home security camera for apartments
 - Best outdoor smart plugs
-- Best smart home devices for renters
-- Best smart home starter kit under $500
+- Best smart home devices (renters, renters under $200, renters under $300, elderly parents, large homes, beginners, beginners under $200, apartments, condos, under $100, energy saving)
 - Best smart home hub
 - Best smart doorbell camera
-- Best smart home starter kit under $200
+- Best smart home starter kit (under $200, under $500)
 - Best outdoor security camera system
 - Best smart smoke detector
-- Best smart home devices for elderly parents
-- Best EV home chargers ✅ Session 6
-- Best smart home devices for large homes ✅ Session 6
-- Best smart lighting for outdoor spaces ✅ Session 6
-- Best smart home security system under $500 ✅ Session 6
-- Best smart home devices under $100 ✅ Session 6
+- Best EV home chargers
+- Best battery powered outdoor lights
+- Best smart ceiling fans
+- Ring vs Arlo comparison
+- Best smart home gift ideas
+- Best outdoor smart home devices
+- Best smart home devices for kids rooms
+- Best smart plugs for energy monitoring
+- Best smart light switches
+- How to set up a smart home on a budget
 
-**Backup Power (17 pages)**
-- Backup power category page
-- Best portable power station under $500
-- Best portable power station under $1,000
-- Best whole home generator for 2,000 sq ft
-- EcoFlow vs Jackery full comparison
+### Backup Power
+- Category page
+- Best portable power station (under $500, under $1,000, for van life, for emergencies)
+- Best whole home generator (2,000 sq ft, for well pump)
+- EcoFlow vs Jackery, Jackery vs Bluetti, Bluetti vs EcoFlow
 - Best backup power for home office
-- Best solar generator for home backup
-- Best whole home generator for well pump
-- Best battery backup for sump pump
-- Best portable generator for camping
+- Best solar generator (home backup, under $500)
+- Best battery backup (sump pump, medical equipment, gaming setup, UPS for home office)
+- Best portable generator (camping, RV camping)
 - Solar generator vs portable generator
 - Best whole home battery backup system
-- Best battery backup for medical equipment ✅ Session 6
-- Best generator for power outages ✅ Session 6
-- Best solar panels for home backup ✅ Session 6
-- Jackery vs Bluetti comparison ✅ Session 6
-- Best whole home generator brands compared ✅ Session 6
+- Best generator (power outages, tailgating)
+- Best solar panels for home backup
+- Best whole home generator brands compared
+- Generac vs Kohler comparison
+- Best outdoor generator storage solutions
+- How to choose a whole home generator
+- What size generator do I need
+- Whole home generator installation guide
 
-**Tools (1)**
-- Backup power calculator ✅
+### Tools
+- Backup power calculator (/backup-power/calculator)
 
-### Pages To Build Next (Tier 4 — Session 7+)
-- Best smart home devices under $50
-- Best smart home gift ideas
-- Best smart home for HomeKit (Apple-only households)
-- Best mesh Wi-Fi systems for smart homes
-- Best smart home devices for garage
-- Best solar battery storage systems
-- Best propane generators for home backup
-- Best EV charging stations (commercial/workplace)
-- Best battery backup for gaming setup
-- Best generator transfer switch options
+---
+
+## Pages To Build Next (Session 12+)
+- Best smart home devices for condos
+- Best portable power station for van life camping (extended)
+- Best smart home devices under $300
+- Best inverter generator for home backup
+- Best smart home devices for beginners under $200
+- Best whole home generator installation guide
+- Best outdoor generator storage solutions
+- Best smart home devices for home office
+- Best battery backup for sump pump (upgrade)
+- Best solar generator under $1,000
 
 ---
 
@@ -199,29 +167,17 @@ Every generated page must include:
 
 ---
 
-## SEO Status
-- Fast page load — Astro static output ✅
-- Unique meta titles and descriptions ✅
-- Google Search Console verified ✅
-- Sitemap submitted and updated ✅
-- Internal linking built into templates ✅
-- All Amazon links audited and working ✅
-- Schema markup for product reviews — add in future session
-
----
-
 ## Sitemap Maintenance
 - Static sitemap lives at `public/sitemap.xml`
-- **Every time new pages are added** tell Claude Code: *"Update public/sitemap.xml to include the new pages we just built"*
+- Every time new pages are added tell Claude Code: "Update public/sitemap.xml to include the new pages we just built"
 - Submitted URL: https://housegearguide.com/sitemap.xml
 
 ---
 
-## Calculator Tool
-- Lives at: housegearguide.com/backup-power/calculator
-- Linked from: backup power category page and homepage
-- How it works: user selects home size → appliances → hours needed → outputs wattage + product recommendations with affiliate links
-- Purpose: link magnet for natural backlinks
+## Link Audit Schedule
+- Each session: spot check ASINs for high ticket new products
+- Monthly: random spot check of 10-15 links across the site
+- Quick fix: "Fix this broken Amazon link — [product name] is returning a 404. Find the correct current ASIN and update it."
 
 ---
 
@@ -236,85 +192,71 @@ Every generated page must include:
 
 ## Session Log
 
-### Session 1 — April 17, 2026 ✅
-- Registered housegearguide.com
-- Built Astro + Tailwind project
-- Set up GitHub repo and Vercel deployment
-- Configured DNS records
-- Verified Google Search Console
-- Created CLAUDE.md
+### Sessions 1-9 — April 17 to May 19, 2026 ✅
+- Built and deployed full site infrastructure
+- 60+ pages live, Amazon Associates approved and live
+- All technical SEO issues resolved
+- Domain SSL fully fixed and operational
+- See previous CLAUDE.md versions for detailed session notes
 
-### Session 2 — April 17-20, 2026 ✅
-- Built homepage, category pages, first 3 comparison pages
-- Added 15 products to products.ts
-- Audited and fixed broken internal links
-- Reached 20 total live pages
-- Fixed Vercel build error (uncommitted products.ts)
-- Added sitemap integration and static sitemap fallback
-- Submitted sitemap to Google Search Console
+### Session 10 — May 19, 2026 ✅
+- Built 10 new pages (60 → 70 total)
+- 3 new generator storage products added to products.ts (66+ total)
+- Sitemap updated to 70 URLs
+- Clean build, zero errors, deployed to Vercel
 
-### Session 3 — April 21, 2026 ✅
-- Amazon Associates approved
-- Real tag housegearguid-20 live sitewide
-- Payment and tax information submitted
+### Session 11 — June 2026 ✅
+- Built 10 new pages (70 → 80 total)
+- No new products needed — all pages used existing verified ASINs
+- Sitemap updated to 80 URLs
+- Clean build, zero errors, deployed to Vercel
 
-### Session 4 — April 21-27, 2026 ✅
-- Built backup power calculator tool at /backup-power/calculator
-- Fixed all broken Amazon links — converted to ASIN-based URLs
-- All 28 products have working affiliate links
-- Calculator linked from homepage and category page
-- Sitemap updated
-
-### Session 5 — April 27, 2026 ✅
-- Built 9 new Tier 2 comparison pages (10th already existed)
-- 14 new products added to products.ts (42 total)
-- Sitemap updated with all new URLs
-- Clean build — 30 pages, zero errors
-- Note: 14 new ASINs need audit to verify correct listings
-
-### Session 6 — May 4, 2026 ✅
-1. ASIN audit — verified and fixed 12 incorrect ASINs across all 14 Session 5 products
-2. Replaced discontinued First Alert Onelink with Kidde Smart Hardwired (B0C44LLXQH, $90)
-3. Replaced discontinued Kidde WiFi battery detector with Kidde 10-Year sealed battery (B086S4XM3W, $38)
-4. Added 25 new products (57 total): EV chargers, outdoor lighting, security systems, solar panels
-5. Built 10 Tier 3 comparison pages (40 total pages, clean build)
-6. Updated sitemap with all 10 new URLs
-7. Pushed live — Vercel deployed successfully
+### Session 12 — Next Goals
+1. Build 10 more pages toward 90 total
+2. Spot check ASINs on high-ticket new products
+3. Check Google Search Console Performance tab for early ranking signals
+4. Consider applying to EcoFlow and Jackery direct affiliate programs (month 4+ threshold)
 
 ---
 
-## Session 7 Starting Prompt
+## Session 11 Starting Prompt
 ```
-I'm continuing work on HouseGearGuide.com. The site is at 40 pages and 57 products.
-Session 6 is fully complete — ASIN audit done, 10 Tier 3 pages built and live.
+I'm continuing work on HouseGearGuide.com. The site has 70 pages 
+and 66+ products live. I want to build 10 more pages toward 80 total.
 
-Next priorities:
-1. Audit any products added in Session 6 (25 new ASINs) for correct listings
-2. Build Tier 4 pages from CLAUDE.md
-3. Research and apply to direct brand affiliate programs (EcoFlow, Jackery, ChargePoint)
-4. Fix git identity warning if still present
+Build these 10 pages:
+1. Best smart home devices Black Friday guide — smart-home
+2. Best generator for apartment balcony — backup-power
+3. Best smart home security system for renters — smart-home
+4. Best battery backup for home network — backup-power
+5. Best smart home devices for saving money on utilities — smart-home
+6. Best solar generator for tailgating — backup-power
+7. Best whole home generator for large homes — backup-power
+8. Best smart home devices for renters under $500 — smart-home
+9. Best generator brands compared — backup-power
+10. Best portable power station for road trips — backup-power
+
+For every page: unique meta title and description, FTC disclosure,
+comparison table with ASIN-based affiliate links
+(format: https://www.amazon.com/dp/ASIN?tag=housegearguid-20),
+honest pros and cons, internal links to related pages.
+
+Add any new products needed to products.ts with real ASINs.
+
+When done: update public/sitemap.xml, run npm run build locally
+to confirm zero errors, push live with git.
 ```
-
----
-
-## Adding New Pages — Checklist
-1. Build pages in Claude Code
-2. Update products.ts with any new products needed (real ASINs only)
-3. Tell Claude Code to update public/sitemap.xml
-4. Run `npm run build` locally to confirm clean build
-5. Push live with git
-6. Confirm green deployment in Vercel dashboard
 
 ---
 
 ## Important Reminders
 - Google sandbox = no traffic for 4-6 months. Normal, not failure
 - Check Google Search Console every Sunday — 5 minutes
-- Update products.ts every 3-4 months
 - Always update sitemap when adding pages
 - Always run npm run build locally before pushing
 - Always commit products.ts with any pages that reference it
 - Amazon 180 day clock running — need 3 qualifying sales
+- Ask 3 people you know to click through and buy on Amazon
 - Backup power spikes hurricane season + winter
 - Smart home spikes Black Friday + holidays
 - At 10,000 monthly sessions — apply to Mediavine
@@ -340,8 +282,13 @@ Open http://localhost:4321
 git add . && git commit -m "description" && git push
 ```
 
-### Fix Git Identity (one time)
-```
-git config --global user.name "Your Name"
-git config --global user.email "your@email.com"
-```
+### New Computer Setup
+1. /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+2. brew install node
+3. brew install gh
+4. gh auth login
+5. npm install -g @anthropic-ai/claude-code
+6. cd to project folder
+7. npm install
+8. npm run dev to verify
+9. Test push to confirm git works

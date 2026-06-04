@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = [
+  'ring-alarm-5-piece',
+  'simplisafe-8-piece',
+  'eufy-security-alarm-kit',
+];
+
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+
+const bestFor: Record<string, string> = {
+  'ring-alarm-5-piece':    'Best Overall — Easiest Setup, Optional $10/month Monitoring',
+  'simplisafe-8-piece':    'Best Professional Monitoring — Fastest Response Time',
+  'eufy-security-alarm-kit':'Best No-Subscription — Zero Monthly Fees, Ever',
+};
+
+const monitoring: Record<string, string> = {
+  'ring-alarm-5-piece':    '$10/month optional',
+  'simplisafe-8-piece':    '$19.99/month optional',
+  'eufy-security-alarm-kit':'None (self-monitored)',
+};
+
+const drilling: Record<string, string> = {
+  'ring-alarm-5-piece':    'No — peel-and-stick sensors',
+  'simplisafe-8-piece':    'No — peel-and-stick sensors',
+  'eufy-security-alarm-kit':'No — peel-and-stick sensors',
+};
+---
+
+<Layout
+  title="Best Smart Home Security System for Renters (2025) — No Drilling, No Contracts"
+  description="The best security systems for renters in 2025 — no drilling, no permanent installation, no contracts. Ring Alarm, SimpliSafe, and Eufy compared for renter-friendly use."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Security System for Renters
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Security System for Renters (2025)
+    </h1>
+    <p class="text-sm text-gray-400 mb-6">Last updated: June 2025 · No drilling required</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Renters have a real security problem: you can't drill into walls, run permanent wiring, or leave equipment behind. The good news is that the best DIY security systems are designed exactly for this situation — they install with peel-and-stick adhesive, connect over your existing Wi-Fi, and move with you when your lease ends.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      All three picks here require zero permanent installation. Every sensor peels off clean. All three have no annual contracts. The differences come down to monitoring cost, sensor count, and ecosystem fit.
+    </p>
+
+    <!-- Renter Checklist -->
+    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 mb-8">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">What makes a security system renter-friendly:</p>
+      <ul class="text-sm text-blue-900 space-y-1.5">
+        <li class="flex gap-2"><span class="text-blue-500">✓</span> Peel-and-stick sensors — no screws, no holes, no landlord conflict</li>
+        <li class="flex gap-2"><span class="text-blue-500">✓</span> Wireless sensors — no wiring to conceal or remove</li>
+        <li class="flex gap-2"><span class="text-blue-500">✓</span> Month-to-month monitoring — cancel when you move, no penalty</li>
+        <li class="flex gap-2"><span class="text-blue-500">✓</span> Self-contained system — doesn't depend on building infrastructure</li>
+        <li class="flex gap-2"><span class="text-blue-500">✓</span> Portable — kit packs into a bag and reinstalls in a new apartment in under an hour</li>
+      </ul>
+    </div>
+
+    <!-- Top Pick -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Top Pick for Renters</p>
+      <p class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</p>
+      <p class="text-gray-600 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <span class="text-2xl font-bold text-green-700">${topPick.price}</span>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          View on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">System</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Best For</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Drilling Required</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Monitoring</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{p.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-green-700 font-medium">{bestFor[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs font-medium text-green-700">{drilling[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{monitoring[p.slug]}</td>
+              <td class="border border-gray-200 px-3 py-2">${p.price}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+                   class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Reviews -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Full Reviews</h2>
+
+    {picks.map((p, i) => (
+      <div class="border border-gray-200 rounded-2xl p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-green-700 uppercase tracking-wide mb-1">
+              #{i + 1} — {bestFor[p.slug]}
+            </div>
+            <h3 class="text-xl font-bold text-gray-900">{p.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{p.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-2xl font-bold text-green-700">${p.price}</div>
+            <div class="text-xs text-gray-500 mt-0.5">{monitoring[p.slug]}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(p.specs).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {p.pros.map(pro => <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>)}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {p.cons.map(con => <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={p.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Guide -->
+    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Renter Security System Buying Guide</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">Do You Need Professional Monitoring?</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Professional monitoring means a 24/7 call center gets alerted when your alarm triggers. If you miss an alert (phone on silent, at work, no signal), the monitoring center calls you and dispatches police or fire if they can't reach you. For renters who travel frequently or sleep heavily, professional monitoring is a genuine safety upgrade. SimpliSafe's response time of under 30 seconds is the best in this guide.
+      </p>
+      <p class="text-gray-700 text-sm mb-4">
+        If you're on a tight budget, self-monitoring (Eufy) works — you get a loud local siren and a phone alert. The limitation is that if you miss the alert, nothing happens automatically. Honest assessment: self-monitoring is better than no system, but professional monitoring provides real peace of mind.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">How to Install Without Damaging Walls</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        All three systems use adhesive strips (similar to Command Strips) on door/window sensors. The base station typically sits on a shelf or table. Keypads can go on a shelf or use the included adhesive mount on a flat wall surface. When you move, door sensors lift off without residue using the correct removal technique (warm the adhesive slightly with a hairdryer before pulling slowly).
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">What About Lease Restrictions on Security Systems?</h3>
+      <p class="text-gray-700 text-sm">
+        Most leases prohibit "modifications" but do not prohibit temporary security systems with no permanent installation. A wireless, adhesive-mounted system like Ring Alarm or SimpliSafe falls outside most lease modification clauses. If you're unsure, show your landlord the installation method — most will approve a system that leaves no marks.
+      </p>
+    </div>
+
+    <!-- Internal Links -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-renters/" class="text-blue-600 hover:underline">Best Smart Home Devices for Renters</a></li>
+        <li>→ <a href="/smart-home/best-smart-lock-for-renters/" class="text-blue-600 hover:underline">Best Smart Lock for Renters</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-security-system-under-500/" class="text-blue-600 hover:underline">Best Smart Home Security System Under $500</a></li>
+        <li>→ <a href="/smart-home/best-smart-camera-for-apartments/" class="text-blue-600 hover:underline">Best Smart Security Camera for Apartments</a></li>
+        <li>→ <a href="/smart-home/best-smart-doorbell-camera/" class="text-blue-600 hover:underline">Best Smart Doorbell Camera</a></li>
+      </ul>
+    </div>
+
+  </article>
+</Layout>

@@ -1,0 +1,201 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const deals = [
+  { slug: 'ecobee-smartthermostat-premium',    category: 'Thermostats',       typicalDiscount: '20–35%', blackFridayPrice: '$159–199' },
+  { slug: 'philips-hue-starter-kit',           category: 'Smart Lighting',    typicalDiscount: '25–40%', blackFridayPrice: '$119–149' },
+  { slug: 'ring-alarm-5-piece',                category: 'Security Systems',   typicalDiscount: '30–50%', blackFridayPrice: '$99–139' },
+  { slug: 'august-wifi-smart-lock-4th-gen',    category: 'Smart Locks',        typicalDiscount: '20–30%', blackFridayPrice: '$124–143' },
+  { slug: 'amazon-echo-dot-5th-gen',           category: 'Smart Speakers',     typicalDiscount: '40–50%', blackFridayPrice: '$24–29' },
+  { slug: 'wyze-cam-v4',                       category: 'Security Cameras',   typicalDiscount: '15–25%', blackFridayPrice: '$27–30' },
+  { slug: 'kasa-ep25-smart-plug',              category: 'Smart Plugs',        typicalDiscount: '20–35%', blackFridayPrice: '$11–14' },
+  { slug: 'google-nest-protect-battery',       category: 'Smoke Detectors',    typicalDiscount: '20–30%', blackFridayPrice: '$83–95' },
+];
+
+const picks = deals.map(d => ({
+  product: products.find(p => p.slug === d.slug)! as Product,
+  ...d,
+})).filter(d => d.product);
+
+const topPick = picks[0].product;
+---
+
+<Layout
+  title="Best Smart Home Devices Black Friday Deals 2025 — What to Buy and When"
+  description="The best smart home device Black Friday deals for 2025. Thermostats, security cameras, smart locks, lighting, and more — which brands discount deepest and what prices to expect."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Black Friday Deals
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices: Black Friday Deals Guide (2025)
+    </h1>
+    <p class="text-sm text-gray-400 mb-6">Last updated: June 2025 · Updated annually before Black Friday season</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Black Friday is the single best time to buy smart home devices. Brands like Amazon, Ring, Philips Hue, and ecobee run their deepest discounts of the year — often 30–50% off — during the Thanksgiving weekend. This guide tells you which categories discount the most, what prices to expect, and which products are actually worth buying vs. skipping at any price.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-200 rounded-2xl p-5 mb-8 text-sm text-blue-900">
+      <strong>When to shop:</strong> Amazon's Black Friday deals typically go live the week before Thanksgiving. Prime members get 24–48 hour early access. The best smart home deals sell out — set up deal alerts on products you want. Cyber Monday fills in stock that sold out Black Friday, often at the same prices.
+    </div>
+
+    <!-- Best Overall BF Pick -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">Best Black Friday Smart Home Deal</p>
+      <p class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</p>
+      <p class="text-gray-600 text-sm mb-3">{topPick.tagline}</p>
+      <div class="flex items-center gap-4">
+        <div>
+          <div class="text-xs text-gray-500 line-through">${topPick.price} regular</div>
+          <div class="text-2xl font-bold text-green-700">{picks[0].blackFridayPrice} Black Friday est.</div>
+        </div>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Current Price →
+        </a>
+      </div>
+    </div>
+
+    <!-- Deals Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Expected Black Friday Discounts by Category</h2>
+    <div class="overflow-x-auto mb-10">
+      <table class="w-full text-sm border-collapse border border-gray-200">
+        <thead class="bg-gray-100">
+          <tr>
+            <th class="border border-gray-200 px-3 py-2 text-left">Product</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Category</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Regular Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">BF Est. Price</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Typical Discount</th>
+            <th class="border border-gray-200 px-3 py-2 text-left">Link</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((d, i) => (
+            <tr class={i % 2 === 0 ? 'bg-white' : 'bg-gray-50'}>
+              <td class="border border-gray-200 px-3 py-2 font-medium">{d.product.name}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs text-blue-700 font-medium">{d.category}</td>
+              <td class="border border-gray-200 px-3 py-2">${d.product.price}</td>
+              <td class="border border-gray-200 px-3 py-2 font-semibold text-green-700">{d.blackFridayPrice}</td>
+              <td class="border border-gray-200 px-3 py-2 text-xs">{d.typicalDiscount}</td>
+              <td class="border border-gray-200 px-3 py-2">
+                <a href={d.product.affiliateUrl} target="_blank" rel="nofollow noopener"
+                   class="text-blue-600 hover:underline font-medium">Amazon →</a>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-500 mb-10">Estimated BF prices based on historical Amazon discount patterns. Actual prices vary. Check links for current pricing.</p>
+
+    <!-- Category Sections -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-6">Category-by-Category Black Friday Guide</h2>
+
+    {picks.map((d, i) => (
+      <div class="border border-gray-200 rounded-2xl p-6 mb-6">
+        <div class="flex items-start justify-between gap-4 mb-3">
+          <div>
+            <div class="text-xs font-semibold text-blue-700 uppercase tracking-wide mb-1">{d.category}</div>
+            <h3 class="text-xl font-bold text-gray-900">{d.product.name}</h3>
+            <p class="text-gray-600 text-sm mt-1">{d.product.tagline}</p>
+          </div>
+          <div class="text-right flex-shrink-0">
+            <div class="text-xs text-gray-400">Regular</div>
+            <div class="text-lg font-bold text-gray-700">${d.product.price}</div>
+            <div class="text-xs text-green-700 font-semibold mt-1">BF est. {d.blackFridayPrice}</div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-2 gap-3 text-sm mb-4">
+          {Object.entries(d.product.specs).slice(0, 4).map(([key, val]) => (
+            <div class="bg-gray-50 rounded px-3 py-1.5">
+              <span class="font-medium text-gray-700">{key}:</span> {val}
+            </div>
+          ))}
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <div class="font-semibold text-green-700 mb-1 text-sm">Pros</div>
+            <ul class="text-sm space-y-1">
+              {d.product.pros.slice(0, 3).map(pro => (
+                <li class="flex gap-1.5"><span class="text-green-500 mt-0.5">✓</span><span>{pro}</span></li>
+              ))}
+            </ul>
+          </div>
+          <div>
+            <div class="font-semibold text-red-600 mb-1 text-sm">Cons</div>
+            <ul class="text-sm space-y-1">
+              {d.product.cons.slice(0, 3).map(con => (
+                <li class="flex gap-1.5"><span class="text-red-400 mt-0.5">✗</span><span>{con}</span></li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a href={d.product.affiliateUrl} target="_blank" rel="nofollow noopener"
+           class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-semibold px-5 py-2 rounded-md text-sm transition-colors">
+          Check Price on Amazon →
+        </a>
+      </div>
+    ))}
+
+    <!-- Buying Strategy -->
+    <div class="bg-gray-50 rounded-2xl p-6 mb-8">
+      <h2 class="text-2xl font-bold text-gray-900 mb-4">Black Friday Smart Home Strategy</h2>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">What Discounts the Most</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Amazon-owned brands (Ring, Echo, Blink) consistently hit the deepest Black Friday discounts — often 40–50% off. Ring Alarm starter kits are frequently half price. Echo Dots regularly drop to $22–$25. These are reliably the best Black Friday buys in the smart home category.
+      </p>
+      <p class="text-gray-700 text-sm mb-4">
+        Philips Hue and ecobee discount 25–35% but rarely go lower. If you see a Hue starter kit under $120 or an ecobee under $150, buy it — those prices don't last long and don't get meaningfully cheaper.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">What to Skip on Black Friday</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Smart home products that rarely get meaningful Black Friday discounts: Google Nest Learning Thermostat (usually only $10–20 off), premium Lutron switches, and Apple HomeKit-specific devices. These brands don't participate deeply in Amazon's sale events. Wait for off-season sales or buy them directly from the brand.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">How to Stack Smart Home Deals</h3>
+      <p class="text-gray-700 text-sm mb-4">
+        Smart home ecosystems work together. A Ring Alarm starter kit at half price Black Friday pairs with a Ring doorbell (also discounted) and a Ring outdoor camera. Buying the ecosystem entry kit when it's discounted cheapest locks you into the best long-term deal. Same logic applies to Philips Hue: buy the starter kit (which includes the Bridge) when it's on sale, then add individual bulbs at full price later — the Bridge is the expensive part.
+      </p>
+
+      <h3 class="text-lg font-semibold text-gray-800 mb-2">The Best Single Smart Home Buy on Black Friday</h3>
+      <p class="text-gray-700 text-sm">
+        If you're only buying one smart home device on Black Friday, make it the <strong>ecobee SmartThermostat Premium</strong>. A smart thermostat has the highest ROI of any smart home device — it actively saves money on your utility bill year-round. At 25–35% off Black Friday, the payback period drops to under a year for most households with gas heat. Every other smart home device is convenience; a smart thermostat is genuinely cost-positive.
+      </p>
+    </div>
+
+    <!-- Internal Links -->
+    <div class="border-t border-gray-200 pt-6">
+      <h2 class="text-lg font-bold text-gray-900 mb-3">Related Guides</h2>
+      <ul class="space-y-2 text-sm">
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-renters/" class="text-blue-600 hover:underline">Best Smart Home Devices for Renters</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-starter-kit-under-500/" class="text-blue-600 hover:underline">Best Smart Home Starter Kit Under $500</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-devices-for-renters-under-500/" class="text-blue-600 hover:underline">Best Smart Home Devices for Renters Under $500</a></li>
+        <li>→ <a href="/smart-home/best-smart-home-gift-ideas/" class="text-blue-600 hover:underline">Best Smart Home Gift Ideas</a></li>
+        <li>→ <a href="/smart-home/how-to-set-up-a-smart-home-on-a-budget/" class="text-blue-600 hover:underline">How to Set Up a Smart Home on a Budget</a></li>
+      </ul>
+    </div>
+
+  </article>
+</Layout>
