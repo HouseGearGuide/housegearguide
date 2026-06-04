@@ -61,7 +61,7 @@ Always use ASIN-based URLs. Never construct full Amazon product URLs.
 ## Current Site Stats
 - **Total pages:** 80 live
 - **Products in data file:** 66+ products with ASIN-based affiliate links
-- **Build status:** Clean — zero errors
+- **Build status:** Clean — zero errors, 80 pages confirmed
 - **Sitemap:** Updated to 80 URLs
 
 ---
@@ -140,17 +140,17 @@ Always use ASIN-based URLs. Never construct full Amazon product URLs.
 
 ---
 
-## Pages To Build Next (Session 12+)
-- Best smart home devices for condos
-- Best portable power station for van life camping (extended)
-- Best smart home devices under $300
+## Pages To Build Next (Session 13+)
 - Best inverter generator for home backup
-- Best smart home devices for beginners under $200
-- Best whole home generator installation guide
-- Best outdoor generator storage solutions
 - Best smart home devices for home office
 - Best battery backup for sump pump (upgrade)
 - Best solar generator under $1,000
+- Best portable power station for van life camping (extended)
+- Best smart home devices for senior living
+- Best whole home generator for cold climates
+- Best smart home devices for home security on a budget
+- Best solar generator for RV
+- Best portable power station comparison (brand vs brand)
 
 ---
 
@@ -205,13 +205,17 @@ Every generated page must include:
 - Sitemap updated to 70 URLs
 - Clean build, zero errors, deployed to Vercel
 
-### Session 11 — June 2026 ✅
-- Built 10 new pages (70 → 80 total)
-- No new products needed — all pages used existing verified ASINs
-- Sitemap updated to 80 URLs
-- Clean build, zero errors, deployed to Vercel
+### Sessions 11–12 — June 2026 ✅
+- Built 20 new pages across two sessions (60 → 80 total)
+- Pages include: RV camping, condos, energy saving, emergencies, Bluetti vs EcoFlow,
+  generator storage, beginners under $200, renters under $300, Black Friday guide,
+  apartment balcony generators, smart home security for renters, battery backup for
+  home network, saving money on utilities, solar generator for tailgating, large home
+  generators, renters under $500, generator brands compared, road trip power stations
+- Sitemap updated to 80 URLs, conflict resolved during merge
+- Clean build (80 pages confirmed), deployed to Vercel
 
-### Session 12 — Next Goals
+### Session 13 — Next Goals
 1. Build 10 more pages toward 90 total
 2. Spot check ASINs on high-ticket new products
 3. Check Google Search Console Performance tab for early ranking signals
