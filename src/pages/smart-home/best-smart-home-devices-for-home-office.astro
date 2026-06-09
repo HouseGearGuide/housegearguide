@@ -1,0 +1,221 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const ups = products.find(p => p.slug === 'cyberpower-cp1500pfclcd')!;
+const dimmer = products.find(p => p.slug === 'lutron-caseta-dimmer')!;
+const hue = products.find(p => p.slug === 'philips-hue-starter-kit')!;
+const thermostat = products.find(p => p.slug === 'ecobee-smartthermostat-premium')!;
+const energyPlug = products.find(p => p.slug === 'tp-link-tapo-p110')!;
+---
+
+<Layout
+  title="Best Smart Home Devices for Home Office (2026)"
+  description="The 5 best smart home devices for a home office in 2026 — UPS battery backup, smart lighting for video calls, a smart thermostat, and energy monitoring plugs. Protect your work and optimize your workspace."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Home Office
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Home Office (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 5 home office upgrades</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A home office is different from the rest of your home: the stakes for power, lighting, and climate control are professional, not just personal. A power outage mid-video-call is embarrassing. Bad lighting behind you makes you look unprofessional. A too-warm office kills afternoon productivity. The five devices here are the most impactful smart home upgrades for anyone who works from home — prioritized by the specific problems they solve.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The UPS comes first — it's the one device that protects everything else. A power spike or brief outage that's a minor inconvenience in your living room can mean lost work, a dropped client call, or data corruption on an NAS drive in your office. Everything after that is about quality of work and energy cost.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Home office smart home priorities</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">1.</span><strong>Power protection</strong> — A UPS prevents outage-caused data loss and dropped video calls</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">2.</span><strong>Video call lighting</strong> — Smart bulbs with tunable white let you dial in the right color temperature for on-camera presence</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">3.</span><strong>Climate control</strong> — A smart thermostat with occupancy sensing keeps your office at peak cognitive temperature without heating/cooling the rest of the home</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">4.</span><strong>Energy monitoring</strong> — Know exactly what your office equipment costs to run each month</li>
+      </ul>
+    </div>
+
+    <!-- 1. UPS -->
+    <section id="ups" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🔋</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#1 Home Office Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">UPS Battery Backup</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{ups.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{ups.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${ups.price}</p>
+          </div>
+          <a href={ups.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">The CyberPower CP1500PFCLCD is the best value pure sine wave UPS at this capacity. Pure sine wave output is essential for modern desktop PCs with active PFC power supplies — a modified sine wave UPS can cause shutdowns or damage to these power supplies. At 1000W of real power output across 12 outlets, it covers a full desktop workstation (CPU + dual monitors + networking gear) for 18–20 minutes — long enough to save work, finish a sentence in a meeting, and power down gracefully.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">The color LCD shows load percentage, estimated runtime, input voltage, and battery charge level at a glance. The USB port on the front charges phones. At $240, it's the most cost-effective protection you can buy for a home office PC setup worth $1,500–$5,000.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-1.5">{ups.pros.slice(0,4).map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-1.5">{ups.cons.slice(0,3).map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href="/backup-power/best-ups-battery-backup-home-office" class="text-sm text-green-700 hover:underline font-medium">Read the full home office UPS guide →</a>
+    </section>
+
+    <!-- 2. Smart Dimmer -->
+    <section id="smart-dimmer" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">💡</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#2 Home Office Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">Smart Dimmer Switch</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{dimmer.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{dimmer.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${dimmer.price}/switch</p>
+          </div>
+          <a href={dimmer.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Overhead lighting at full brightness creates glare on monitors and an unflattering look on video calls. The Lutron Caseta dimmer lets you set your office overhead at 60–70% during the workday for comfortable screen use, then raise to 100% for detailed work. The RF protocol means it never lags, never disconnects from a crowded Wi-Fi network, and responds instantly when you tap the paddle or use a voice command. Works with any standard dimmer-compatible LED.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Set a "focus" scene: 70% overhead, no distractions. Set a "video call" scene: 80% overhead plus a floor lamp behind the camera to fill shadows. The Lutron app handles both in seconds.</p>
+      <a href="/smart-home/best-smart-light-switches" class="text-sm text-green-700 hover:underline font-medium">Read the full smart switch guide →</a>
+    </section>
+
+    <!-- 3. Smart Bulbs -->
+    <section id="smart-bulbs" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🎨</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#3 Home Office Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">Tunable White Smart Bulbs</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{hue.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{hue.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${hue.price}</p>
+          </div>
+          <a href={hue.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Color temperature tuning is the most underrated home office productivity tool. Cool white (5000–6500K) improves alertness and focus during morning deep work sessions. Warm white (2700–3000K) reduces eye strain for afternoon reading and email. The Philips Hue starter kit ($199 for 4 bulbs + bridge) is the most reliable smart bulb ecosystem available — faster response, better app, and the most stable Zigbee mesh network. For a dedicated home office where you spend 8+ hours per day, Hue's premium is worth it over cheaper alternatives.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Set up circadian lighting: automatically shift from 5500K at 9am to 4000K at noon to 3000K at 5pm, following your body's natural alertness rhythm without touching an app.</p>
+    </section>
+
+    <!-- 4. Thermostat -->
+    <section id="thermostat" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🌡️</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#4 Home Office Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">Smart Thermostat</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{thermostat.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{thermostat.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${thermostat.price}</p>
+          </div>
+          <a href={thermostat.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Research consistently shows cognitive performance peaks in a narrow temperature range: 70–77°F. Below 68°F or above 79°F and error rates increase measurably. If you work from home, your office temperature is both a productivity and a cost issue. The ecobee SmartThermostat with its included SmartSensor placed in your home office means the HVAC heats and cools to the temperature in the room where you're working — not wherever the thermostat is mounted in the hallway.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">For home office workers who keep a different schedule than the rest of the household, the ecobee's scheduling is genuinely useful: you can set your office to 72°F from 8am–6pm on weekdays and let the rest of the home follow a normal setback schedule.</p>
+      <a href="/smart-home/best-smart-thermostat-no-c-wire" class="text-sm text-green-700 hover:underline font-medium">Read the full smart thermostat guide →</a>
+    </section>
+
+    <!-- 5. Energy Monitoring Plug -->
+    <section id="energy-plug" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">📊</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#5 Home Office Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">Energy Monitoring Smart Plug</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{energyPlug.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{energyPlug.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${energyPlug.price}</p>
+          </div>
+          <a href={energyPlug.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">A desktop PC, dual monitors, a desk lamp, and a USB hub typically draw 150–400W total during active use and 30–80W in idle/sleep. Over a full year of 8-hour workdays, that's 400–1,000 kWh — $60–$150 on a typical electricity rate. The TP-Link Tapo P110 at $19 shows you exactly what your office setup draws in real time, and calculates your monthly cost automatically. Put one on your desk power strip and one on a floor lamp to understand where your office electricity is actually going.</p>
+      <a href="/smart-home/best-smart-plugs-energy-monitoring" class="text-sm text-green-700 hover:underline font-medium">Read the full energy monitoring plug guide →</a>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-ups-battery-backup-home-office" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best UPS Battery Backup for Home Office →</p>
+        </a>
+        <a href="/smart-home/best-smart-thermostat-multiple-zones" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Thermostat for Multiple Zones →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-energy-saving" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Energy Saving →</p>
+        </a>
+        <a href="/smart-home/best-smart-light-switches" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Light Switches →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

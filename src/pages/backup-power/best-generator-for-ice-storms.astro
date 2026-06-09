@@ -1,0 +1,209 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['generac-22kw-guardian', 'kohler-20rescl-20kw', 'ecoflow-delta-2-max'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Generator for Ice Storms (2026): Standby vs Battery Power Station"
+  description="The best generators for ice storms in 2026. Generac and Kohler standby generators for whole-home coverage and EcoFlow DELTA 2 Max for indoor-safe battery backup — compared by heating load, fuel type, and cold-weather reliability."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Generator for Ice Storms
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Generator for Ice Storms (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 3 options for ice storm power outages</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Ice storm outages have a distinctive problem set: they're multi-day, they happen in temperatures where heat is life-safety-critical, and the ice accumulation can make operating a portable gas generator both dangerous and physically difficult. A frozen driveway, iced-over generator cover, and an operator working in sub-freezing conditions is a recipe for carbon monoxide incidents. The right ice storm generator is one you never have to touch — it activates automatically and runs on gas service that underground ice can't interrupt.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The first two picks are whole-home standby generators that activate automatically within seconds. The third is the best battery option for renters, condo owners, or homes without a safe outdoor generator space. Choose your situation and read that section.
+    </p>
+
+    <div class="bg-orange-50 border border-orange-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Ice storm outages: what makes them different</p>
+      <div class="text-sm text-gray-700 leading-relaxed space-y-2">
+        <p><strong>Duration:</strong> Ice storm outages typically last 2–7 days for the most affected areas. Trees pulled down by ice weight take down power lines across entire grid sections, and repair crews can't safely work on icy poles and in icy conditions. Plan for minimum 5 days of generator coverage.</p>
+        <p><strong>Heating load:</strong> An ice storm in January means the furnace runs near-continuously. A gas furnace blower at 600–900W and a gas water heater at 4,500W on electric ignition are non-negotiable loads. Calculate your heating load before sizing a generator.</p>
+        <p><strong>Portable generators are dangerous in ice conditions:</strong> Running a gas generator outside requires clearing snow and ice from the enclosure, handling fuel in slippery conditions, and keeping the generator running in temperatures that can cause carburetor icing. Automatic standby generators eliminate all of this — they start from inside your home's electrical panel.</p>
+      </div>
+    </div>
+
+    <!-- Top Pick -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Top Pick for Ice Storm Outages</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price} <span class="text-sm font-normal text-gray-500">(unit only)</span></p>
+        </div>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center">
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Generator</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Type</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Operates in Ice?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-100 bg-green-50">
+            <td class="p-3">
+              <a href={`#${picks[0].slug}`} class="font-medium text-gray-900 hover:text-green-700">{picks[0].name}</a>
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>
+            </td>
+            <td class="p-3 font-medium">${picks[0].price}</td>
+            <td class="p-3">Whole-home standby</td>
+            <td class="p-3">22kW</td>
+            <td class="p-3 text-green-700 font-medium">Yes — auto start</td>
+          </tr>
+          <tr class="border-b border-gray-100 hover:bg-gray-50">
+            <td class="p-3"><a href={`#${picks[1].slug}`} class="font-medium text-gray-900 hover:text-green-700">{picks[1].name}</a></td>
+            <td class="p-3 font-medium">${picks[1].price}</td>
+            <td class="p-3">Whole-home standby</td>
+            <td class="p-3">20kW</td>
+            <td class="p-3 text-green-700 font-medium">Yes — auto start</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="p-3"><a href={`#${picks[2].slug}`} class="font-medium text-gray-900 hover:text-green-700">{picks[2].name}</a></td>
+            <td class="p-3 font-medium">${picks[2].price}</td>
+            <td class="p-3">Battery power station</td>
+            <td class="p-3">2400W</td>
+            <td class="p-3 text-green-700 font-medium">Yes — runs indoors</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Whole-Home Standby for Ice Storms' : i === 1 ? '🏅 Premium Alternative — Quietest Standby Available' : '🔋 Best Indoor Battery Option (No Outdoor Operation Required)'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">
+          {i === 0 && 'The Generac 22kW Guardian is the standard recommendation for ice storm coverage in New England, the Midwest, and mid-Atlantic states where multi-day ice outages are recurring events. It activates within 10 seconds of a power failure without any human intervention — which matters enormously when it\'s 2am and -10°F outside. The 22kW output handles a full home\'s heating system (gas furnace blower, water heater electric ignition), refrigerator, freezer, lights, and charging circuits simultaneously. It connects to your existing natural gas main — gas lines are buried and unaffected by ice accumulation. Professional installation is required and runs $5,000–$10,000 total.'}
+          {i === 1 && 'The Kohler 20RESCL is the premium choice for homeowners who want the quietest possible operation during a multi-day ice storm outage. Running 10–15 dB quieter than the Generac equivalent, the Kohler is noticeable if your generator is near a bedroom window or in a dense neighborhood — the Kohler produces a low hum where competitors produce a more intrusive drone. At 20kW it handles most whole-home ice storm loads. Note that Kohler\'s transfer switch is sold separately, adding $800–$1,500 to the installed cost. For homeowners who prioritize build quality and noise level, Kohler\'s reputation in power generation is well-established.'}
+          {i === 2 && 'The EcoFlow DELTA 2 Max is the right answer for renters, condo owners, and anyone whose home doesn\'t have a suitable outdoor generator installation site (no gas connection, no legal pad space, HOA restrictions). At 2048Wh and 2400W continuous output, it runs a gas furnace blower (600–900W) for 2–3 hours per charge, or electric space heaters at low settings for 4–6 hours. It charges from solar panels — during a multi-day ice storm, sun typically returns within 24–48 hours, enabling solar recharge to extend runtime significantly. For an apartment or condo in an ice storm zone, the DELTA 2 Max is genuinely the only practical solution.'}
+        </p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}</li>)}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}</li>)}
+            </ul>
+          </div>
+        </div>
+
+        <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Ice Storm Generator: Key Decisions</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How long do ice storm outages last?</h3>
+          <p class="text-sm leading-relaxed">Major ice storms — the 1998 North American Ice Storm, the 2013 Canadian Ice Storm, Winter Storm Uri (2021) — caused outages lasting 5–30 days for the worst-affected areas. The median ice storm outage in the northeastern and midwestern US runs 2–7 days. Unlike hurricane outages where utilities can stage repair crews in advance, ice storm crews must work in actively dangerous conditions — slow progress is expected. Plan your generator for a 7-day minimum runtime capability. Both standby generators (natural gas supply is unlimited) and battery stations with solar (extending via solar panels) can achieve this.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do you have natural gas service?</h3>
+          <p class="text-sm leading-relaxed">This is the single most important question for ice storm generator selection. If you have natural gas service, a Generac or Kohler standby generator running on that supply is genuinely the best solution — reliable, automatic, unlimited runtime. If you're in a rural area without gas service and rely on fuel oil heat with electric ignition, or electric baseboard heat, your situation is more complex. Propane standby generators work well in most cold climates (with a properly sized tank). For homes with electric baseboard heat, calculate your heating load carefully — it may exceed what a single residential standby can supply.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Minimum comfort vs. full comfort during a 5-day outage</h3>
+          <p class="text-sm leading-relaxed">There's a meaningful difference between "minimum comfort" (furnace running, refrigerator protected, lights and device charging) and "full comfort" (everything running normally including all zones, electric dryer, etc.). A Briggs & Stratton 10kW standby handles minimum comfort in most gas-heated homes. A Generac 22kW handles full comfort for most 2,000–3,500 sq ft homes. For a 5-day ice storm, we recommend planning for minimum comfort with a margin — not full comfort, which typically requires a larger, more expensive generator and heavier electrical service.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-whole-home-generator-for-cold-climates" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for Cold Climates →</p>
+        </a>
+        <a href="/backup-power/generac-vs-kohler" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Generac vs Kohler: Full Comparison →</p>
+        </a>
+        <a href="/backup-power/best-battery-backup-for-freezer" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Battery Backup for a Freezer →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-winter" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Winter →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

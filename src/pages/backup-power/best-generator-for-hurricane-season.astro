@@ -1,0 +1,254 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['generac-22kw-guardian', 'honda-eu2200i', 'ecoflow-delta-pro'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Generator for Hurricane Season (2026): Whole-Home Standby vs Gas Portable vs Battery"
+  description="The best generators for hurricane season compared: Generac 22kW standby for whole-home coverage, Honda EU2200i for portable reliability, and EcoFlow DELTA Pro for indoor-safe battery backup."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Generator for Hurricane Season
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Generator for Hurricane Season (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 3 generator types compared</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Hurricane season power outages are a different category of problem than a summer thunderstorm. You're not planning for 4 hours — you're planning for 4 to 14 days, with no clear timeline, in heat and humidity, with a refrigerator full of food to protect and possibly medical equipment to run. The generator you need depends on whether you own your home, have natural gas service, and what you cannot live without.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The three picks below are the best in their category for sustained hurricane-season outages: automatic standby (Generac 22kW), portable gas (Honda EU2200i), and large battery power station (EcoFlow DELTA Pro). Choose based on your situation, not on price alone.
+    </p>
+
+    <div class="bg-red-50 border border-red-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Hurricane prep: what actually matters for generators</p>
+      <div class="text-sm text-gray-700 leading-relaxed space-y-2">
+        <p><strong>Fuel availability is the critical variable.</strong> After a major hurricane, gas stations are frequently closed or have lines 2–4 hours long. Natural gas lines are typically unaffected. If you have gas service, a standby generator eliminates the fuel problem entirely.</p>
+        <p><strong>Heat is the second killer.</strong> Florida, Texas, and Gulf Coast outages during hurricane season mean temperatures of 85–100°F inside without A/C. Central air conditioning requires 3,000–5,000W. Only a standby generator or large dual-fuel portable generator can run it.</p>
+        <p><strong>Carbon monoxide kills 400+ Americans per year</strong> — more during major storm events. Never operate any gas generator indoors, in a garage, or within 20 feet of your home's openings.</p>
+      </div>
+    </div>
+
+    <!-- Top Pick Box -->
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Best Whole-Home Pick for Hurricane Season</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a
+          href={topPick.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center"
+        >
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Generator</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Type</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Fuel</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Runs A/C?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-100 bg-green-50">
+            <td class="p-3"><a href={`#${picks[0].slug}`} class="font-medium text-gray-900 hover:text-green-700">{picks[0].name}</a> <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span></td>
+            <td class="p-3 font-medium">${picks[0].price}</td>
+            <td class="p-3">Whole-home standby</td>
+            <td class="p-3">22kW</td>
+            <td class="p-3">Natural gas / propane</td>
+            <td class="p-3 text-green-700 font-medium">Yes</td>
+          </tr>
+          <tr class="border-b border-gray-100 hover:bg-gray-50">
+            <td class="p-3"><a href={`#${picks[1].slug}`} class="font-medium text-gray-900 hover:text-green-700">{picks[1].name}</a></td>
+            <td class="p-3 font-medium">${picks[1].price}</td>
+            <td class="p-3">Portable gas inverter</td>
+            <td class="p-3">2,200W</td>
+            <td class="p-3">Gasoline</td>
+            <td class="p-3 text-orange-600 font-medium">Small units only</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="p-3"><a href={`#${picks[2].slug}`} class="font-medium text-gray-900 hover:text-green-700">{picks[2].name}</a></td>
+            <td class="p-3 font-medium">${picks[2].price}</td>
+            <td class="p-3">Battery power station</td>
+            <td class="p-3">3,600W</td>
+            <td class="p-3">Battery (solar-rechargeable)</td>
+            <td class="p-3 text-red-600 font-medium">No (central A/C)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Individual Reviews -->
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Whole-Home Standby for Hurricane Season' : i === 1 ? '⛽ Best Portable Gas Generator' : '🔋 Best Battery Power Station'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <p class="text-gray-700 mb-6 leading-relaxed">
+          {i === 0 && 'The Generac 22kW Guardian is the only option that handles a hurricane scenario where you don\'t touch anything — it activates within 10 seconds of an outage, runs your entire home including central A/C, and runs on the natural gas supply that hurricanes typically do not interrupt. For homeowners in Florida, Louisiana, Texas, or any Gulf/Atlantic coast state, this is the right answer if the budget is available.'}
+          {i === 1 && 'The Honda EU2200i is the most reliable portable gas generator ever made — Honda\'s GXR120 engine has an extraordinary track record of starting after years of storage, which matters when you buy a generator in April and need it in September. At 2,200W it runs a refrigerator, LED lighting, fans, phone charging, and a small window A/C unit simultaneously. The inverter output is safe for all electronics including CPAP machines and modern appliances.'}
+          {i === 2 && 'The EcoFlow DELTA Pro brings 3,600Wh of battery capacity and 3,600W AC output — enough to run a full-size refrigerator for 2+ days, a chest freezer indefinitely, CPAP and medical equipment, and all lights and charging without any exhaust. For households in apartments, condos, or homes without a safe outdoor generator space, the DELTA Pro is the only viable option. It recharges from solar panels — during a multi-day hurricane aftermath with returning sun, you can extend runtime indefinitely.'}
+        </p>
+
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+
+        <a
+          href={product.affiliateUrl}
+          target="_blank"
+          rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors"
+        >
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Hurricane Generator: How to Choose</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do you need to run central A/C?</h3>
+          <p class="text-sm leading-relaxed">Central air conditioning is the single biggest deciding factor. A 3-ton central A/C unit draws 3,000–4,000W at startup — more than a Honda EU2200i can deliver and more than any consumer battery power station can sustain for more than a few minutes. If running central A/C during a hurricane outage is a requirement (and in Florida in September, it effectively is), you need either a whole-home standby generator or a large dual-fuel portable unit rated at 7,500W+. The Generac 22kW handles this without issue. The Honda EU2200i handles a small 5,000 BTU window unit (450–550W) but not central A/C.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What about fuel storage and availability?</h3>
+          <p class="text-sm leading-relaxed">After a major hurricane — Andrew (1992), Katrina (2005), Ida (2021) — gasoline shortages lasted 3–10 days in affected areas. Generators with natural gas or propane connections have a decisive advantage here. Natural gas is supplied via buried infrastructure that is rarely interrupted by wind and rain. Homeowners who store 1,000–2,000 gallons of propane (a 500-gallon tank is common in rural areas) have enough fuel for weeks of standby runtime. If you rely on gasoline, store 10–20 gallons using ANSI-rated containers with fuel stabilizer added — and plan to rotate it every 90 days.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What should you run during a hurricane outage?</h3>
+          <p class="text-sm leading-relaxed">Priority 1: Refrigerator and chest freezer — food safety is a real cost. Priority 2: Medical equipment — CPAP, oxygen concentrators, nebulizers. Priority 3: Fans or A/C — heat is a health risk for the elderly and children. Priority 4: Phone and internet charging — staying informed matters. The Honda EU2200i at 2,200W comfortably handles priorities 1–4 except central A/C. The EcoFlow DELTA Pro handles 1–4 indoors with zero exhaust risk.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">How far in advance should I buy a generator before hurricane season?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Hurricane season runs June 1 – November 30. After a major storm threatens the coast, generator inventory at home improvement stores sells out within 24–48 hours. Buy before June 1. If you're buying a whole-home standby, installation timelines from licensed electricians in coastal areas can stretch to 4–8 weeks during peak season — start the process in March or April. Don't wait until there's a storm in the Gulf.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Can I run the EcoFlow DELTA Pro on solar after a hurricane?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes. The DELTA Pro accepts up to 1,600W of solar input. Two EcoFlow 400W rigid panels produce 600–800W in good sun, recharging the DELTA Pro from empty in 5–6 hours. After most hurricanes, skies clear within 24–72 hours and solar recharging becomes viable. This makes the DELTA Pro uniquely self-sufficient for multi-day events — provided you have solar panels pre-purchased and set up before the storm. The EcoFlow 220W panel ($400) is a popular starting point.</p>
+        </div>
+        <div>
+          <h3 class="font-semibold text-gray-900 mb-2">Does the Generac 22kW require professional installation?</h3>
+          <p class="text-sm text-gray-600 leading-relaxed">Yes — and this is non-negotiable. A whole-home standby generator requires a licensed electrician to install the transfer switch and connect to your home's main panel, plus a licensed plumber or gas contractor to run the fuel line. Attempting a DIY installation is illegal in most jurisdictions and voids the warranty. Installed cost typically runs $5,000–$10,000 depending on location, gas line length, and local labor rates. The $3,699 Amazon price is the generator unit only.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-whole-home-generator-2000-sq-ft" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Generator for 2,000 Sq Ft →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-for-emergencies" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Station for Emergencies →</p>
+        </a>
+        <a href="/backup-power/best-generator-for-power-outages" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Generator for Power Outages →</p>
+        </a>
+        <a href="/backup-power/solar-generator-vs-portable-generator" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Solar Generator vs Portable Generator →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

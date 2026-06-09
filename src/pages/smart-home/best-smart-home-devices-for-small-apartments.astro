@@ -1,0 +1,248 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const camera = products.find(p => p.slug === 'wyze-cam-v4')!;
+const bulb = products.find(p => p.slug === 'govee-smart-bulb-rgbww')!;
+const thermostat = products.find(p => p.slug === 'google-nest-thermostat-2020')!;
+const echo = products.find(p => p.slug === 'amazon-echo-dot-5th-gen')!;
+const plug = products.find(p => p.slug === 'kasa-ep25-smart-plug')!;
+---
+
+<Layout
+  title="Best Smart Home Devices for Small Apartments (2026)"
+  description="The 5 best smart home devices for small apartments in 2026 — renter-friendly, no drilling, maximum impact in minimal square footage. Under $300 for the full setup."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Small Apartments
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Small Apartments (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · Full setup under $300</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Small apartments have specific constraints: you probably rent, which means no drilling, no switch replacement, and nothing that can't come with you when you move. You also have limited square footage, which means every device needs to justify its space. The five picks here are the highest-impact smart home upgrades for a studio or one-bedroom apartment — none require landlord permission, all install in minutes, and the entire setup costs under $300.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      In a small space, smart devices feel disproportionately powerful. Voice-controlled lighting from the couch, a thermostat that adjusts before you get home, and a camera covering the whole studio from one shelf — these are the upgrades that make a 400 sq ft apartment feel like it has a concierge.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Small apartment smart home rules</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">1.</span>No drilling or permanent modification — every device here installs without tools or just a screwdriver in an outlet</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">2.</span>No hub required — everything connects directly to your Wi-Fi or pairs via Bluetooth</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">3.</span>Pack-and-move ready — every device here fits in a single box when you leave</li>
+      </ul>
+    </div>
+
+    <!-- 1. Camera -->
+    <section id="camera" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">📷</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#1 Pick</p>
+          <h2 class="text-xl font-bold text-gray-900">Indoor Security Camera</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{camera.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{camera.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${camera.price}</p>
+          </div>
+          <a href={camera.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">At $36, the Wyze Cam v4 is the highest-value camera on the market. It sits on any shelf or surface with a magnetic base — no screws, no adhesive. A studio apartment typically needs just one camera pointing toward the front door to cover 80% of the space. The v4 brings 2K video, color night vision, free local storage via microSD card, and both Alexa and Google Home support. The free Wyze app shows motion events going back 14 days when you use local storage.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-1.5">{camera.pros.slice(0,3).map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-1.5">{camera.cons.slice(0,3).map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href="/smart-home/best-smart-camera-for-apartments" class="text-sm text-green-700 hover:underline font-medium">Read the full apartment camera guide →</a>
+    </section>
+
+    <!-- 2. Smart Bulbs -->
+    <section id="smart-bulbs" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">💡</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#2 Pick</p>
+          <h2 class="text-xl font-bold text-gray-900">Smart Color Bulbs</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{bulb.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{bulb.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${bulb.price}/bulb</p>
+          </div>
+          <a href={bulb.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Smart bulbs are the ultimate renter upgrade: they screw into existing sockets with no wiring, come with you when you move, and cost under $15 each. The Govee RGBWW at $12/bulb gives you full color plus warm and cool white tuning — meaning you can have bright daylight white for working during the day and warm amber for evenings and movies, all without touching a switch. A studio apartment takes 4–6 bulbs: $48–$72 total. Screw in, download the app, done.</p>
+      <a href="/smart-home/best-smart-lighting-for-apartments" class="text-sm text-green-700 hover:underline font-medium">Read the full apartment lighting guide →</a>
+    </section>
+
+    <!-- 3. Thermostat -->
+    <section id="thermostat" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🌡️</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#3 Pick</p>
+          <h2 class="text-xl font-bold text-gray-900">Smart Thermostat</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{thermostat.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{thermostat.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${thermostat.price}</p>
+          </div>
+          <a href={thermostat.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">The Google Nest Thermostat at $129 works without a C-wire, installs in 30 minutes, and — crucially for renters — when you move out, you reinstall the original thermostat and take the Nest with you. You'll want to check compatibility with your HVAC system and get landlord sign-off before swapping, since it involves the thermostat wiring. If you get the green light, a smart thermostat is the one device with real ROI: independent studies show 10–15% savings on HVAC bills for most households.</p>
+      <a href="/smart-home/best-smart-thermostat-no-c-wire" class="text-sm text-green-700 hover:underline font-medium">Read the full no-C-wire thermostat guide →</a>
+    </section>
+
+    <!-- 4. Echo Dot -->
+    <section id="smart-speaker" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🔊</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#4 Pick</p>
+          <h2 class="text-xl font-bold text-gray-900">Smart Speaker / Hub</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{echo.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{echo.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${echo.price}</p>
+          </div>
+          <a href={echo.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">In a small apartment, voice control is disproportionately useful — you can reach most devices from wherever you're sitting. "Alexa, turn off the lights" from bed without getting up has more quality-of-life value in a studio than in a 3,000 sq ft house where you'd need a speaker in every room. The Echo Dot 5th Gen at $50 also acts as an eero mesh Wi-Fi extender and has a built-in temperature sensor you can use to trigger automations.</p>
+    </section>
+
+    <!-- 5. Smart Plug -->
+    <section id="smart-plug" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🔌</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#5 Pick</p>
+          <h2 class="text-xl font-bold text-gray-900">Energy Monitoring Smart Plug</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{plug.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{plug.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${plug.price}</p>
+          </div>
+          <a href={plug.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">In a small apartment, one smart plug on your floor lamp or space heater is worth more than a dozen smart switches in a large home. The Kasa EP25 at $18 gives you real-time wattage, monthly kWh tracking, scheduling, and voice control via Alexa or Google. Put it on your space heater and set a timer to turn off automatically if you fall asleep. Put it on a lamp and add it to your "goodnight" voice routine. Put it on your TV and track exactly how much it's drawing each month.</p>
+      <a href="/smart-home/best-smart-plugs-energy-monitoring" class="text-sm text-green-700 hover:underline font-medium">Read the full energy monitoring plug guide →</a>
+    </section>
+
+    <!-- Total Cost -->
+    <section class="bg-gray-50 rounded-2xl p-6 mb-16">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Complete Small Apartment Smart Home: Total Cost</h2>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{camera.name}</span>
+          <span class="font-medium">${camera.price}</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{bulb.name} × 4</span>
+          <span class="font-medium">${bulb.price * 4}</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{thermostat.name}</span>
+          <span class="font-medium">${thermostat.price}</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{echo.name}</span>
+          <span class="font-medium">${echo.price}</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{plug.name} × 2</span>
+          <span class="font-medium">${plug.price * 2}</span>
+        </div>
+        <div class="flex justify-between pt-3">
+          <span class="font-bold text-gray-900">Total</span>
+          <span class="text-xl font-bold text-green-700">~${camera.price + (bulb.price * 4) + thermostat.price + echo.price + (plug.price * 2)}</span>
+        </div>
+      </div>
+      <p class="text-xs text-gray-500 mt-4">All five devices pack into one small box. Zero drilling. Nothing left behind when you move. The thermostat alone typically saves $100–$200/year on HVAC costs — offsetting much of this list over two years.</p>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-home-devices-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Renters →</p>
+        </a>
+        <a href="/smart-home/best-smart-camera-for-apartments" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Camera for Apartments →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-apartments" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Apartments →</p>
+        </a>
+        <a href="/smart-home/best-smart-lighting-for-apartments" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Lighting for Apartments →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

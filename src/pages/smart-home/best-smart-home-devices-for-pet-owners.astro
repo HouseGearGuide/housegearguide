@@ -1,0 +1,223 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const panTiltCam = products.find(p => p.slug === 'eufy-indoor-cam-2k-pan-tilt')!;
+const wyzeCam = products.find(p => p.slug === 'wyze-cam-v4')!;
+const thermostat = products.find(p => p.slug === 'ecobee-smartthermostat-premium')!;
+const smokeDetector = products.find(p => p.slug === 'google-nest-protect-battery')!;
+const plug = products.find(p => p.slug === 'kasa-ep25-smart-plug')!;
+---
+
+<Layout
+  title="Best Smart Home Devices for Pet Owners (2026)"
+  description="The 5 best smart home devices for pet owners in 2026 — pet monitoring cameras, smart thermostats to protect against heat, CO detectors, and smart plugs for automatic feeders."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-home-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Pet Owners
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Pet Owners (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 5 pet-owner upgrades</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A smart home for pet owners isn't about novelty — it's about knowing your animals are safe when you're not there, maintaining a safe temperature when HVAC systems fail or power goes out, and automating the routines that make pet care more consistent. The five devices here address real problems: "Is my dog okay right now?", "Did the power go out while I'm at work?", and "Is something on the stove triggering a CO alert?"
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      None of these require a subscription to justify their value. All work from your phone while you're away. Total cost for the full setup is under $450.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">The pet owner smart home priorities</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">1.</span><strong>Monitoring</strong> — See and hear your pets in real time, with motion alerts when they move</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">2.</span><strong>Temperature safety</strong> — Dogs and cats can suffer in heat over 80°F; know when HVAC fails</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">3.</span><strong>CO and smoke detection</strong> — Pets are more sensitive to carbon monoxide than humans</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">4.</span><strong>Feeding automation</strong> — Smart plugs power automatic feeders on a reliable schedule</li>
+      </ul>
+    </div>
+
+    <!-- 1. Pan & Tilt Camera -->
+    <section id="pet-camera" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">📷</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#1 Pet Owner Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">Pan-and-Tilt Pet Camera</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{panTiltCam.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{panTiltCam.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${panTiltCam.price}</p>
+          </div>
+          <a href={panTiltCam.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">The Eufy Indoor Cam 2K Pan & Tilt is the best camera for pet monitoring because it rotates — 360° pan and 96° tilt — which means your dog or cat can be sleeping in the corner of the living room at 9am and on the couch by noon, and the camera tracks them both. Pet detection is built in: the camera distinguishes between a person walking past and a pet moving around, sending the right alert. Two-way audio lets you talk to your dog while you're at lunch.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">No subscription is required. All footage saves locally to a microSD card. At $40, it's the highest-value pet camera available.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Budget option: The <strong>{wyzeCam.name}</strong> at <strong>${wyzeCam.price}</strong> is fixed-angle but still sends pet motion alerts and stores locally. <a href={wyzeCam.affiliateUrl} target="_blank" rel="nofollow noopener" class="text-green-700 hover:underline">Check price →</a></p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-4">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-1.5">{panTiltCam.pros.slice(0,3).map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-1.5">{panTiltCam.cons.slice(0,3).map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Thermostat -->
+    <section id="thermostat" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🌡️</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#2 Pet Owner Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">Smart Thermostat</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{thermostat.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{thermostat.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${thermostat.price}</p>
+          </div>
+          <a href={thermostat.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">The most important smart home device for pet safety isn't a camera — it's the thermostat. Dogs begin suffering heat stress above 80°F. Cats above 90°F. An HVAC failure, a tripped breaker, or a cooling system that stops working on a 95°F summer day can make a home dangerous within hours. The ecobee SmartThermostat Premium sends you an alert if your home temperature exceeds a threshold you set — you get a phone notification that your home is at 84°F while you're at the office, allowing you to call a neighbor, remotely lower the setpoint, or arrange emergency care.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">The ecobee also monitors humidity — important for birds and reptiles that have narrower safe ranges than dogs and cats. Set a humidity alert above 65% or below 30% and get notified if the home drifts outside the safe zone.</p>
+      <a href="/smart-home/best-smart-thermostat-no-c-wire" class="text-sm text-green-700 hover:underline font-medium">Read the full smart thermostat guide →</a>
+    </section>
+
+    <!-- 3. CO Detector -->
+    <section id="co-detector" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🚨</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#3 Pet Owner Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">Smart CO + Smoke Detector</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{smokeDetector.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{smokeDetector.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${smokeDetector.price}</p>
+          </div>
+          <a href={smokeDetector.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Pets are more sensitive to carbon monoxide than humans — birds in particular show distress at CO levels that a human would not notice. The Google Nest Protect is the only consumer CO detector that sends a phone notification when CO is detected while you're away. A standard CO detector only beeps locally — useless if you're not home and your pet is. The Nest Protect's app alert gives you time to call a neighbor, contact emergency services, or arrange for your pet to be evacuated.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">The Nest Protect checks itself 400 times per day and tests its sensors automatically — you'll know if the detector has a fault before you need it.</p>
+      <a href="/smart-home/best-smart-smoke-detector" class="text-sm text-green-700 hover:underline font-medium">Read the full smart smoke detector guide →</a>
+    </section>
+
+    <!-- 4. Smart Plug -->
+    <section id="smart-plug" class="mb-14 scroll-mt-20">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="text-2xl">🔌</span>
+        <div>
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#4 Pet Owner Priority</p>
+          <h2 class="text-xl font-bold text-gray-900">Smart Plug for Automatic Feeders</h2>
+        </div>
+      </div>
+      <div class="bg-gray-50 rounded-xl p-5 mb-4">
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+            <h3 class="text-lg font-bold text-gray-900 mb-1">{plug.name}</h3>
+            <p class="text-gray-600 text-sm mb-2">{plug.tagline}</p>
+            <p class="text-xl font-bold text-green-700">${plug.price}</p>
+          </div>
+          <a href={plug.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">Automatic pet feeders and water fountains are excellent pet-owner tools, but they require a consistent power supply. The Kasa EP25 smart plug adds energy monitoring to your feeder circuit — if the feeder stops drawing power (motor failure, unplugged, cord chewed), the Kasa app shows zero watts and you get an anomaly alert. It also lets you cut power to an automatic feeder remotely if your feeding schedule changes, and verify via energy monitoring that the device is running as expected.</p>
+      <p class="text-sm text-gray-700 leading-relaxed mb-3">For aquarium owners: the smart plug on your heater and filter lets you verify both are running while you travel, and cut power remotely if a heater malfunctions and overheats the tank.</p>
+    </section>
+
+    <!-- Total Cost -->
+    <section class="bg-gray-50 rounded-2xl p-6 mb-16">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Full Pet Owner Smart Home: Total Cost</h2>
+      <div class="space-y-2 text-sm">
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{panTiltCam.name} (pet monitoring)</span>
+          <span class="font-medium">${panTiltCam.price}</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{thermostat.name} (temperature safety)</span>
+          <span class="font-medium">${thermostat.price}</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{smokeDetector.name} (CO + smoke)</span>
+          <span class="font-medium">${smokeDetector.price}</span>
+        </div>
+        <div class="flex justify-between py-1.5 border-b border-gray-100">
+          <span class="text-gray-600">{plug.name} × 2 (feeder + fountain)</span>
+          <span class="font-medium">${plug.price * 2}</span>
+        </div>
+        <div class="flex justify-between pt-3">
+          <span class="font-bold text-gray-900">Total</span>
+          <span class="text-xl font-bold text-green-700">~${panTiltCam.price + thermostat.price + smokeDetector.price + (plug.price * 2)}</span>
+        </div>
+      </div>
+      <p class="text-xs text-gray-500 mt-4">No subscriptions required for any device here. The ecobee thermostat pays for itself in energy savings within 12–18 months — making the rest of this list effectively free over a few years.</p>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-smoke-detector" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Smoke Detectors →</p>
+        </a>
+        <a href="/smart-home/best-smart-thermostat-no-c-wire" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Thermostat (No C-Wire) →</p>
+        </a>
+        <a href="/smart-home/best-smart-camera-for-apartments" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Camera for Apartments →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-home-office" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Home Office →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

@@ -1,0 +1,254 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const deltaMax = products.find(p => p.slug === 'ecoflow-delta-2-max')!;
+const delta2 = products.find(p => p.slug === 'ecoflow-delta-2')!;
+const ups = products.find(p => p.slug === 'cyberpower-cp1500pfclcd')!;
+---
+
+<Layout
+  title="Best Battery Backup for a Freezer (2026): How Long Can You Actually Run It?"
+  description="The best battery backup options for keeping your freezer running during a power outage. EcoFlow DELTA 2 Max, DELTA 2, and CyberPower UPS compared by runtime, wattage, and real-world freezer coverage."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/backup-power" class="hover:text-green-700">Backup Power</a>
+      <span class="mx-2">›</span>
+      Best Battery Backup for Freezer
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Battery Backup for a Freezer (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · Runtime calculations included</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      A full chest freezer stays frozen for 24–48 hours without power if you don't open it. An upright freezer lasts 12–24 hours. The question is whether your outage will end before that window closes. If you live somewhere with outages that regularly exceed 4–6 hours, a battery backup for your freezer is the difference between $400 of intact meat and $400 of defrosted loss.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The right battery depends on how long your outages typically last. The CyberPower UPS handles outages under 30 minutes and protects against surges. The EcoFlow DELTA 2 runs a freezer for 16–24 hours. The DELTA 2 Max runs it for 32–48 hours. Choose based on your actual risk profile.
+    </p>
+
+    <!-- Freezer Power Draw -->
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">How much power does a freezer actually use?</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-blue-100">
+              <th class="text-left pb-2 font-semibold text-gray-700">Freezer Type</th>
+              <th class="text-left pb-2 font-semibold text-gray-700">Running Watts</th>
+              <th class="text-left pb-2 font-semibold text-gray-700">Startup Surge</th>
+              <th class="text-left pb-2 font-semibold text-gray-700">Daily kWh</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-blue-100"><td class="py-1.5">Small chest freezer (5–7 cu ft)</td><td>60–100W</td><td>150–300W</td><td>0.5–0.8 kWh</td></tr>
+            <tr class="border-b border-blue-100"><td class="py-1.5">Mid chest freezer (10–15 cu ft)</td><td>100–150W</td><td>250–450W</td><td>0.8–1.2 kWh</td></tr>
+            <tr class="border-b border-blue-100"><td class="py-1.5">Large chest freezer (20+ cu ft)</td><td>150–250W</td><td>400–700W</td><td>1.2–2.0 kWh</td></tr>
+            <tr><td class="py-1.5">Upright freezer (typical)</td><td>100–200W</td><td>300–600W</td><td>1.0–1.5 kWh</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Running watts reflects steady-state draw during compressor cycles (not continuous). Startup surge is the peak draw when the compressor kicks on — your battery must handle the surge or the freezer won't start.</p>
+    </div>
+
+    <!-- Comparison Table -->
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Battery Backup</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Capacity</th>
+            <th class="text-left p-3 font-semibold text-gray-700">AC Output</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Freezer Runtime*</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-100 bg-green-50">
+            <td class="p-3">
+              <a href="#ecoflow-delta-2-max" class="font-medium text-gray-900 hover:text-green-700">{deltaMax.name}</a>
+              <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>
+            </td>
+            <td class="p-3 font-medium">${deltaMax.price}</td>
+            <td class="p-3">2048Wh</td>
+            <td class="p-3">2400W / 5000W surge</td>
+            <td class="p-3 text-green-700 font-medium">32–40 hours</td>
+          </tr>
+          <tr class="border-b border-gray-100 hover:bg-gray-50">
+            <td class="p-3"><a href="#ecoflow-delta-2" class="font-medium text-gray-900 hover:text-green-700">{delta2.name}</a></td>
+            <td class="p-3 font-medium">${delta2.price}</td>
+            <td class="p-3">1024Wh</td>
+            <td class="p-3">1800W / 2700W surge</td>
+            <td class="p-3">16–20 hours</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="p-3"><a href="#cyberpower-cp1500pfclcd" class="font-medium text-gray-900 hover:text-green-700">{ups.name}</a></td>
+            <td class="p-3 font-medium">${ups.price}</td>
+            <td class="p-3">~370Wh (internal)</td>
+            <td class="p-3">1000W pure sine wave</td>
+            <td class="p-3">20–30 minutes</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="text-xs text-gray-500 -mt-10 mb-12">*Runtime based on a 150W average draw mid-cycle chest freezer. Actual runtime varies by freezer size, ambient temperature, and how full the freezer is.</p>
+
+    <!-- DELTA 2 Max Review -->
+    <section id="ecoflow-delta-2-max" class="mb-16 scroll-mt-20">
+      <div class="border-t border-gray-100 pt-10 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">🏆 Best for Extended Outages (32–40 Hours)</p>
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">{deltaMax.name}</h2>
+            <p class="text-gray-500 text-sm">${deltaMax.price} &nbsp;·&nbsp; ⭐ {deltaMax.rating}/5</p>
+          </div>
+          <a href={deltaMax.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-6 leading-relaxed">The EcoFlow DELTA 2 Max is the best battery backup for freezer protection during serious outages. At 2048Wh and 2400W continuous output (5000W surge), it starts any residential freezer including large chest freezers with high-surge compressors. Runtime for a typical 150W-average mid-size chest freezer is 32–40 hours — covering the 24-48 hour safe window for a well-stocked, sealed freezer with hours to spare. The 5000W surge capacity is 7× a large freezer's startup draw, so the compressor starts cleanly every time without voltage sag.</p>
+      <div class="bg-gray-50 rounded-xl p-4 mb-6">
+        <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+        <div class="grid sm:grid-cols-2 gap-x-8">
+          {Object.entries(deltaMax.specs).map(([key, val]) => (
+            <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+              <span class="text-gray-500 text-sm">{key}</span>
+              <span class="font-medium text-gray-900 text-sm">{val}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-2">{deltaMax.pros.map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-2">{deltaMax.cons.map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href={deltaMax.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+        Buy {deltaMax.name} on Amazon →
+      </a>
+    </section>
+
+    <!-- DELTA 2 Review -->
+    <section id="ecoflow-delta-2" class="mb-16 scroll-mt-20">
+      <div class="border-t border-gray-100 pt-10 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">⚡ Best Mid-Range Option (16–20 Hours)</p>
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">{delta2.name}</h2>
+            <p class="text-gray-500 text-sm">${delta2.price} &nbsp;·&nbsp; ⭐ {delta2.rating}/5</p>
+          </div>
+          <a href={delta2.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-6 leading-relaxed">The EcoFlow DELTA 2 at 1024Wh and 1800W continuous output runs a typical mid-size chest freezer for 16–20 hours — enough coverage for the vast majority of residential outages, which average 3–4 hours nationally. For areas where outages rarely exceed 12 hours (summer thunderstorm outages in most of the US), the DELTA 2 is a more cost-effective choice than the DELTA 2 Max. It also handles a full-size refrigerator simultaneously for 12–14 hours, which is useful for protecting both appliances in a 1-day outage scenario.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-2">{delta2.pros.map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-2">{delta2.cons.map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href={delta2.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+        Buy {delta2.name} on Amazon →
+      </a>
+    </section>
+
+    <!-- UPS Review -->
+    <section id="cyberpower-cp1500pfclcd" class="mb-16 scroll-mt-20">
+      <div class="border-t border-gray-100 pt-10 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">🔋 Best for Short Outages and Surge Protection (20–30 Minutes)</p>
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">{ups.name}</h2>
+            <p class="text-gray-500 text-sm">${ups.price} &nbsp;·&nbsp; ⭐ {ups.rating}/5</p>
+          </div>
+          <a href={ups.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-6 leading-relaxed">A UPS (uninterruptible power supply) is not a multi-hour solution for freezer backup — it's designed for 10–30 minutes of runtime during a brief outage or while a generator starts. The CyberPower CP1500PFCLCD at 1000W pure sine wave output handles a freezer compressor's startup surge cleanly (pure sine wave is essential — modified sine wave damages compressor motors). For areas with frequent brief outages (5–20 minutes), a UPS also protects against power surges that damage compressor electronics. If your outages are typically short and you want both surge protection and brief battery coverage, the UPS is the right tool at $240 vs. $999 for the DELTA 2 Max.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-2">{ups.pros.map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-2">{ups.cons.map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href={ups.affiliateUrl} target="_blank" rel="nofollow noopener" class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+        Buy {ups.name} on Amazon →
+      </a>
+    </section>
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Freezer Battery Backup: What You Need to Know</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Pure sine wave output is mandatory for freezers</h3>
+          <p class="text-sm leading-relaxed">Freezer compressors use inductive motors that are sensitive to power quality. Modified sine wave output — common in cheaper inverters and UPS units — causes compressor motors to run hotter, reduces efficiency, and can damage motor windings over time. Both EcoFlow power stations and the CyberPower UPS recommended here produce pure sine wave output. Do not run a freezer on a modified sine wave inverter or UPS — it technically works for a while but shortens the compressor's life significantly.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Starting surge vs. running watts — know both</h3>
+          <p class="text-sm leading-relaxed">A freezer's compressor draws 3–5× its running wattage for 1–3 seconds at startup. A 150W running freezer may surge to 600–750W when the compressor kicks on. If your battery backup's surge rating is lower than the freezer's startup surge, the inverter will shut down and the freezer won't start. The DELTA 2 Max's 5000W surge capacity handles any residential freezer. The DELTA 2's 2700W surge handles most. The CyberPower handles up to 1500W surge — fine for most small to mid-size chest freezers.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How long is your food actually safe?</h3>
+          <p class="text-sm leading-relaxed">USDA food safety guidelines: a fully stocked, closed freezer stays at safe temperature (0°F or below) for 24–48 hours without power. A half-full freezer lasts 12–24 hours. Temperature rises faster in warmer ambient conditions. Food is safe if ice crystals are still present throughout — if any item has completely thawed and reached above 40°F for more than 2 hours, discard it. The goal of battery backup isn't to run the freezer indefinitely — it's to bridge the outage until power returns or you can transfer food to dry ice or a neighbor's freezer.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/backup-power/best-portable-power-station-for-emergencies" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Station for Emergencies →</p>
+        </a>
+        <a href="/backup-power/best-ups-battery-backup-home-office" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best UPS Battery Backup for Home Office →</p>
+        </a>
+        <a href="/backup-power/best-generator-for-power-outages" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Generator for Power Outages →</p>
+        </a>
+        <a href="/backup-power/best-whole-home-battery-backup-system" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Whole-Home Battery Backup System →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

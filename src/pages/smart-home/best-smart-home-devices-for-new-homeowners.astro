@@ -1,0 +1,187 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const ecobee = products.find(p => p.slug === 'ecobee-smartthermostat-premium')!;
+const doorbell = products.find(p => p.slug === 'ring-video-doorbell-4')!;
+const lock = products.find(p => p.slug === 'yale-assure-lock-2')!;
+const alarm = products.find(p => p.slug === 'ring-alarm-5-piece')!;
+const dimmer = products.find(p => p.slug === 'lutron-caseta-dimmer')!;
+const echo = products.find(p => p.slug === 'amazon-echo-dot-5th-gen')!;
+
+const picks = [
+  { product: ecobee, label: 'Smart Thermostat', icon: '🌡️', why: 'Pays for itself in energy savings — average homeowner saves $200+/year on HVAC.' },
+  { product: doorbell, label: 'Video Doorbell', icon: '📹', why: 'See and speak to anyone at your door from your phone, anywhere you are.' },
+  { product: lock, label: 'Smart Lock', icon: '🔐', why: 'Share access with contractors, dog walkers, and family — no key cutting needed.' },
+  { product: alarm, label: 'Security System', icon: '🛡️', why: 'Self-monitored or $10/month professional monitoring — no annual contracts.' },
+  { product: dimmer, label: 'Smart Dimmer Switch', icon: '💡', why: 'Replaces your existing switches — controls any bulb type with voice and app.' },
+  { product: echo, label: 'Smart Hub / Speaker', icon: '🔊', why: 'Voice control for everything — the glue that ties your smart home together.' },
+];
+---
+
+<Layout
+  title="Best Smart Home Devices for New Homeowners (2026)"
+  description="The 6 best smart home upgrades for new homeowners in 2026. Prioritized by ROI and impact — thermostat, doorbell, lock, security, switches, and a hub."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for New Homeowners
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for New Homeowners (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 6 upgrades ranked by impact</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Buying a home changes what's possible with smart devices. You can replace light switches, run new wiring, install a doorbell with a dedicated circuit, and add a thermostat without asking anyone's permission. The devices here take full advantage of homeownership — they're the upgrades renters genuinely can't do.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      We've ordered this list by impact and ROI, not by price. The thermostat goes first because it's the one device that pays you back. The security system goes before vanity upgrades because new-home security is a genuine priority.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">The homeowner advantage</p>
+      <div class="text-sm text-gray-600 leading-relaxed space-y-1.5">
+        <p><strong>Replace light switches</strong> — smart dimmers and switches work properly with your home's neutral wire, no workarounds.</p>
+        <p><strong>Wire a doorbell</strong> — a hardwired doorbell runs 24/7 without battery swaps, gets better video, and is faster to answer.</p>
+        <p><strong>Install a smart lock</strong> — replace the deadbolt entirely for the cleanest, most reliable smart lock experience.</p>
+        <p><strong>Upgrade the thermostat</strong> — no landlord approval needed. The ecobee pays for itself in under 18 months for most homeowners.</p>
+      </div>
+    </div>
+
+    <!-- Product Sections -->
+    {picks.map(({ product, label, icon, why }, i) => (
+      <section id={product.slug} class="mb-14 scroll-mt-20">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-2xl">{icon}</span>
+          <div>
+            <p class="text-xs font-semibold text-green-700 uppercase tracking-widest">#{i + 1} Priority Upgrade</p>
+            <h2 class="text-xl font-bold text-gray-900">{label}</h2>
+          </div>
+        </div>
+
+        <div class="bg-gray-50 rounded-xl p-5 mb-4">
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-1">Top Pick</p>
+              <h3 class="text-lg font-bold text-gray-900 mb-1">{product.name}</h3>
+              <p class="text-gray-600 text-sm mb-2">{product.tagline}</p>
+              <p class="text-xl font-bold text-green-700">${product.price}</p>
+            </div>
+            <a
+              href={product.affiliateUrl}
+              target="_blank"
+              rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap"
+            >
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+
+        <div class="bg-amber-50 border border-amber-100 rounded-lg px-4 py-3 mb-4">
+          <p class="text-sm text-amber-800"><strong>Why it's priority #{i + 1}:</strong> {why}</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4 mb-4">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-1.5">
+              {product.pros.slice(0, 3).map(pro => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>
+                  {pro}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-1.5">
+              {product.cons.slice(0, 3).map(con => (
+                <li class="text-sm text-gray-700 flex gap-2">
+                  <span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>
+                  {con}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+    ))}
+
+    <!-- Total Cost -->
+    <section class="bg-gray-50 rounded-2xl p-6 mb-16">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Total Cost: Full New Homeowner Smart Home</h2>
+      <div class="space-y-2 text-sm">
+        {picks.map(({ product, label }) => (
+          <div class="flex justify-between py-1.5 border-b border-gray-100">
+            <span class="text-gray-600">{product.name} ({label})</span>
+            <span class="font-medium">${product.price}</span>
+          </div>
+        ))}
+        <div class="flex justify-between pt-3">
+          <span class="font-bold text-gray-900">Total</span>
+          <span class="text-xl font-bold text-green-700">~${picks.reduce((sum, { product }) => sum + product.price, 0)}</span>
+        </div>
+      </div>
+      <p class="text-xs text-gray-500 mt-4">The ecobee thermostat saves the average homeowner $150–$250/year. Over 3 years that offsets $450–$750 — more than covering its own cost and contributing toward the rest of this list.</p>
+    </section>
+
+    <!-- Buying Guide -->
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">What to Install First</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Week 1: The thermostat</h3>
+          <p class="text-sm leading-relaxed">The ecobee installs in 30–45 minutes and immediately starts saving money. It's compatible with nearly every HVAC system including multi-stage and heat pumps. The included SmartSensor goes in the room you spend the most time in — the bedroom or living room — so the system heats and cools where you actually are, not where the thermostat happens to be mounted.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Month 1: Security layer</h3>
+          <p class="text-sm leading-relaxed">The Ring Alarm system takes under an hour to set up, no professional install needed. The Yale Assure Lock 2 replaces your front deadbolt completely — you keep your existing keys, add fingerprint and app access, and share digital keys with anyone who needs entry. Add the Ring Doorbell 4 at the same time and you have a complete security perimeter on the main entry.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Month 2–3: Lighting and voice control</h3>
+          <p class="text-sm leading-relaxed">Lutron Caseta switches require the Smart Bridge (~$80 separately), but that investment covers every switch in your home on the same reliable RF network. Start with the living room and bedroom dimmers — the two rooms where lighting control has the most quality-of-life impact. The Echo Dot ties everything together with voice control once your devices are set up.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Related Guides -->
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-thermostat-no-c-wire" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Thermostat (No C-Wire) →</p>
+        </a>
+        <a href="/smart-home/best-smart-lock-for-renters" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Lock for Renters →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-starter-kit-under-500" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Smart Home Starter Kit Under $500 →</p>
+        </a>
+        <a href="/smart-home/best-smart-light-switches" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Light Switches →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>
