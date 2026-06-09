@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['eufy-security-alarm-kit', 'ring-alarm-5-piece', 'simplisafe-8-piece'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Smart Home Security System for Apartment Dwellers (2026)"
+  description="The best DIY security systems for apartments in 2026. Eufy ($150), Ring Alarm ($200), SimpliSafe ($250) — no drilling required, no annual contract, works without a landline."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Security System for Apartment Dwellers
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Security System for Apartment Dwellers (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 3 DIY security systems compared for apartment use</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Apartment security is different from house security. You're not protecting a perimeter — you're protecting a single entry point (your front door) plus windows that face a balcony or fire escape. You can't hardwire anything. You're on a floor with neighbors, so false alarms matter. And you can't drill into walls or exterior surfaces in most leases.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      All three picks here use sensors that adhere to door frames with 3M tape and peel off cleanly when you move. The Eufy at $150 is the only one with zero monthly cost — ever. Ring at $200 has the cheapest optional monitoring at $10/month. SimpliSafe at $250 has the fastest professional response time in the industry. Pick based on whether you want zero ongoing cost, minimal cost monitoring, or the best professional response.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">What apartment dwellers need from a security system</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Peel-and-stick sensors — no drilling into door frames, walls, or baseboards</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>No annual contract — you're renting, your living situation may change</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Cellular backup — if your Wi-Fi goes out, the system still works</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Local siren — a loud alarm is often more effective than monitoring in a building with shared walls</li>
+      </ul>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Best Value — Zero Monthly Cost</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center">
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-4 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">System</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Monitoring</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Cellular Backup</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Platforms</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium text-green-700">${p.price}</td>
+              <td class="p-3">{i === 0 ? 'Self-monitored only' : i === 1 ? 'Optional ($10/mo)' : 'Optional ($20/mo)'}</td>
+              <td class="p-3">{i === 0 ? 'No' : 'Yes'}</td>
+              <td class="p-3">{i === 0 ? 'Alexa, Google' : i === 1 ? 'Alexa only' : 'Alexa, Google'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-gray-50 rounded-xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">2-Year Total Cost (with and without monitoring)</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="text-left pb-2 font-medium text-gray-600">System</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Upfront</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Self-monitored (2yr)</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Professional monitoring (2yr)</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-100"><td class="py-2">Eufy 5-Piece</td><td>$150</td><td class="text-green-700 font-medium">$150 total</td><td>N/A (no professional monitoring)</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2">Ring Alarm 5-Piece</td><td>$200</td><td>$200 (no cellular backup)</td><td>$440 (+$10/mo Ring Protect Plus)</td></tr>
+            <tr><td class="py-2">SimpliSafe 8-Piece</td><td>$250</td><td>$250 (limited features)</td><td>$730 (+$20/mo Standard plan)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Eufy's total cost is literally $150 for 2 years. If you want professional response, Ring's $10/month plan is the most affordable — SimpliSafe justifies its higher cost with the fastest response times in the industry.</p>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Value — No Subscription Ever' : i === 1 ? '💰 Best Budget Monitoring — $10/Month' : '🚨 Best Professional Response — Fastest in Class'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}</li>)}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}</li>)}
+            </ul>
+          </div>
+        </div>
+        <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buyer's Guide: Apartment Security Systems</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do you need to tell your landlord?</h3>
+          <p class="text-sm leading-relaxed">For a DIY peel-and-stick system installed entirely inside your unit — sensors on interior door frames, motion sensor in the corner — you generally don't need landlord permission. These systems leave no permanent marks and come down cleanly. The line is exterior modifications: drilling into an exterior wall or door frame, or placing any sensor in a shared hallway. Stick to inside-your-unit-only placement and most lease agreements won't have an issue.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Self-monitored vs. professionally monitored — which is right for apartments?</h3>
+          <p class="text-sm leading-relaxed">In most apartment buildings, your neighbors will hear a 90dB siren before a monitoring center can dispatch anyone. Self-monitoring via app alerts (all three systems) is genuinely effective for most apartments — especially buildings with active management. Professional monitoring is most valuable if you travel frequently, keep the system armed when away for days at a time, or live in a building with low foot traffic. For the additional $10–$20/month, you get a human calling 911 if you can't respond — worth it if your schedule makes that realistic.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What sensors does an apartment actually need?</h3>
+          <p class="text-sm leading-relaxed">Start with one entry sensor on your front door and one motion sensor covering the main living area. Add an entry sensor for any balcony door or sliding glass door if your unit has one. That's typically it — one or two entry sensors and one motion sensor covers 90% of realistic break-in scenarios. Eufy's 5-piece kit is sized right for this. Ring and SimpliSafe's kits include this baseline plus a range extender and glass break sensor respectively. Don't overbuy sensors for every interior door — those only matter in a house, not an apartment.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-security-camera-for-apartments-under-100/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Security Cameras for Apartments Under $100 →</p>
+        </a>
+        <a href="/smart-home/best-video-doorbell-for-apartments-with-no-doorbell/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Video Doorbell for Apartments (No Wiring) →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-renters/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Renters →</p>
+        </a>
+        <a href="/smart-home/best-no-drill-smart-home-devices-for-renters/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best No-Drill Smart Home Devices for Renters →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

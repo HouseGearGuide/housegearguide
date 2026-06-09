@@ -1,0 +1,260 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+
+const govee = products.find(p => p.slug === 'govee-smart-bulb-rgbww')!;
+const kasa = products.find(p => p.slug === 'kasa-smart-bulb-kl135')!;
+const nanoleaf = products.find(p => p.slug === 'nanoleaf-essentials-a19')!;
+const hue = products.find(p => p.slug === 'philips-hue-starter-kit')!;
+---
+
+<Layout
+  title="Best Smart Lighting Starter Kit for Apartments (2026)"
+  description="The best smart lighting starter kits for apartments in 2026 — Govee, Kasa, Nanoleaf, and Philips Hue compared. No hub required options from $12/bulb up to the full Hue ecosystem."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Lighting Starter Kit for Apartments
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Lighting Starter Kit for Apartments (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 4 options from $12/bulb to $199 full kit</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Smart bulbs are the easiest and most renter-friendly smart home upgrade: screw into any existing socket, no wiring, no landlord permission, and every bulb comes with you when you move. The only question is which bulbs to start with and how many to buy for your first kit.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      This guide covers four options from budget to premium — Govee at $12/bulb for maximum value, Kasa at $15/bulb for the best mid-range, Nanoleaf at $20/bulb for Matter compatibility, and the Philips Hue starter kit at $199 for the most reliable, complete ecosystem. For most apartment renters, Kasa 4-pack is the starting point we'd actually recommend.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">How many bulbs does a typical apartment need?</p>
+      <div class="grid sm:grid-cols-3 gap-4 text-sm text-gray-700 mt-3">
+        <div class="bg-white rounded-lg p-3 border border-blue-100">
+          <p class="font-semibold text-gray-900 mb-1">Studio / 1BR</p>
+          <p>4–6 bulbs</p>
+          <p class="text-xs text-gray-500 mt-1">Living room (2), bedroom (2), kitchen (1–2)</p>
+        </div>
+        <div class="bg-white rounded-lg p-3 border border-blue-100">
+          <p class="font-semibold text-gray-900 mb-1">2-Bedroom</p>
+          <p>6–10 bulbs</p>
+          <p class="text-xs text-gray-500 mt-1">Living room (2–3), 2 bedrooms (2 each), kitchen (1–2)</p>
+        </div>
+        <div class="bg-white rounded-lg p-3 border border-blue-100">
+          <p class="font-semibold text-gray-900 mb-1">3-Bedroom</p>
+          <p>10–16 bulbs</p>
+          <p class="text-xs text-gray-500 mt-1">Full coverage — start with living room + master bedroom first</p>
+        </div>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Starter Kit Cost Comparison</h2>
+    <div class="overflow-x-auto mb-12 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Bulb</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Per Bulb</th>
+            <th class="text-left p-3 font-semibold text-gray-700">4-Bulb Kit</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Hub Required</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Color + White</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-b border-gray-100 hover:bg-gray-50">
+            <td class="p-3"><a href={`#${govee.slug}`} class="font-medium text-gray-900 hover:text-green-700">{govee.name}</a></td>
+            <td class="p-3 font-medium">${govee.price}</td>
+            <td class="p-3 text-green-700 font-medium">~$48</td>
+            <td class="p-3">No</td>
+            <td class="p-3">Yes (RGBWW)</td>
+          </tr>
+          <tr class="border-b border-gray-100 bg-green-50">
+            <td class="p-3"><a href={`#${kasa.slug}`} class="font-medium text-gray-900 hover:text-green-700">{kasa.name}</a> <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span></td>
+            <td class="p-3 font-medium">${kasa.price}</td>
+            <td class="p-3 text-green-700 font-medium">~$55</td>
+            <td class="p-3">No</td>
+            <td class="p-3">Yes (full color)</td>
+          </tr>
+          <tr class="border-b border-gray-100 hover:bg-gray-50">
+            <td class="p-3"><a href={`#${nanoleaf.slug}`} class="font-medium text-gray-900 hover:text-green-700">{nanoleaf.name}</a></td>
+            <td class="p-3 font-medium">${nanoleaf.price}</td>
+            <td class="p-3">~$80</td>
+            <td class="p-3">No (Matter)</td>
+            <td class="p-3">Yes (full color)</td>
+          </tr>
+          <tr class="hover:bg-gray-50">
+            <td class="p-3"><a href={`#${hue.slug}`} class="font-medium text-gray-900 hover:text-green-700">{hue.name}</a></td>
+            <td class="p-3 font-medium">~$40/bulb</td>
+            <td class="p-3">$199 (kit w/ bridge)</td>
+            <td class="p-3">Yes (Hue Bridge)</td>
+            <td class="p-3">Yes (full color)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Govee -->
+    <section id={govee.slug} class="mb-16 scroll-mt-20">
+      <div class="border-t border-gray-100 pt-10 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">💰 Best Budget Pick — Maximum Bulbs per Dollar</p>
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">{govee.name}</h2>
+            <p class="text-gray-500 text-sm">${govee.price}/bulb &nbsp;·&nbsp; ⭐ {govee.rating}/5</p>
+          </div>
+          <a href={govee.affiliateUrl} target="_blank" rel="nofollow noopener"
+            class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-4 leading-relaxed">At $12/bulb, Govee's RGBWW bulbs give you full color plus warm and cool white tuning from one bulb — meaning you can run warm amber in the evening and bright daylight white in the morning without switching bulbs. The Govee app has the most scene and animation options of any bulb at this price. No hub required: pair via Bluetooth, then connect to Wi-Fi for app control from anywhere. For a first smart lighting setup where you want the most bulbs for the least money, Govee is the way in.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-2">{govee.pros.map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-2">{govee.cons.map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href={govee.affiliateUrl} target="_blank" rel="nofollow noopener"
+        class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+        Buy {govee.name} on Amazon →
+      </a>
+    </section>
+
+    <!-- Kasa -->
+    <section id={kasa.slug} class="mb-16 scroll-mt-20">
+      <div class="border-t border-gray-100 pt-10 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">🏆 Top Pick — Best Balance of Price and Reliability</p>
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">{kasa.name}</h2>
+            <p class="text-gray-500 text-sm">${kasa.price}/bulb &nbsp;·&nbsp; ⭐ {kasa.rating}/5</p>
+          </div>
+          <a href={kasa.affiliateUrl} target="_blank" rel="nofollow noopener"
+            class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-4 leading-relaxed">Kasa's KL135 is the recommendation for most apartment renters starting their smart lighting setup. At $15/bulb it costs $3 more than Govee, but the Kasa app is more reliable for scheduling, the Wi-Fi connection is more stable, and the energy monitoring feature tells you exactly how much electricity each bulb uses. No hub required — each bulb connects directly to your 2.4GHz Wi-Fi. A 4-pack is the standard apartment starter kit: two for the living room, two for the bedroom. Works with Alexa and Google Home out of the box.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-2">{kasa.pros.map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-2">{kasa.cons.map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href={kasa.affiliateUrl} target="_blank" rel="nofollow noopener"
+        class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+        Buy {kasa.name} on Amazon →
+      </a>
+    </section>
+
+    <!-- Nanoleaf -->
+    <section id={nanoleaf.slug} class="mb-16 scroll-mt-20">
+      <div class="border-t border-gray-100 pt-10 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">🔗 Best for Matter / Future-Proof Ecosystem</p>
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">{nanoleaf.name}</h2>
+            <p class="text-gray-500 text-sm">${nanoleaf.price}/bulb &nbsp;·&nbsp; ⭐ {nanoleaf.rating}/5</p>
+          </div>
+          <a href={nanoleaf.affiliateUrl} target="_blank" rel="nofollow noopener"
+            class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-4 leading-relaxed">At $20/bulb, Nanoleaf Essentials are the only smart bulbs in this price range with Matter support built in, which means they work natively with Apple Home, Google Home, Amazon Alexa, and SmartThings with no cloud dependency. If you're already in the Apple ecosystem or plan to mix and match devices across platforms without a dedicated hub, Nanoleaf's Matter compatibility is genuinely future-proof. Thread networking means they respond faster than Wi-Fi bulbs and don't clog your 2.4GHz network.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-2">{nanoleaf.pros.map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-2">{nanoleaf.cons.map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href={nanoleaf.affiliateUrl} target="_blank" rel="nofollow noopener"
+        class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+        Buy {nanoleaf.name} on Amazon →
+      </a>
+    </section>
+
+    <!-- Philips Hue -->
+    <section id={hue.slug} class="mb-16 scroll-mt-20">
+      <div class="border-t border-gray-100 pt-10 mb-6">
+        <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">⭐ Premium Pick — The Most Reliable Ecosystem</p>
+        <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+          <div>
+            <h2 class="text-2xl font-bold text-gray-900 mb-1">{hue.name}</h2>
+            <p class="text-gray-500 text-sm">${hue.price} (4 bulbs + bridge) &nbsp;·&nbsp; ⭐ {hue.rating}/5</p>
+          </div>
+          <a href={hue.affiliateUrl} target="_blank" rel="nofollow noopener"
+            class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+            Check on Amazon →
+          </a>
+        </div>
+      </div>
+      <p class="text-gray-700 mb-4 leading-relaxed">The Philips Hue starter kit is the right answer if you want the best experience and are willing to pay for it. At $199 for 4 bulbs and a Hue Bridge, the per-bulb cost is high — but Hue's Zigbee mesh network is the most reliable smart lighting protocol available. Lights respond instantly, never drop connection, and work even if your internet is down. The Hue app is the most polished in the category with the best scene library, and the bridge supports hundreds of bulbs in a single home. For an apartment renter planning to keep these bulbs across multiple moves and multiple years, Hue is the investment worth making.</p>
+      <div class="grid sm:grid-cols-2 gap-4 mb-6">
+        <div class="bg-green-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+          <ul class="space-y-2">{hue.pros.map(p => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{p}</li>)}</ul>
+        </div>
+        <div class="bg-red-50 rounded-xl p-4">
+          <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+          <ul class="space-y-2">{hue.cons.map(c => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{c}</li>)}</ul>
+        </div>
+      </div>
+      <a href={hue.affiliateUrl} target="_blank" rel="nofollow noopener"
+        class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+        Buy {hue.name} on Amazon →
+      </a>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-lighting-for-apartments/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Lighting for Apartments →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-renters-under-200/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Renters Under $200 →</p>
+        </a>
+        <a href="/smart-home/best-no-drill-smart-home-devices-for-renters/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best No-Drill Smart Home Devices for Renters →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-studio-apartments/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Studio Apartments →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

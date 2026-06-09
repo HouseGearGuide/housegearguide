@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = ['arlo-essential-video-doorbell', 'google-nest-doorbell-battery', 'ring-video-doorbell-4'];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+const topPick = picks[0];
+---
+
+<Layout
+  title="Best Video Doorbell for Apartments with No Doorbell (2026)"
+  description="The best wireless video doorbells for apartments with no existing wiring. Arlo 2K ($130), Google Nest Battery ($180), and Ring Doorbell 4 ($220) — no electrician, no drilling into exterior walls."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Video Doorbell for Apartments (No Wiring)
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Video Doorbell for Apartments with No Doorbell (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 3 doorbells compared for battery-powered, no-wiring apartment use</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Most apartment doors have no existing doorbell wiring — and even if yours does, you may not have access to it or permission to modify it. The good news: every pick here is battery-powered, mounts with two screws or adhesive on the door frame, and gives you full video and two-way audio without touching any wiring.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The Arlo 2K at $130 is the top pick — it added Apple HomeKit in 2025 and now covers all four major platforms, which is unusual at this price. The Google Nest at $180 shoots portrait video that captures packages at your feet. The Ring Doorbell 4 at $220 is the most recognizable name and links seamlessly with Ring Alarm if you have one. All three charge via USB and recharge without removing them from the wall.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">What makes a video doorbell work in an apartment without wiring</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Rechargeable battery — no hardwiring, no electrician needed</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Surface or wedge mount — attaches to door frame with two screws or adhesive tape</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Motion alerts to your phone — know who's at the door before they knock</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Two-way audio — speak to delivery drivers without opening the door</li>
+      </ul>
+    </div>
+
+    <div class="bg-green-50 border border-green-200 rounded-2xl p-6 mb-10">
+      <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-3">Top Pick — Best Value Wireless Doorbell</p>
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 class="text-xl font-bold text-gray-900 mb-1">{topPick.name}</h2>
+          <p class="text-gray-600 text-sm mb-2">{topPick.tagline}</p>
+          <p class="text-2xl font-bold text-green-700">${topPick.price}</p>
+        </div>
+        <a href={topPick.affiliateUrl} target="_blank" rel="nofollow noopener"
+          class="inline-block bg-green-700 text-white px-6 py-3 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap text-center">
+          Check Price on Amazon →
+        </a>
+      </div>
+    </div>
+
+    <h2 class="text-2xl font-bold text-gray-900 mb-4">Quick Comparison</h2>
+    <div class="overflow-x-auto mb-4 rounded-xl border border-gray-100">
+      <table class="w-full text-sm">
+        <thead>
+          <tr class="bg-gray-50 border-b border-gray-200">
+            <th class="text-left p-3 font-semibold text-gray-700">Doorbell</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Price</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Resolution</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Battery Life</th>
+            <th class="text-left p-3 font-semibold text-gray-700">Platforms</th>
+          </tr>
+        </thead>
+        <tbody>
+          {picks.map((p, i) => (
+            <tr class={`border-b border-gray-100 ${i === 0 ? 'bg-green-50' : 'hover:bg-gray-50'}`}>
+              <td class="p-3">
+                <a href={`#${p.slug}`} class="font-medium text-gray-900 hover:text-green-700">{p.name}</a>
+                {i === 0 && <span class="ml-2 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-medium">Top Pick</span>}
+              </td>
+              <td class="p-3 font-medium text-green-700">${p.price}</td>
+              <td class="p-3">{i === 0 ? '2K HDR (square)' : i === 1 ? '960×1280 portrait' : '1080p HD'}</td>
+              <td class="p-3">{i === 0 ? '~4 months' : i === 1 ? '2–3 months' : '6–8 months'}</td>
+              <td class="p-3">{i === 0 ? 'Alexa, Google, HomeKit, SmartThings' : i === 1 ? 'Google Home only' : 'Alexa only'}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="bg-gray-50 rounded-xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">2-Year Cost Breakdown (subscription vs. no subscription)</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="text-left pb-2 font-medium text-gray-600">Doorbell</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Upfront</th>
+              <th class="text-left pb-2 font-medium text-gray-600">No subscription</th>
+              <th class="text-left pb-2 font-medium text-gray-600">With subscription</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-100"><td class="py-2">Arlo 2K (2nd Gen)</td><td>$130</td><td class="text-green-700 font-medium">$130 (live view free)</td><td>$370 (+$10/mo Arlo Secure)</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2">Google Nest Battery</td><td>$180</td><td class="text-green-700 font-medium">$180 (3hr free history)</td><td>$372 (+$8/mo Nest Aware)</td></tr>
+            <tr><td class="py-2">Ring Doorbell 4</td><td>$220</td><td>$220 (live view only)</td><td>$316 (+$4/mo Ring Protect)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">All three require a subscription for full video history. Ring's $4/month plan is the cheapest — Arlo is the most expensive but adds HomeKit.</p>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🏆 Best Value — 4-Platform Support' : i === 1 ? '📐 Best Video Format — Portrait View' : '🔔 Best Ecosystem — Ring + Alarm'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}</li>)}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}</li>)}
+            </ul>
+          </div>
+        </div>
+        <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buyer's Guide: Apartment Video Doorbell</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do you need landlord permission to install a video doorbell?</h3>
+          <p class="text-sm leading-relaxed">Installing a battery-powered doorbell on your own door frame with two screws is generally considered a minor fixture and usually doesn't require landlord approval — but check your lease. If you're in a building with a shared front door where you don't have individual doorbells, you'll need to coordinate with management. For individual unit doors in apartment buildings, battery-powered doorbells that mount with screws (or even adhesive) leave no permanent marks and are almost always acceptable.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How do you connect a video doorbell to your apartment's indoor chime?</h3>
+          <p class="text-sm leading-relaxed">You can't — and you don't need to. All three picks here alert you via your phone when someone rings. If you want an indoor sound, pair any of these with a small smart speaker (Amazon Echo Dot, Google Home Mini) to play a doorbell sound when motion or a ring is detected. This works over Wi-Fi without any existing doorbell wiring at all. Ring and Arlo also sell optional plug-in chime devices ($20–$30) that play a traditional doorbell sound through a power outlet inside your apartment.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What's the ideal placement in an apartment building hallway?</h3>
+          <p class="text-sm leading-relaxed">Mount the doorbell at eye level (approximately 4–5 feet high) with a slight downward angle using the wedge bracket included in most kits. This captures faces clearly and avoids capturing neighbors' doors in the frame. Aim the field of view to show only the area immediately outside your unit — recording shared hallways with footage of neighbors coming and going is legally sensitive in most states. The Arlo's 180° head-to-toe frame and the Google Nest's portrait ratio are both excellent for narrow apartment hallways where width isn't the priority.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-security-camera-for-apartments-under-100/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Security Cameras for Apartments Under $100 →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-security-system-for-apartment-dwellers/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Security Systems for Apartment Dwellers →</p>
+        </a>
+        <a href="/smart-home/best-no-drill-smart-home-devices-for-renters/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best No-Drill Smart Home Devices for Renters →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-renters/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Renters →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

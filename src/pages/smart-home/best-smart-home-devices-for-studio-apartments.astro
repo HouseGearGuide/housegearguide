@@ -1,0 +1,173 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = [
+  'wyze-cam-v4',
+  'govee-smart-bulb-rgbww',
+  'amazon-echo-dot-5th-gen',
+  'kasa-ep25-smart-plug',
+  'google-nest-thermostat-2020',
+];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+---
+
+<Layout
+  title="Best Smart Home Devices for Studio Apartments (2026)"
+  description="The best smart home devices for studio apartments in 2026. Five picks under $350 total that make a small space smarter — security camera, smart bulbs, voice assistant, energy monitoring plug, and thermostat."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Studio Apartments
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Studio Apartments (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 5 picks under $350 total for studio apartment smart home setups</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      Studio apartments have a challenge that larger units don't: one room has to do everything. Your living room is your bedroom is your office. That compression actually makes smart home upgrades more impactful — the right five devices can handle security, lighting, voice control, energy monitoring, and climate in a space you can cross in fifteen steps.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      This guide prioritizes devices with real function over gadget novelty. No hub required for any of these — they all connect directly to Wi-Fi. Total cost for the full setup is around $300–$350 depending on how many smart bulbs you add. Start with the camera and bulbs; add the rest as your budget allows.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">Why studio apartments benefit most from smart home devices</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>One room means one camera covers everything — not a multi-room challenge</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Smart lighting changes the mood of the whole space without redecorating</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>One voice assistant controls every device from anywhere in the unit</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Energy monitoring is more meaningful in a small space — you can track every draw</li>
+      </ul>
+    </div>
+
+    <div class="bg-gray-50 rounded-xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Full Studio Smart Home Setup — Priority Order</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="text-left pb-2 font-medium text-gray-600">Priority</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Device</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Price</th>
+              <th class="text-left pb-2 font-medium text-gray-600">What it does</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-100"><td class="py-2 font-medium">1st</td><td>Wyze Cam v4</td><td>$36</td><td>Covers your entire studio from one shelf</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2 font-medium">2nd</td><td>Govee Smart Bulb (4-pack)</td><td>~$48</td><td>Transform the whole room's mood instantly</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2 font-medium">3rd</td><td>Amazon Echo Dot 5th Gen</td><td>$50</td><td>Voice-control everything hands-free</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2 font-medium">4th</td><td>Kasa EP25 Smart Plug</td><td>$18</td><td>Monitor your appliance energy draw</td></tr>
+            <tr><td class="py-2 font-medium">5th</td><td>Google Nest Thermostat</td><td>$129</td><td>Control temperature without your landlord's permission</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Total for all five: ~$281–$350 depending on bulb count. Start with the camera and bulbs — they give the most immediate impact in a studio.</p>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🔒 Security — #1 Priority' : i === 1 ? '💡 Lighting — Biggest Impact on Ambiance' : i === 2 ? '🎙️ Voice Control — Hub for Everything' : i === 3 ? '🔌 Energy Monitoring — Know Your Draw' : '🌡️ Climate — Renter-Friendly Thermostat Upgrade'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}</li>)}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}</li>)}
+            </ul>
+          </div>
+        </div>
+        <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buyer's Guide: Studio Apartment Smart Home</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">One camera or two in a studio?</h3>
+          <p class="text-sm leading-relaxed">One camera, placed on a high shelf or bookcase in the corner opposite the front door, will cover most of a typical studio. The Wyze Cam v4 has a 130° field of view — in a 400–600 sq ft studio, one camera on a high shelf can see the door, the main living area, and the kitchen simultaneously. The Eufy Pan & Tilt (reviewed in our under-$100 guide) adds motorized coverage if you want to sweep the whole room. For most studios, one fixed camera in the right spot is enough.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How many smart bulbs do you need in a studio?</h3>
+          <p class="text-sm leading-relaxed">Most studios have 4–6 light fixtures: an overhead light (sometimes two), a floor lamp, a desk lamp, and possibly a nightstand lamp. Replacing the fixtures you use most — overhead and floor lamp — is where you'll notice the biggest difference. That's typically 2–4 bulbs. Smart bulbs also work in any standard E26 (medium base) socket — no special fixture needed. Start with two bulbs and add more by room vibe rather than all at once.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Can you install a smart thermostat as a renter?</h3>
+          <p class="text-sm leading-relaxed">Yes, in most cases. Smart thermostats replace your existing thermostat and reinstall the same wires. They leave no permanent modifications when removed — you reinstall the original thermostat when you move out. The Google Nest Thermostat at $129 is the easiest swap because it charges off existing wiring without a C-wire. Some landlords appreciate the upgrade and have no objection; others prefer you check first. If your lease says no modifications to HVAC equipment, skip the thermostat and focus on the other four devices.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-home-devices-for-small-apartments/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Small Apartments →</p>
+        </a>
+        <a href="/smart-home/best-smart-lighting-starter-kit-for-apartments/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Lighting Starter Kit for Apartments →</p>
+        </a>
+        <a href="/smart-home/best-no-drill-smart-home-devices-for-renters/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best No-Drill Smart Home Devices for Renters →</p>
+        </a>
+        <a href="/smart-home/best-smart-security-camera-for-apartments-under-100/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Security Cameras for Apartments Under $100 →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

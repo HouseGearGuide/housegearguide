@@ -1,0 +1,173 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = [
+  'wyze-cam-v4',
+  'govee-smart-bulb-rgbww',
+  'amazon-echo-dot-5th-gen',
+  'kasa-ep25-smart-plug',
+  'bluetti-eb3a',
+];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+---
+
+<Layout
+  title="Best Smart Home Devices for College Apartments (2026)"
+  description="The best smart home devices for college apartments in 2026. Five budget-friendly picks for students — security camera, smart bulbs, Alexa speaker, energy monitoring plug, and portable power station under $375 total."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for College Apartments
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for College Apartments (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 5 student-friendly picks under $375 total</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      College apartments have a different set of priorities than family homes: tight budgets, shared living situations, short lease terms (often 12 months or less), and devices that need to move easily when you graduate or transfer. Everything on this list packs into a box and sets up in the next place in under an hour.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The Wyze camera covers the room. Govee bulbs change the vibe without repainting. The Echo Dot runs the whole setup by voice. The Kasa plug tells you how much your gaming PC or mini fridge is actually costing you in electricity. The Bluetti EB3A is the sleeper pick — a compact LFP power station that keeps your laptop and phone alive during study sessions and dorm blackouts alike.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">What college apartment smart home setups need to prioritize</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Low upfront cost — most pieces under $50 individually</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>No installation required — plug in, screw in, or set on a shelf</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Portable — packs up and moves to the next place in under an hour</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>No subscription required — students don't need another recurring charge</li>
+      </ul>
+    </div>
+
+    <div class="bg-gray-50 rounded-xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">College Apartment Smart Home — Total Cost Breakdown</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="text-left pb-2 font-medium text-gray-600">Device</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Price</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Monthly cost</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Must-have?</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-100"><td class="py-2">Wyze Cam v4</td><td>$36</td><td class="text-green-700 font-medium">$0 (local storage)</td><td>Yes</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2">Govee Smart Bulbs (4-pack)</td><td>~$48</td><td class="text-green-700 font-medium">$0</td><td>Yes</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2">Amazon Echo Dot</td><td>$50</td><td class="text-green-700 font-medium">$0</td><td>Yes</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2">Kasa EP25 Smart Plug</td><td>$18</td><td class="text-green-700 font-medium">$0</td><td>Recommended</td></tr>
+            <tr><td class="py-2">Bluetti EB3A</td><td>$199</td><td class="text-green-700 font-medium">$0</td><td>Optional (high value)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Core four (camera + bulbs + Echo + plug): ~$152 total, $0/month. Full setup with Bluetti: ~$351. No subscriptions on any of these.</p>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '📷 Security — Best Camera Under $40' : i === 1 ? '💡 Lighting — Change the Room Vibe Instantly' : i === 2 ? '🎙️ Voice Control — Run Everything Hands-Free' : i === 3 ? '🔌 Energy Monitor — Know What\'s Draining Your Share' : '⚡ Power Backup — Keep Working Through Any Outage'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}</li>)}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}</li>)}
+            </ul>
+          </div>
+        </div>
+        <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buyer's Guide: College Apartment Smart Home</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Is a portable power station worth it for a college student?</h3>
+          <p class="text-sm leading-relaxed">For the right student, yes. The Bluetti EB3A weighs 10.1 lbs — it sits on a desk or shelf. It keeps your laptop running for 6–8 hours during a campus power outage, charges your phone and earbuds, and runs a small desk fan. It's also useful for outdoor study sessions, camping trips, and tailgating. The LFP battery is rated for 2,500+ charge cycles — at one charge per week, that's nearly 50 years. You're buying it once. If you frequently have to deal with dorm or apartment power interruptions, or if you use a CPAP machine, it's not optional.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Can you use smart home devices in a shared apartment with roommates?</h3>
+          <p class="text-sm leading-relaxed">All of these devices work with shared Wi-Fi — they don't require you to own the router. The Wyze camera should be disclosed to roommates and placed in common areas with everyone's knowledge and consent — not in bedrooms. Smart bulbs work independently per socket; each roommate can have different bulbs in their own lamps. The Echo Dot's voice control works for anyone in earshot — set it up with your Amazon account and invite roommates to share control via the Amazon Household feature if they want. The smart plug belongs to whoever owns it and can monitor a shared appliance (mini fridge, microwave) to track electricity costs.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What should you avoid buying for a college apartment?</h3>
+          <p class="text-sm leading-relaxed">Avoid anything that requires installation with tools, hardwiring, or landlord approval — you'll lose your security deposit. Skip hub-based smart home systems (SmartThings, Philips Hue Bridge) unless you're planning to stay for 3+ years and expand significantly. Skip premium smart locks — you'll likely need to return to keyed entry when you move. Avoid large appliance-sized power stations over 500Wh — they're heavy and college apartments rarely need that capacity. Focus on portable, plug-in devices that move with you.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-home-devices-for-studio-apartments/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Studio Apartments →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-renters/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Renters →</p>
+        </a>
+        <a href="/backup-power/best-portable-power-station-for-apartment-emergencies/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Backup Power</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Portable Power Station for Apartment Emergencies →</p>
+        </a>
+        <a href="/smart-home/best-smart-plugs-for-apartments/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Plugs for Apartments →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>

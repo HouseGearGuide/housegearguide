@@ -1,0 +1,171 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { products } from '../../data/products';
+import type { Product } from '../../data/products';
+
+const slugOrder = [
+  'kasa-outdoor-smart-plug-ep40a',
+  'govee-outdoor-string-lights',
+  'ring-smart-floodlight-battery',
+  'wyze-cam-outdoor-v2',
+];
+const picks = slugOrder.map(slug => products.find(p => p.slug === slug)!).filter(Boolean) as Product[];
+---
+
+<Layout
+  title="Best Smart Home Devices for Apartment Balconies (2026)"
+  description="The best smart home devices for apartment balconies in 2026. Kasa outdoor plug ($17), Govee string lights ($35), Ring floodlight ($30), and Wyze outdoor camera ($60) — no hardwiring, no drilling into exterior walls."
+>
+  <div class="bg-amber-50 border-b border-amber-100">
+    <div class="max-w-4xl mx-auto px-4 py-2 text-xs text-amber-800 text-center">
+      This site earns commissions from purchases made through our links at no extra cost to you.
+    </div>
+  </div>
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+
+    <nav class="text-xs text-gray-400 mb-6">
+      <a href="/" class="hover:text-green-700">Home</a>
+      <span class="mx-2">›</span>
+      <a href="/smart-home/" class="hover:text-green-700">Smart Home</a>
+      <span class="mx-2">›</span>
+      Best Smart Home Devices for Apartment Balconies
+    </nav>
+
+    <h1 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-3 leading-tight">
+      Best Smart Home Devices for Apartment Balconies (2026)
+    </h1>
+    <p class="text-sm text-gray-400 mb-8">Last updated: June 2026 · 4 outdoor-rated picks for balconies, patios, and terraces</p>
+
+    <p class="text-lg text-gray-700 mb-4 leading-relaxed">
+      An apartment balcony is a small outdoor space with big limitations: you can't drill into exterior walls, you usually can't hardwire anything, and you're sharing a building with neighbors who will notice what you mount. But almost every balcony has one outdoor power outlet — and that's all you need to run everything on this list.
+    </p>
+    <p class="text-lg text-gray-700 mb-8 leading-relaxed">
+      The Kasa outdoor smart plug gives you two independently controlled outlets from one wall socket. Run string lights on one, a fan or heater on the other. The Govee string lights are IP65 rated for direct rain. The Ring floodlight is battery-powered — no outlet needed, mounts anywhere with two screws. The Wyze Cam Outdoor covers the balcony, fire escape, or patio area with a camera that also goes on its own battery. All four work with Alexa and Google Home.
+    </p>
+
+    <div class="bg-blue-50 border border-blue-100 rounded-2xl p-5 mb-10">
+      <p class="font-semibold text-gray-900 mb-2 text-sm">What makes outdoor smart home devices work on an apartment balcony</p>
+      <ul class="space-y-1.5 text-sm text-gray-700">
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>IP65+ weather rating — handles direct rain, not just light splashing</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>No hardwiring — everything runs from a standard outdoor outlet or its own battery</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>App control and scheduling — turn lights on at sunset, off at midnight automatically</li>
+        <li class="flex gap-2"><span class="text-blue-500 font-bold flex-shrink-0">✓</span>Portable — moves with you when your lease ends, no modifications to the building</li>
+      </ul>
+    </div>
+
+    <div class="bg-gray-50 rounded-xl p-5 mb-12">
+      <p class="font-semibold text-gray-900 mb-3 text-sm">Full Balcony Smart Home Setup — What You Need</p>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-200">
+              <th class="text-left pb-2 font-medium text-gray-600">Device</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Price</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Power Source</th>
+              <th class="text-left pb-2 font-medium text-gray-600">Best for</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-700">
+            <tr class="border-b border-gray-100"><td class="py-2">Kasa EP40 Outdoor Plug</td><td>$17</td><td>Outdoor outlet</td><td>Controlling any plug-in device on a schedule</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2">Govee H7020 String Lights</td><td>$35</td><td>Outdoor outlet</td><td>Ambiance — covers 48ft of railing or pergola</td></tr>
+            <tr class="border-b border-gray-100"><td class="py-2">Ring Floodlight Battery</td><td>$30</td><td>Battery (6–12 mo)</td><td>Motion-triggered security lighting, no outlet needed</td></tr>
+            <tr><td class="py-2">Wyze Cam Outdoor v2</td><td>$60</td><td>Battery + base station</td><td>Security camera for the balcony area</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="text-xs text-gray-500 mt-3">Total for all four: $142. Start with the Kasa plug and string lights ($52) — that's the highest impact-per-dollar balcony upgrade available.</p>
+    </div>
+
+    {picks.map((product, i) => (
+      <section id={product.slug} class="mb-16 scroll-mt-20">
+        <div class="border-t border-gray-100 pt-10 mb-6">
+          <p class="text-xs font-semibold text-green-700 uppercase tracking-widest mb-2">
+            {i === 0 ? '🔌 Smart Control — Two Outlets From One Plug' : i === 1 ? '✨ Ambiance — Color-Changing String Lights, IP65' : i === 2 ? '💡 Security Lighting — Motion-Activated, Battery-Powered' : '📷 Security Camera — Wireless Outdoor Coverage'}
+          </p>
+          <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+            <div>
+              <h2 class="text-2xl font-bold text-gray-900 mb-1">{product.name}</h2>
+              <p class="text-gray-500 text-sm">${product.price} &nbsp;·&nbsp; ⭐ {product.rating}/5</p>
+            </div>
+            <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+              class="inline-block bg-green-700 text-white px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-800 transition-colors whitespace-nowrap">
+              Check on Amazon →
+            </a>
+          </div>
+        </div>
+        <p class="text-gray-700 mb-6 leading-relaxed">{product.tagline}</p>
+        <div class="bg-gray-50 rounded-xl p-4 mb-6">
+          <p class="text-xs font-semibold text-gray-400 uppercase tracking-widest mb-3">Key Specs</p>
+          <div class="grid sm:grid-cols-2 gap-x-8">
+            {Object.entries(product.specs).map(([key, val]) => (
+              <div class="flex justify-between py-1.5 border-b border-gray-100 last:border-0">
+                <span class="text-gray-500 text-sm">{key}</span>
+                <span class="font-medium text-gray-900 text-sm">{val}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-4 mb-6">
+          <div class="bg-green-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Pros</p>
+            <ul class="space-y-2">
+              {product.pros.map(pro => <li class="text-sm text-gray-700 flex gap-2"><span class="text-green-600 flex-shrink-0 mt-0.5">✓</span>{pro}</li>)}
+            </ul>
+          </div>
+          <div class="bg-red-50 rounded-xl p-4">
+            <p class="font-semibold text-gray-900 mb-3 text-sm">Cons</p>
+            <ul class="space-y-2">
+              {product.cons.map(con => <li class="text-sm text-gray-700 flex gap-2"><span class="text-red-500 flex-shrink-0 mt-0.5">✗</span>{con}</li>)}
+            </ul>
+          </div>
+        </div>
+        <a href={product.affiliateUrl} target="_blank" rel="nofollow noopener"
+          class="inline-block border border-green-700 text-green-700 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-green-700 hover:text-white transition-colors">
+          Buy {product.name} on Amazon →
+        </a>
+      </section>
+    ))}
+
+    <section class="border-t border-gray-100 pt-10 mb-16">
+      <h2 class="text-2xl font-bold text-gray-900 mb-6">Buyer's Guide: Apartment Balcony Smart Home</h2>
+      <div class="space-y-6 text-gray-700">
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">Do you need permission to put smart devices on a balcony?</h3>
+          <p class="text-sm leading-relaxed">Plug-in devices like string lights and smart plugs are personal property — they go on and come off without modification and are universally acceptable. Battery-powered cameras and lights that mount with two screws into wood or composite railing are usually fine and easily patched when removed. Where you'll want to check your lease or ask management: cameras that point toward neighboring units' balconies or windows (angle them to cover your space only), anything that permanently modifies the railing or exterior wall, and anything that blocks fire escape access paths. When in doubt, framing the question as "can I add removable outdoor string lights and a battery camera?" almost always gets a yes.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">What if my balcony doesn't have an outdoor outlet?</h3>
+          <p class="text-sm leading-relaxed">Use an outdoor-rated extension cord (16-gauge minimum, rated for 1875W) run through the sliding door gap — most balcony doors have a 0.5-to-1 inch gap at the frame when you route a flat extension cord through it. This powers the Kasa plug, string lights, and any other plug-in devices. The Ring floodlight and Wyze Cam Outdoor don't need an outlet at all — both are battery-powered. A balcony setup without an outlet can still be fully functional with the two battery-powered devices plus a flat extension cord for the lights.</p>
+        </div>
+        <div>
+          <h3 class="font-bold text-gray-900 mb-2">How do you hang string lights on a balcony railing without drilling?</h3>
+          <p class="text-sm leading-relaxed">Command outdoor hooks (rated for 7.5 lbs each) work on painted concrete, metal, and composite railing surfaces. Wrap the lights around the railing itself using the built-in loops on Govee's bulb sockets. For railings where hooks won't stick, use UV-resistant outdoor zip ties — they're removable and leave the railing unmarked. Run the cord along the inside of the railing where it's less visible and secure with small velcro cable ties. For balconies with pergola beams overhead, the lights can hang between beams without any wall contact at all.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="border-t border-gray-100 pt-10">
+      <h2 class="text-xl font-bold text-gray-900 mb-4">Related Guides</h2>
+      <div class="grid sm:grid-cols-2 gap-4">
+        <a href="/smart-home/best-smart-plugs-for-apartments/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Plugs for Apartments →</p>
+        </a>
+        <a href="/smart-home/best-smart-security-camera-for-apartments-under-100/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Security Cameras for Apartments Under $100 →</p>
+        </a>
+        <a href="/smart-home/best-smart-home-devices-for-renters/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Home Devices for Renters →</p>
+        </a>
+        <a href="/smart-home/best-smart-lighting-starter-kit-for-apartments/" class="group block border border-gray-100 rounded-xl p-4 hover:border-green-200 hover:shadow-sm transition-all">
+          <p class="text-xs text-green-700 font-semibold uppercase tracking-widest mb-1">Smart Home</p>
+          <p class="font-medium text-gray-900 text-sm group-hover:text-green-700 transition-colors">Best Smart Lighting Starter Kit for Apartments →</p>
+        </a>
+      </div>
+    </section>
+
+  </article>
+</Layout>
